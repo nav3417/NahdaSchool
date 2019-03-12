@@ -1,0 +1,42 @@
+﻿@using Services.Model
+@model DigitalResourceModel
+@{
+
+}
+@Html.Action("AddCategory", "Category", new { model = Model.CategoryModel })
+<br />
+<div style="border-bottom:solid"></div><br />
+<a href="/Gallery/Add"><span class="glyphicon glyphicon-plus"></span>Add</a>
+<br /><br />
+<div class="row">
+    <table class="table table-bordered table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.MasterModelList)
+            {
+                <tr>
+                    <td hidden="hidden">@p.Id</td>
+                    <td>@p.title</td>
+                    <td>@p.DescriptionShort</td>
+                    <td>@p.Fromstring</td>
+                    <td>@p.Tostring</td>
+                    <td><a href="/Gallery/Add/@p.Id"><span class="glyphicon glyphicon-edit"></span></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $(".addcartbtn").click(function () {
+        var id = $(this).data("pid");
+        window.location.href = "/Gallery/Add/?id=" + id + "&categoryid=" +;
+    });
+</script>

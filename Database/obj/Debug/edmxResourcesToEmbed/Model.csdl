@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AlnahdaSchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AlnahdaSchoolEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LessonPlanCategories" EntityType="AlnahdaSchoolModel.LessonPlanCategory" />
+    <EntitySet Name="LessonPlanDetails" EntityType="AlnahdaSchoolModel.LessonPlanDetail" />
+    <AssociationSet Name="FK_LessonPlanDetail_LessonPlanCategory" Association="AlnahdaSchoolModel.FK_LessonPlanDetail_LessonPlanCategory">
+      <End Role="LessonPlanCategory" EntitySet="LessonPlanCategories" />
+      <End Role="LessonPlanDetail" EntitySet="LessonPlanDetails" />
+    </AssociationSet>
+    <EntitySet Name="LessonsPlanMasters" EntityType="AlnahdaSchoolModel.LessonsPlanMaster" />
+    <AssociationSet Name="FK_LessonPlanDetail_LessonsPlanMaster" Association="AlnahdaSchoolModel.FK_LessonPlanDetail_LessonsPlanMaster">
+      <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMasters" />
+      <End Role="LessonPlanDetail" EntitySet="LessonPlanDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="LessonPlanCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LessonPlanDetails" Relationship="AlnahdaSchoolModel.FK_LessonPlanDetail_LessonPlanCategory" FromRole="LessonPlanCategory" ToRole="LessonPlanDetail" />
+  </EntityType>
+  <EntityType Name="LessonPlanDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="Int32" />
+    <Property Name="Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="FileExtnsion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ShowFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" />
+    <NavigationProperty Name="LessonPlanCategory" Relationship="AlnahdaSchoolModel.FK_LessonPlanDetail_LessonPlanCategory" FromRole="LessonPlanDetail" ToRole="LessonPlanCategory" />
+    <NavigationProperty Name="LessonsPlanMaster" Relationship="AlnahdaSchoolModel.FK_LessonPlanDetail_LessonsPlanMaster" FromRole="LessonPlanDetail" ToRole="LessonsPlanMaster" />
+  </EntityType>
+  <Association Name="FK_LessonPlanDetail_LessonPlanCategory">
+    <End Type="AlnahdaSchoolModel.LessonPlanCategory" Role="LessonPlanCategory" Multiplicity="0..1" />
+    <End Type="AlnahdaSchoolModel.LessonPlanDetail" Role="LessonPlanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonPlanCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonPlanDetail">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LessonsPlanMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModefiedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModefiedBy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LessonPlanFrom" Type="DateTime" Precision="7" />
+    <Property Name="LessonPlanTo" Type="DateTime" Precision="7" />
+    <Property Name="HOSRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovedBy" Type="Int32" />
+    <Property Name="IsApproved" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="LessonPlanDetails" Relationship="AlnahdaSchoolModel.FK_LessonPlanDetail_LessonsPlanMaster" FromRole="LessonsPlanMaster" ToRole="LessonPlanDetail" />
+  </EntityType>
+  <Association Name="FK_LessonPlanDetail_LessonsPlanMaster">
+    <End Type="AlnahdaSchoolModel.LessonsPlanMaster" Role="LessonsPlanMaster" Multiplicity="0..1" />
+    <End Type="AlnahdaSchoolModel.LessonPlanDetail" Role="LessonPlanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonsPlanMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonPlanDetail">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

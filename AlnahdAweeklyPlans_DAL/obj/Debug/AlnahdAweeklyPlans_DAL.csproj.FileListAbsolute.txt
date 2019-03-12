@@ -1,0 +1,41 @@
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.csprojAssemblyReference.cache
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.csproj.CoreCompileInputs.cache
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\AlnahdAweeklyPlans_DAL.dll.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\AlnahdAweeklyPlans_DAL.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\AlnahdAweeklyPlans_DAL.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.dll.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.csproj.CopyComplete
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.pdb
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\AlnahdAweeklyPlans_DAL.dll.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\AlnahdAweeklyPlans_DAL.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\AlnahdAweeklyPlans_DAL.pdb
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.pdb
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.dll.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.csprojResolveAssemblyReference.cache
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.pdb
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\AlnahdAweeklyPlans_DAL.dll.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\AlnahdAweeklyPlans_DAL.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\AlnahdAweeklyPlans_DAL.pdb
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.pdb
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.dll.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.csprojResolveAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.pdb

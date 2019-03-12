@@ -1,0 +1,16 @@
+﻿@model Services.Model.CategoryModel
+    @{ 
+        IEnumerable<SelectListItem> categories = ViewBag.categories;
+    }
+@using (Html.BeginForm("AddCategor", "Category", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        @Html.HiddenFor(x=>x.ParentId)
+        @Html.HiddenFor(x => x.controller)
+        <div class="col-md-2"><h5 class="active">Add Category</h5> </div>
+            <div class="col-md-2">@Html.TextBoxFor(x => x.Name, new { @class = "form-control" })</div>
+            <div class="col-md-2">@Html.DropDownListFor(x => x.Id, categories, new { @class = "form-control", disabled = "disabled" })</div>
+            <div class="col-md-1"><input type="submit" value="Save" class="btn btn-success" /></div>
+        </div>
+   
+}

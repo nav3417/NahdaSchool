@@ -1,0 +1,160 @@
+﻿@model Services.Model.LessonPlanModel
+@{
+    ViewBag.Title = "Index";
+    IEnumerable<SelectListItem> subjects = ViewBag.subjects;
+    IEnumerable<SelectListItem> Classess = ViewBag.classes;
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <div class="panel panel-default">
+        <div class="list-group-item active">Approval Status</div>
+        <div class="row">
+            <div class="list-group-item-success">
+                <div class="col-md-3">
+                    @Html.DropDownListFor(x => x.LessonsPlanMasterModel.ClassId, Classess, new { @class = "form-control", id = "ClassId" })
+                </div>
+                <div class="col-md-3" id="loadsubjects">
+                    @Html.DropDownListFor(x => x.LessonsPlanMasterModel.SubjectId, subjects, new { @class = "form-control", id = "SubjectId" })
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(x => x.LessonsPlanMasterModel.LessonPlanFrom, new { @class = "form-control", @placeholder = "From", id = "From", disabled = "disabled", })
+                        </div>
+                        <div class="col-md-1">
+                            <img src="~/Images/General/calendar-icon.jpg" class="img-thumbnail" id="pickdate" />
+                        </div>
+                        <div class="col-md-3">@Html.TextBoxFor(x => x.LessonsPlanMasterModel.LessonPlanTo, new { @class = "form-control", @placeholder = "To", id = "To", disabled = "disabled" })</div>
+                        <div class="col-md-2"><input class="btn btn-success" id="loaddetail" style="width:80px" value="Load" /></div>
+                        <div class="col-md-2"><input class="btn btn-danger" id="loaddetail" style="width:80px" value="Cancel" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="DetailView">
+        @*@Html.Action("DetailView", Model)*@
+    </div>
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script type="text/javascript">
+    var subject = null;
+    var clas = null;
+    $(document).on("click", "#loaddetail", function () {
+        var data = {
+            subject : $("#SubjectId").val(),
+            clas : $("#ClassId").val(),
+            from : $("#From").val(),
+            to : $("#To").val()
+        };
+        $.ajax({
+            url: '@Url.Action("DetailView")',
+            data: data,
+            success: function (res) {
+                $("#DetailView").html();
+                $("#DetailView").html(res);
+            }
+        });
+         subject = $("#SubjectId").val();
+          clas = $("#ClassId").val();
+        var from = $("#From").val();
+        var to = $("#To").val();
+    });
+    $(document).on("change", "#ClassId", function () {
+        var subjectid = $(this).val();
+        $.ajax({
+            url: "/WeeklyPlan/loadsubjects/" + subjectid,
+            success: function (data) {
+                $("#loadsubjects").html("");
+                $("#loadsubjects").html(data);
+            }
+
+        });
+    });
+    $(document).on("change", "#allgeneral", function () {
+        var check = $(this).is(':checked');
+        $('input:checkbox').prop('checked', check);
+        //$.ajax({
+        //    url: "/WeeklyPlan/loadsubjects/" + subjectid,
+        //    success: function (data) {
+        //        $("#loadsubjects").html("");
+        //        $("#loadsubjects").html(data);
+        //    }
+
+        //});
+    });
+    $(document).on("change", ".allgeneral", function () {
+        //var subjectid = $(this).val();
+        //$.ajax({
+        //    url: "/WeeklyPlan/loadsubjects/" + subjectid,
+        //    success: function (data) {
+        //        $("#loadsubjects").html("");
+        //        $("#loadsubjects").html(data);
+        //    }
+
+        //});
+        alert("hi");
+    });
+    $(document).on("click", ".approve", function () {
+        var id = $(this).attr("id");
+        if (confirm('Are you sure, you want to approve this?')) {
+            $.ajax({
+                url: "/Approval/uprove/" + id,
+                success: function (data) {
+                    alert("Approved, an Email is sent to relevant Teacher");
+                }
+
+            });
+        } else {
+           
+        }
+    });
+    $(document).on("click", ".remove", function () {
+        var id = $(this).attr("id");
+        if (confirm('Are you sure, you want to approve this?')) {
+            $.ajax({
+                url: "/Approval/remove/" + id,
+                success: function (data) {
+                    alert("Removed");
+                }
+
+            });
+        }
+    });
+    $(document).on("click", ".edit", function () {
+        var id = $(this).attr("id");
+        window.location.href = "/Approval/Editdetail/" + id;
+    });
+    $(document).on("change", ".fileupload", function () {
+        var id = $(this).attr("id");
+        var file = $(this).prop("files")[0];
+        var clas = $("#ClassId").val();
+        var sub = $("#SubjectId").val();
+
+        //alert(id);
+        var fileupload = new FormData();
+        fileupload.append("Id", id);
+        fileupload.append("subject", subject);
+        fileupload.append("clas", clas);
+        fileupload.append("file", file);
+        debugger
+        $.ajax({
+            url: "/WeeklyPlan/fileupload",
+            type:"post",
+            data: fileupload,
+            processData: false,
+            dataType: "JSON",
+            contentType: false,
+            success: function (data) {
+                alert("done");
+            },
+            error: function () {
+                alert("could not upload");
+            }
+        });
+    });
+    $(document).on("click", "#rejectbtn", function () {
+        alert("hi");
+        window.location.href = "/Approval/Index";
+    });
+    
+</script>

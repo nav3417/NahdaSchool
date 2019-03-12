@@ -1,0 +1,31 @@
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\bin\Debug\Database.dll.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\bin\Debug\Database.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\bin\Debug\Database.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csproj.CoreCompileInputs.cache
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csproj.CopyComplete
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\obj\Debug\Database.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Database\obj\Debug\Database.pdb
+D:\AlnahdAweeklyPlans\Database\bin\Debug\Database.dll.config
+D:\AlnahdAweeklyPlans\Database\bin\Debug\Database.dll
+D:\AlnahdAweeklyPlans\Database\bin\Debug\Database.pdb
+D:\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.dll
+D:\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.SqlServer.dll
+D:\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.xml
+D:\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.SqlServer.xml
+D:\AlnahdAweeklyPlans\Database\obj\Debug\Database.dll
+D:\AlnahdAweeklyPlans\Database\obj\Debug\Database.pdb
+D:\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csprojResolveAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\Database.dll.config
+D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\Database.dll
+D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\Database.pdb
+D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.dll
+D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.SqlServer.dll
+D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.xml
+D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.SqlServer.xml
+D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csprojResolveAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\Database.dll
+D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\Database.pdb

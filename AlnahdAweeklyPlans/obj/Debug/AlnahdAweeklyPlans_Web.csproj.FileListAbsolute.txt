@@ -1,0 +1,245 @@
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans.dll.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csc.exe
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csc.exe.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csc.rsp
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csi.exe
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csi.exe.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csi.rsp
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.AppContext.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Console.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.Compression.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Claims.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.ValueTuple.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\vbc.exe
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\vbc.exe.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\vbc.rsp
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\VBCSCompiler.exe
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Helpers.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Mvc.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Razor.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Razor.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Razor.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Razor.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Helpers.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Mvc.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans_Web.csprojAssemblyReference.cache
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans_Web.csproj.CoreCompileInputs.cache
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans_Web.csproj.CopyComplete
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Services.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Services.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.dll.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.dll.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans.dll.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans.pdb
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csc.exe
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csc.exe.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csc.rsp
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csi.exe
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csi.exe.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csi.rsp
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.Managed.Core.targets
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.AppContext.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Collections.Immutable.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Console.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.Compression.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.FileSystem.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.Pipes.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Reflection.Metadata.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.AccessControl.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Claims.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Principal.Windows.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.ValueTuple.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.XmlDocument.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.XPath.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\vbc.exe
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\vbc.exe.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\vbc.rsp
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\VBCSCompiler.exe
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\VBCSCompiler.exe.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.SqlServer.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.Web.Infrastructure.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Newtonsoft.Json.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Services.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Helpers.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Mvc.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Razor.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Deployment.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Razor.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.pdb
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.dll.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.pdb
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.dll.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Services.pdb
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Services.dll.config
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.SqlServer.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Newtonsoft.Json.pdb
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Newtonsoft.Json.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Razor.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Deployment.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Razor.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Helpers.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Mvc.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans_Web.csprojResolveAssemblyReference.cache
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans.dll
+D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans.pdb
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans.dll.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans.pdb
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csc.exe
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csc.exe.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csc.rsp
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csi.exe
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csi.exe.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\csi.rsp
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.AppContext.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Collections.Immutable.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Console.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.Compression.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.FileSystem.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.IO.Pipes.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Reflection.Metadata.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.AccessControl.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Claims.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.ValueTuple.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.XPath.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\vbc.exe
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\vbc.exe.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\vbc.rsp
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\VBCSCompiler.exe
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\VBCSCompiler.exe.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.SqlServer.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.Web.Infrastructure.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Newtonsoft.Json.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Services.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Helpers.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Mvc.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Razor.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Deployment.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Razor.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.pdb
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.dll.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.pdb
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.dll.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Services.pdb
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Services.dll.config
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.SqlServer.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Newtonsoft.Json.pdb
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Newtonsoft.Json.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Razor.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Deployment.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Razor.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Helpers.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Mvc.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans_Web.csprojResolveAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans.pdb

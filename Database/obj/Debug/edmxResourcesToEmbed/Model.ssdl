@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AlnahdaSchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LessonPlanCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LessonPlanDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="int" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="FileExtnsion" Type="nvarchar" MaxLength="20" />
+    <Property Name="ShowFileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="GUID" Type="nvarchar(max)" />
+    <Property Name="CategoryId" Type="int" />
+  </EntityType>
+  <EntityType Name="LessonsPlanMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModefiedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModefiedBy" Type="nchar" MaxLength="10" />
+    <Property Name="LessonPlanFrom" Type="datetime2" Precision="7" />
+    <Property Name="LessonPlanTo" Type="datetime2" Precision="7" />
+    <Property Name="HOSRemarks" Type="nvarchar(max)" />
+    <Property Name="ApprovedBy" Type="int" />
+    <Property Name="IsApproved" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <Association Name="FK_LessonPlanDetail_LessonPlanCategory">
+    <End Role="LessonPlanCategory" Type="Self.LessonPlanCategory" Multiplicity="0..1" />
+    <End Role="LessonPlanDetail" Type="Self.LessonPlanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonPlanCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonPlanDetail">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LessonPlanDetail_LessonsPlanMaster">
+    <End Role="LessonsPlanMaster" Type="Self.LessonsPlanMaster" Multiplicity="0..1" />
+    <End Role="LessonPlanDetail" Type="Self.LessonPlanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonsPlanMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonPlanDetail">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AlnahdaSchoolModelStoreContainer">
+    <EntitySet Name="LessonPlanCategory" EntityType="Self.LessonPlanCategory" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="LessonPlanDetail" EntityType="Self.LessonPlanDetail" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="LessonsPlanMaster" EntityType="Self.LessonsPlanMaster" Schema="Academic" store:Type="Tables" />
+    <AssociationSet Name="FK_LessonPlanDetail_LessonPlanCategory" Association="Self.FK_LessonPlanDetail_LessonPlanCategory">
+      <End Role="LessonPlanCategory" EntitySet="LessonPlanCategory" />
+      <End Role="LessonPlanDetail" EntitySet="LessonPlanDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LessonPlanDetail_LessonsPlanMaster" Association="Self.FK_LessonPlanDetail_LessonsPlanMaster">
+      <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMaster" />
+      <End Role="LessonPlanDetail" EntitySet="LessonPlanDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

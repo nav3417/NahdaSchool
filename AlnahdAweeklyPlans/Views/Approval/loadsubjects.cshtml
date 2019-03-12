@@ -1,0 +1,7 @@
+﻿@model Services.Model.LessonPlanModel
+@{
+    ViewBag.Title = "loadsubjects";
+    IEnumerable<SelectListItem> subjects = ViewBag.subjects;
+}
+@Html.DropDownListFor(x => x.LessonsPlanMasterModel.SubjectId, subjects, new { @class = "form-control", id = "SubjectId" })
+

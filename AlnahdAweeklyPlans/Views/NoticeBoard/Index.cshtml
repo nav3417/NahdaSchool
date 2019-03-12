@@ -1,0 +1,47 @@
+﻿@model  Services.Model.DigitalResourceModel
+@using Services.Model
+@{
+    ViewBag.Title = "DisplayContent";
+    CategoryModel category = ViewBag.category;
+}
+<style>
+    a{
+        color:white;
+    }
+</style>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-1"><img src="@category.URL" alt="" class="img-responsive img-thumbnail" /></div>
+            <div class="col-md-4">@category.Name</div>
+        </div>
+    </div>
+    <br />
+    @Html.Action("AddCategory", "Category", new { model = Model.CategoryModel})
+    <br />
+    @if (Model.CategoryGeneralModelList.Count > 0)
+    {
+        foreach (var i in Model.CategoryGeneralModelList)
+        {
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"><a href="#">@i.Name (@i.TotalSubList)</a></div>
+                </div>
+            </div>
+            <br />
+        }
+    }
+@if (Model.CategoryGeneralModelList.Count == 0)
+{
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">Not Added Yet any Sub Detail in @category.Name</div>
+        </div>
+    </div>
+}
+
+
+</div>
+

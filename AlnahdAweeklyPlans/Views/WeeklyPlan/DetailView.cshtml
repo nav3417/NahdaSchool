@@ -1,0 +1,74 @@
+﻿@model Services.Model.LessonPlanModel
+<link href="~/Content/imageviewer.css" rel="stylesheet" type="text/css" />
+
+<link href="~/Views/WeeklyPlan/UploadFiles.css" rel="stylesheet" />
+<link href="~/Content/dropify.css" rel="stylesheet" />
+<style>
+    .dropify-wrapper {
+        height: 200px;
+    }
+</style>
+@for (var i=0;i<=Model.CategoryList.Count()+ ViewBag.count; i++)
+{
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="list-group-item active">@Model.LessonPlanDetailList[i].Category</div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-1">
+                    @Model.LessonPlanDetailList[i].Category
+                </div>
+                @Html.HiddenFor(x=> Model.LessonPlanDetailList[i].Id)
+                @Html.HiddenFor(x => Model.LessonPlanDetailList[i].Sunday)
+                @Html.HiddenFor(x => Model.LessonPlanDetailList[i].Monday)
+                @Html.HiddenFor(x => Model.LessonPlanDetailList[i].Tuesday)
+                @Html.HiddenFor(x => Model.LessonPlanDetailList[i].Wednesday)
+                @Html.HiddenFor(x => Model.LessonPlanDetailList[i].Thursday)
+                <div class="col-md-2">@Html.TextAreaFor(x=>Model.LessonPlanDetailList[i].SundayComment)</div>
+                <div class="col-md-2">@Html.TextAreaFor(x => Model.LessonPlanDetailList[i].MondayComment)</div>
+                <div class="col-md-2">@Html.TextAreaFor(x => Model.LessonPlanDetailList[i].TuesdayComent)</div>
+                <div class="col-md-2">@Html.TextAreaFor(x => Model.LessonPlanDetailList[i].WednesdayComment)</div>
+                <div class="col-md-2">@Html.TextAreaFor(x => Model.LessonPlanDetailList[i].ThursdayComment)</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-1">
+                    Attachment
+                </div>
+                <div class="col-md-2">@Html.TextBoxFor(x => Model.LessonPlanDetailList[i].URL, new { type = "file",Multiple="multiple", id = Model.LessonPlanDetailList[i].CategoryId+"_"+ Model.LessonPlanDetailList[i].Category + "_" + Model.LessonPlanDetailList[i].Sunday, @class = "dropify img-responsive img-thumbnail fileupload", @data_allowed_file_extensions = "jpeg png jpg pdf doc docx", @data_show_remove = "true" })
+</div>
+                <div class="col-md-2">@Html.TextBoxFor(x => Model.LessonPlanDetailList[i].URL, new { type = "file", id = Model.LessonPlanDetailList[i].CategoryId + "_" + Model.LessonPlanDetailList[i].Category + "_" + Model.LessonPlanDetailList[i].Monday, @class = "dropify img-responsive img-thumbnail fileupload", @data_allowed_file_extensions = "jpeg png jpg pdf doc docx", @data_show_remove = "false" })
+</div>
+                <div class="col-md-2">@Html.TextBoxFor(x => Model.LessonPlanDetailList[i].URL, new { type = "file", id = Model.LessonPlanDetailList[i].CategoryId + "_" + Model.LessonPlanDetailList[i].Category + "_" + Model.LessonPlanDetailList[i].Tuesday, @class = "dropify img-responsive img-thumbnail fileupload", @data_allowed_file_extensions = "jpeg png jpg pdf doc docx", @data_show_remove = "false" })
+</div>
+                <div class="col-md-2">@Html.TextBoxFor(x => Model.LessonPlanDetailList[i].URL, new { type = "file", id = Model.LessonPlanDetailList[i].CategoryId + "_" + Model.LessonPlanDetailList[i].Category + "_" + Model.LessonPlanDetailList[i].Wednesday, @class = "dropify img-responsive img-thumbnail fileupload", @data_allowed_file_extensions = "jpeg png jpg pdf doc docx", @data_show_remove = "false" })
+</div>
+                <div class="col-md-2">@Html.TextBoxFor(x => Model.LessonPlanDetailList[i].URL, new { type = "file", id = Model.LessonPlanDetailList[i].CategoryId + "_" + Model.LessonPlanDetailList[i].Category + "_" + Model.LessonPlanDetailList[i].Thursday, @class = "dropify img-responsive img-thumbnail fileupload", @data_allowed_file_extensions = "jpeg png jpg pdf doc docx", @data_show_remove = "false" })
+</div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script src="~/Scripts/imageviewer.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/dropify.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        alert();  $('input[type="file"]').imageuploadify();
+
+    });
+    //$('.dropify').dropify({
+    //    messages: {
+    //        'default': 'Drag and drop a file here or click',
+    //        'replace': 'Drag and drop or click to replace',
+    //        'remove': 'Remove',
+    //        'error': 'Ooops, something wrong happended.'
+
+    //    }
+  //  });
+</script>

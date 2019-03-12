@@ -1,0 +1,134 @@
+﻿@model Services.Model.LessonPlanModel
+@{
+    ViewBag.Title = "Index";
+    IEnumerable<SelectListItem> subjects = ViewBag.subjects;
+    IEnumerable<SelectListItem> Classess = ViewBag.classes;
+    IEnumerable<SelectListItem> categories = ViewBag.category;
+
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+@using (Html.BeginForm("PostLessonPlan", "WeeklyPlan", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data" }))
+{
+<div class="panel panel-default">
+    <div class="list-group-item active">Add Weekly Plan</div>
+    <div class="row">
+        <div class="list-group-item-success">
+            <div class="col-md-2">
+                @Html.DropDownListFor(x => x.LessonsPlanMasterModel.ClassId, Classess, new { @class = "form-control",id= "ClassId" })
+            </div>
+            <div class="col-md-2" id="loadsubjects">
+                @Html.DropDownListFor(x => x.LessonsPlanMasterModel.SubjectId, subjects, new { @class = "form-control", id = "SubjectId" })
+            </div>
+            <div class="col-md-2">
+                @Html.ListBox("caregories", categories, new { @class = "form-control", id = "caregories" })
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(x => x.LessonsPlanMasterModel.LessonPlanFrom, new { @class = "form-control", @placeholder = "From", id = "From", disabled = "disabled", })
+                    </div>
+                    <div class="col-md-1">
+                        <img src="~/Images/General/calendar-icon.jpg" class="img-thumbnail" id="pickdate" />
+                    </div>
+                    <div class="col-md-3">@Html.TextBoxFor(x => x.LessonsPlanMasterModel.LessonPlanTo, new { @class = "form-control", @placeholder = "To", id = "To", disabled = "disabled" })</div>
+                    <div class="col-md-2"><input class="btn btn-success" id="loaddetail" style="width:80px" value="Load"/></div>
+                    <div class="col-md-2"><input class="btn btn-danger"  style="width:80px" value="Cancel" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="DetailView">
+    @*@Html.Action("DetailView", Model)*@
+</div>
+
+    <input type="submit" value="Post" class="btn btn-success"/>
+}
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script type="text/javascript">
+    var subject = null;
+    var clas = null;
+    $(document).on("click", "#loaddetail", function () {
+        var categories = $("#caregories").val();
+        var from = $("#From").val();
+        var to = $("#To").val();
+        var catlist = new Array();
+        for (i = 0; i < categories.length; i++)
+        {
+            catlist.push(categories[i]);
+        }
+        debugger
+        if (categories.length == 0 || !from || !to)
+        {
+            alert("Empty fields are not allowed");
+        }
+        else
+        {
+        var data = {
+            subject : $("#SubjectId").val(),
+            clas : $("#ClassId").val(),
+            from: from,
+            to: to,
+            Cat: JSON.stringify(catlist),
+        };
+
+        $.ajax({
+            url: '@Url.Action("DetailView")',
+            data: data,
+            success: function (res) {
+                $("#DetailView").html();
+                $("#DetailView").html(res);
+            }
+        });
+         subject = $("#SubjectId").val();
+          clas = $("#ClassId").val();
+        var from = $("#From").val();
+        var to = $("#To").val();
+        }
+
+    });
+    $(document).on("change", "#ClassId", function () {
+        var subjectid = $(this).val();
+        $.ajax({
+            url: "/WeeklyPlan/loadsubjects/" + subjectid,
+            success: function (data) {
+                $("#loadsubjects").html("");
+                $("#loadsubjects").html(data);
+            }
+
+        });
+    });
+    $(document).on("change", ".fileupload", function () {
+        var id = $(this).attr("id");
+        var file = $(this).prop("files");
+        debugger;
+        console.log(file);
+        var clas = $("#ClassId").val();
+        var sub = $("#SubjectId").val();
+        debugger;
+        //alert(id);
+        var fileupload = new FormData();
+        fileupload.append("Id", id);
+        fileupload.append("subject", subject);
+        fileupload.append("clas", clas);
+        for (var i = 0; i < file.length; i++) {
+            fileupload.append('file' + i, file[i]);
+        }
+        debugger
+        $.ajax({
+            url: "/WeeklyPlan/fileupload",
+            type:"post",
+            data: fileupload,
+            processData: false,
+            dataType: "JSON",
+            contentType: false,
+            success: function (data) {
+                alert("done");
+            },
+            error: function () {
+                alert("could not upload");
+            }
+        });
+    });
+</script>

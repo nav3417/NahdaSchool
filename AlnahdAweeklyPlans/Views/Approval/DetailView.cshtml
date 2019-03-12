@@ -1,0 +1,72 @@
+﻿@model Services.Model.LessonPlanModel
+<link href="~/Content/imageviewer.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/dropify.css" rel="stylesheet" />
+<style>
+    .dropify-wrapper {
+        height: 200px;
+    }
+</style>
+@using (Html.BeginForm("BulkApprove", "Approval", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data" }))
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.CheckBox("check", new { id = "allgeneral" })</th>
+            <th>Day</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Class/Subject</th>
+            <th>Teacher</th>
+            <th>Detail</th>
+            <th>Creat</th>
+            <th>File</th>
+            <th>Approval</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i <= Model.CategoryList.Count() + (ViewBag.count-1); i++)
+        {
+            <tr>
+                <td hidden="hidden">@Html.HiddenFor(x => Model.LessonsPlanMasterModelList[i].Id)</td>
+                <th>@Html.CheckBoxFor(x => Model.LessonsPlanMasterModelList[i].IsApproved, new { id = @Model.LessonsPlanMasterModelList[i].Id, @class = "allgeneral" })</th>
+                <td>@Model.LessonsPlanMasterModelList[i].Day</td>
+                <td>@Model.LessonsPlanMasterModelList[i].Category</td>
+                <td>@Model.LessonsPlanMasterModelList[i].Datefor</td>
+                <td>@Model.LessonsPlanMasterModelList[i].Class _ @Model.LessonsPlanMasterModelList[i].Subject</td>
+                <td>@Model.LessonsPlanMasterModelList[i].Teacher</td>
+                <td>@Model.LessonsPlanMasterModelList[i].TeacherRemarks</td>
+                <td>@Model.LessonsPlanMasterModelList[i].CreatedOn</td>
+                <td>
+                    @foreach (var k in @Model.LessonsPlanMasterModelList[i].LessonPlanDetailList)
+                    {
+                    <a href="D:\AlnahdAweeklyPlans\AlnahdAweeklyPlans\Images\LessonPlan\Model.LessonsPlanMasterModelList[i].Category\@Model.LessonsPlanMasterModelList[i].Class _ @Model.LessonsPlanMasterModelList[i].Subject\@k.URL">@k.ShowFileName</a>
+                    <br />
+                    }
+                </td>
+                <td><a href="#" id="@Model.LessonsPlanMasterModelList[i].Id" class="approve"><span class="glyphicon glyphicon-upload"></span></a></td>
+                <td><a href="#" id="@Model.LessonsPlanMasterModelList[i].Id" class="remove"><span class="glyphicon glyphicon-remove"></span></a></td>
+                <td><a href="#" id="@Model.LessonsPlanMasterModelList[i].Id" class="edit"><span class="glyphicon glyphicon-edit"></span></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<input type="submit" value="Reject" class="btn btn-danger" />
+}
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script src="~/Scripts/imageviewer.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/dropify.min.js"></script>
+<script type="text/javascript">
+    $('.dropify').dropify({
+        messages: {
+            'default': 'Drag and drop a file here or click',
+            'replace': 'Drag and drop or click to replace',
+            'remove': 'Remove',
+            'error': 'Ooops, something wrong happended.'
+        }
+    });
+</script>

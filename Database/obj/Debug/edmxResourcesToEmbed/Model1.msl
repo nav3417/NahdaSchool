@@ -1,0 +1,916 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Nahda_AttendanceModelStoreContainer" CdmEntityContainer="Nahda_AttendanceEntities">
+    <EntitySetMapping Name="LessonPlanClasses">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.LessonPlanClass">
+        <MappingFragment StoreEntitySet="LessonPlanClass">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LessonPlanSubjects">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.LessonPlanSubject">
+        <MappingFragment StoreEntitySet="LessonPlanSubject">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcademicYears">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.AcademicYear">
+        <MappingFragment StoreEntitySet="AcademicYears">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Academic_Year_En" ColumnName="Academic_Year_En" />
+          <ScalarProperty Name="Academic_Year_Ar" ColumnName="Academic_Year_Ar" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsResultPublished" ColumnName="IsResultPublished" />
+          <ScalarProperty Name="isCurrent" ColumnName="isCurrent" />
+          <ScalarProperty Name="ACStatus" ColumnName="ACStatus" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_AbsentDetails">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Attendance_AbsentDetails">
+        <MappingFragment StoreEntitySet="Attendance_AbsentDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="AbsentId" ColumnName="AbsentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_AbsentMaster">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Attendance_AbsentMaster">
+        <MappingFragment StoreEntitySet="Attendance_AbsentMaster">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ReasonType" ColumnName="ReasonType" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Approve1" ColumnName="Approve1" />
+          <ScalarProperty Name="Remarks1" ColumnName="Remarks1" />
+          <ScalarProperty Name="Approve2" ColumnName="Approve2" />
+          <ScalarProperty Name="Remarks2" ColumnName="Remarks2" />
+          <ScalarProperty Name="Approve3" ColumnName="Approve3" />
+          <ScalarProperty Name="Remarks3" ColumnName="Remarks3" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PermanentDelete" ColumnName="PermanentDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_Schedule_Details">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Attendance_Schedule_Details">
+        <MappingFragment StoreEntitySet="Attendance_Schedule_Details">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Saturday" ColumnName="Saturday" />
+          <ScalarProperty Name="Sunday" ColumnName="Sunday" />
+          <ScalarProperty Name="Monday" ColumnName="Monday" />
+          <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
+          <ScalarProperty Name="Wednesday" ColumnName="Wednesday" />
+          <ScalarProperty Name="Thursday" ColumnName="Thursday" />
+          <ScalarProperty Name="Friday" ColumnName="Friday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_Schedule_Master">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Attendance_Schedule_Master">
+        <MappingFragment StoreEntitySet="Attendance_Schedule_Master">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ScheduleName" ColumnName="ScheduleName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PermanentDelete" ColumnName="PermanentDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_Schedule_TimeSlot">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Attendance_Schedule_TimeSlot">
+        <MappingFragment StoreEntitySet="Attendance_Schedule_TimeSlot">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CheckIn" ColumnName="CheckIn" />
+          <ScalarProperty Name="CheckOut" ColumnName="CheckOut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendance_Sheet">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Attendance_Sheet">
+        <MappingFragment StoreEntitySet="Attendance_Sheet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+          <ScalarProperty Name="CheckType" ColumnName="CheckType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_MarkEntry">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_MarkEntry">
+        <MappingFragment StoreEntitySet="Exam_MarkEntry">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Term_Id" ColumnName="Term_Id" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="SubjGroup_Id" ColumnName="SubjGroup_Id" />
+          <ScalarProperty Name="Mark" ColumnName="Mark" />
+          <ScalarProperty Name="Mark2" ColumnName="Mark2" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="Is_sent_For_Approval" ColumnName="Is_sent_For_Approval" />
+          <ScalarProperty Name="Is_Approved" ColumnName="Is_Approved" />
+          <ScalarProperty Name="SkillComment" ColumnName="SkillComment" />
+          <ScalarProperty Name="GenComment" ColumnName="GenComment" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+          <ScalarProperty Name="Approvedby" ColumnName="Approvedby" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_SubComments">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_SubComments">
+        <MappingFragment StoreEntitySet="Exam_SubComments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="SubGroupId" ColumnName="SubGroupId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="GenComments" ColumnName="GenComments" />
+          <ScalarProperty Name="SkillComments" ColumnName="SkillComments" />
+          <ScalarProperty Name="MarkFrom" ColumnName="MarkFrom" />
+          <ScalarProperty Name="MarkTo" ColumnName="MarkTo" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_subjectGroup">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_subjectGroup">
+        <MappingFragment StoreEntitySet="Exam_subjectGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TermId" ColumnName="TermId" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="Max" ColumnName="Max" />
+          <ScalarProperty Name="Min" ColumnName="Min" />
+          <ScalarProperty Name="Marktype" ColumnName="Marktype" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="Ono" ColumnName="Ono" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_subjectGroupRole">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_subjectGroupRole">
+        <MappingFragment StoreEntitySet="Exam_subjectGroupRole">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Sub_role_name" ColumnName="Sub_role_name" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="schoolId" ColumnName="schoolId" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_subjectGroupRole_detail">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_subjectGroupRole_detail">
+        <MappingFragment StoreEntitySet="Exam_subjectGroupRole_detail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Subject_rol_id" ColumnName="Subject_rol_id" />
+          <ScalarProperty Name="subjectGroupId" ColumnName="subjectGroupId" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="schoolId" ColumnName="schoolId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_Subjects">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_Subjects">
+        <MappingFragment StoreEntitySet="Exam_Subjects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Title_Ar" ColumnName="Title_Ar" />
+          <ScalarProperty Name="Is_Parent" ColumnName="Is_Parent" />
+          <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_SubjectStudent_Right">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_SubjectStudent_Right">
+        <MappingFragment StoreEntitySet="Exam_SubjectStudent_Right">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_SubjectStudentRole_Right">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_SubjectStudentRole_Right">
+        <MappingFragment StoreEntitySet="Exam_SubjectStudentRole_Right">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="Subject_role_id" ColumnName="Subject_role_id" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hr_department">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.hr_department">
+        <MappingFragment StoreEntitySet="hr_department">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="dept_NameEn" ColumnName="dept_NameEn" />
+          <ScalarProperty Name="dept_NameAr" ColumnName="dept_NameAr" />
+          <ScalarProperty Name="showOrder" ColumnName="showOrder" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hr_designation">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.hr_designation">
+        <MappingFragment StoreEntitySet="hr_designation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="des_NameEn" ColumnName="des_NameEn" />
+          <ScalarProperty Name="des_NameAr" ColumnName="des_NameAr" />
+          <ScalarProperty Name="showOrder" ColumnName="showOrder" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hr_Emp">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.hr_Emp">
+        <MappingFragment StoreEntitySet="hr_Emp">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+          <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+          <ScalarProperty Name="NameAr" ColumnName="NameAr" />
+          <ScalarProperty Name="father_Name" ColumnName="father_Name" />
+          <ScalarProperty Name="mother_Name" ColumnName="mother_Name" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="DateofJoining" ColumnName="DateofJoining" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+          <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="basic_salary" ColumnName="basic_salary" />
+          <ScalarProperty Name="allounces" ColumnName="allounces" />
+          <ScalarProperty Name="gras_salary" ColumnName="gras_salary" />
+          <ScalarProperty Name="salary_trans" ColumnName="salary_trans" />
+          <ScalarProperty Name="allounce_detail" ColumnName="allounce_detail" />
+          <ScalarProperty Name="bank_exchange" ColumnName="bank_exchange" />
+          <ScalarProperty Name="tot_leaves" ColumnName="tot_leaves" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="emiratId" ColumnName="emiratId" />
+          <ScalarProperty Name="hr_emirtId_ex_date" ColumnName="hr_emirtId_ex_date" />
+          <ScalarProperty Name="VisaType" ColumnName="VisaType" />
+          <ScalarProperty Name="visa_strt_Date" ColumnName="visa_strt_Date" />
+          <ScalarProperty Name="visa_end_Date" ColumnName="visa_end_Date" />
+          <ScalarProperty Name="driving_licence1" ColumnName="driving_licence1" />
+          <ScalarProperty Name="driving_licence2" ColumnName="driving_licence2" />
+          <ScalarProperty Name="driving_licence3" ColumnName="driving_licence3" />
+          <ScalarProperty Name="residance_address" ColumnName="residance_address" />
+          <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+          <ScalarProperty Name="interview_by" ColumnName="interview_by" />
+          <ScalarProperty Name="select_by" ColumnName="select_by" />
+          <ScalarProperty Name="report_to" ColumnName="report_to" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="pic" ColumnName="pic" />
+          <ScalarProperty Name="picType" ColumnName="picType" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="hr_adek_status" ColumnName="hr_adek_status" />
+          <ScalarProperty Name="hr_adek_title_en" ColumnName="hr_adek_title_en" />
+          <ScalarProperty Name="hr_adek_title_ar" ColumnName="hr_adek_title_ar" />
+          <ScalarProperty Name="hr_adek_cycle" ColumnName="hr_adek_cycle" />
+          <ScalarProperty Name="hr_adek_grade" ColumnName="hr_adek_grade" />
+          <ScalarProperty Name="hr_school_visa_title" ColumnName="hr_school_visa_title" />
+          <ScalarProperty Name="hr_school_desig_en" ColumnName="hr_school_desig_en" />
+          <ScalarProperty Name="hr_school_desig_ar" ColumnName="hr_school_desig_ar" />
+          <ScalarProperty Name="hr_school_arab_n_arab" ColumnName="hr_school_arab_n_arab" />
+          <ScalarProperty Name="hr_school_section" ColumnName="hr_school_section" />
+          <ScalarProperty Name="hr_school_dept" ColumnName="hr_school_dept" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HREmployeeMsts">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.HREmployeeMst">
+        <MappingFragment StoreEntitySet="HREmployeeMsts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="hr_name" ColumnName="hr_name" />
+          <ScalarProperty Name="hr_currentposition" ColumnName="hr_currentposition" />
+          <ScalarProperty Name="hr_currentsalary" ColumnName="hr_currentsalary" />
+          <ScalarProperty Name="hr_nationality" ColumnName="hr_nationality" />
+          <ScalarProperty Name="hr_placeofBirth" ColumnName="hr_placeofBirth" />
+          <ScalarProperty Name="hr_DOB" ColumnName="hr_DOB" />
+          <ScalarProperty Name="hr_PaymentMode" ColumnName="hr_PaymentMode" />
+          <ScalarProperty Name="hr_SalaryMode" ColumnName="hr_SalaryMode" />
+          <ScalarProperty Name="hr_LeavePerYear" ColumnName="hr_LeavePerYear" />
+          <ScalarProperty Name="hr_state" ColumnName="hr_state" />
+          <ScalarProperty Name="hr_city" ColumnName="hr_city" />
+          <ScalarProperty Name="hr_remarks" ColumnName="hr_remarks" />
+          <ScalarProperty Name="hr_bank" ColumnName="hr_bank" />
+          <ScalarProperty Name="hr_bankAccount" ColumnName="hr_bankAccount" />
+          <ScalarProperty Name="hr_joinDate" ColumnName="hr_joinDate" />
+          <ScalarProperty Name="hr_gender" ColumnName="hr_gender" />
+          <ScalarProperty Name="hr_status" ColumnName="hr_status" />
+          <ScalarProperty Name="hr_ApprovedDate" ColumnName="hr_ApprovedDate" />
+          <ScalarProperty Name="hr_MinistryStatus" ColumnName="hr_MinistryStatus" />
+          <ScalarProperty Name="hr_EOSDate" ColumnName="hr_EOSDate" />
+          <ScalarProperty Name="hr_majorSpecialization" ColumnName="hr_majorSpecialization" />
+          <ScalarProperty Name="hr_minorSpecialization" ColumnName="hr_minorSpecialization" />
+          <ScalarProperty Name="hr_ticket" ColumnName="hr_ticket" />
+          <ScalarProperty Name="hr_TotalAllowance" ColumnName="hr_TotalAllowance" />
+          <ScalarProperty Name="hr_ContractType" ColumnName="hr_ContractType" />
+          <ScalarProperty Name="hr_majorSpecializationAr" ColumnName="hr_majorSpecializationAr" />
+          <ScalarProperty Name="hr_SubStatus" ColumnName="hr_SubStatus" />
+          <ScalarProperty Name="hr_passportno" ColumnName="hr_passportno" />
+          <ScalarProperty Name="hr_placeofissue" ColumnName="hr_placeofissue" />
+          <ScalarProperty Name="hr_dateofissue" ColumnName="hr_dateofissue" />
+          <ScalarProperty Name="hr_dateofexpire" ColumnName="hr_dateofexpire" />
+          <ScalarProperty Name="hr_visatype" ColumnName="hr_visatype" />
+          <ScalarProperty Name="hr_visano" ColumnName="hr_visano" />
+          <ScalarProperty Name="hr_dateofvisaexpire" ColumnName="hr_dateofvisaexpire" />
+          <ScalarProperty Name="hr_basic_salary" ColumnName="hr_basic_salary" />
+          <ScalarProperty Name="hr_visaexpire" ColumnName="hr_visaexpire" />
+          <ScalarProperty Name="hr_religion" ColumnName="hr_religion" />
+          <ScalarProperty Name="hr_emirtId_ex_date" ColumnName="hr_emirtId_ex_date" />
+          <ScalarProperty Name="hr_emirtId_no" ColumnName="hr_emirtId_no" />
+          <ScalarProperty Name="hr_spouceplaceofbirth" ColumnName="hr_spouceplaceofbirth" />
+          <ScalarProperty Name="hr_spoucename" ColumnName="hr_spoucename" />
+          <ScalarProperty Name="hr_telephon" ColumnName="hr_telephon" />
+          <ScalarProperty Name="hr_placeorwork" ColumnName="hr_placeorwork" />
+          <ScalarProperty Name="hr_permtaddress" ColumnName="hr_permtaddress" />
+          <ScalarProperty Name="hr_permttelno" ColumnName="hr_permttelno" />
+          <ScalarProperty Name="hr_permtmobile" ColumnName="hr_permtmobile" />
+          <ScalarProperty Name="hr_permtemail" ColumnName="hr_permtemail" />
+          <ScalarProperty Name="hr_presentaddress" ColumnName="hr_presentaddress" />
+          <ScalarProperty Name="hr_presenttelno" ColumnName="hr_presenttelno" />
+          <ScalarProperty Name="hr_presentmobile" ColumnName="hr_presentmobile" />
+          <ScalarProperty Name="hr_presentemail" ColumnName="hr_presentemail" />
+          <ScalarProperty Name="hr_relativename1" ColumnName="hr_relativename1" />
+          <ScalarProperty Name="hr_relativetelnomobile1" ColumnName="hr_relativetelnomobile1" />
+          <ScalarProperty Name="hr_relativename2" ColumnName="hr_relativename2" />
+          <ScalarProperty Name="hr_relativetelnomobile2" ColumnName="hr_relativetelnomobile2" />
+          <ScalarProperty Name="hr_sect" ColumnName="hr_sect" />
+          <ScalarProperty Name="hr_sponsor" ColumnName="hr_sponsor" />
+          <ScalarProperty Name="hr_maritalsatus" ColumnName="hr_maritalsatus" />
+          <ScalarProperty Name="hr_seriousillness" ColumnName="hr_seriousillness" />
+          <ScalarProperty Name="hr_pregnancy" ColumnName="hr_pregnancy" />
+          <ScalarProperty Name="hr_deliverydate" ColumnName="hr_deliverydate" />
+          <ScalarProperty Name="hr_spouceoccupation" ColumnName="hr_spouceoccupation" />
+          <ScalarProperty Name="hr_spoucenationality" ColumnName="hr_spoucenationality" />
+          <ScalarProperty Name="hr_relativwork" ColumnName="hr_relativwork" />
+          <ScalarProperty Name="hr_workbefore" ColumnName="hr_workbefore" />
+          <ScalarProperty Name="hr_leavereason" ColumnName="hr_leavereason" />
+          <ScalarProperty Name="hr_desireposition" ColumnName="hr_desireposition" />
+          <ScalarProperty Name="hr_desiresalary" ColumnName="hr_desiresalary" />
+          <ScalarProperty Name="hr_desiretostart" ColumnName="hr_desiretostart" />
+          <ScalarProperty Name="hr_desiretypeofaccmodation" ColumnName="hr_desiretypeofaccmodation" />
+          <ScalarProperty Name="hr_desirenofchildren" ColumnName="hr_desirenofchildren" />
+          <ScalarProperty Name="hr_photoRef" ColumnName="hr_photoRef" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schools">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.School">
+        <MappingFragment StoreEntitySet="Schools">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SchoolNameEn" ColumnName="SchoolNameEn" />
+          <ScalarProperty Name="SchoolNameAr" ColumnName="SchoolNameAr" />
+          <ScalarProperty Name="sKey" ColumnName="sKey" />
+          <ScalarProperty Name="AddressEn" ColumnName="AddressEn" />
+          <ScalarProperty Name="AddressAr" ColumnName="AddressAr" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="POBox" ColumnName="POBox" />
+          <ScalarProperty Name="SchoolType" ColumnName="SchoolType" />
+          <ScalarProperty Name="LicenseNo" ColumnName="LicenseNo" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="ChangeDateAt" ColumnName="ChangeDateAt" />
+          <ScalarProperty Name="EntrExamNeeded" ColumnName="EntrExamNeeded" />
+          <ScalarProperty Name="DependsOnFees" ColumnName="DependsOnFees" />
+          <ScalarProperty Name="ExamFees" ColumnName="ExamFees" />
+          <ScalarProperty Name="ShowMarks" ColumnName="ShowMarks" />
+          <ScalarProperty Name="DirectorName" ColumnName="DirectorName" />
+          <ScalarProperty Name="GuardianName" ColumnName="GuardianName" />
+          <ScalarProperty Name="DirectorAddress" ColumnName="DirectorAddress" />
+          <ScalarProperty Name="GuardianAddress" ColumnName="GuardianAddress" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="EducationZoneID" ColumnName="EducationZoneID" />
+          <ScalarProperty Name="SchoolLogo" ColumnName="SchoolLogo" />
+          <ScalarProperty Name="ReportRegisterBy" ColumnName="ReportRegisterBy" />
+          <ScalarProperty Name="ReportCheckedBy" ColumnName="ReportCheckedBy" />
+          <ScalarProperty Name="ReportLogo" ColumnName="ReportLogo" />
+          <ScalarProperty Name="EnReportRegisterBy" ColumnName="EnReportRegisterBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_Class">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Student_Class">
+        <MappingFragment StoreEntitySet="Student_Class">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="Strength" ColumnName="Strength" />
+          <ScalarProperty Name="Block" ColumnName="Block" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="StaffIDA" ColumnName="StaffIDA" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_StudentDtl">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Student_StudentDtl">
+        <MappingFragment StoreEntitySet="Student_StudentDtl">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="RollNo" ColumnName="RollNo" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PrevStatus" ColumnName="PrevStatus" />
+          <ScalarProperty Name="Prevclass" ColumnName="Prevclass" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="VClass" ColumnName="VClass" />
+          <ScalarProperty Name="Bus_no" ColumnName="Bus_no" />
+          <ScalarProperty Name="StartsFrom" ColumnName="StartsFrom" />
+          <ScalarProperty Name="SSection" ColumnName="SSection" />
+          <ScalarProperty Name="FinalResult" ColumnName="FinalResult" />
+          <ScalarProperty Name="ReTestResult" ColumnName="ReTestResult" />
+          <ScalarProperty Name="ClNo" ColumnName="ClNo" />
+          <ScalarProperty Name="OptionalDivision" ColumnName="OptionalDivision" />
+          <ScalarProperty Name="ActualJoiningDate" ColumnName="ActualJoiningDate" />
+          <ScalarProperty Name="shift" ColumnName="shift" />
+          <ScalarProperty Name="Admission" ColumnName="Admission" />
+          <ScalarProperty Name="ClassNo" ColumnName="ClassNo" />
+          <ScalarProperty Name="Reregistered" ColumnName="Reregistered" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="IdPrinted" ColumnName="IdPrinted" />
+          <ScalarProperty Name="AdmissionSchedule" ColumnName="AdmissionSchedule" />
+          <ScalarProperty Name="FeeSchedule" ColumnName="FeeSchedule" />
+          <ScalarProperty Name="TransSchedule" ColumnName="TransSchedule" />
+          <ScalarProperty Name="DiscountSchedule" ColumnName="DiscountSchedule" />
+          <ScalarProperty Name="TranDiscountSchedule" ColumnName="TranDiscountSchedule" />
+          <ScalarProperty Name="FeeDiscount" ColumnName="FeeDiscount" />
+          <ScalarProperty Name="TranDiscount" ColumnName="TranDiscount" />
+          <ScalarProperty Name="Program" ColumnName="Program" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="TranStartDate" ColumnName="TranStartDate" />
+          <ScalarProperty Name="TransScheduleDummy" ColumnName="TransScheduleDummy" />
+          <ScalarProperty Name="ReRegistrationStatus" ColumnName="ReRegistrationStatus" />
+          <ScalarProperty Name="ReRegistrationDate" ColumnName="ReRegistrationDate" />
+          <ScalarProperty Name="SubStatus" ColumnName="SubStatus" />
+          <ScalarProperty Name="Followup" ColumnName="Followup" />
+          <ScalarProperty Name="Photoallowed" ColumnName="Photoallowed" />
+          <ScalarProperty Name="mobile_app_access" ColumnName="mobile_app_access" />
+          <ScalarProperty Name="ReRegBlock" ColumnName="ReRegBlock" />
+          <ScalarProperty Name="Bus_Mode" ColumnName="Bus_Mode" />
+          <ScalarProperty Name="BusId" ColumnName="BusId" />
+          <ScalarProperty Name="Optional_Bus_No" ColumnName="Optional_Bus_No" />
+          <ScalarProperty Name="Optional_Stop_No" ColumnName="Optional_Stop_No" />
+          <ScalarProperty Name="DiscountRemarks" ColumnName="DiscountRemarks" />
+          <ScalarProperty Name="MDate" ColumnName="MDate" />
+          <ScalarProperty Name="MonthlyPayment" ColumnName="MonthlyPayment" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_StudentMst">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Student_StudentMst">
+        <MappingFragment StoreEntitySet="Student_StudentMst">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="StudentStatus" ColumnName="StudentStatus" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="PlaceOFBirth" ColumnName="PlaceOFBirth" />
+          <ScalarProperty Name="SLanguage" ColumnName="SLanguage" />
+          <ScalarProperty Name="OpLanguage1" ColumnName="OpLanguage1" />
+          <ScalarProperty Name="OpLanguage2" ColumnName="OpLanguage2" />
+          <ScalarProperty Name="OpDivision" ColumnName="OpDivision" />
+          <ScalarProperty Name="PrevSchool" ColumnName="PrevSchool" />
+          <ScalarProperty Name="PrevPlace" ColumnName="PrevPlace" />
+          <ScalarProperty Name="MinistryStatus" ColumnName="MinistryStatus" />
+          <ScalarProperty Name="RegisterNo" ColumnName="RegisterNo" />
+          <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+          <ScalarProperty Name="Emirates" ColumnName="Emirates" />
+          <ScalarProperty Name="PassportNo" ColumnName="PassportNo" />
+          <ScalarProperty Name="PassportIssueDate" ColumnName="PassportIssueDate" />
+          <ScalarProperty Name="PassportExpiryDate" ColumnName="PassportExpiryDate" />
+          <ScalarProperty Name="PassportIssuePlace" ColumnName="PassportIssuePlace" />
+          <ScalarProperty Name="PassportStatus" ColumnName="PassportStatus" />
+          <ScalarProperty Name="VisaNo" ColumnName="VisaNo" />
+          <ScalarProperty Name="VisaIssueDate" ColumnName="VisaIssueDate" />
+          <ScalarProperty Name="VisaExpiryDate" ColumnName="VisaExpiryDate" />
+          <ScalarProperty Name="VisaIssuePlace" ColumnName="VisaIssuePlace" />
+          <ScalarProperty Name="LeavingDate" ColumnName="LeavingDate" />
+          <ScalarProperty Name="LeavingReason" ColumnName="LeavingReason" />
+          <ScalarProperty Name="JoiningClass" ColumnName="JoiningClass" />
+          <ScalarProperty Name="JoiningDivision" ColumnName="JoiningDivision" />
+          <ScalarProperty Name="TcType" ColumnName="TcType" />
+          <ScalarProperty Name="TcDetails" ColumnName="TcDetails" />
+          <ScalarProperty Name="TcDate" ColumnName="TcDate" />
+          <ScalarProperty Name="tcto" ColumnName="tcto" />
+          <ScalarProperty Name="JoiningAcademicYear" ColumnName="JoiningAcademicYear" />
+          <ScalarProperty Name="ArabNonArab" ColumnName="ArabNonArab" />
+          <ScalarProperty Name="SportsHouse" ColumnName="SportsHouse" />
+          <ScalarProperty Name="FeeSchedule" ColumnName="FeeSchedule" />
+          <ScalarProperty Name="TransSchedule" ColumnName="TransSchedule" />
+          <ScalarProperty Name="ActivitySchedule" ColumnName="ActivitySchedule" />
+          <ScalarProperty Name="DiscountSchedule" ColumnName="DiscountSchedule" />
+          <ScalarProperty Name="Termwise" ColumnName="Termwise" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="VisaStatus" ColumnName="VisaStatus" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AdmissionSchedule" ColumnName="AdmissionSchedule" />
+          <ScalarProperty Name="Blocked" ColumnName="Blocked" />
+          <ScalarProperty Name="PrevDivision" ColumnName="PrevDivision" />
+          <ScalarProperty Name="FeeDiscount" ColumnName="FeeDiscount" />
+          <ScalarProperty Name="TranDiscount" ColumnName="TranDiscount" />
+          <ScalarProperty Name="PdcRemarks" ColumnName="PdcRemarks" />
+          <ScalarProperty Name="TestingDate" ColumnName="TestingDate" />
+          <ScalarProperty Name="RelationContactsActual" ColumnName="RelationContactsActual" />
+          <ScalarProperty Name="EntranceExam" ColumnName="EntranceExam" />
+          <ScalarProperty Name="TranDiscountSchedule" ColumnName="TranDiscountSchedule" />
+          <ScalarProperty Name="DocEmiratesID" ColumnName="DocEmiratesID" />
+          <ScalarProperty Name="DocVisa" ColumnName="DocVisa" />
+          <ScalarProperty Name="DocSponsorPassport" ColumnName="DocSponsorPassport" />
+          <ScalarProperty Name="DocSponsorVisa" ColumnName="DocSponsorVisa" />
+          <ScalarProperty Name="DocReportCard" ColumnName="DocReportCard" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="DocMedicalReport" ColumnName="DocMedicalReport" />
+          <ScalarProperty Name="DocFamilyBook" ColumnName="DocFamilyBook" />
+          <ScalarProperty Name="DocSponsorID" ColumnName="DocSponsorID" />
+          <ScalarProperty Name="fincode" ColumnName="fincode" />
+          <ScalarProperty Name="grnumber" ColumnName="grnumber" />
+          <ScalarProperty Name="ReRegistrationDate" ColumnName="ReRegistrationDate" />
+          <ScalarProperty Name="LastAttendenceDate" ColumnName="LastAttendenceDate" />
+          <ScalarProperty Name="StudMobile" ColumnName="StudMobile" />
+          <ScalarProperty Name="LivingWith" ColumnName="LivingWith" />
+          <ScalarProperty Name="Custody" ColumnName="Custody" />
+          <ScalarProperty Name="Memo" ColumnName="Memo" />
+          <ScalarProperty Name="CourtAccess" ColumnName="CourtAccess" />
+          <ScalarProperty Name="SpecialNeed" ColumnName="SpecialNeed" />
+          <ScalarProperty Name="SpecialNeedCategory" ColumnName="SpecialNeedCategory" />
+          <ScalarProperty Name="SpecialNeedDescription" ColumnName="SpecialNeedDescription" />
+          <ScalarProperty Name="RequiredAttention" ColumnName="RequiredAttention" />
+          <ScalarProperty Name="isgeneral" ColumnName="isgeneral" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_ClassTimeTable">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_ClassTimeTable">
+        <MappingFragment StoreEntitySet="Exam_ClassTimeTable">
+          <ScalarProperty Name="CTTID" ColumnName="CTTID" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="schoolId" ColumnName="schoolId" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Period" ColumnName="Period" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="RowPos" ColumnName="RowPos" />
+          <ScalarProperty Name="ColPos" ColumnName="ColPos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_Grading">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_Grading">
+        <MappingFragment StoreEntitySet="Exam_Grading">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MarkFrom" ColumnName="MarkFrom" />
+          <ScalarProperty Name="Markto" ColumnName="Markto" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="GradePoint" ColumnName="GradePoint" />
+          <ScalarProperty Name="Groups" ColumnName="Groups" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_SubTeacherMapping">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_SubTeacherMapping">
+        <MappingFragment StoreEntitySet="Exam_SubTeacherMapping">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="SRRD_Id" ColumnName="SRRD_Id" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="Academicyear" ColumnName="Academicyear" />
+          <ScalarProperty Name="TermId" ColumnName="TermId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_SubTeacherPeriodMapping">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_SubTeacherPeriodMapping">
+        <MappingFragment StoreEntitySet="Exam_SubTeacherPeriodMapping">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="Options" ColumnName="Options" />
+          <ScalarProperty Name="SubOption" ColumnName="SubOption" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Period" ColumnName="Period" />
+          <ScalarProperty Name="StaffCode" ColumnName="StaffCode" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_TimeMaster">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_TimeMaster">
+        <MappingFragment StoreEntitySet="Exam_TimeMaster">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExamCode" ColumnName="ExamCode" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="toDate" ColumnName="toDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ExamSub" ColumnName="ExamSub" />
+          <ScalarProperty Name="PriorityNo" ColumnName="PriorityNo" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="md_type">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.md_type">
+        <MappingFragment StoreEntitySet="md_type">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="cCode" ColumnName="cCode" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_ClassMaster">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Student_ClassMaster">
+        <MappingFragment StoreEntitySet="Student_ClassMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PNo" ColumnName="PNo" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="school" ColumnName="school" />
+          <ScalarProperty Name="RomanName" ColumnName="RomanName" />
+          <ScalarProperty Name="PromotedClass" ColumnName="PromotedClass" />
+          <ScalarProperty Name="ClassInArabic" ColumnName="ClassInArabic" />
+          <ScalarProperty Name="PromotedClassArab" ColumnName="PromotedClassArab" />
+          <ScalarProperty Name="ClassSection" ColumnName="ClassSection" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_TeacherClass">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Student_TeacherClass">
+        <MappingFragment StoreEntitySet="Student_TeacherClass">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="staffId" ColumnName="staffId" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LessonsPlanMasters">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.LessonsPlanMaster">
+        <MappingFragment StoreEntitySet="LessonsPlanMaster">
+          <ScalarProperty Name="CreatedFor" ColumnName="CreatedFor" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="AssignmentComments" ColumnName="AssignmentComments" />
+          <ScalarProperty Name="IsParmanentDeleted" ColumnName="IsParmanentDeleted" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="HOSRemarks" ColumnName="HOSRemarks" />
+          <ScalarProperty Name="LessonPlanTo" ColumnName="LessonPlanTo" />
+          <ScalarProperty Name="LessonPlanFrom" ColumnName="LessonPlanFrom" />
+          <ScalarProperty Name="ModefiedBy" ColumnName="ModefiedBy" />
+          <ScalarProperty Name="ModefiedOn" ColumnName="ModefiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DigitalResourceClasses">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.DigitalResourceClass">
+        <MappingFragment StoreEntitySet="DigitalResourceClass">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DigitalResourceFiles">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.DigitalResourceFile">
+        <MappingFragment StoreEntitySet="DigitalResourceFiles">
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ShowFileName" ColumnName="ShowFileName" />
+          <ScalarProperty Name="FileExtnsion" ColumnName="FileExtnsion" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DigitalResourceMasters">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.DigitalResourceMaster">
+        <MappingFragment StoreEntitySet="DigitalResourceMaster">
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsPermanentDelete" ColumnName="IsPermanentDelete" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="DescriptionLong" ColumnName="DescriptionLong" />
+          <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LessonPlanDetails">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.LessonPlanDetail">
+        <MappingFragment StoreEntitySet="LessonPlanDetail">
+          <ScalarProperty Name="CreatedFor" ColumnName="CreatedFor" />
+          <ScalarProperty Name="TeacherRemarks" ColumnName="TeacherRemarks" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="IsParmanentDeleted" ColumnName="IsParmanentDeleted" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="HOSRemarks" ColumnName="HOSRemarks" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ShowFileName" ColumnName="ShowFileName" />
+          <ScalarProperty Name="FileExtnsion" ColumnName="FileExtnsion" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="Master_Id" ColumnName="Master_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LessonPlanCategories">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.LessonPlanCategory">
+        <MappingFragment StoreEntitySet="LessonPlanCategory">
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="HasParent" ColumnName="HasParent" />
+          <ScalarProperty Name="IsParmanentDeleted" ColumnName="IsParmanentDeleted" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModefiedBY" ColumnName="ModefiedBY" />
+          <ScalarProperty Name="IsEnternal" ColumnName="IsEnternal" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

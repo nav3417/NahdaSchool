@@ -1,0 +1,58 @@
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\Services.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\Services.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\AlnahdAweeklyPlans_DAL.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\Database.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\AlnahdAweeklyPlans_DAL.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\AlnahdAweeklyPlans_DAL.dll.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\Database.pdb
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\Database.dll.config
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.xml
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\obj\Debug\AlnahdAweeklyPlans_Services.csprojAssemblyReference.cache
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\obj\Debug\AlnahdAweeklyPlans_Services.csproj.CoreCompileInputs.cache
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\obj\Debug\AlnahdAweeklyPlans_Services.csproj.CopyComplete
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\obj\Debug\Services.dll
+C:\Users\Naveed Khalid\Documents\Visual Studio 2017\Projects\AlnahdAweeklyPlans\Services\obj\Debug\Services.pdb
+D:\AlnahdAweeklyPlans\Services\bin\Debug\Services.dll.config
+D:\AlnahdAweeklyPlans\Services\bin\Debug\Services.dll
+D:\AlnahdAweeklyPlans\Services\bin\Debug\Services.pdb
+D:\AlnahdAweeklyPlans\Services\bin\Debug\AlnahdAweeklyPlans_DAL.dll
+D:\AlnahdAweeklyPlans\Services\bin\Debug\Database.dll
+D:\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.dll
+D:\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.SqlServer.dll
+D:\AlnahdAweeklyPlans\Services\bin\Debug\AlnahdAweeklyPlans_DAL.pdb
+D:\AlnahdAweeklyPlans\Services\bin\Debug\AlnahdAweeklyPlans_DAL.dll.config
+D:\AlnahdAweeklyPlans\Services\bin\Debug\Database.pdb
+D:\AlnahdAweeklyPlans\Services\bin\Debug\Database.dll.config
+D:\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.xml
+D:\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.SqlServer.xml
+D:\AlnahdAweeklyPlans\Services\obj\Debug\AlnahdAweeklyPlans_Services.csprojResolveAssemblyReference.cache
+D:\AlnahdAweeklyPlans\Services\obj\Debug\Services.dll
+D:\AlnahdAweeklyPlans\Services\obj\Debug\Services.pdb
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\Services.dll.config
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\Services.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\Services.pdb
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\AlnahdAweeklyPlans_DAL.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\Database.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.SqlServer.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\AlnahdAweeklyPlans_DAL.pdb
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\AlnahdAweeklyPlans_DAL.dll.config
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\Database.pdb
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\Database.dll.config
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.xml
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\EntityFramework.SqlServer.xml
+D:\Naveed\AlnahdAweeklyPlans\Services\obj\Debug\AlnahdAweeklyPlans_Services.csprojResolveAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\Services\obj\Debug\Services.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\obj\Debug\Services.pdb
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.Mvc.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.WebPages.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.Razor.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.Mvc.xml
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.WebPages.xml
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.Razor.xml
+D:\Naveed\AlnahdAweeklyPlans\Services\bin\Debug\System.Web.WebPages.Deployment.xml

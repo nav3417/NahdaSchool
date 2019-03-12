@@ -1,0 +1,1195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Nahda_AttendanceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DigitalResourceClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="int" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DigitalResourceFiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="int" />
+    <Property Name="FileExtnsion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShowFileName" Type="nvarchar(max)" />
+    <Property Name="URL" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DigitalResourceMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="550" />
+    <Property Name="DescriptionShort" Type="varchar" MaxLength="550" />
+    <Property Name="DescriptionLong" Type="text" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="From" Type="date" />
+    <Property Name="To" Type="date" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="IsPermanentDelete" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LessonPlanCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsEnternal" Type="bit" Nullable="false" />
+    <Property Name="ModefiedBY" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="IsParmanentDeleted" Type="bit" Nullable="false" />
+    <Property Name="HasParent" Type="bit" Nullable="false" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="ImageURL" Type="nvarchar(max)" />
+    <Property Name="ControllerName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LessonPlanClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LessonPlanDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Master_Id" Type="int" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="FileExtnsion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShowFileName" Type="nvarchar(max)" />
+    <Property Name="URL" Type="nvarchar(max)" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="HOSRemarks" Type="nvarchar(max)" />
+    <Property Name="ApprovedBy" Type="nvarchar(max)" />
+    <Property Name="ApprovalDate" Type="datetime2" Precision="7" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="IsParmanentDeleted" Type="bit" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="TeacherRemarks" Type="nvarchar(max)" />
+    <Property Name="CreatedFor" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="LessonPlanSubject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClassId" Type="int" />
+  </EntityType>
+  <EntityType Name="LessonsPlanMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModefiedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModefiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="LessonPlanFrom" Type="datetime2" Precision="7" />
+    <Property Name="LessonPlanTo" Type="datetime2" Precision="7" />
+    <Property Name="HOSRemarks" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApprovedBy" Type="nchar" MaxLength="10" />
+    <Property Name="ApprovalDate" Type="datetime2" Precision="7" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="IsParmanentDeleted" Type="bit" Nullable="false" />
+    <Property Name="AssignmentComments" Type="nvarchar(max)" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="CreatedFor" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="AcademicYears">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Academic_Year_En" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Academic_Year_Ar" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="IsResultPublished" Type="bit" />
+    <Property Name="isCurrent" Type="bit" />
+    <Property Name="ACStatus" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Attendance_AbsentDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FileExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+    <Property Name="AbsentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Attendance_AbsentMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReasonType" Type="int" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Approve1" Type="bit" />
+    <Property Name="Remarks1" Type="nvarchar" MaxLength="500" />
+    <Property Name="Approve2" Type="bit" />
+    <Property Name="Remarks2" Type="nvarchar" MaxLength="500" />
+    <Property Name="Approve3" Type="bit" />
+    <Property Name="Remarks3" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="LastModifiedOn" Type="date" />
+    <Property Name="LastModifiedBy" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="PermanentDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Attendance_Schedule_Details">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleId" Type="int" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="Saturday" Type="int" />
+    <Property Name="Sunday" Type="int" />
+    <Property Name="Monday" Type="int" />
+    <Property Name="Tuesday" Type="int" />
+    <Property Name="Wednesday" Type="int" />
+    <Property Name="Thursday" Type="int" />
+    <Property Name="Friday" Type="int" />
+  </EntityType>
+  <EntityType Name="Attendance_Schedule_Master">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleName" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="LastModifiedBy" Type="int" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="PermanentDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Attendance_Schedule_TimeSlot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CheckIn" Type="nvarchar" MaxLength="50" />
+    <Property Name="CheckOut" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Attendance_Sheet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CheckTime" Type="datetime" />
+    <Property Name="CheckType" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="MachineId" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_ClassTimeTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Exam_ClassTimeTable">
+    <Key>
+      <PropertyRef Name="CTTID" />
+      <PropertyRef Name="Class" />
+      <PropertyRef Name="Division" />
+      <PropertyRef Name="schoolId" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="Period" />
+    </Key>
+    <Property Name="CTTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Class" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Division" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="schoolId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
+    <Property Name="Day" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Period" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subject" Type="varchar" MaxLength="50" />
+    <Property Name="RowPos" Type="int" />
+    <Property Name="ColPos" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_Grading' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Exam_Grading">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MarkFrom" Type="int" />
+    <Property Name="Markto" Type="int" />
+    <Property Name="Grade" Type="nchar" MaxLength="10" />
+    <Property Name="GradePoint" Type="nchar" MaxLength="10" />
+    <Property Name="Groups" Type="nchar" MaxLength="10" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Exam_MarkEntry">
+    <Key>
+      <PropertyRef Name="Term_Id" />
+      <PropertyRef Name="Student_id" />
+      <PropertyRef Name="SubjGroup_Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Term_Id" Type="int" Nullable="false" />
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="SubjGroup_Id" Type="int" Nullable="false" />
+    <Property Name="Mark" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Mark2" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="School" Type="varchar" MaxLength="50" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
+    <Property Name="Is_sent_For_Approval" Type="bit" />
+    <Property Name="Is_Approved" Type="bit" />
+    <Property Name="SkillComment" Type="nvarchar" MaxLength="512" />
+    <Property Name="GenComment" Type="nvarchar" MaxLength="512" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="ApprovedOn" Type="datetime" />
+    <Property Name="Approvedby" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Exam_SubComments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubGroupId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="150" />
+    <Property Name="GenComments" Type="nvarchar" MaxLength="512" />
+    <Property Name="SkillComments" Type="nvarchar" MaxLength="512" />
+    <Property Name="MarkFrom" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MarkTo" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="School" Type="nvarchar" MaxLength="10" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Exam_subjectGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TermId" Type="int" Nullable="false" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="School" Type="varchar" MaxLength="50" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="Max" Type="int" />
+    <Property Name="Min" Type="int" />
+    <Property Name="Marktype" Type="nvarchar" MaxLength="50" />
+    <Property Name="AcademicYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ono" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Exam_subjectGroupRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sub_role_name" Type="varchar" MaxLength="150" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
+    <Property Name="schoolId" Type="varchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="256" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="Exam_subjectGroupRole_detail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject_rol_id" Type="int" />
+    <Property Name="subjectGroupId" Type="int" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
+    <Property Name="schoolId" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="256" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="Exam_Subjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Title_Ar" Type="nvarchar" MaxLength="80" />
+    <Property Name="Is_Parent" Type="bit" />
+    <Property Name="Parent_Id" Type="int" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Exam_SubjectStudent_Right">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
+    <Property Name="School" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="256" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="Exam_SubjectStudentRole_Right">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentId" Type="int" Nullable="false" />
+    <Property Name="Subject_role_id" Type="int" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
+    <Property Name="School" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="256" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_SubTeacherMapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Exam_SubTeacherMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="School" Type="nvarchar" MaxLength="50" />
+    <Property Name="SRRD_Id" Type="int" />
+    <Property Name="StaffId" Type="int" />
+    <Property Name="Academicyear" Type="nvarchar" MaxLength="50" />
+    <Property Name="TermId" Type="int" />
+    <Property Name="UserType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_SubTeacherPeriodMapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Exam_SubTeacherPeriodMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Division" Type="nvarchar" MaxLength="50" />
+    <Property Name="School" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubjectId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Options" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubOption" Type="varchar" MaxLength="50" />
+    <Property Name="Day" Type="nvarchar" MaxLength="50" />
+    <Property Name="Period" Type="nvarchar" MaxLength="50" />
+    <Property Name="StaffCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="StaffName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoomNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_TimeMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Exam_TimeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ExamCode" />
+      <PropertyRef Name="AcademicYear" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="toDate" Type="smalldatetime" />
+    <Property Name="FromDate" Type="smalldatetime" />
+    <Property Name="ExamSub" Type="nvarchar" MaxLength="50" />
+    <Property Name="PriorityNo" Type="int" />
+    <Property Name="Percentage" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="hr_department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="dept_NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="dept_NameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="showOrder" Type="int" />
+    <Property Name="Note" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="hr_designation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="des_NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="des_NameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="showOrder" Type="int" />
+    <Property Name="Note" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="hr_Emp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="father_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="mother_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="30" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Nationality" Type="varchar" MaxLength="10" />
+    <Property Name="Gender" Type="varchar" MaxLength="8" />
+    <Property Name="Religion" Type="nvarchar" MaxLength="15" />
+    <Property Name="DateofJoining" Type="datetime" />
+    <Property Name="department" Type="int" />
+    <Property Name="designation" Type="int" />
+    <Property Name="Login_ID" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="basic_salary" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="allounces" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="gras_salary" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="salary_trans" Type="varchar" MaxLength="100" />
+    <Property Name="allounce_detail" Type="varchar" MaxLength="150" />
+    <Property Name="bank_exchange" Type="varchar" MaxLength="100" />
+    <Property Name="tot_leaves" Type="int" />
+    <Property Name="Passport" Type="nvarchar" MaxLength="100" />
+    <Property Name="emiratId" Type="nvarchar" MaxLength="100" />
+    <Property Name="hr_emirtId_ex_date" Type="date" />
+    <Property Name="VisaType" Type="nvarchar" MaxLength="100" />
+    <Property Name="visa_strt_Date" Type="date" />
+    <Property Name="visa_end_Date" Type="date" />
+    <Property Name="driving_licence1" Type="varchar" MaxLength="50" />
+    <Property Name="driving_licence2" Type="varchar" MaxLength="50" />
+    <Property Name="driving_licence3" Type="varchar" MaxLength="50" />
+    <Property Name="residance_address" Type="varchar" MaxLength="500" />
+    <Property Name="marital_status" Type="varchar" MaxLength="8" />
+    <Property Name="interview_by" Type="varchar" MaxLength="250" />
+    <Property Name="select_by" Type="varchar" MaxLength="250" />
+    <Property Name="report_to" Type="varchar" MaxLength="150" />
+    <Property Name="Note" Type="varchar" MaxLength="100" />
+    <Property Name="pic" Type="varbinary(max)" />
+    <Property Name="picType" Type="varchar" MaxLength="150" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="hr_adek_status" Type="varchar" MaxLength="100" />
+    <Property Name="hr_adek_title_en" Type="varchar" MaxLength="100" />
+    <Property Name="hr_adek_title_ar" Type="varchar" MaxLength="100" />
+    <Property Name="hr_adek_cycle" Type="varchar" MaxLength="100" />
+    <Property Name="hr_adek_grade" Type="varchar" MaxLength="100" />
+    <Property Name="hr_school_visa_title" Type="varchar" MaxLength="100" />
+    <Property Name="hr_school_desig_en" Type="varchar" MaxLength="100" />
+    <Property Name="hr_school_desig_ar" Type="varchar" MaxLength="100" />
+    <Property Name="hr_school_arab_n_arab" Type="varchar" MaxLength="100" />
+    <Property Name="hr_school_section" Type="varchar" MaxLength="100" />
+    <Property Name="hr_school_dept" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="HREmployeeMsts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchoolId" Type="varchar" MaxLength="15" />
+    <Property Name="AccountId" Type="int" />
+    <Property Name="hr_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_currentposition" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_currentsalary" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_nationality" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_placeofBirth" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_DOB" Type="date" />
+    <Property Name="hr_PaymentMode" Type="varchar" MaxLength="50" />
+    <Property Name="hr_SalaryMode" Type="varchar" MaxLength="50" />
+    <Property Name="hr_LeavePerYear" Type="varchar" MaxLength="50" />
+    <Property Name="hr_state" Type="varchar" MaxLength="50" />
+    <Property Name="hr_city" Type="varchar" MaxLength="50" />
+    <Property Name="hr_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="hr_bank" Type="varchar" MaxLength="50" />
+    <Property Name="hr_bankAccount" Type="varchar" MaxLength="50" />
+    <Property Name="hr_joinDate" Type="varchar" MaxLength="50" />
+    <Property Name="hr_gender" Type="varchar" MaxLength="50" />
+    <Property Name="hr_status" Type="varchar" MaxLength="50" />
+    <Property Name="hr_ApprovedDate" Type="varchar" MaxLength="50" />
+    <Property Name="hr_MinistryStatus" Type="varchar" MaxLength="50" />
+    <Property Name="hr_EOSDate" Type="varchar" MaxLength="50" />
+    <Property Name="hr_majorSpecialization" Type="varchar" MaxLength="50" />
+    <Property Name="hr_minorSpecialization" Type="varchar" MaxLength="50" />
+    <Property Name="hr_ticket" Type="varchar" MaxLength="50" />
+    <Property Name="hr_TotalAllowance" Type="varchar" MaxLength="50" />
+    <Property Name="hr_ContractType" Type="varchar" MaxLength="50" />
+    <Property Name="hr_majorSpecializationAr" Type="varchar" MaxLength="50" />
+    <Property Name="hr_SubStatus" Type="varchar" MaxLength="50" />
+    <Property Name="hr_passportno" Type="varchar" MaxLength="100" />
+    <Property Name="hr_placeofissue" Type="varchar" MaxLength="100" />
+    <Property Name="hr_dateofissue" Type="date" />
+    <Property Name="hr_dateofexpire" Type="date" />
+    <Property Name="hr_visatype" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_visano" Type="varchar" MaxLength="100" />
+    <Property Name="hr_dateofvisaexpire" Type="date" />
+    <Property Name="hr_basic_salary" Type="varchar" MaxLength="100" />
+    <Property Name="hr_visaexpire" Type="date" />
+    <Property Name="hr_religion" Type="varchar" MaxLength="100" />
+    <Property Name="hr_emirtId_ex_date" Type="date" />
+    <Property Name="hr_emirtId_no" Type="varchar" MaxLength="50" />
+    <Property Name="hr_spouceplaceofbirth" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_spoucename" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_telephon" Type="varchar" MaxLength="100" />
+    <Property Name="hr_placeorwork" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_permtaddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_permttelno" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_permtmobile" Type="varchar" MaxLength="100" />
+    <Property Name="hr_permtemail" Type="varchar" MaxLength="100" />
+    <Property Name="hr_presentaddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_presenttelno" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_presentmobile" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_presentemail" Type="varchar" MaxLength="100" />
+    <Property Name="hr_relativename1" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_relativetelnomobile1" Type="varchar" MaxLength="100" />
+    <Property Name="hr_relativename2" Type="varchar" MaxLength="100" />
+    <Property Name="hr_relativetelnomobile2" Type="varchar" MaxLength="100" />
+    <Property Name="hr_sect" Type="varchar" MaxLength="100" />
+    <Property Name="hr_sponsor" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_maritalsatus" Type="varchar" MaxLength="100" />
+    <Property Name="hr_seriousillness" Type="varchar" MaxLength="100" />
+    <Property Name="hr_pregnancy" Type="bit" />
+    <Property Name="hr_deliverydate" Type="date" />
+    <Property Name="hr_spouceoccupation" Type="varchar" MaxLength="100" />
+    <Property Name="hr_spoucenationality" Type="varchar" MaxLength="100" />
+    <Property Name="hr_relativwork" Type="bit" />
+    <Property Name="hr_workbefore" Type="bit" />
+    <Property Name="hr_leavereason" Type="varchar" MaxLength="100" />
+    <Property Name="hr_desireposition" Type="varchar" MaxLength="100" />
+    <Property Name="hr_desiresalary" Type="varchar" MaxLength="100" />
+    <Property Name="hr_desiretostart" Type="date" />
+    <Property Name="hr_desiretypeofaccmodation" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_desirenofchildren" Type="nvarchar" MaxLength="255" />
+    <Property Name="hr_photoRef" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Nahda_Attendance.dbo.md_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="md_type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="cCode" Type="int" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="remarks" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Schools">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchoolNameEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="SchoolNameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="sKey" Type="nvarchar" MaxLength="2" />
+    <Property Name="AddressEn" Type="nvarchar" MaxLength="250" />
+    <Property Name="AddressAr" Type="nvarchar" MaxLength="250" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="FaxNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="250" />
+    <Property Name="POBox" Type="nvarchar" MaxLength="10" />
+    <Property Name="SchoolType" Type="nvarchar" MaxLength="20" />
+    <Property Name="LicenseNo" Type="nvarchar" MaxLength="30" />
+    <Property Name="AcademicYear" Type="nvarchar" MaxLength="20" />
+    <Property Name="ChangeDateAt" Type="datetime" />
+    <Property Name="EntrExamNeeded" Type="bit" />
+    <Property Name="DependsOnFees" Type="bit" />
+    <Property Name="ExamFees" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ShowMarks" Type="bit" />
+    <Property Name="DirectorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="GuardianName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DirectorAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="GuardianAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="EducationZoneID" Type="int" />
+    <Property Name="SchoolLogo" Type="varbinary(max)" />
+    <Property Name="ReportRegisterBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReportCheckedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReportLogo" Type="varbinary(max)" />
+    <Property Name="EnReportRegisterBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Student_Class">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Division" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="StaffID" Type="int" />
+    <Property Name="Strength" Type="nvarchar" MaxLength="50" />
+    <Property Name="Block" Type="nvarchar" MaxLength="50" />
+    <Property Name="Room" Type="nvarchar" MaxLength="50" />
+    <Property Name="StaffIDA" Type="int" />
+    <Property Name="Shift" Type="nvarchar" MaxLength="50" />
+    <Property Name="Building" Type="nvarchar" MaxLength="50" />
+    <Property Name="Section" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Nahda_Attendance.dbo.Student_ClassMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Student_ClassMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Class" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PNo" Type="int" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+    <Property Name="school" Type="varchar" MaxLength="50" />
+    <Property Name="RomanName" Type="nvarchar" MaxLength="10" />
+    <Property Name="PromotedClass" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClassInArabic" Type="nvarchar" MaxLength="50" />
+    <Property Name="PromotedClassArab" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClassSection" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Student_StudentDtl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcademicYear" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="RollNo" Type="nvarchar" MaxLength="10" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+    <Property Name="PrevStatus" Type="nvarchar" MaxLength="15" />
+    <Property Name="Prevclass" Type="varchar" MaxLength="50" />
+    <Property Name="Class" Type="int" />
+    <Property Name="VClass" Type="varchar" MaxLength="50" />
+    <Property Name="Bus_no" Type="varchar" MaxLength="50" />
+    <Property Name="StartsFrom" Type="smalldatetime" />
+    <Property Name="SSection" Type="nvarchar" MaxLength="20" />
+    <Property Name="FinalResult" Type="nvarchar(max)" />
+    <Property Name="ReTestResult" Type="nvarchar" MaxLength="15" />
+    <Property Name="ClNo" Type="int" />
+    <Property Name="OptionalDivision" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActualJoiningDate" Type="smalldatetime" />
+    <Property Name="shift" Type="nvarchar" MaxLength="50" />
+    <Property Name="Admission" Type="bit" />
+    <Property Name="ClassNo" Type="bit" />
+    <Property Name="Reregistered" Type="bit" />
+    <Property Name="Result" Type="bit" />
+    <Property Name="IdPrinted" Type="bit" />
+    <Property Name="AdmissionSchedule" Type="nvarchar" MaxLength="250" />
+    <Property Name="FeeSchedule" Type="nvarchar" MaxLength="250" />
+    <Property Name="TransSchedule" Type="nvarchar" MaxLength="250" />
+    <Property Name="DiscountSchedule" Type="nvarchar" MaxLength="250" />
+    <Property Name="TranDiscountSchedule" Type="nvarchar" MaxLength="250" />
+    <Property Name="FeeDiscount" Type="bit" />
+    <Property Name="TranDiscount" Type="bit" />
+    <Property Name="Program" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiscountPercentage" Type="money" />
+    <Property Name="TranStartDate" Type="datetime" />
+    <Property Name="TransScheduleDummy" Type="nvarchar" MaxLength="200" />
+    <Property Name="ReRegistrationStatus" Type="nvarchar" MaxLength="250" />
+    <Property Name="ReRegistrationDate" Type="datetime" />
+    <Property Name="SubStatus" Type="nvarchar(max)" />
+    <Property Name="Followup" Type="nvarchar(max)" />
+    <Property Name="Photoallowed" Type="bit" />
+    <Property Name="mobile_app_access" Type="bit" />
+    <Property Name="ReRegBlock" Type="bit" />
+    <Property Name="Bus_Mode" Type="nvarchar" MaxLength="250" />
+    <Property Name="BusId" Type="int" />
+    <Property Name="Optional_Bus_No" Type="int" />
+    <Property Name="Optional_Stop_No" Type="int" />
+    <Property Name="DiscountRemarks" Type="nvarchar" MaxLength="250" />
+    <Property Name="MDate" Type="datetime" />
+    <Property Name="MonthlyPayment" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Student_StudentMst">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="StudentStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+    <Property Name="Religion" Type="nvarchar" MaxLength="50" />
+    <Property Name="MotherTongue" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="PlaceOFBirth" Type="nvarchar" MaxLength="50" />
+    <Property Name="SLanguage" Type="nvarchar" MaxLength="50" />
+    <Property Name="OpLanguage1" Type="nvarchar" MaxLength="50" />
+    <Property Name="OpLanguage2" Type="nvarchar" MaxLength="50" />
+    <Property Name="OpDivision" Type="nvarchar" MaxLength="5" />
+    <Property Name="PrevSchool" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrevPlace" Type="nvarchar" MaxLength="30" />
+    <Property Name="MinistryStatus" Type="nvarchar" MaxLength="20" />
+    <Property Name="RegisterNo" Type="nvarchar" MaxLength="150" />
+    <Property Name="ApprovalDate" Type="smalldatetime" />
+    <Property Name="Emirates" Type="nvarchar" MaxLength="30" />
+    <Property Name="PassportNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PassportIssueDate" Type="datetime" />
+    <Property Name="PassportExpiryDate" Type="datetime" />
+    <Property Name="PassportIssuePlace" Type="nvarchar" MaxLength="20" />
+    <Property Name="PassportStatus" Type="nvarchar" MaxLength="20" />
+    <Property Name="VisaNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisaIssueDate" Type="datetime" />
+    <Property Name="VisaExpiryDate" Type="datetime" />
+    <Property Name="VisaIssuePlace" Type="nvarchar" MaxLength="20" />
+    <Property Name="LeavingDate" Type="smalldatetime" />
+    <Property Name="LeavingReason" Type="nvarchar" MaxLength="50" />
+    <Property Name="JoiningClass" Type="nvarchar" MaxLength="10" />
+    <Property Name="JoiningDivision" Type="nvarchar" MaxLength="10" />
+    <Property Name="TcType" Type="nvarchar" MaxLength="50" />
+    <Property Name="TcDetails" Type="nvarchar" MaxLength="50" />
+    <Property Name="TcDate" Type="datetime" />
+    <Property Name="tcto" Type="nvarchar" MaxLength="100" />
+    <Property Name="JoiningAcademicYear" Type="nvarchar" MaxLength="30" />
+    <Property Name="ArabNonArab" Type="nvarchar" MaxLength="30" />
+    <Property Name="SportsHouse" Type="nvarchar" MaxLength="30" />
+    <Property Name="FeeSchedule" Type="varchar" MaxLength="20" />
+    <Property Name="TransSchedule" Type="varchar" MaxLength="30" />
+    <Property Name="ActivitySchedule" Type="varchar" MaxLength="20" />
+    <Property Name="DiscountSchedule" Type="varchar" MaxLength="20" />
+    <Property Name="Termwise" Type="bit" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="smalldatetime" />
+    <Property Name="VisaStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="AdmissionSchedule" Type="varchar" MaxLength="20" />
+    <Property Name="Blocked" Type="bit" />
+    <Property Name="PrevDivision" Type="nvarchar" MaxLength="50" />
+    <Property Name="FeeDiscount" Type="bit" />
+    <Property Name="TranDiscount" Type="bit" />
+    <Property Name="PdcRemarks" Type="nvarchar(max)" />
+    <Property Name="TestingDate" Type="datetime" />
+    <Property Name="RelationContactsActual" Type="nvarchar(max)" />
+    <Property Name="EntranceExam" Type="bit" />
+    <Property Name="TranDiscountSchedule" Type="nvarchar" MaxLength="250" />
+    <Property Name="DocEmiratesID" Type="bit" />
+    <Property Name="DocVisa" Type="bit" />
+    <Property Name="DocSponsorPassport" Type="bit" />
+    <Property Name="DocSponsorVisa" Type="bit" />
+    <Property Name="DocReportCard" Type="bit" />
+    <Property Name="Country" Type="nvarchar" MaxLength="250" />
+    <Property Name="DocMedicalReport" Type="bit" />
+    <Property Name="DocFamilyBook" Type="bit" />
+    <Property Name="DocSponsorID" Type="bit" />
+    <Property Name="fincode" Type="nvarchar" MaxLength="50" />
+    <Property Name="grnumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReRegistrationDate" Type="smalldatetime" />
+    <Property Name="LastAttendenceDate" Type="smalldatetime" />
+    <Property Name="StudMobile" Type="nvarchar" MaxLength="250" />
+    <Property Name="LivingWith" Type="nvarchar" MaxLength="250" />
+    <Property Name="Custody" Type="nvarchar" MaxLength="250" />
+    <Property Name="Memo" Type="nvarchar" MaxLength="250" />
+    <Property Name="CourtAccess" Type="nvarchar" MaxLength="250" />
+    <Property Name="SpecialNeed" Type="nvarchar" MaxLength="250" />
+    <Property Name="SpecialNeedCategory" Type="nvarchar" MaxLength="250" />
+    <Property Name="SpecialNeedDescription" Type="nvarchar" MaxLength="250" />
+    <Property Name="RequiredAttention" Type="nvarchar" MaxLength="50" />
+    <Property Name="isgeneral" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Student_TeacherClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="varchar" MaxLength="250" />
+    <Property Name="staffId" Type="int" />
+    <Property Name="remarks" Type="varchar" MaxLength="250" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="100" />
+    <Property Name="ClassId" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_DigitalResourceClass_DigitalResourceMaster">
+    <End Role="DigitalResourceMaster" Type="Self.DigitalResourceMaster" Multiplicity="0..1" />
+    <End Role="DigitalResourceClass" Type="Self.DigitalResourceClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DigitalResourceMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DigitalResourceClass">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DigitalResourceClass_LessonPlanClass">
+    <End Role="LessonPlanClass" Type="Self.LessonPlanClass" Multiplicity="0..1" />
+    <End Role="DigitalResourceClass" Type="Self.DigitalResourceClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonPlanClass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DigitalResourceClass">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DigitalResourceFiles_DigitalResourceMaster">
+    <End Role="DigitalResourceMaster" Type="Self.DigitalResourceMaster" Multiplicity="0..1" />
+    <End Role="DigitalResourceFiles" Type="Self.DigitalResourceFiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DigitalResourceMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DigitalResourceFiles">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DigitalResourceMaster_LessonPlanCategory">
+    <End Role="LessonPlanCategory" Type="Self.LessonPlanCategory" Multiplicity="0..1" />
+    <End Role="DigitalResourceMaster" Type="Self.DigitalResourceMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonPlanCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DigitalResourceMaster">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LessonPlanDetail_LessonsPlanMaster">
+    <End Role="LessonsPlanMaster" Type="Self.LessonsPlanMaster" Multiplicity="0..1" />
+    <End Role="LessonPlanDetail" Type="Self.LessonPlanDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonsPlanMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonPlanDetail">
+        <PropertyRef Name="Master_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LessonPlanSubject_LessonPlanClass1">
+    <End Role="LessonPlanClass" Type="Self.LessonPlanClass" Multiplicity="0..1" />
+    <End Role="LessonPlanSubject" Type="Self.LessonPlanSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonPlanClass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonPlanSubject">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LessonsPlanMaster_LessonPlanCategory">
+    <End Role="LessonPlanCategory" Type="Self.LessonPlanCategory" Multiplicity="0..1" />
+    <End Role="LessonsPlanMaster" Type="Self.LessonsPlanMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonPlanCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonsPlanMaster">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LessonsPlanMaster_LessonPlanClass">
+    <End Role="LessonPlanClass" Type="Self.LessonPlanClass" Multiplicity="0..1" />
+    <End Role="LessonsPlanMaster" Type="Self.LessonsPlanMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonPlanClass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonsPlanMaster">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LessonsPlanMaster_LessonPlanSubject">
+    <End Role="LessonPlanSubject" Type="Self.LessonPlanSubject" Multiplicity="0..1" />
+    <End Role="LessonsPlanMaster" Type="Self.LessonsPlanMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonPlanSubject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LessonsPlanMaster">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Nahda_AttendanceModelStoreContainer">
+    <EntitySet Name="DigitalResourceClass" EntityType="Self.DigitalResourceClass" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="DigitalResourceFiles" EntityType="Self.DigitalResourceFiles" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="DigitalResourceMaster" EntityType="Self.DigitalResourceMaster" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="LessonPlanCategory" EntityType="Self.LessonPlanCategory" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="LessonPlanClass" EntityType="Self.LessonPlanClass" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="LessonPlanDetail" EntityType="Self.LessonPlanDetail" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="LessonPlanSubject" EntityType="Self.LessonPlanSubject" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="LessonsPlanMaster" EntityType="Self.LessonsPlanMaster" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="AcademicYears" EntityType="Self.AcademicYears" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_AbsentDetails" EntityType="Self.Attendance_AbsentDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_AbsentMaster" EntityType="Self.Attendance_AbsentMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_Schedule_Details" EntityType="Self.Attendance_Schedule_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_Schedule_Master" EntityType="Self.Attendance_Schedule_Master" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_Schedule_TimeSlot" EntityType="Self.Attendance_Schedule_TimeSlot" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attendance_Sheet" EntityType="Self.Attendance_Sheet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_MarkEntry" EntityType="Self.Exam_MarkEntry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_SubComments" EntityType="Self.Exam_SubComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_subjectGroup" EntityType="Self.Exam_subjectGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_subjectGroupRole" EntityType="Self.Exam_subjectGroupRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_subjectGroupRole_detail" EntityType="Self.Exam_subjectGroupRole_detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_Subjects" EntityType="Self.Exam_Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_SubjectStudent_Right" EntityType="Self.Exam_SubjectStudent_Right" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_SubjectStudentRole_Right" EntityType="Self.Exam_SubjectStudentRole_Right" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hr_department" EntityType="Self.hr_department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hr_designation" EntityType="Self.hr_designation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hr_Emp" EntityType="Self.hr_Emp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HREmployeeMsts" EntityType="Self.HREmployeeMsts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schools" EntityType="Self.Schools" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_Class" EntityType="Self.Student_Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_StudentDtl" EntityType="Self.Student_StudentDtl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_StudentMst" EntityType="Self.Student_StudentMst" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam_ClassTimeTable" EntityType="Self.Exam_ClassTimeTable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Exam_ClassTimeTable].[CTTID] AS [CTTID], 
+    [Exam_ClassTimeTable].[Class] AS [Class], 
+    [Exam_ClassTimeTable].[Division] AS [Division], 
+    [Exam_ClassTimeTable].[schoolId] AS [schoolId], 
+    [Exam_ClassTimeTable].[AcademicYear] AS [AcademicYear], 
+    [Exam_ClassTimeTable].[Day] AS [Day], 
+    [Exam_ClassTimeTable].[Period] AS [Period], 
+    [Exam_ClassTimeTable].[Subject] AS [Subject], 
+    [Exam_ClassTimeTable].[RowPos] AS [RowPos], 
+    [Exam_ClassTimeTable].[ColPos] AS [ColPos]
+    FROM [dbo].[Exam_ClassTimeTable] AS [Exam_ClassTimeTable]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Exam_Grading" EntityType="Self.Exam_Grading" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Exam_Grading].[Id] AS [Id], 
+    [Exam_Grading].[MarkFrom] AS [MarkFrom], 
+    [Exam_Grading].[Markto] AS [Markto], 
+    [Exam_Grading].[Grade] AS [Grade], 
+    [Exam_Grading].[GradePoint] AS [GradePoint], 
+    [Exam_Grading].[Groups] AS [Groups], 
+    [Exam_Grading].[AcademicYear] AS [AcademicYear], 
+    [Exam_Grading].[CreatedOn] AS [CreatedOn], 
+    [Exam_Grading].[LastModifiedOn] AS [LastModifiedOn], 
+    [Exam_Grading].[CreatedBy] AS [CreatedBy], 
+    [Exam_Grading].[LastModifiedBy] AS [LastModifiedBy]
+    FROM [dbo].[Exam_Grading] AS [Exam_Grading]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Exam_SubTeacherMapping" EntityType="Self.Exam_SubTeacherMapping" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Exam_SubTeacherMapping].[Id] AS [Id], 
+    [Exam_SubTeacherMapping].[ClassId] AS [ClassId], 
+    [Exam_SubTeacherMapping].[School] AS [School], 
+    [Exam_SubTeacherMapping].[SRRD_Id] AS [SRRD_Id], 
+    [Exam_SubTeacherMapping].[StaffId] AS [StaffId], 
+    [Exam_SubTeacherMapping].[Academicyear] AS [Academicyear], 
+    [Exam_SubTeacherMapping].[TermId] AS [TermId], 
+    [Exam_SubTeacherMapping].[UserType] AS [UserType], 
+    [Exam_SubTeacherMapping].[CreatedOn] AS [CreatedOn], 
+    [Exam_SubTeacherMapping].[LastModifiedOn] AS [LastModifiedOn], 
+    [Exam_SubTeacherMapping].[CreatedBy] AS [CreatedBy], 
+    [Exam_SubTeacherMapping].[LastModifiedBy] AS [LastModifiedBy]
+    FROM [dbo].[Exam_SubTeacherMapping] AS [Exam_SubTeacherMapping]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Exam_SubTeacherPeriodMapping" EntityType="Self.Exam_SubTeacherPeriodMapping" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Exam_SubTeacherPeriodMapping].[Id] AS [Id], 
+    [Exam_SubTeacherPeriodMapping].[ClassId] AS [ClassId], 
+    [Exam_SubTeacherPeriodMapping].[Division] AS [Division], 
+    [Exam_SubTeacherPeriodMapping].[School] AS [School], 
+    [Exam_SubTeacherPeriodMapping].[SubjectId] AS [SubjectId], 
+    [Exam_SubTeacherPeriodMapping].[Options] AS [Options], 
+    [Exam_SubTeacherPeriodMapping].[SubOption] AS [SubOption], 
+    [Exam_SubTeacherPeriodMapping].[Day] AS [Day], 
+    [Exam_SubTeacherPeriodMapping].[Period] AS [Period], 
+    [Exam_SubTeacherPeriodMapping].[StaffCode] AS [StaffCode], 
+    [Exam_SubTeacherPeriodMapping].[StaffName] AS [StaffName], 
+    [Exam_SubTeacherPeriodMapping].[RoomNo] AS [RoomNo]
+    FROM [dbo].[Exam_SubTeacherPeriodMapping] AS [Exam_SubTeacherPeriodMapping]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Exam_TimeMaster" EntityType="Self.Exam_TimeMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Exam_TimeMaster].[Id] AS [Id], 
+    [Exam_TimeMaster].[ExamCode] AS [ExamCode], 
+    [Exam_TimeMaster].[AcademicYear] AS [AcademicYear], 
+    [Exam_TimeMaster].[toDate] AS [toDate], 
+    [Exam_TimeMaster].[FromDate] AS [FromDate], 
+    [Exam_TimeMaster].[ExamSub] AS [ExamSub], 
+    [Exam_TimeMaster].[PriorityNo] AS [PriorityNo], 
+    [Exam_TimeMaster].[Percentage] AS [Percentage], 
+    [Exam_TimeMaster].[CreatedOn] AS [CreatedOn], 
+    [Exam_TimeMaster].[LastModifiedOn] AS [LastModifiedOn], 
+    [Exam_TimeMaster].[CreatedBy] AS [CreatedBy], 
+    [Exam_TimeMaster].[LastModifiedBy] AS [LastModifiedBy]
+    FROM [dbo].[Exam_TimeMaster] AS [Exam_TimeMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="md_type" EntityType="Self.md_type" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [md_type].[Id] AS [Id], 
+    [md_type].[Name] AS [Name], 
+    [md_type].[cCode] AS [cCode], 
+    [md_type].[type] AS [type], 
+    [md_type].[remarks] AS [remarks], 
+    [md_type].[CreatedOn] AS [CreatedOn], 
+    [md_type].[CreatedBy] AS [CreatedBy], 
+    [md_type].[LastModifiedOn] AS [LastModifiedOn], 
+    [md_type].[LastModifiedBy] AS [LastModifiedBy]
+    FROM [dbo].[md_type] AS [md_type]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Student_ClassMaster" EntityType="Self.Student_ClassMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Student_ClassMaster].[ID] AS [ID], 
+    [Student_ClassMaster].[PNo] AS [PNo], 
+    [Student_ClassMaster].[Class] AS [Class], 
+    [Student_ClassMaster].[ClassName] AS [ClassName], 
+    [Student_ClassMaster].[school] AS [school], 
+    [Student_ClassMaster].[RomanName] AS [RomanName], 
+    [Student_ClassMaster].[PromotedClass] AS [PromotedClass], 
+    [Student_ClassMaster].[ClassInArabic] AS [ClassInArabic], 
+    [Student_ClassMaster].[PromotedClassArab] AS [PromotedClassArab], 
+    [Student_ClassMaster].[ClassSection] AS [ClassSection]
+    FROM [dbo].[Student_ClassMaster] AS [Student_ClassMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Student_TeacherClass" EntityType="Self.Student_TeacherClass" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Student_TeacherClass].[Id] AS [Id], 
+    [Student_TeacherClass].[user_id] AS [user_id], 
+    [Student_TeacherClass].[staffId] AS [staffId], 
+    [Student_TeacherClass].[remarks] AS [remarks], 
+    [Student_TeacherClass].[CreatedOn] AS [CreatedOn], 
+    [Student_TeacherClass].[CreatedBy] AS [CreatedBy], 
+    [Student_TeacherClass].[LastModifiedOn] AS [LastModifiedOn], 
+    [Student_TeacherClass].[LastModifiedBy] AS [LastModifiedBy], 
+    [Student_TeacherClass].[ClassId] AS [ClassId]
+    FROM [dbo].[Student_TeacherClass] AS [Student_TeacherClass]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_DigitalResourceClass_DigitalResourceMaster" Association="Self.FK_DigitalResourceClass_DigitalResourceMaster">
+      <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMaster" />
+      <End Role="DigitalResourceClass" EntitySet="DigitalResourceClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DigitalResourceClass_LessonPlanClass" Association="Self.FK_DigitalResourceClass_LessonPlanClass">
+      <End Role="LessonPlanClass" EntitySet="LessonPlanClass" />
+      <End Role="DigitalResourceClass" EntitySet="DigitalResourceClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DigitalResourceFiles_DigitalResourceMaster" Association="Self.FK_DigitalResourceFiles_DigitalResourceMaster">
+      <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMaster" />
+      <End Role="DigitalResourceFiles" EntitySet="DigitalResourceFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DigitalResourceMaster_LessonPlanCategory" Association="Self.FK_DigitalResourceMaster_LessonPlanCategory">
+      <End Role="LessonPlanCategory" EntitySet="LessonPlanCategory" />
+      <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LessonPlanDetail_LessonsPlanMaster" Association="Self.FK_LessonPlanDetail_LessonsPlanMaster">
+      <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMaster" />
+      <End Role="LessonPlanDetail" EntitySet="LessonPlanDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LessonPlanSubject_LessonPlanClass1" Association="Self.FK_LessonPlanSubject_LessonPlanClass1">
+      <End Role="LessonPlanClass" EntitySet="LessonPlanClass" />
+      <End Role="LessonPlanSubject" EntitySet="LessonPlanSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LessonsPlanMaster_LessonPlanCategory" Association="Self.FK_LessonsPlanMaster_LessonPlanCategory">
+      <End Role="LessonPlanCategory" EntitySet="LessonPlanCategory" />
+      <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LessonsPlanMaster_LessonPlanClass" Association="Self.FK_LessonsPlanMaster_LessonPlanClass">
+      <End Role="LessonPlanClass" EntitySet="LessonPlanClass" />
+      <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LessonsPlanMaster_LessonPlanSubject" Association="Self.FK_LessonsPlanMaster_LessonPlanSubject">
+      <End Role="LessonPlanSubject" EntitySet="LessonPlanSubject" />
+      <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMaster" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

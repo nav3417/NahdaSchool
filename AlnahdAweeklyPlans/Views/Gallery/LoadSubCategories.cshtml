@@ -1,0 +1,22 @@
+﻿@model  Services.Model.DigitalResourceModel
+@if (Model.CategoryGeneralModelList.Count > 0)
+{
+    foreach (var i in Model.CategoryGeneralModelList)
+    {
+            <div class="row">
+                <div class="col-md-3">@i.Name (@i.TotalSubList)</div>
+                <div class="col-md-3"><a href="@Url.Action("DetailPage",new { id=i.Id})">Display Contents</a></div>
+                <div class="col-md-3"><a href="#" id="@i.Id child"><span class="glyphicon glyphicon-plus loadchild" id="@i.Id subchild"></span></a></div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-8 panel-heading load" id="@i.Id">
+
+                </div>
+            </div>
+    }
+}
+@if (Model.CategoryGeneralModelList.Count == 0)
+{
+    <div>No data is Added yet</div>
+}

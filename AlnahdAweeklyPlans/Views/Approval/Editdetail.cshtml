@@ -1,0 +1,67 @@
+﻿@model Services.Model.LessonsPlanMasterModel
+<div class="panel panel-default">
+    <div class="list-group-item active">Edit Weekly Plan</div>
+</div>
+<div class="row">
+    <div class="col-md-6">Class/Subject <br /> @Model.Class / @Model.Subject</div>
+    <div class="col-md-6">@Model.Datefor</div>
+</div>
+@using (Html.BeginForm("EditPost", "Approval", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x=>x.Id)
+<div class="panel panel-default">
+    <div class="list-group-item active">@Model.Category</div>
+</div>
+<div class="row">
+    <div class="col-md-6">@Model.Category</div>
+    <div class="col-md-6">@Html.TextAreaFor(x=>Model.TeacherRemarks,new {@class= "form-control", @readonly = "readonly",id="teacherremarks" })</div>
+</div>
+<div class="row">
+    <div class="col-md-6">Attachment</div>
+    <div class="col-md-6">
+        @for (var i=0;i<= ViewBag.count; i++)
+        {
+            @Html.HiddenFor(x=> @Model.LessonPlanDetailList[i].Id)
+           <a href="#">@Model.LessonPlanDetailList[i].ShowFileName</a>
+           @Html.CheckBoxFor(x=>Model.LessonPlanDetailList[i].IsActive,new {id="fileactive"})
+           <br />
+        }
+        @Html.TextBoxFor(x => Model.LessonPlanFrom, new { type = "file", Multiple = "multiple", @class = "fileifremove", id = "fileifremove" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">Same as Teacher @Html.CheckBox("check", new { id = "allgeneral" })</div>
+</div>
+<div class="row">
+    <div class="col-md-6">Lead Teacher/HOS/ Coordinator Remarks</div>
+    <div class="col-md-6">@Html.TextAreaFor(x => Model.HOSRemarks, new { @class = "form-control",id="hosremarks"})</div>
+</div>
+@Html.CheckBoxFor(x => Model.IsApproved)<span>Approved?</span> 
+ <input type="submit" value="Update" class="btn btn-success"/>
+@*<input type="button" value="Cancel" class="btn btn-primary" id="rejectbtn"/>*@
+}
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#fileifremove").hide(); 
+    });
+    $(document).on("change", "#allgeneral", function (){
+        var check = $(this).is(':checked');
+        var remarks = $("#teacherremarks").val();
+        if (check==true)
+        {
+            $("#hosremarks").val(remarks);
+        }
+        else
+        {
+            $("#hosremarks").val("");
+        }
+    });
+    $(document).on("change", "#fileactive", function () {
+        var check = $(this).is(':checked');
+        $(this).prop('checked', check);
+        if (check) { $("#fileifremove").hide(); }
+        else { $("#fileifremove").show(); }
+    });
+</script>

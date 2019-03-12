@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AlnahdaSchoolModelStoreContainer" CdmEntityContainer="AlnahdaSchoolEntities">
+    <EntitySetMapping Name="LessonPlanCategories">
+      <EntityTypeMapping TypeName="AlnahdaSchoolModel.LessonPlanCategory">
+        <MappingFragment StoreEntitySet="LessonPlanCategory">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LessonPlanDetails">
+      <EntityTypeMapping TypeName="AlnahdaSchoolModel.LessonPlanDetail">
+        <MappingFragment StoreEntitySet="LessonPlanDetail">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="ShowFileName" ColumnName="ShowFileName" />
+          <ScalarProperty Name="FileExtnsion" ColumnName="FileExtnsion" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LessonsPlanMasters">
+      <EntityTypeMapping TypeName="AlnahdaSchoolModel.LessonsPlanMaster">
+        <MappingFragment StoreEntitySet="LessonsPlanMaster">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="HOSRemarks" ColumnName="HOSRemarks" />
+          <ScalarProperty Name="LessonPlanTo" ColumnName="LessonPlanTo" />
+          <ScalarProperty Name="LessonPlanFrom" ColumnName="LessonPlanFrom" />
+          <ScalarProperty Name="ModefiedBy" ColumnName="ModefiedBy" />
+          <ScalarProperty Name="ModefiedOn" ColumnName="ModefiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
