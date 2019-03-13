@@ -62,8 +62,8 @@ namespace Database
         public virtual DbSet<LessonsPlanMaster> LessonsPlanMasters { get; set; }
         public virtual DbSet<DigitalResourceClass> DigitalResourceClasses { get; set; }
         public virtual DbSet<DigitalResourceFile> DigitalResourceFiles { get; set; }
-        public virtual DbSet<DigitalResourceMaster> DigitalResourceMasters { get; set; }
         public virtual DbSet<LessonPlanDetail> LessonPlanDetails { get; set; }
         public virtual DbSet<LessonPlanCategory> LessonPlanCategories { get; set; }
+        public virtual DbSet<DigitalResourceMaster> DigitalResourceMasters { get; set; }
     }
 }

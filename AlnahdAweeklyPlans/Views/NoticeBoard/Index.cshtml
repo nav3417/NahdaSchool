@@ -5,8 +5,8 @@
     CategoryModel category = ViewBag.category;
 }
 <style>
-    a{
-        color:white;
+    a {
+        color: white;
     }
 </style>
 <div class="panel panel-primary">
@@ -17,7 +17,7 @@
         </div>
     </div>
     <br />
-    @Html.Action("AddCategory", "Category", new { model = Model.CategoryModel})
+    @Html.Action("AddCategory", "Category", new { model = Model.CategoryModel })
     <br />
     @if (Model.CategoryGeneralModelList.Count > 0)
     {
@@ -25,23 +25,53 @@
         {
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"><a href="#">@i.Name (@i.TotalSubList)</a></div>
+                    <div class="col-md-3">@i.Name (@i.TotalSubList)</div>
+                    <div class="col-md-3"><a href="@Url.Action("DetailPage",new { id=i.Id})">Display Contents</a></div>
+                    <div class="col-md-3"><a href="#" id="@i.Id child"><span class="glyphicon glyphicon-plus loadchild" id="@i.Id subchild"></span></a></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-8 panel-heading load" id="@i.Id">
+
+                    </div>
                 </div>
             </div>
-            <br />
+
         }
     }
-@if (Model.CategoryGeneralModelList.Count == 0)
-{
-    <div class="panel-heading">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">Not Added Yet any Sub Detail in @category.Name</div>
+    @if (Model.CategoryGeneralModelList.Count == 0)
+    {
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-12">Not Added Yet any Sub Detail in @category.Name</div>
+            </div>
         </div>
-    </div>
-}
+    }
 
 
 </div>
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script>
+    $(document).on("click", ".loadchild",function () {
+        var id = $(this).attr("id");
+        var idarray = id.split(" ")
+        var finalid = idarray[0];
+        $(this).removeClass("glyphicon-plus loadchild").addClass("glyphicon-minus");
+        $(this).removeClass("")
+        $.ajax({
+            url: "/NoticeBoard/LoadSubCategories/" + finalid,
+            success: function (data) {
+                $("#" + finalid).html(data);
+            }
 
+        });
+    });
+    $(document).on("click", ".glyphicon-minus", function () {
+        var id = $(this).attr("id");
+        var idarray = id.split(" ")
+        var finalid = idarray[0];
+        $("#" + finalid).html("");
+        $(this).removeClass("glyphicon-minus").addClass("glyphicon-plus loadchild");
+    });
+</script>

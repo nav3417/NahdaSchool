@@ -45,15 +45,15 @@
         <AssociationConnector Association="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanSubject" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.DigitalResourceClass" Width="1.5" PointX="24.875" PointY="14.75" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.DigitalResourceFile" Width="1.5" PointX="24.875" PointY="26.5" />
-        <EntityTypeShape EntityType="Nahda_AttendanceModel.DigitalResourceMaster" Width="1.5" PointX="22.625" PointY="22.875" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.LessonPlanDetail" Width="1.5" PointX="7.125" PointY="22.125" />
-        <AssociationConnector Association="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" />
         <AssociationConnector Association="Nahda_AttendanceModel.FK_DigitalResourceClass_LessonPlanClass" />
-        <AssociationConnector Association="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" />
         <AssociationConnector Association="Nahda_AttendanceModel.FK_LessonPlanDetail_LessonsPlanMaster" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.LessonPlanCategory" Width="1.5" PointX="2.625" PointY="8.75" />
-        <AssociationConnector Association="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory" />
         <AssociationConnector Association="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanCategory" />
+        <EntityTypeShape EntityType="Nahda_AttendanceModel.DigitalResourceMaster" Width="1.5" PointX="4.875" PointY="8.75" />
+        <AssociationConnector Association="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" />
+        <AssociationConnector Association="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" />
+        <AssociationConnector Association="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -831,32 +831,32 @@
     </AssociationSet>
     <EntitySet Name="DigitalResourceClasses" EntityType="Nahda_AttendanceModel.DigitalResourceClass" />
     <EntitySet Name="DigitalResourceFiles" EntityType="Nahda_AttendanceModel.DigitalResourceFile" />
-    <EntitySet Name="DigitalResourceMasters" EntityType="Nahda_AttendanceModel.DigitalResourceMaster" />
     <EntitySet Name="LessonPlanDetails" EntityType="Nahda_AttendanceModel.LessonPlanDetail" />
-    <AssociationSet Name="FK_DigitalResourceClass_DigitalResourceMaster" Association="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster">
-      <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
-      <End Role="DigitalResourceClass" EntitySet="DigitalResourceClasses" />
-    </AssociationSet>
     <AssociationSet Name="FK_DigitalResourceClass_LessonPlanClass" Association="Nahda_AttendanceModel.FK_DigitalResourceClass_LessonPlanClass">
       <End Role="LessonPlanClass" EntitySet="LessonPlanClasses" />
       <End Role="DigitalResourceClass" EntitySet="DigitalResourceClasses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DigitalResourceFiles_DigitalResourceMaster" Association="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster">
-      <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
-      <End Role="DigitalResourceFile" EntitySet="DigitalResourceFiles" />
     </AssociationSet>
     <AssociationSet Name="FK_LessonPlanDetail_LessonsPlanMaster" Association="Nahda_AttendanceModel.FK_LessonPlanDetail_LessonsPlanMaster">
       <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMasters" />
       <End Role="LessonPlanDetail" EntitySet="LessonPlanDetails" />
     </AssociationSet>
     <EntitySet Name="LessonPlanCategories" EntityType="Nahda_AttendanceModel.LessonPlanCategory" />
-    <AssociationSet Name="FK_DigitalResourceMaster_LessonPlanCategory" Association="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory">
-      <End Role="LessonPlanCategory" EntitySet="LessonPlanCategories" />
-      <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
-    </AssociationSet>
     <AssociationSet Name="FK_LessonsPlanMaster_LessonPlanCategory" Association="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanCategory">
       <End Role="LessonPlanCategory" EntitySet="LessonPlanCategories" />
       <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMasters" />
+    </AssociationSet>
+    <EntitySet Name="DigitalResourceMasters" EntityType="Nahda_AttendanceModel.DigitalResourceMaster" />
+    <AssociationSet Name="FK_DigitalResourceClass_DigitalResourceMaster" Association="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster">
+      <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
+      <End Role="DigitalResourceClass" EntitySet="DigitalResourceClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DigitalResourceFiles_DigitalResourceMaster" Association="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster">
+      <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
+      <End Role="DigitalResourceFile" EntitySet="DigitalResourceFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DigitalResourceMaster_LessonPlanCategory" Association="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory">
+      <End Role="LessonPlanCategory" EntitySet="LessonPlanCategories" />
+      <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="LessonsPlanMaster">
@@ -922,8 +922,8 @@
     <Property Name="ClassId" Type="Int32" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="DigitalResourceMaster" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" FromRole="DigitalResourceClass" ToRole="DigitalResourceMaster" />
     <NavigationProperty Name="LessonPlanClass" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_LessonPlanClass" FromRole="DigitalResourceClass" ToRole="LessonPlanClass" />
+    <NavigationProperty Name="DigitalResourceMaster" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" FromRole="DigitalResourceClass" ToRole="DigitalResourceMaster" />
   </EntityType>
   <EntityType Name="DigitalResourceFile">
     <Key>
@@ -939,27 +939,6 @@
     <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
     <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DigitalResourceMaster" Relationship="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" FromRole="DigitalResourceFile" ToRole="DigitalResourceMaster" />
-  </EntityType>
-  <EntityType Name="DigitalResourceMaster">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="title" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
-    <Property Name="DescriptionShort" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
-    <Property Name="DescriptionLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="CategoryId" Type="Int32" />
-    <Property Name="From" Type="DateTime" Precision="0" />
-    <Property Name="To" Type="DateTime" Precision="0" />
-    <Property Name="IsDeleted" Type="Boolean" />
-    <Property Name="IsPermanentDelete" Type="Boolean" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="DigitalResourceClasses" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" FromRole="DigitalResourceMaster" ToRole="DigitalResourceClass" />
-    <NavigationProperty Name="DigitalResourceFiles" Relationship="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" FromRole="DigitalResourceMaster" ToRole="DigitalResourceFile" />
-    <NavigationProperty Name="LessonPlanCategory" Relationship="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory" FromRole="DigitalResourceMaster" ToRole="LessonPlanCategory" />
   </EntityType>
   <EntityType Name="LessonPlanDetail">
     <Key>
@@ -992,18 +971,6 @@
     <Property Name="CreatedFor" Type="DateTime" Precision="7" />
     <NavigationProperty Name="LessonsPlanMaster" Relationship="Nahda_AttendanceModel.FK_LessonPlanDetail_LessonsPlanMaster" FromRole="LessonPlanDetail" ToRole="LessonsPlanMaster" />
   </EntityType>
-  <Association Name="FK_DigitalResourceClass_DigitalResourceMaster">
-    <End Type="Nahda_AttendanceModel.DigitalResourceMaster" Role="DigitalResourceMaster" Multiplicity="0..1" />
-    <End Type="Nahda_AttendanceModel.DigitalResourceClass" Role="DigitalResourceClass" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DigitalResourceMaster">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="DigitalResourceClass">
-        <PropertyRef Name="MasterId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_DigitalResourceClass_LessonPlanClass">
     <End Type="Nahda_AttendanceModel.LessonPlanClass" Role="LessonPlanClass" Multiplicity="0..1" />
     <End Type="Nahda_AttendanceModel.DigitalResourceClass" Role="DigitalResourceClass" Multiplicity="*" />
@@ -1013,18 +980,6 @@
       </Principal>
       <Dependent Role="DigitalResourceClass">
         <PropertyRef Name="ClassId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DigitalResourceFiles_DigitalResourceMaster">
-    <End Type="Nahda_AttendanceModel.DigitalResourceMaster" Role="DigitalResourceMaster" Multiplicity="0..1" />
-    <End Type="Nahda_AttendanceModel.DigitalResourceFile" Role="DigitalResourceFile" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DigitalResourceMaster">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="DigitalResourceFile">
-        <PropertyRef Name="MasterId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1058,21 +1013,9 @@
     <Property Name="ParentId" Type="Int32" />
     <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ControllerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="DigitalResourceMasters" Relationship="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory" FromRole="LessonPlanCategory" ToRole="DigitalResourceMaster" />
     <NavigationProperty Name="LessonsPlanMasters" Relationship="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanCategory" FromRole="LessonPlanCategory" ToRole="LessonsPlanMaster" />
+    <NavigationProperty Name="DigitalResourceMasters" Relationship="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory" FromRole="LessonPlanCategory" ToRole="DigitalResourceMaster" />
   </EntityType>
-  <Association Name="FK_DigitalResourceMaster_LessonPlanCategory">
-    <End Type="Nahda_AttendanceModel.LessonPlanCategory" Role="LessonPlanCategory" Multiplicity="0..1" />
-    <End Type="Nahda_AttendanceModel.DigitalResourceMaster" Role="DigitalResourceMaster" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LessonPlanCategory">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="DigitalResourceMaster">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_LessonsPlanMaster_LessonPlanCategory">
     <End Type="Nahda_AttendanceModel.LessonPlanCategory" Role="LessonPlanCategory" Multiplicity="0..1" />
     <End Type="Nahda_AttendanceModel.LessonsPlanMaster" Role="LessonsPlanMaster" Multiplicity="*" />
@@ -1081,6 +1024,63 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="LessonsPlanMaster">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DigitalResourceMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+    <Property Name="DescriptionShort" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+    <Property Name="DescriptionLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="From" Type="DateTime" Precision="0" />
+    <Property Name="To" Type="DateTime" Precision="0" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="IsPermanentDelete" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DigitalResourceClasses" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" FromRole="DigitalResourceMaster" ToRole="DigitalResourceClass" />
+    <NavigationProperty Name="DigitalResourceFiles" Relationship="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" FromRole="DigitalResourceMaster" ToRole="DigitalResourceFile" />
+    <NavigationProperty Name="LessonPlanCategory" Relationship="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory" FromRole="DigitalResourceMaster" ToRole="LessonPlanCategory" />
+  </EntityType>
+  <Association Name="FK_DigitalResourceClass_DigitalResourceMaster">
+    <End Type="Nahda_AttendanceModel.DigitalResourceMaster" Role="DigitalResourceMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.DigitalResourceClass" Role="DigitalResourceClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DigitalResourceMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DigitalResourceClass">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DigitalResourceFiles_DigitalResourceMaster">
+    <End Type="Nahda_AttendanceModel.DigitalResourceMaster" Role="DigitalResourceMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.DigitalResourceFile" Role="DigitalResourceFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DigitalResourceMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DigitalResourceFile">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DigitalResourceMaster_LessonPlanCategory">
+    <End Type="Nahda_AttendanceModel.LessonPlanCategory" Role="LessonPlanCategory" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.DigitalResourceMaster" Role="DigitalResourceMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LessonPlanCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DigitalResourceMaster">
         <PropertyRef Name="CategoryId" />
       </Dependent>
     </ReferentialConstraint>

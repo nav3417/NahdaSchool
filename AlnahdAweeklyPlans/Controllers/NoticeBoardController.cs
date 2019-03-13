@@ -29,14 +29,20 @@ namespace AlnahdAweeklyPlans.Controllers
         // GET: NoticeBoard
         public ActionResult Index(int id)
         {
+
             Session[WebUtil.ParentId] = null;
+            Session[WebUtil.Controller] = null;
+            var controler = unitOfWork.LessonPlanCategoryRepository.GetByID(id).ControllerName;
+            Session[WebUtil.Controller] = controler;
             var list = mapping.ToList(unitOfWork.LessonPlanCategoryRepository.Get(x => x.ParentId == id));
             var general = new DigitalResourceModel();
             List<CategoryGeneralModel> generalmodellist = new List<CategoryGeneralModel>();
             foreach (var i in list)
             {
                 CategoryGeneralModel obj = new CategoryGeneralModel();
-                obj.Name = unitOfWork.LessonPlanCategoryRepository.GetByID(i.Id).Name;
+                var getpbj = unitOfWork.LessonPlanCategoryRepository.GetByID(i.Id);
+                obj.Id = getpbj.Id;
+                obj.Name = getpbj.Name;
                 obj.TotalSubList = unitOfWork.DigitalResourceMasterRepository.Get(x => x.CategoryId == i.Id).Count();
                 generalmodellist.Add(obj);
             }
@@ -46,20 +52,22 @@ namespace AlnahdAweeklyPlans.Controllers
             CategoryGeneralModel controller = new CategoryGeneralModel();
             CategoryModel md = new CategoryModel();
             md.Id = id;
-            md.controller= "NoticeBoard";
+            md.controller = (string)Session[WebUtil.Controller];
             general.CategoryModel = md;
             Session[WebUtil.ParentId] = id;
             return View(general);
         }
         public ActionResult Add(int? id)
         {
-             DigitalResourceMasterModel model = new DigitalResourceMasterModel();
-            if(id!=null)
+
+            DigitalResourceMasterModel model = new DigitalResourceMasterModel();
+
+            if (id != null)
             {
-                 model = dmapping.ToObj(unitOfWork.DigitalResourceMasterRepository.GetByID(id));
+                model = dmapping.ToObj(unitOfWork.DigitalResourceMasterRepository.GetByID(id));
                 foreach (var item in model.DigitalResourceClasses)
                 {
-                    int clasid =(int)item.ClassId;
+                    int clasid = (int)item.ClassId;
                     model.Selecteditems.Add(clasid);
                 }
             }
@@ -68,70 +76,125 @@ namespace AlnahdAweeklyPlans.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Add(DigitalResourceMasterModel model)
         {
-            int parentid = (int)Session[WebUtil.ParentId];
-            List<SelectListItem> classes = unitOfWork.LessonPlanClassRepository.Get().Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }).ToList();
-            ViewBag.list = classes;
-            DigitalResourceMaster master;
-            List<DigitalResourceClass> dblist=null;
-            if (model.Id!=0)
+            int category = (int)Session[WebUtil.SubParentId];
+            DigitalResourceMaster master = null;
+            if (model.Id == 0)
             {
-                master = unitOfWork.DigitalResourceMasterRepository.GetByID(model.Id);
-                dblist = master.DigitalResourceClasses.ToList();
+                master = new DigitalResourceMaster();
             }
             else
             {
-                master = new DigitalResourceMaster();
-                dblist = new List<DigitalResourceClass>();
+                master = unitOfWork.DigitalResourceMasterRepository.GetByID(model.Id);
             }
-            if(dblist.Count>0)
+            master.title = model.title;
+            master.DescriptionLong = HttpUtility.HtmlDecode(model.DescriptionLong);
+            master.DescriptionShort = model.DescriptionShort;
+            master.CreatedOn = DateTime.Now;
+            master.From = Convert.ToDateTime(model.Fromstring);
+            master.To = Convert.ToDateTime(model.Tostring);
+            master.CategoryId = category;
+            HttpFileCollectionBase files = Request.Files;
+            for (var i = 0; i < files.Count; i++)
             {
-                foreach (var i in dblist)
+                HttpPostedFileBase file = files[i];
+                if (!string.IsNullOrEmpty(file.FileName))
                 {
-                    foreach (var j in model.Selecteditems)
+                    DigitalResourceFile filedetail = new DigitalResourceFile();
+
+                    //string[] nameandextension = file.FileName.Split('.');
+                    filedetail.ShowFileName = file.FileName;
+                    filedetail.FileExtnsion = file.FileName.Substring(file.FileName.LastIndexOf("."));
+                    filedetail.URL = DateTime.Now.Ticks.ToString();
+                    string path = "/Images/" + unitOfWork.LessonPlanCategoryRepository.GetByID(master.CategoryId).Name + "/" + file.FileName;
+                    string createpath = "/Images/" + unitOfWork.LessonPlanCategoryRepository.GetByID(master.CategoryId).Name;
+                    string dicrectory = Request.MapPath(createpath);
+                    Directory.CreateDirectory(dicrectory);
+                    string dicrectory2 = Request.MapPath(path);
+                    file.SaveAs(dicrectory2);
+                    master.DigitalResourceFiles.Add(filedetail);
+                }
+
+            }
+            if (model.Id != 0)
+            {
+                List<int> intlist = new List<int>();
+                foreach (var i in master.DigitalResourceClasses)
+                {
+                    int find = model.Selecteditems.Find(x => x.Equals(i.ClassId));
+                    if (find == 0)
                     {
-                        var dbobj = unitOfWork.DigitalResourceClassRepository.GetByID(i.Id);
-                      //  if (dbobj.Id != j) {dbobj.is }
+                        intlist.Add(i.Id);
+                    }
+                }
+                foreach (var i in intlist)
+                {
+                    var del = unitOfWork.DigitalResourceClassRepository.GetByID(i);
+                    unitOfWork.DigitalResourceClassRepository.Delete(del);
+                    unitOfWork.Save();
+                }
+                foreach (var i in model.Selecteditems)
+                {
+                    var find = master.DigitalResourceClasses.FirstOrDefault(x => x.ClassId == i);
+                    if (find == null)
+                    {
+                        DigitalResourceClass clas = new DigitalResourceClass();
+                        clas.ClassId = i;
+                        clas.CreatedBy = "Naveed";
+                        clas.CreatedOn = DateTime.Now;
+                        clas.MasterId = master.Id;
+                        master.DigitalResourceClasses.Add(clas);
                     }
                 }
             }
-            master.title = model.title;
-            master.DescriptionLong = model.DescriptionLong;
-            master.DescriptionShort = model.DescriptionShort;
-            master.CreatedOn = DateTime.Now;
-            master.From = model.From;
-            master.To = model.To;
-            master.CategoryId = (int)Session[WebUtil.ParentId];
-            foreach (string fcName in Request.Files)
+            if (model.Id == 0)
             {
-                DigitalResourceFile filedetail = new DigitalResourceFile();
-                HttpPostedFileBase file = Request.Files[fcName];
-                //string[] nameandextension = file.FileName.Split('.');
-                filedetail.ShowFileName = file.FileName;
-                filedetail.FileExtnsion = file.FileName.Substring(file.FileName.LastIndexOf("."));
-                filedetail.URL = DateTime.Now.Ticks.ToString();
-                string path = "/Images/" + unitOfWork.LessonPlanCategoryRepository.GetByID(master.CategoryId).Name+"/" + file.FileName;
-                string createpath = "/Images/" + unitOfWork.LessonPlanCategoryRepository.GetByID(master.CategoryId).Name;
-                string dicrectory = Request.MapPath(createpath);
-                Directory.CreateDirectory(dicrectory);
-                string dicrectory2 = Request.MapPath(path);
-                file.SaveAs(dicrectory2);
-                master.DigitalResourceFiles.Add(filedetail);
+                foreach (var item in model.Selecteditems)
+                {
+                    DigitalResourceClass clas = new DigitalResourceClass();
+
+                    clas.ClassId = item;
+                    clas.CreatedBy = "Naveed";
+                    clas.CreatedOn = DateTime.Now;
+                    clas.MasterId = master.Id;
+                    master.DigitalResourceClasses.Add(clas);
+                }
+                unitOfWork.DigitalResourceMasterRepository.Insert(master);
             }
-            
-            foreach (var item in model.Selecteditems)
-            {
-                DigitalResourceClass clas = new DigitalResourceClass();
-                clas.ClassId = item;
-                clas.CreatedBy = "Naveed";
-                clas.CreatedOn = DateTime.Now;
-                clas.MasterId = master.Id;
-                master.DigitalResourceClasses.Add(clas);
-            }
-            unitOfWork.DigitalResourceMasterRepository.Insert(master);
             unitOfWork.Save();
-            return RedirectToAction("Index",new {id= Session[WebUtil.ParentId] });
+            return RedirectToAction("Index", new { id = Session[WebUtil.ParentId] });
+        }
+        public ActionResult DetailPage(int id)
+        {
+            Session[WebUtil.SubParentId] = id;
+            int category = (int)Session[WebUtil.SubParentId];
+            Session.Timeout = 240;
+            var detail = dmapping.ToList(unitOfWork.DigitalResourceMasterRepository.Get(x => x.CategoryId == id).ToList());
+            DigitalResourceModel model = new DigitalResourceModel();
+            model.MasterModelList = detail;
+            CategoryModel md = new CategoryModel();
+            var db = unitOfWork.LessonPlanCategoryRepository.GetByID(id);
+            md.Id = id;
+            md.ParentId = (int)db.ParentId;
+            model.CategoryModel = md;
+            return View(model);
+        }
+        public ActionResult LoadSubCategories(int id)
+        {
+            DigitalResourceModel model = new DigitalResourceModel();
+            var data = LoadcateGoriesByParent(id).Select(x => new CategoryGeneralModel { Id = x.Id, Name = x.Name, parentId = x.ParentId, TotalSubList = count(x.Id) }).ToList();
+            if (data.Count() > 0) model.CategoryGeneralModelList = data;
+            return PartialView(model);
+        }
+        public List<CategoryModel> LoadcateGoriesByParent(int id)
+        {
+            return mapping.ToList(unitOfWork.LessonPlanCategoryRepository.Get(x => x.ParentId == id));
+        }
+        int count(int id)
+        {
+            return unitOfWork.DigitalResourceMasterRepository.Get(x => x.CategoryId == id).Count();
         }
     }
 }

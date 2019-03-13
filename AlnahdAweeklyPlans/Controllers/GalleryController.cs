@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 namespace AlnahdAweeklyPlans.Controllers
 {
     public class GalleryController : Controller
@@ -77,6 +76,7 @@ namespace AlnahdAweeklyPlans.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Add(DigitalResourceMasterModel model)
         {
             int category = (int)Session[WebUtil.SubParentId];
@@ -90,15 +90,16 @@ namespace AlnahdAweeklyPlans.Controllers
                 master = unitOfWork.DigitalResourceMasterRepository.GetByID(model.Id);
             }
             master.title = model.title;
-            master.DescriptionLong = model.DescriptionLong;
+            master.DescriptionLong = HttpUtility.HtmlDecode(model.DescriptionLong);
             master.DescriptionShort = model.DescriptionShort;
             master.CreatedOn = DateTime.Now;
             master.From = Convert.ToDateTime(model.Fromstring);
             master.To = Convert.ToDateTime(model.Tostring);
             master.CategoryId = category;
-            foreach (string fcName in Request.Files)
+            HttpFileCollectionBase files = Request.Files;
+            for (var i = 0; i < files.Count; i++)
             {
-                HttpPostedFileBase file = Request.Files[fcName];
+                HttpPostedFileBase file = files[i];
                 if (!string.IsNullOrEmpty(file.FileName))
                 {
                     DigitalResourceFile filedetail = new DigitalResourceFile();
@@ -107,7 +108,7 @@ namespace AlnahdAweeklyPlans.Controllers
                     filedetail.ShowFileName = file.FileName;
                     filedetail.FileExtnsion = file.FileName.Substring(file.FileName.LastIndexOf("."));
                     filedetail.URL = DateTime.Now.Ticks.ToString();
-                    string path = "/Images/" + unitOfWork.LessonPlanCategoryRepository.GetByID(master.CategoryId).Name + file.FileName;
+                    string path = "/Images/" + unitOfWork.LessonPlanCategoryRepository.GetByID(master.CategoryId).Name+"/" + file.FileName;
                     string createpath = "/Images/" + unitOfWork.LessonPlanCategoryRepository.GetByID(master.CategoryId).Name;
                     string dicrectory = Request.MapPath(createpath);
                     Directory.CreateDirectory(dicrectory);

@@ -2,14 +2,12 @@
 @{
     List<SelectListItem> list = ViewBag.list;
 }
-<link href="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.css" rel="stylesheet" type="text/css" />
-<script src="~/Scripts/jquery-3.0.0.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.js"></script>
+
 <div class="row">
     <div class="col-md-6">
         <div class="row">
             <div class="col-md-12">
-                @using (Html.BeginForm("Add", "NoticeBoard", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data", @class = "form-horizontal" }))
+                @using (Html.BeginForm("Add", "Gallery", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data", @class = "form-horizontal" }))
                 {
                     @Html.HiddenFor(x => x.Id)
                     <div class="form-group">
@@ -22,23 +20,32 @@
                     </div>
                     <div class="form-group">
                         <label for="Name">Long Desscription:</label>
-                        @Html.TextAreaFor(x => x.DescriptionLong, new { @class = "form-control" })
+                        @Html.TextAreaFor(x => x.DescriptionLong, new { @class = "form-control ckeditor" })
                     </div>
                     <div class="form-group">
                         <label for="Name">Files:</label>
-                        @Html.TextBox("file", null, new { type = "file" })
+                        @if (Model.Id != 0 && Model.DigitalResourceFiles.Count > 0)
+                        {
+                            <div class="row">
+                                @foreach (var i in Model.DigitalResourceFiles)
+                                {
+                                    <div class="col-md-2"><a href="">@i.ShowFileName</a></div>
+                                }
+                            </div>
+                        }
+                        @Html.TextBox("file", null, new { type = "file", Multiple = "multiple" })
                     </div>
                     <div class="form-group">
                         <label for="Name">Date From:</label>
-                        @Html.TextBoxFor(x => x.From, new { @class = "form-control noticeboarddate", id = "noticeboardfrom" })
+                        @Html.TextBoxFor(x => x.Fromstring, new { @class = "form-control noticeboarddate", id = "noticeboardfrom" })
                     </div>
                     <div class="form-group">
                         <label for="Name">Date To:</label>
-                        @Html.TextBoxFor(x => x.To, new { @class = "form-control noticeboarddate", id = "noticeboardto" })
+                        @Html.TextBoxFor(x => x.Tostring, new { @class = "form-control noticeboarddate", id = "noticeboardto" })
                     </div>
                     <div class="form-group">
                         <label for="Name">Group Name:</label>
-                        @Html.DropDownListFor(x => x.Selecteditems, Model.LessonPlanClassModellist.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }), new { @class = "form-control chosen-select", @multiple = "multiple", id = "DDLServiceCate" })
+                        @Html.ListBoxFor(x => x.Selecteditems, Model.LessonPlanClassModellist.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }), new { @class = "form-control chosen-select", @multiple = "multiple", id = "DDLServiceCate" })
                     </div>
                     <input type="submit" value="Save" class="btn btn-success" />
                 }
@@ -46,8 +53,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".chosen-select").chosen();
-    });
-</script> 
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>

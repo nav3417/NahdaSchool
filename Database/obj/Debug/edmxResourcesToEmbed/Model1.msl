@@ -842,25 +842,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DigitalResourceMasters">
-      <EntityTypeMapping TypeName="Nahda_AttendanceModel.DigitalResourceMaster">
-        <MappingFragment StoreEntitySet="DigitalResourceMaster">
-          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
-          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="IsPermanentDelete" ColumnName="IsPermanentDelete" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="To" ColumnName="To" />
-          <ScalarProperty Name="From" ColumnName="From" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-          <ScalarProperty Name="DescriptionLong" ColumnName="DescriptionLong" />
-          <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="LessonPlanDetails">
       <EntityTypeMapping TypeName="Nahda_AttendanceModel.LessonPlanDetail">
         <MappingFragment StoreEntitySet="LessonPlanDetail">
@@ -908,6 +889,25 @@
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DigitalResourceMasters">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.DigitalResourceMaster">
+        <MappingFragment StoreEntitySet="DigitalResourceMaster">
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsPermanentDelete" ColumnName="IsPermanentDelete" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="DescriptionLong" ColumnName="DescriptionLong" />
+          <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
+          <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

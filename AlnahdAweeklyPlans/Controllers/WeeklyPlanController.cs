@@ -244,7 +244,7 @@ namespace AlnahdAweeklyPlans.Controllers
                 string createpath = "/Images/LessonPlan/" + category + "/" + Clas + "_" + subject;
                 string dicrectory = Request.MapPath(createpath);
                 Directory.CreateDirectory(dicrectory);
-                string dicrectory2 = Request.MapPath(path);           
+                string dicrectory2 = Request.MapPath(path);         
                 file.SaveAs(dicrectory2);
                 obj.FileList.Add(filedetail);
             }

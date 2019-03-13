@@ -31,7 +31,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="title" Type="varchar" MaxLength="550" />
     <Property Name="DescriptionShort" Type="varchar" MaxLength="550" />
-    <Property Name="DescriptionLong" Type="text" />
+    <Property Name="DescriptionLong" Type="nvarchar(max)" />
     <Property Name="CategoryId" Type="int" />
     <Property Name="From" Type="date" />
     <Property Name="To" Type="date" />
