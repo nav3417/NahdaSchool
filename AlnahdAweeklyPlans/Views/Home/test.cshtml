@@ -16,3 +16,60 @@
         $('input[type="file"]').imageuploadify();
     });
 </script>
+
+
+
+<script type="text/javascript">
+
+    function AddNewRow() {
+
+        currency = new Array();
+        var table = document.getElementById("tbl");
+        var rowCount = table.rows.length;
+        var rowno = rowCount - 2;
+        // alert(rowCount);
+        var row = table.insertRow(rowCount);
+
+        var cell = new Array();
+        cell[0] = row.insertCell(0);
+        cell[1] = row.insertCell(1);
+        cell[2] = row.insertCell(2);
+        cell[3] = row.insertCell(3);
+        cell[4] = row.insertCell(4);
+        cell[5] = row.insertCell(5);
+        cell[6] = row.insertCell(6);
+        cell[7] = row.insertCell(7);
+        cell[8] = row.insertCell(8);
+        cell[9] = row.insertCell(9);
+        cell[10] = row.insertCell(10);
+        cell[11] = row.insertCell(11);
+        var Index = rowCount - 1;
+
+        var result = "<select class='form-control' id='Adec" + Index + "' name='Adec" + Index + "'><option value='Pass'>Pass</option><option value='Fail'>Fail</option></select>";
+        ///Inner text of the columns  new  added rows
+        var Index = parseInt(rowCount) - 1;
+        cell[0].innerHTML = "<input  class='form-control '   value='0' type='text'/> ";
+        cell[1].innerHTML = "<input  class='form-control '  onkeydown = 'RollnoNavigatetoNext(this)'  placeholder='Roll No '  value='' type='text'/> ";;
+        cell[2].innerHTML = "<input  class='form-control '  placeholder='Student Name English'  value='' type='text'/> ";;
+        cell[3].innerHTML = "<input  class='form-control '  placeholder='Student Name Arabic'  value='' type='text'/> ";;
+        cell[4].innerHTML = "<input  class='form-control '  placeholder='Subject Name English '  value='' type='text'/> ";;
+        cell[5].innerHTML = "<input  class=' form-control' placeholder = 'Subject In Arabic' type='text'/>";
+        cell[6].innerHTML = "<input   placeholder = 'Marks'  onkeydown = 'NavigatetoNext(this)'  class='form-control' type='text'/>";
+        cell[7].innerHTML = result;
+        cell[8].innerHTML = "<input  class='form-control '  placeholder='Resit'  value='' type='text'/> ";
+        cell[9].innerHTML = "<input  class='form-control '  placeholder='Min Marks'  value='50' type='text'/> ";
+        cell[10].innerHTML = "<input  class='form-control '  placeholder='Max Marks'  value='100' type='text'/> ";
+        cell[11].innerHTML = "<input class='btn btn-success padding0 btn-sm' value='New' onclick='AddNewRow()' type='button'><input value='Delete' class='btn btn-warning padding0 btn-sm ' onclick='DeleteRow(this)' type='button'>";
+        AssignClasstoTDZeropadding();
+
+    }
+    function AssignClasstoTDZeropadding() {
+        $("tr> td").addClass("padding0 margin0");
+    }
+
+    function DeleteRow(tra) {
+        var i = tra.parentNode.parentNode.rowIndex;
+        var table = document.getElementById("tbl");
+        table.deleteRow(i)
+    }
+</script>
