@@ -17,6 +17,8 @@ namespace Services.Model
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedOn { get; set; }
         public string LastModifiedBy { get; set; }
+        public string Category { get; set; }
+        public bool IsActive { get; set; }
 
         public virtual DigitalResourceMasterModel DigitalResourceMaster { get; set; }
     }

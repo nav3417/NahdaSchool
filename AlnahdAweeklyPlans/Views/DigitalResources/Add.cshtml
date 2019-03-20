@@ -7,7 +7,7 @@
     <div class="col-md-6">
         <div class="row">
             <div class="col-md-12">
-                @using (Html.BeginForm("Add", "Gallery", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data", @class = "form-horizontal" }))
+                @using (Html.BeginForm("Add", "DigitalResources", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data", @class = "form-horizontal" }))
                 {
                     @Html.HiddenFor(x => x.Id)
                     <div class="form-group">

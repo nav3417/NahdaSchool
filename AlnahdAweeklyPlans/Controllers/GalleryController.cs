@@ -96,6 +96,7 @@ namespace AlnahdAweeklyPlans.Controllers
             master.From = Convert.ToDateTime(model.Fromstring);
             master.To = Convert.ToDateTime(model.Tostring);
             master.CategoryId = category;
+            master.CategoryIdMajorParent = majorcatryId(category);
             HttpFileCollectionBase files = Request.Files;
             for (var i = 0; i < files.Count; i++)
             {
@@ -195,6 +196,21 @@ namespace AlnahdAweeklyPlans.Controllers
         int count(int id)
         {
             return unitOfWork.DigitalResourceMasterRepository.Get(x => x.CategoryId == id).Count();
+        }
+        int majorcatryId(int id)
+        {
+            bool hasparent = true;
+            int checkid = id;
+            int finaldi = 0;
+            repeat:
+            var data = unitOfWork.LessonPlanCategoryRepository.GetByID(checkid);
+            if (!data.HasParent) { hasparent = false; finaldi = checkid; } else { checkid = Convert.ToInt32(data.ParentId); }
+
+            if (hasparent == true)
+            {
+                goto repeat;
+            }
+            return finaldi;
         }
     }
 }

@@ -1,0 +1,124 @@
+﻿@model List<Services.Model.DigitalResourceMasterModel>
+@using (Html.BeginForm("BulkApprove", "DigitalResourcesApproval", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data" }))
+{
+    <table class="table table-bordered  table-hover">
+        <thead>
+            <tr>
+                <th>@Html.CheckBox("check", new { id = "allgeneral" })</th>
+                <th>Short Description</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Category</th>
+                <th>Creation Date</th>
+                <th>Created By</th>
+                <th>Approved</th>
+                <th>Total Files</th>
+                <th>Approval</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < ViewBag.count; i++)
+            {
+                <tr>
+                    <td hidden="hidden">@Html.HiddenFor(x => Model[i].Id)</td>
+                    <td hidden="hidden">@Html.HiddenFor(x => Model[i].FinalCategoryId)</td>
+                    <th>@Html.CheckBoxFor(x => Model[i].IsApproved, new { id = @Model[i].Id, @class = "allgeneral" })</th>
+                    <td>@Model[i].DescriptionShort</td>
+                    <td>@Model[i].Fromstring</td>
+                    <td>@Model[i].Tostring</td>
+                    <td>@Model[i].Category </td>
+                    <td>@Model[i].CreatDate</td>
+                    <td>@Model[i].CreatedBy</td>
+                    <td>@(Model[i].IsApproved ? "Yes" : "No")</td>
+                    <td>
+                        @Model[i].DigitalResourceFiles.Count
+                    @*@foreach (var k in @Model[i].DigitalResourceFiles)
+                        {
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="~/Images/@k.Category/@k.URL">@k.ShowFileName</a>
+                                    </div>
+                                </div>
+                            }*@
+
+                </td>
+                <td>
+                    <a href="#" data-pid="@Model[i].FinalCategoryId" id="@Model[i].Id" class="approve">
+                        @if (Model[i].IsApproved == false)
+                    {<span class="glyphicon glyphicon-upload"></span>}
+                </a> @if (Model[i].IsApproved == true)
+                {<span class="glyphicon glyphicon-ok"></span> }
+            </td>
+
+
+            <td><a href="#" data-pid="@Model[i].FinalCategoryId" id="@Model[i].Id" class="remove"><span class="glyphicon glyphicon-remove"></span></a></td>
+            <td><a href="#" data-pid="@Model[i].FinalCategoryId" id="@Model[i].Id" class="edit"><span class="glyphicon glyphicon-edit"></span></a></td>
+        </tr>
+            }
+        </tbody>
+    </table>
+    <input type="submit" value="Update" class="btn btn-success" />
+}
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script>
+    $(document).on("click", ".approve", function () {
+        var id = $(this).attr("id");
+        var ab = $(this).data("pid");
+        if (confirm('Are you sure, you want to approve this?')) {
+            $.ajax({
+                url: "/DigitalResourcesApproval/uprove/" + id,
+                success: function (data) {
+                    alert("Approved, an Email is sent to relevant Teacher");
+                    var data = {
+                        FinalCategoryId: FinalCategoryId
+                    }
+                    $.ajax({
+                        url: '@Url.Action("DetailView")',
+            data: data,
+            success: function (res) {
+                $("#DetailView").html();
+                $("#DetailView").html(res);
+            }
+        });
+                }
+
+            });
+        } else {
+
+        }
+    });
+    $(document).on("click", ".remove", function () {
+        var id = $(this).attr("id");
+        var ab = $(this).data("pid");
+        if (confirm('Are you sure, you want to Delete this?')) {
+            $.ajax({
+                url: "/DigitalResourcesApproval/remove/" + id,
+                success: function (data) {
+                    alert("Deleted, an Email is sent to relevant Teacher");
+                  var data = {
+                FinalCategoryId: FinalCategoryId
+            }
+        $.ajax({
+            url: '@Url.Action("DetailView")',
+            data: data,
+            success: function (res) {
+                $("#DetailView").html();
+                $("#DetailView").html(res);
+            }
+        });
+                }
+
+            });
+        }
+    });
+    $(document).on("change", "#allgeneral", function () {
+        var check = $(this).is(':checked');
+        $('input:checkbox').prop('checked', check);
+    });
+    $(document).on("click", ".edit", function () {
+        var id = $(this).attr("id");
+        window.location.href = "/DigitalResourcesApproval/Editdetail/" + id;
+    });
+</script>

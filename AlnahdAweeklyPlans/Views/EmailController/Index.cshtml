@@ -1,0 +1,280 @@
+﻿@model  AlnahdAweeklyPlans.Models.SendEmailViewModel
+<style>
+    .title {
+        height: 15% !important;
+    }
+    .red {
+        background-color: red;
+        color: white;
+        margin-bottom: 10px;
+    }
+    .blue {
+        background-color: blue;
+        color: white;
+        margin-bottom:10px;
+    }
+    .green {
+        background-color: green;
+        color: white;
+        margin-bottom: 10px;
+    }
+    .pink {
+        background-color: hotpink;
+        color: white;
+    }
+    .facircl {
+        display: inline-block;
+        border-radius: 60px;
+        box-shadow: 0px 0px 2px #888;
+        padding: 0.5em 0.6em;
+    }
+    .right {
+        position: fixed;
+        right: 0px;
+        bottom: 55px;
+        margin-bottom:40px;
+        height:100px;        
+        z-index: 10;
+    }
+    .no {
+        transition: 0.5s;
+        width: 0px;
+        right: 0px;
+    }
+    .yes {
+        width: 20px;
+        right: 75px;
+        transition: 0.5s;
+    }
+    a{
+        color:black;
+    }
+        a:hover {
+            color: black;
+            text-decoration:none;
+        }
+    td:hover{
+        background-color:#f5f2f2;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12" id="title">
+        <div class="row well-lg alert-success">
+            <div class="col-md-3">
+                Title
+
+            </div>
+            <div class="col-md-3">
+                Search
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="border-right:solid">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="#" id="sendemailmodel">New <span class="glyphicon glyphicon-envelope"></span></a></li>
+                <li class="list-group-item"><a href="#">Inbox<span class="glyphicon glyphicon-inbox"></span><span class="badge red">4</span></a></li>
+                <li class="list-group-item"><a href="#">Sent <span class="glyphicon glyphicon-send"></span><span class="badge blue">4</span></a></li>
+                <li class="list-group-item"><a href="#">Draft <span class="glyphicon glyphicon-envelope"></span><span class="badge green">4</span></a></li>
+                <li class="list-group-item"><a href="#">Delete<span class="glyphicon glyphicon-remove"></span><span class="badge pink">4</span></a> </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <table class="table table-bordered" id="emailtable">
+                <thead>
+                    <tr>
+                        <th>@Html.CheckBox("check", new { id = "generalall"})</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>@Html.CheckBox("nw", new { id = "id", @class = "checkit" })</th>
+                        <td class="modlel">
+                            <a href="#">
+                                <img src="~/Images/Category/img1.jpg" class="img-circle img-responsive" style="margin-top:15px; height:40px;width:40px;;float:left" />
+                                <h5>This is the strong part which could be seen in bold</h5>
+                                <p>this is subjects</p>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.CheckBox("nw", new { id = "id", @class = "checkit" })</th>
+                        <td class="modlel">
+                            <a href="#">
+                                <img src="~/Images/Category/img1.jpg" class="img-circle img-responsive" style="margin-top:15px; height:40px;width:40px;;float:left" />
+                                <h5>This is the strong part which could be seen in bold</h5>
+                                <p>this is subjects</p>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.CheckBox("nw", new { id = "id", @class = "checkit" })</th>
+                        <td class="modlel">
+                            <a href="#">
+                                <img src="~/Images/Category/img1.jpg" class="img-circle img-responsive" style="margin-top:15px; height:40px;width:40px;;float:left" />
+                                <h4>This is the strong part which could be seen in bold</h4>
+                                <p>this is subjects</p>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.CheckBox("nw", new { id = "id", @class = "checkit" })</th>
+                        <td>
+                            <a href="#">
+                                <img src="~/Images/Category/img1.jpg" class="img-circle img-responsive" style="margin-top:15px; height:40px;width:40px;;float:left" />
+                                <h5>This is the strong part which could be seen in bold</h5>
+                                <p>this is subjects</p>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.CheckBox("nw", new { id = "id", @class = "checkit" })</th>
+                        <td>
+                            <a href="#">
+                                <img src="~/Images/Category/img1.jpg" class="img-circle img-responsive" style="margin-top:15px; height:40px;width:40px;;float:left" />
+                                <h5>This is the strong part which could be seen in bold</h5>
+                                <p>this is subjects</p>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="right no" id="show">
+    <div class="row">
+        <div class="col-md-1"><span class="facircl fa fa-2x  fa-envelope blue"></span></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"><span class="facircl fa fa-2x  fa-inbox red"></span></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"><span class="facircl fa fa-2x  fa-remove green"></span></div>
+    </div>
+</div>
+<div class="modal fade" id="emailmodel" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Send Email</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                         <select></select>
+                            @Html.TextBox("From", null, new { @class = "form-control", PlaceHolder = "From", @readonly=true })
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            @Html.DropDownListFor(x => x.multiselectedemailmstr, @Model.CommunicationMstSelectList, new { @class = "form-control selectpicker",id= "selectpicker", multiple = "multiple", PlaceHolder = "To" })
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group detail">
+                            @Html.TextBox("test", null, new { @class = "form-control",  multiple = "multiple", PlaceHolder = "To" })
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group detail">
+                            @Html.TextBox("test", null, new { @class = "form-control",  multiple = "multiple", PlaceHolder = "To" })
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group detail">
+                            @Html.TextBox("test", null, new { @class = "form-control", multiple = "multiple", PlaceHolder = "To" })
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            @Html.TextBox("Subject", null, new { @class = "form-control", PlaceHolder = "Subject" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.TextArea("bodey",null, new { @class = "form-control ckeditor" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Scripts/chosen.jquery.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script>
+    $(document).ready(function () {  
+        $(".selectpicker").selectpicker();
+    });
+    $(".modlel").click(function () {
+        $("#myModal").modal("show");
+    });
+    $("#sendemailmodel").click(function () {
+        $("#emailmodel").modal("show");
+    });
+    
+    $(document).on("change", ".checkit", function () {
+        var check = $(this).is(':checked');
+        //$('input:checkbox').prop('checked', check);
+        $(this).prop('checked', check);
+        if (check) {
+            $("#show").removeClass('no').addClass('yes');
+        }
+        else {
+            $("#show").removeClass('yes').addClass('no');
+        }
+    });
+    $(document).on("change", "#generalall", function () {
+        var check = $(this).is(':checked');
+        $('input:checkbox').prop('checked', check);
+        //$(this).prop('checked', check);
+        if (check) {
+            $("#show").removeClass('no').addClass('yes');
+        }
+        else {
+            $("#show").removeClass('yes').addClass('no');
+        }
+    });
+    $(document).on("change", "#selectpicker", function () {
+      var  ids= $(this).val();
+      $.ajax({
+          url: "/EmailController/loaddetail/?ids=" + JSON.stringify(ids),
+            success: function (data) {
+                $(".detail").html("");
+                $(".detail").html(data);
+            }
+        });
+        
+    });
+</script>

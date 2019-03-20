@@ -41,6 +41,7 @@ namespace Database
         public Nullable<int> ClassId { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public Nullable<System.DateTime> CreatedFor { get; set; }
+        public Nullable<int> CategoryIdMajor { get; set; }
     
         public virtual LessonPlanClass LessonPlanClass { get; set; }
         public virtual LessonPlanSubject LessonPlanSubject { get; set; }

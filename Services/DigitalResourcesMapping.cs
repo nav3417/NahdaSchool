@@ -41,7 +41,8 @@ namespace Services
                     CategoryId= DigitalResource.Id,
                     CreatedBy= DigitalResource.CreatedBy,
                     CreatedOn= DigitalResource.CreatedOn,
-                    DescriptionLong= DigitalResource.DescriptionLong,
+                    IsApproved=Convert.ToBoolean(DigitalResource.IsApproved),
+                    DescriptionLong = DigitalResource.DescriptionLong,
                     DescriptionShort= DigitalResource.DescriptionShort,
                     DigitalResourceFiles= ToList(DigitalResource.DigitalResourceFiles),
                     DigitalResourceClasses=ToList(DigitalResource.DigitalResourceClasses),
@@ -50,8 +51,10 @@ namespace Services
                     LastModifiedOn= DigitalResource.LastModifiedOn,
                     From= DigitalResource.From,
                     To= DigitalResource.To,
+                    FinalCategoryId=DigitalResource.CategoryIdMajorParent,
                     Tostring = Convert.ToDateTime(DigitalResource.To).ToShortDateString(),
-                    title= DigitalResource.title
+                    CreatDate = Convert.ToDateTime(DigitalResource.CreatedOn).ToShortDateString(),
+                    title = DigitalResource.title
                 };
                 return obj;
             }
@@ -83,7 +86,8 @@ namespace Services
                    LastModifiedBy= DigitalResource.LastModifiedBy,
                    MasterId= DigitalResource.MasterId,
                    ShowFileName= DigitalResource.ShowFileName,
-                   URL= DigitalResource.URL
+                   URL= DigitalResource.URL,
+                   Category= DigitalResource.Category
                 };
                 return obj;
             }
@@ -112,6 +116,7 @@ namespace Services
                     MasterId= DigitalResource.MasterId,
                     CreatedBy= DigitalResource.CreatedBy,
                     CreatedOn= DigitalResource.CreatedOn,
+                   
                     LessonPlanClass= service.ToObj(DigitalResource.LessonPlanClass)
                 };
                 return obj;

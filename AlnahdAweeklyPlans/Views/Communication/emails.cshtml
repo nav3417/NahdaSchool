@@ -1,0 +1,5 @@
+﻿@model AlnahdAweeklyPlans.Models.CommunicationModel
+@{ 
+    List<SelectListItem> items = ViewBag.emp;
+}
+@Html.ListBoxFor(m=>m.selecteditems, Model.HREmployeeMstslctList, new { @class = "form-control listbox",id="emaillist"})

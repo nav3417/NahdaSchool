@@ -21,6 +21,7 @@ namespace Services.Model
         public string DescriptionShort { get; set; }
         public string DescriptionLong { get; set; }
         public int? CategoryId { get; set; }
+        public int? FinalCategoryId { get; set; }
         public string Category { get; set; }
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }
@@ -29,6 +30,7 @@ namespace Services.Model
         public bool? IsDeleted { get; set; }
         public bool? IsPermanentDelete { get; set; }
         public DateTime? CreatedOn { get; set; }
+        public string CreatDate { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? LastModifiedOn { get; set; }
         public string LastModifiedBy { get; set; }
@@ -36,6 +38,11 @@ namespace Services.Model
         public List<DigitalResourceFileModel> DigitalResourceFiles { get; set; }
         public List<LessonPlanClassModel> LessonPlanClassModellist { get; set; }
         public List<int> Selecteditems { get; set; }
+        public string AdminRemarks { get; set; }
+        public bool IsApproved { get; set; }
+        public DateTime ApprovalDate { get; set; }
+        public string ApprovedBy { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }

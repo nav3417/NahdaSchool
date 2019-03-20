@@ -14,7 +14,7 @@ namespace Database
     
     public partial class Exam_subjectGroup
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public int TermId { get; set; }
         public Nullable<int> ClassId { get; set; }
         public string School { get; set; }
@@ -28,5 +28,9 @@ namespace Database
         public Nullable<System.DateTime> LastModifiedOn { get; set; }
         public string CreatedBy { get; set; }
         public string LastModifiedBy { get; set; }
+        public Nullable<int> StaffId { get; set; }
+        public Nullable<int> RoomId { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<bool> PermanentDelete { get; set; }
     }
 }

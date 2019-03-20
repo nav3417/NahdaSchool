@@ -5,6 +5,34 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Nahda_AttendanceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CommunicationGroupDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MastId" Type="int" />
+          <Property Name="StaffId" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="550" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModifiedOn" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CommunicationGroupMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="School" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="550" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="PermanentDelete" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModifiedOn" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="DigitalResourceClass">
           <Key>
             <PropertyRef Name="Id" />
@@ -28,6 +56,9 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
           <Property Name="LastModifiedOn" Type="datetime" />
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DigitalResourceMaster">
           <Key>
@@ -46,6 +77,12 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
           <Property Name="LastModifiedOn" Type="datetime" />
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="AdminRemarks" Type="nvarchar(max)" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="ApprovalDate" Type="datetime2" Precision="7" />
+          <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CategoryIdMajorParent" Type="int" />
         </EntityType>
         <EntityType Name="LessonPlanCategory">
           <Key>
@@ -136,6 +173,7 @@
           <Property Name="ClassId" Type="int" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="CreatedFor" Type="datetime2" Precision="7" />
+          <Property Name="CategoryIdMajor" Type="int" />
         </EntityType>
         <EntityType Name="AcademicYears">
           <Key>
@@ -322,7 +360,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_Grading' does not have a
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="TermId" Type="int" Nullable="false" />
           <Property Name="ClassId" Type="int" />
           <Property Name="School" Type="varchar" MaxLength="50" />
@@ -336,6 +374,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_Grading' does not have a
           <Property Name="LastModifiedOn" Type="datetime" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="StaffId" Type="int" />
+          <Property Name="RoomId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="PermanentDelete" Type="bit" />
         </EntityType>
         <EntityType Name="Exam_subjectGroupRole">
           <Key>
@@ -641,6 +683,9 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_TimeMaster' does not hav
           <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
           <Property Name="LastModifiedOn" Type="datetime" />
           <Property Name="LastModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="hr_Email" Type="varchar" MaxLength="100" />
+          <Property Name="hr_DeptId" Type="int" />
+          <Property Name="hr_DesignId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Nahda_Attendance.dbo.md_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -657,6 +702,50 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.md_type' does not have a prim
           <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
           <Property Name="LastModifiedOn" Type="datetime" />
           <Property Name="LastModifiedBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="reg_building">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="building_des" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="tot_no_room" Type="int" Nullable="false" />
+          <Property Name="tot_no_floor" Type="varchar" MaxLength="50" />
+          <Property Name="build_no" Type="varchar" MaxLength="20" />
+          <Property Name="school_Id" Type="varchar" MaxLength="10" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="LastModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="reg_location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="build_Id" Type="int" Nullable="false" />
+          <Property Name="room_Id" Type="int" Nullable="false" />
+          <Property Name="floor_no" Type="varchar" MaxLength="20" />
+          <Property Name="school_Id" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="LastModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="reg_room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="room_des" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="room_no" Type="varchar" MaxLength="10" />
+          <Property Name="tot_no_seat" Type="int" />
+          <Property Name="school_Id" Type="varchar" MaxLength="10" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="LastModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Schools">
           <Key>
@@ -902,6 +991,53 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="StudentEmailDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="Response" Type="nvarchar" MaxLength="500" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Target" Type="varchar" MaxLength="50" />
+          <Property Name="MastId" Type="int" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="LastModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="StudentEmailMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailContent" Type="text" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="School" Type="varchar" MaxLength="50" />
+          <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
+          <Property Name="IsTemplate" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="IsFile" Type="bit" />
+          <Property Name="NoFiles" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="LastModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_CommunicationGroupDetail_CommunicationGroupMaster">
+          <End Role="CommunicationGroupMaster" Type="Self.CommunicationGroupMaster" Multiplicity="0..1" />
+          <End Role="CommunicationGroupDetail" Type="Self.CommunicationGroupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommunicationGroupMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommunicationGroupDetail">
+              <PropertyRef Name="MastId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DigitalResourceClass_DigitalResourceMaster">
           <End Role="DigitalResourceMaster" Type="Self.DigitalResourceMaster" Multiplicity="0..1" />
           <End Role="DigitalResourceClass" Type="Self.DigitalResourceClass" Multiplicity="*" />
@@ -1010,7 +1146,21 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
+          <End Role="StudentEmailMaster" Type="Self.StudentEmailMaster" Multiplicity="0..1" />
+          <End Role="StudentEmailDetail" Type="Self.StudentEmailDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEmailMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentEmailDetail">
+              <PropertyRef Name="MastId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Nahda_AttendanceModelStoreContainer">
+          <EntitySet Name="CommunicationGroupDetail" EntityType="Self.CommunicationGroupDetail" Schema="Academic" store:Type="Tables" />
+          <EntitySet Name="CommunicationGroupMaster" EntityType="Self.CommunicationGroupMaster" Schema="Academic" store:Type="Tables" />
           <EntitySet Name="DigitalResourceClass" EntityType="Self.DigitalResourceClass" Schema="Academic" store:Type="Tables" />
           <EntitySet Name="DigitalResourceFiles" EntityType="Self.DigitalResourceFiles" Schema="Academic" store:Type="Tables" />
           <EntitySet Name="DigitalResourceMaster" EntityType="Self.DigitalResourceMaster" Schema="Academic" store:Type="Tables" />
@@ -1038,11 +1188,16 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <EntitySet Name="hr_designation" EntityType="Self.hr_designation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hr_Emp" EntityType="Self.hr_Emp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HREmployeeMsts" EntityType="Self.HREmployeeMsts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reg_building" EntityType="Self.reg_building" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reg_location" EntityType="Self.reg_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reg_room" EntityType="Self.reg_room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schools" EntityType="Self.Schools" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student_Class" EntityType="Self.Student_Class" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student_StudentDtl" EntityType="Self.Student_StudentDtl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student_StudentMst" EntityType="Self.Student_StudentMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentEmailDetail" EntityType="Self.StudentEmailDetail" Schema="Student" store:Type="Tables" />
+          <EntitySet Name="StudentEmailMaster" EntityType="Self.StudentEmailMaster" Schema="Student" store:Type="Tables" />
           <EntitySet Name="Exam_ClassTimeTable" EntityType="Self.Exam_ClassTimeTable" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Exam_ClassTimeTable].[CTTID] AS [CTTID], 
@@ -1160,6 +1315,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     [Student_TeacherClass].[ClassId] AS [ClassId]
     FROM [dbo].[Student_TeacherClass] AS [Student_TeacherClass]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_CommunicationGroupDetail_CommunicationGroupMaster" Association="Self.FK_CommunicationGroupDetail_CommunicationGroupMaster">
+            <End Role="CommunicationGroupMaster" EntitySet="CommunicationGroupMaster" />
+            <End Role="CommunicationGroupDetail" EntitySet="CommunicationGroupDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK_DigitalResourceClass_DigitalResourceMaster" Association="Self.FK_DigitalResourceClass_DigitalResourceMaster">
             <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMaster" />
             <End Role="DigitalResourceClass" EntitySet="DigitalResourceClass" />
@@ -1195,6 +1354,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <AssociationSet Name="FK_LessonsPlanMaster_LessonPlanSubject" Association="Self.FK_LessonsPlanMaster_LessonPlanSubject">
             <End Role="LessonPlanSubject" EntitySet="LessonPlanSubject" />
             <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Self.FK_StudentEmailDetail_StudentEmailMaster">
+            <End Role="StudentEmailMaster" EntitySet="StudentEmailMaster" />
+            <End Role="StudentEmailDetail" EntitySet="StudentEmailDetail" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -1362,25 +1525,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Exam_subjectGroup">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TermId" Type="Int32" Nullable="false" />
-          <Property Name="ClassId" Type="Int32" />
-          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SubjectId" Type="Int32" />
-          <Property Name="Max" Type="Int32" />
-          <Property Name="Min" Type="Int32" />
-          <Property Name="Marktype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Ono" Type="Int32" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Exam_subjectGroupRole">
           <Key>
             <PropertyRef Name="Id" />
@@ -1542,90 +1686,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="hr_school_arab_n_arab" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="hr_school_section" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="hr_school_dept" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="HREmployeeMst">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SchoolId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="AccountId" Type="Int32" />
-          <Property Name="hr_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_currentposition" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_currentsalary" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_nationality" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_placeofBirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_DOB" Type="DateTime" Precision="0" />
-          <Property Name="hr_PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_SalaryMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_LeavePerYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_bankAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_joinDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_ApprovedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_MinistryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_EOSDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_majorSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_minorSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_ticket" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_TotalAllowance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_ContractType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_majorSpecializationAr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_SubStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_passportno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_placeofissue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_dateofissue" Type="DateTime" Precision="0" />
-          <Property Name="hr_dateofexpire" Type="DateTime" Precision="0" />
-          <Property Name="hr_visatype" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_visano" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_dateofvisaexpire" Type="DateTime" Precision="0" />
-          <Property Name="hr_basic_salary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_visaexpire" Type="DateTime" Precision="0" />
-          <Property Name="hr_religion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_emirtId_ex_date" Type="DateTime" Precision="0" />
-          <Property Name="hr_emirtId_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hr_spouceplaceofbirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_spoucename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_telephon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_placeorwork" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_permtaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_permttelno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_permtmobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_permtemail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_presentaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_presenttelno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_presentmobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_presentemail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_relativename1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_relativetelnomobile1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_relativename2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_relativetelnomobile2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_sect" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_sponsor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_maritalsatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_seriousillness" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_pregnancy" Type="Boolean" />
-          <Property Name="hr_deliverydate" Type="DateTime" Precision="0" />
-          <Property Name="hr_spouceoccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_spoucenationality" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_relativwork" Type="Boolean" />
-          <Property Name="hr_workbefore" Type="Boolean" />
-          <Property Name="hr_leavereason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_desireposition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_desiresalary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="hr_desiretostart" Type="DateTime" Precision="0" />
-          <Property Name="hr_desiretypeofaccmodation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_desirenofchildren" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="hr_photoRef" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="School">
           <Key>
@@ -1994,7 +2054,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <EntitySet Name="Attendance_Sheet" EntityType="Self.Attendance_Sheet" />
           <EntitySet Name="Exam_MarkEntry" EntityType="Self.Exam_MarkEntry" />
           <EntitySet Name="Exam_SubComments" EntityType="Self.Exam_SubComments" />
-          <EntitySet Name="Exam_subjectGroup" EntityType="Self.Exam_subjectGroup" />
           <EntitySet Name="Exam_subjectGroupRole" EntityType="Self.Exam_subjectGroupRole" />
           <EntitySet Name="Exam_subjectGroupRole_detail" EntityType="Self.Exam_subjectGroupRole_detail" />
           <EntitySet Name="Exam_Subjects" EntityType="Self.Exam_Subjects" />
@@ -2003,7 +2062,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <EntitySet Name="hr_department" EntityType="Self.hr_department" />
           <EntitySet Name="hr_designation" EntityType="Self.hr_designation" />
           <EntitySet Name="hr_Emp" EntityType="Self.hr_Emp" />
-          <EntitySet Name="HREmployeeMsts" EntityType="Self.HREmployeeMst" />
           <EntitySet Name="Schools" EntityType="Self.School" />
           <EntitySet Name="Student_Class" EntityType="Self.Student_Class" />
           <EntitySet Name="Student_StudentDtl" EntityType="Self.Student_StudentDtl" />
@@ -2031,7 +2089,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMasters" />
           </AssociationSet>
           <EntitySet Name="DigitalResourceClasses" EntityType="Nahda_AttendanceModel.DigitalResourceClass" />
-          <EntitySet Name="DigitalResourceFiles" EntityType="Nahda_AttendanceModel.DigitalResourceFile" />
           <EntitySet Name="LessonPlanDetails" EntityType="Nahda_AttendanceModel.LessonPlanDetail" />
           <AssociationSet Name="FK_DigitalResourceClass_LessonPlanClass" Association="Nahda_AttendanceModel.FK_DigitalResourceClass_LessonPlanClass">
             <End Role="LessonPlanClass" EntitySet="LessonPlanClasses" />
@@ -2046,6 +2103,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             <End Role="LessonPlanCategory" EntitySet="LessonPlanCategories" />
             <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMasters" />
           </AssociationSet>
+          <EntitySet Name="DigitalResourceFiles" EntityType="Nahda_AttendanceModel.DigitalResourceFile" />
           <EntitySet Name="DigitalResourceMasters" EntityType="Nahda_AttendanceModel.DigitalResourceMaster" />
           <AssociationSet Name="FK_DigitalResourceClass_DigitalResourceMaster" Association="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster">
             <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
@@ -2059,6 +2117,23 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             <End Role="LessonPlanCategory" EntitySet="LessonPlanCategories" />
             <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
           </AssociationSet>
+          <EntitySet Name="CommunicationGroupDetails" EntityType="Nahda_AttendanceModel.CommunicationGroupDetail" />
+          <EntitySet Name="CommunicationGroupMasters" EntityType="Nahda_AttendanceModel.CommunicationGroupMaster" />
+          <EntitySet Name="StudentEmailDetails" EntityType="Nahda_AttendanceModel.StudentEmailDetail" />
+          <EntitySet Name="StudentEmailMasters" EntityType="Nahda_AttendanceModel.StudentEmailMaster" />
+          <AssociationSet Name="FK_CommunicationGroupDetail_CommunicationGroupMaster" Association="Nahda_AttendanceModel.FK_CommunicationGroupDetail_CommunicationGroupMaster">
+            <End Role="CommunicationGroupMaster" EntitySet="CommunicationGroupMasters" />
+            <End Role="CommunicationGroupDetail" EntitySet="CommunicationGroupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster">
+            <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
+            <End Role="StudentEmailDetail" EntitySet="StudentEmailDetails" />
+          </AssociationSet>
+          <EntitySet Name="reg_building" EntityType="Nahda_AttendanceModel.reg_building" />
+          <EntitySet Name="reg_location" EntityType="Nahda_AttendanceModel.reg_location" />
+          <EntitySet Name="reg_room" EntityType="Nahda_AttendanceModel.reg_room" />
+          <EntitySet Name="HREmployeeMsts" EntityType="Nahda_AttendanceModel.HREmployeeMst" />
+          <EntitySet Name="Exam_subjectGroup" EntityType="Nahda_AttendanceModel.Exam_subjectGroup" />
           </EntityContainer>
         <EntityType Name="LessonsPlanMaster">
           <Key>
@@ -2089,6 +2164,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <NavigationProperty Name="LessonPlanSubject" Relationship="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanSubject" FromRole="LessonsPlanMaster" ToRole="LessonPlanSubject" />
           <NavigationProperty Name="LessonPlanDetails" Relationship="Nahda_AttendanceModel.FK_LessonPlanDetail_LessonsPlanMaster" FromRole="LessonsPlanMaster" ToRole="LessonPlanDetail" />
           <NavigationProperty Name="LessonPlanCategory" Relationship="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanCategory" FromRole="LessonsPlanMaster" ToRole="LessonPlanCategory" />
+          <Property Name="CategoryIdMajor" Type="Int32" />
         </EntityType>
         <Association Name="FK_LessonsPlanMaster_LessonPlanClass">
           <End Type="Nahda_AttendanceModel.LessonPlanClass" Role="LessonPlanClass" Multiplicity="0..1" />
@@ -2125,21 +2201,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="LessonPlanClass" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_LessonPlanClass" FromRole="DigitalResourceClass" ToRole="LessonPlanClass" />
           <NavigationProperty Name="DigitalResourceMaster" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" FromRole="DigitalResourceClass" ToRole="DigitalResourceMaster" />
-        </EntityType>
-        <EntityType Name="DigitalResourceFile">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MasterId" Type="Int32" />
-          <Property Name="FileExtnsion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ShowFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DigitalResourceMaster" Relationship="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" FromRole="DigitalResourceFile" ToRole="DigitalResourceMaster" />
         </EntityType>
         <EntityType Name="LessonPlanDetail">
           <Key>
@@ -2229,6 +2290,24 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DigitalResourceFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterId" Type="Int32" />
+          <Property Name="FileExtnsion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShowFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DigitalResourceMaster" Relationship="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" FromRole="DigitalResourceFile" ToRole="DigitalResourceMaster" />
+        </EntityType>
         <EntityType Name="DigitalResourceMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -2246,6 +2325,12 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AdminRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="ApprovalDate" Type="DateTime" Precision="7" />
+          <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CategoryIdMajorParent" Type="Int32" />
           <NavigationProperty Name="DigitalResourceClasses" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" FromRole="DigitalResourceMaster" ToRole="DigitalResourceClass" />
           <NavigationProperty Name="DigitalResourceFiles" Relationship="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" FromRole="DigitalResourceMaster" ToRole="DigitalResourceFile" />
           <NavigationProperty Name="LessonPlanCategory" Relationship="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory" FromRole="DigitalResourceMaster" ToRole="LessonPlanCategory" />
@@ -2286,6 +2371,251 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CommunicationGroupDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MastId" Type="Int32" />
+          <Property Name="StaffId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CommunicationGroupMaster" Relationship="Nahda_AttendanceModel.FK_CommunicationGroupDetail_CommunicationGroupMaster" FromRole="CommunicationGroupDetail" ToRole="CommunicationGroupMaster" />
+        </EntityType>
+        <EntityType Name="CommunicationGroupMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="PermanentDelete" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CommunicationGroupDetails" Relationship="Nahda_AttendanceModel.FK_CommunicationGroupDetail_CommunicationGroupMaster" FromRole="CommunicationGroupMaster" ToRole="CommunicationGroupDetail" />
+        </EntityType>
+        <EntityType Name="StudentEmailDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Response" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Target" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MastId" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentEmailMaster" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailDetail" ToRole="StudentEmailMaster" />
+        </EntityType>
+        <EntityType Name="StudentEmailMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsTemplate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFile" Type="Boolean" />
+          <Property Name="NoFiles" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentEmailDetails" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailMaster" ToRole="StudentEmailDetail" />
+        </EntityType>
+        <Association Name="FK_CommunicationGroupDetail_CommunicationGroupMaster">
+          <End Type="Nahda_AttendanceModel.CommunicationGroupMaster" Role="CommunicationGroupMaster" Multiplicity="0..1" />
+          <End Type="Nahda_AttendanceModel.CommunicationGroupDetail" Role="CommunicationGroupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommunicationGroupMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommunicationGroupDetail">
+              <PropertyRef Name="MastId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
+          <End Type="Nahda_AttendanceModel.StudentEmailMaster" Role="StudentEmailMaster" Multiplicity="0..1" />
+          <End Type="Nahda_AttendanceModel.StudentEmailDetail" Role="StudentEmailDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEmailMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentEmailDetail">
+              <PropertyRef Name="MastId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="reg_building">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="building_des" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tot_no_room" Type="Int32" Nullable="false" />
+          <Property Name="tot_no_floor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="build_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="school_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="reg_location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="build_Id" Type="Int32" Nullable="false" />
+          <Property Name="room_Id" Type="Int32" Nullable="false" />
+          <Property Name="floor_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="school_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="reg_room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="room_des" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="room_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tot_no_seat" Type="Int32" />
+          <Property Name="school_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HREmployeeMst">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="hr_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_currentposition" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_currentsalary" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_nationality" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_placeofBirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_DOB" Type="DateTime" Precision="0" />
+          <Property Name="hr_PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_SalaryMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_LeavePerYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_bankAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_joinDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_ApprovedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_MinistryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_EOSDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_majorSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_minorSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_ticket" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_TotalAllowance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_ContractType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_majorSpecializationAr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_SubStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_passportno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_placeofissue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_dateofissue" Type="DateTime" Precision="0" />
+          <Property Name="hr_dateofexpire" Type="DateTime" Precision="0" />
+          <Property Name="hr_visatype" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_visano" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_dateofvisaexpire" Type="DateTime" Precision="0" />
+          <Property Name="hr_basic_salary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_visaexpire" Type="DateTime" Precision="0" />
+          <Property Name="hr_religion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_emirtId_ex_date" Type="DateTime" Precision="0" />
+          <Property Name="hr_emirtId_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hr_spouceplaceofbirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_spoucename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_telephon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_placeorwork" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_permtaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_permttelno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_permtmobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_permtemail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_presentaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_presenttelno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_presentmobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_presentemail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_relativename1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_relativetelnomobile1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_relativename2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_relativetelnomobile2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_sect" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_sponsor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_maritalsatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_seriousillness" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_pregnancy" Type="Boolean" />
+          <Property Name="hr_deliverydate" Type="DateTime" Precision="0" />
+          <Property Name="hr_spouceoccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_spoucenationality" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_relativwork" Type="Boolean" />
+          <Property Name="hr_workbefore" Type="Boolean" />
+          <Property Name="hr_leavereason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_desireposition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_desiresalary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_desiretostart" Type="DateTime" Precision="0" />
+          <Property Name="hr_desiretypeofaccmodation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_desirenofchildren" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hr_photoRef" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hr_DeptId" Type="Int32" />
+          <Property Name="hr_DesignId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Exam_subjectGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TermId" Type="Int32" Nullable="false" />
+          <Property Name="ClassId" Type="Int32" />
+          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectId" Type="Int32" />
+          <Property Name="Max" Type="Int32" />
+          <Property Name="Min" Type="Int32" />
+          <Property Name="Marktype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ono" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StaffId" Type="Int32" />
+          <Property Name="RoomId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="PermanentDelete" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2450,26 +2780,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
                 <ScalarProperty Name="MarkFrom" ColumnName="MarkFrom" />
                 <ScalarProperty Name="MarkTo" ColumnName="MarkTo" />
                 <ScalarProperty Name="School" ColumnName="School" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Exam_subjectGroup">
-            <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_subjectGroup">
-              <MappingFragment StoreEntitySet="Exam_subjectGroup">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TermId" ColumnName="TermId" />
-                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
-                <ScalarProperty Name="School" ColumnName="School" />
-                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-                <ScalarProperty Name="Max" ColumnName="Max" />
-                <ScalarProperty Name="Min" ColumnName="Min" />
-                <ScalarProperty Name="Marktype" ColumnName="Marktype" />
-                <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
-                <ScalarProperty Name="Ono" ColumnName="Ono" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -2644,91 +2954,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
                 <ScalarProperty Name="hr_school_arab_n_arab" ColumnName="hr_school_arab_n_arab" />
                 <ScalarProperty Name="hr_school_section" ColumnName="hr_school_section" />
                 <ScalarProperty Name="hr_school_dept" ColumnName="hr_school_dept" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HREmployeeMsts">
-            <EntityTypeMapping TypeName="Nahda_AttendanceModel.HREmployeeMst">
-              <MappingFragment StoreEntitySet="HREmployeeMsts">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
-                <ScalarProperty Name="hr_name" ColumnName="hr_name" />
-                <ScalarProperty Name="hr_currentposition" ColumnName="hr_currentposition" />
-                <ScalarProperty Name="hr_currentsalary" ColumnName="hr_currentsalary" />
-                <ScalarProperty Name="hr_nationality" ColumnName="hr_nationality" />
-                <ScalarProperty Name="hr_placeofBirth" ColumnName="hr_placeofBirth" />
-                <ScalarProperty Name="hr_DOB" ColumnName="hr_DOB" />
-                <ScalarProperty Name="hr_PaymentMode" ColumnName="hr_PaymentMode" />
-                <ScalarProperty Name="hr_SalaryMode" ColumnName="hr_SalaryMode" />
-                <ScalarProperty Name="hr_LeavePerYear" ColumnName="hr_LeavePerYear" />
-                <ScalarProperty Name="hr_state" ColumnName="hr_state" />
-                <ScalarProperty Name="hr_city" ColumnName="hr_city" />
-                <ScalarProperty Name="hr_remarks" ColumnName="hr_remarks" />
-                <ScalarProperty Name="hr_bank" ColumnName="hr_bank" />
-                <ScalarProperty Name="hr_bankAccount" ColumnName="hr_bankAccount" />
-                <ScalarProperty Name="hr_joinDate" ColumnName="hr_joinDate" />
-                <ScalarProperty Name="hr_gender" ColumnName="hr_gender" />
-                <ScalarProperty Name="hr_status" ColumnName="hr_status" />
-                <ScalarProperty Name="hr_ApprovedDate" ColumnName="hr_ApprovedDate" />
-                <ScalarProperty Name="hr_MinistryStatus" ColumnName="hr_MinistryStatus" />
-                <ScalarProperty Name="hr_EOSDate" ColumnName="hr_EOSDate" />
-                <ScalarProperty Name="hr_majorSpecialization" ColumnName="hr_majorSpecialization" />
-                <ScalarProperty Name="hr_minorSpecialization" ColumnName="hr_minorSpecialization" />
-                <ScalarProperty Name="hr_ticket" ColumnName="hr_ticket" />
-                <ScalarProperty Name="hr_TotalAllowance" ColumnName="hr_TotalAllowance" />
-                <ScalarProperty Name="hr_ContractType" ColumnName="hr_ContractType" />
-                <ScalarProperty Name="hr_majorSpecializationAr" ColumnName="hr_majorSpecializationAr" />
-                <ScalarProperty Name="hr_SubStatus" ColumnName="hr_SubStatus" />
-                <ScalarProperty Name="hr_passportno" ColumnName="hr_passportno" />
-                <ScalarProperty Name="hr_placeofissue" ColumnName="hr_placeofissue" />
-                <ScalarProperty Name="hr_dateofissue" ColumnName="hr_dateofissue" />
-                <ScalarProperty Name="hr_dateofexpire" ColumnName="hr_dateofexpire" />
-                <ScalarProperty Name="hr_visatype" ColumnName="hr_visatype" />
-                <ScalarProperty Name="hr_visano" ColumnName="hr_visano" />
-                <ScalarProperty Name="hr_dateofvisaexpire" ColumnName="hr_dateofvisaexpire" />
-                <ScalarProperty Name="hr_basic_salary" ColumnName="hr_basic_salary" />
-                <ScalarProperty Name="hr_visaexpire" ColumnName="hr_visaexpire" />
-                <ScalarProperty Name="hr_religion" ColumnName="hr_religion" />
-                <ScalarProperty Name="hr_emirtId_ex_date" ColumnName="hr_emirtId_ex_date" />
-                <ScalarProperty Name="hr_emirtId_no" ColumnName="hr_emirtId_no" />
-                <ScalarProperty Name="hr_spouceplaceofbirth" ColumnName="hr_spouceplaceofbirth" />
-                <ScalarProperty Name="hr_spoucename" ColumnName="hr_spoucename" />
-                <ScalarProperty Name="hr_telephon" ColumnName="hr_telephon" />
-                <ScalarProperty Name="hr_placeorwork" ColumnName="hr_placeorwork" />
-                <ScalarProperty Name="hr_permtaddress" ColumnName="hr_permtaddress" />
-                <ScalarProperty Name="hr_permttelno" ColumnName="hr_permttelno" />
-                <ScalarProperty Name="hr_permtmobile" ColumnName="hr_permtmobile" />
-                <ScalarProperty Name="hr_permtemail" ColumnName="hr_permtemail" />
-                <ScalarProperty Name="hr_presentaddress" ColumnName="hr_presentaddress" />
-                <ScalarProperty Name="hr_presenttelno" ColumnName="hr_presenttelno" />
-                <ScalarProperty Name="hr_presentmobile" ColumnName="hr_presentmobile" />
-                <ScalarProperty Name="hr_presentemail" ColumnName="hr_presentemail" />
-                <ScalarProperty Name="hr_relativename1" ColumnName="hr_relativename1" />
-                <ScalarProperty Name="hr_relativetelnomobile1" ColumnName="hr_relativetelnomobile1" />
-                <ScalarProperty Name="hr_relativename2" ColumnName="hr_relativename2" />
-                <ScalarProperty Name="hr_relativetelnomobile2" ColumnName="hr_relativetelnomobile2" />
-                <ScalarProperty Name="hr_sect" ColumnName="hr_sect" />
-                <ScalarProperty Name="hr_sponsor" ColumnName="hr_sponsor" />
-                <ScalarProperty Name="hr_maritalsatus" ColumnName="hr_maritalsatus" />
-                <ScalarProperty Name="hr_seriousillness" ColumnName="hr_seriousillness" />
-                <ScalarProperty Name="hr_pregnancy" ColumnName="hr_pregnancy" />
-                <ScalarProperty Name="hr_deliverydate" ColumnName="hr_deliverydate" />
-                <ScalarProperty Name="hr_spouceoccupation" ColumnName="hr_spouceoccupation" />
-                <ScalarProperty Name="hr_spoucenationality" ColumnName="hr_spoucenationality" />
-                <ScalarProperty Name="hr_relativwork" ColumnName="hr_relativwork" />
-                <ScalarProperty Name="hr_workbefore" ColumnName="hr_workbefore" />
-                <ScalarProperty Name="hr_leavereason" ColumnName="hr_leavereason" />
-                <ScalarProperty Name="hr_desireposition" ColumnName="hr_desireposition" />
-                <ScalarProperty Name="hr_desiresalary" ColumnName="hr_desiresalary" />
-                <ScalarProperty Name="hr_desiretostart" ColumnName="hr_desiretostart" />
-                <ScalarProperty Name="hr_desiretypeofaccmodation" ColumnName="hr_desiretypeofaccmodation" />
-                <ScalarProperty Name="hr_desirenofchildren" ColumnName="hr_desirenofchildren" />
-                <ScalarProperty Name="hr_photoRef" ColumnName="hr_photoRef" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3083,6 +3308,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <EntitySetMapping Name="LessonsPlanMasters">
             <EntityTypeMapping TypeName="Nahda_AttendanceModel.LessonsPlanMaster">
               <MappingFragment StoreEntitySet="LessonsPlanMaster">
+                <ScalarProperty Name="CategoryIdMajor" ColumnName="CategoryIdMajor" />
                 <ScalarProperty Name="CreatedFor" ColumnName="CreatedFor" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ClassId" ColumnName="ClassId" />
@@ -3113,21 +3339,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="ClassId" ColumnName="ClassId" />
-                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DigitalResourceFiles">
-            <EntityTypeMapping TypeName="Nahda_AttendanceModel.DigitalResourceFile">
-              <MappingFragment StoreEntitySet="DigitalResourceFiles">
-                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="URL" ColumnName="URL" />
-                <ScalarProperty Name="ShowFileName" ColumnName="ShowFileName" />
-                <ScalarProperty Name="FileExtnsion" ColumnName="FileExtnsion" />
                 <ScalarProperty Name="MasterId" ColumnName="MasterId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -3184,9 +3395,33 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DigitalResourceFiles">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.DigitalResourceFile">
+              <MappingFragment StoreEntitySet="DigitalResourceFiles">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ShowFileName" ColumnName="ShowFileName" />
+                <ScalarProperty Name="FileExtnsion" ColumnName="FileExtnsion" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DigitalResourceMasters">
             <EntityTypeMapping TypeName="Nahda_AttendanceModel.DigitalResourceMaster">
               <MappingFragment StoreEntitySet="DigitalResourceMaster">
+                <ScalarProperty Name="CategoryIdMajorParent" ColumnName="CategoryIdMajorParent" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="AdminRemarks" ColumnName="AdminRemarks" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
                 <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -3199,6 +3434,232 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
                 <ScalarProperty Name="DescriptionLong" ColumnName="DescriptionLong" />
                 <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommunicationGroupDetails">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.CommunicationGroupDetail">
+              <MappingFragment StoreEntitySet="CommunicationGroupDetail">
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="MastId" ColumnName="MastId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommunicationGroupMasters">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.CommunicationGroupMaster">
+              <MappingFragment StoreEntitySet="CommunicationGroupMaster">
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="PermanentDelete" ColumnName="PermanentDelete" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEmailDetails">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.StudentEmailDetail">
+              <MappingFragment StoreEntitySet="StudentEmailDetail">
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="MastId" ColumnName="MastId" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Response" ColumnName="Response" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEmailMasters">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.StudentEmailMaster">
+              <MappingFragment StoreEntitySet="StudentEmailMaster">
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="NoFiles" ColumnName="NoFiles" />
+                <ScalarProperty Name="IsFile" ColumnName="IsFile" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+                <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MailContent" ColumnName="MailContent" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reg_building">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.reg_building">
+              <MappingFragment StoreEntitySet="reg_building">
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="school_Id" ColumnName="school_Id" />
+                <ScalarProperty Name="build_no" ColumnName="build_no" />
+                <ScalarProperty Name="tot_no_floor" ColumnName="tot_no_floor" />
+                <ScalarProperty Name="tot_no_room" ColumnName="tot_no_room" />
+                <ScalarProperty Name="building_des" ColumnName="building_des" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reg_location">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.reg_location">
+              <MappingFragment StoreEntitySet="reg_location">
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="school_Id" ColumnName="school_Id" />
+                <ScalarProperty Name="floor_no" ColumnName="floor_no" />
+                <ScalarProperty Name="room_Id" ColumnName="room_Id" />
+                <ScalarProperty Name="build_Id" ColumnName="build_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reg_room">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.reg_room">
+              <MappingFragment StoreEntitySet="reg_room">
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="school_Id" ColumnName="school_Id" />
+                <ScalarProperty Name="tot_no_seat" ColumnName="tot_no_seat" />
+                <ScalarProperty Name="room_no" ColumnName="room_no" />
+                <ScalarProperty Name="room_des" ColumnName="room_des" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HREmployeeMsts">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.HREmployeeMst">
+              <MappingFragment StoreEntitySet="HREmployeeMsts">
+                <ScalarProperty Name="hr_DesignId" ColumnName="hr_DesignId" />
+                <ScalarProperty Name="hr_DeptId" ColumnName="hr_DeptId" />
+                <ScalarProperty Name="hr_Email" ColumnName="hr_Email" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="hr_photoRef" ColumnName="hr_photoRef" />
+                <ScalarProperty Name="hr_desirenofchildren" ColumnName="hr_desirenofchildren" />
+                <ScalarProperty Name="hr_desiretypeofaccmodation" ColumnName="hr_desiretypeofaccmodation" />
+                <ScalarProperty Name="hr_desiretostart" ColumnName="hr_desiretostart" />
+                <ScalarProperty Name="hr_desiresalary" ColumnName="hr_desiresalary" />
+                <ScalarProperty Name="hr_desireposition" ColumnName="hr_desireposition" />
+                <ScalarProperty Name="hr_leavereason" ColumnName="hr_leavereason" />
+                <ScalarProperty Name="hr_workbefore" ColumnName="hr_workbefore" />
+                <ScalarProperty Name="hr_relativwork" ColumnName="hr_relativwork" />
+                <ScalarProperty Name="hr_spoucenationality" ColumnName="hr_spoucenationality" />
+                <ScalarProperty Name="hr_spouceoccupation" ColumnName="hr_spouceoccupation" />
+                <ScalarProperty Name="hr_deliverydate" ColumnName="hr_deliverydate" />
+                <ScalarProperty Name="hr_pregnancy" ColumnName="hr_pregnancy" />
+                <ScalarProperty Name="hr_seriousillness" ColumnName="hr_seriousillness" />
+                <ScalarProperty Name="hr_maritalsatus" ColumnName="hr_maritalsatus" />
+                <ScalarProperty Name="hr_sponsor" ColumnName="hr_sponsor" />
+                <ScalarProperty Name="hr_sect" ColumnName="hr_sect" />
+                <ScalarProperty Name="hr_relativetelnomobile2" ColumnName="hr_relativetelnomobile2" />
+                <ScalarProperty Name="hr_relativename2" ColumnName="hr_relativename2" />
+                <ScalarProperty Name="hr_relativetelnomobile1" ColumnName="hr_relativetelnomobile1" />
+                <ScalarProperty Name="hr_relativename1" ColumnName="hr_relativename1" />
+                <ScalarProperty Name="hr_presentemail" ColumnName="hr_presentemail" />
+                <ScalarProperty Name="hr_presentmobile" ColumnName="hr_presentmobile" />
+                <ScalarProperty Name="hr_presenttelno" ColumnName="hr_presenttelno" />
+                <ScalarProperty Name="hr_presentaddress" ColumnName="hr_presentaddress" />
+                <ScalarProperty Name="hr_permtemail" ColumnName="hr_permtemail" />
+                <ScalarProperty Name="hr_permtmobile" ColumnName="hr_permtmobile" />
+                <ScalarProperty Name="hr_permttelno" ColumnName="hr_permttelno" />
+                <ScalarProperty Name="hr_permtaddress" ColumnName="hr_permtaddress" />
+                <ScalarProperty Name="hr_placeorwork" ColumnName="hr_placeorwork" />
+                <ScalarProperty Name="hr_telephon" ColumnName="hr_telephon" />
+                <ScalarProperty Name="hr_spoucename" ColumnName="hr_spoucename" />
+                <ScalarProperty Name="hr_spouceplaceofbirth" ColumnName="hr_spouceplaceofbirth" />
+                <ScalarProperty Name="hr_emirtId_no" ColumnName="hr_emirtId_no" />
+                <ScalarProperty Name="hr_emirtId_ex_date" ColumnName="hr_emirtId_ex_date" />
+                <ScalarProperty Name="hr_religion" ColumnName="hr_religion" />
+                <ScalarProperty Name="hr_visaexpire" ColumnName="hr_visaexpire" />
+                <ScalarProperty Name="hr_basic_salary" ColumnName="hr_basic_salary" />
+                <ScalarProperty Name="hr_dateofvisaexpire" ColumnName="hr_dateofvisaexpire" />
+                <ScalarProperty Name="hr_visano" ColumnName="hr_visano" />
+                <ScalarProperty Name="hr_visatype" ColumnName="hr_visatype" />
+                <ScalarProperty Name="hr_dateofexpire" ColumnName="hr_dateofexpire" />
+                <ScalarProperty Name="hr_dateofissue" ColumnName="hr_dateofissue" />
+                <ScalarProperty Name="hr_placeofissue" ColumnName="hr_placeofissue" />
+                <ScalarProperty Name="hr_passportno" ColumnName="hr_passportno" />
+                <ScalarProperty Name="hr_SubStatus" ColumnName="hr_SubStatus" />
+                <ScalarProperty Name="hr_majorSpecializationAr" ColumnName="hr_majorSpecializationAr" />
+                <ScalarProperty Name="hr_ContractType" ColumnName="hr_ContractType" />
+                <ScalarProperty Name="hr_TotalAllowance" ColumnName="hr_TotalAllowance" />
+                <ScalarProperty Name="hr_ticket" ColumnName="hr_ticket" />
+                <ScalarProperty Name="hr_minorSpecialization" ColumnName="hr_minorSpecialization" />
+                <ScalarProperty Name="hr_majorSpecialization" ColumnName="hr_majorSpecialization" />
+                <ScalarProperty Name="hr_EOSDate" ColumnName="hr_EOSDate" />
+                <ScalarProperty Name="hr_MinistryStatus" ColumnName="hr_MinistryStatus" />
+                <ScalarProperty Name="hr_ApprovedDate" ColumnName="hr_ApprovedDate" />
+                <ScalarProperty Name="hr_status" ColumnName="hr_status" />
+                <ScalarProperty Name="hr_gender" ColumnName="hr_gender" />
+                <ScalarProperty Name="hr_joinDate" ColumnName="hr_joinDate" />
+                <ScalarProperty Name="hr_bankAccount" ColumnName="hr_bankAccount" />
+                <ScalarProperty Name="hr_bank" ColumnName="hr_bank" />
+                <ScalarProperty Name="hr_remarks" ColumnName="hr_remarks" />
+                <ScalarProperty Name="hr_city" ColumnName="hr_city" />
+                <ScalarProperty Name="hr_state" ColumnName="hr_state" />
+                <ScalarProperty Name="hr_LeavePerYear" ColumnName="hr_LeavePerYear" />
+                <ScalarProperty Name="hr_SalaryMode" ColumnName="hr_SalaryMode" />
+                <ScalarProperty Name="hr_PaymentMode" ColumnName="hr_PaymentMode" />
+                <ScalarProperty Name="hr_DOB" ColumnName="hr_DOB" />
+                <ScalarProperty Name="hr_placeofBirth" ColumnName="hr_placeofBirth" />
+                <ScalarProperty Name="hr_nationality" ColumnName="hr_nationality" />
+                <ScalarProperty Name="hr_currentsalary" ColumnName="hr_currentsalary" />
+                <ScalarProperty Name="hr_currentposition" ColumnName="hr_currentposition" />
+                <ScalarProperty Name="hr_name" ColumnName="hr_name" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exam_subjectGroup">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.Exam_subjectGroup">
+              <MappingFragment StoreEntitySet="Exam_subjectGroup">
+                <ScalarProperty Name="PermanentDelete" ColumnName="PermanentDelete" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Ono" ColumnName="Ono" />
+                <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+                <ScalarProperty Name="Marktype" ColumnName="Marktype" />
+                <ScalarProperty Name="Min" ColumnName="Min" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="TermId" ColumnName="TermId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

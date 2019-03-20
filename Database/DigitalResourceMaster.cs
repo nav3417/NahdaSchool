@@ -34,6 +34,12 @@ namespace Database
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedOn { get; set; }
         public string LastModifiedBy { get; set; }
+        public string AdminRemarks { get; set; }
+        public Nullable<bool> IsApproved { get; set; }
+        public Nullable<System.DateTime> ApprovalDate { get; set; }
+        public string ApprovedBy { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public Nullable<int> CategoryIdMajorParent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DigitalResourceClass> DigitalResourceClasses { get; set; }

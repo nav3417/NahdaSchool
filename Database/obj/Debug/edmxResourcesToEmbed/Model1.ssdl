@@ -1,5 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Nahda_AttendanceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CommunicationGroupDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MastId" Type="int" />
+    <Property Name="StaffId" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="550" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CommunicationGroupMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="250" />
+    <Property Name="School" Type="int" />
+    <Property Name="Remarks" Type="varchar" MaxLength="550" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="PermanentDelete" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="DigitalResourceClass">
     <Key>
       <PropertyRef Name="Id" />
@@ -23,6 +51,9 @@
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
     <Property Name="LastModifiedOn" Type="datetime" />
     <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="DigitalResourceMaster">
     <Key>
@@ -41,6 +72,12 @@
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
     <Property Name="LastModifiedOn" Type="datetime" />
     <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="AdminRemarks" Type="nvarchar(max)" />
+    <Property Name="IsApproved" Type="bit" />
+    <Property Name="ApprovalDate" Type="datetime2" Precision="7" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CategoryIdMajorParent" Type="int" />
   </EntityType>
   <EntityType Name="LessonPlanCategory">
     <Key>
@@ -131,6 +168,7 @@
     <Property Name="ClassId" Type="int" />
     <Property Name="CategoryId" Type="int" />
     <Property Name="CreatedFor" Type="datetime2" Precision="7" />
+    <Property Name="CategoryIdMajor" Type="int" />
   </EntityType>
   <EntityType Name="AcademicYears">
     <Key>
@@ -317,7 +355,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_Grading' does not have a
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="TermId" Type="int" Nullable="false" />
     <Property Name="ClassId" Type="int" />
     <Property Name="School" Type="varchar" MaxLength="50" />
@@ -331,6 +369,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_Grading' does not have a
     <Property Name="LastModifiedOn" Type="datetime" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
     <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="StaffId" Type="int" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="PermanentDelete" Type="bit" />
   </EntityType>
   <EntityType Name="Exam_subjectGroupRole">
     <Key>
@@ -636,6 +678,9 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Exam_TimeMaster' does not hav
     <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
     <Property Name="LastModifiedOn" Type="datetime" />
     <Property Name="LastModifiedBy" Type="varchar" MaxLength="100" />
+    <Property Name="hr_Email" Type="varchar" MaxLength="100" />
+    <Property Name="hr_DeptId" Type="int" />
+    <Property Name="hr_DesignId" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'Nahda_Attendance.dbo.md_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -652,6 +697,50 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.md_type' does not have a prim
     <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
     <Property Name="LastModifiedOn" Type="datetime" />
     <Property Name="LastModifiedBy" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="reg_building">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="building_des" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="tot_no_room" Type="int" Nullable="false" />
+    <Property Name="tot_no_floor" Type="varchar" MaxLength="50" />
+    <Property Name="build_no" Type="varchar" MaxLength="20" />
+    <Property Name="school_Id" Type="varchar" MaxLength="10" />
+    <Property Name="Note" Type="varchar" MaxLength="200" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="reg_location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="build_Id" Type="int" Nullable="false" />
+    <Property Name="room_Id" Type="int" Nullable="false" />
+    <Property Name="floor_no" Type="varchar" MaxLength="20" />
+    <Property Name="school_Id" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="reg_room">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="room_des" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="room_no" Type="varchar" MaxLength="10" />
+    <Property Name="tot_no_seat" Type="int" />
+    <Property Name="school_Id" Type="varchar" MaxLength="10" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="Schools">
     <Key>
@@ -897,6 +986,53 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="StudentEmailDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="500" />
+    <Property Name="Response" Type="nvarchar" MaxLength="500" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Target" Type="varchar" MaxLength="50" />
+    <Property Name="MastId" Type="int" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="StudentEmailMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailContent" Type="text" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+    <Property Name="School" Type="varchar" MaxLength="50" />
+    <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
+    <Property Name="IsTemplate" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="IsFile" Type="bit" />
+    <Property Name="NoFiles" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_CommunicationGroupDetail_CommunicationGroupMaster">
+    <End Role="CommunicationGroupMaster" Type="Self.CommunicationGroupMaster" Multiplicity="0..1" />
+    <End Role="CommunicationGroupDetail" Type="Self.CommunicationGroupDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CommunicationGroupMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CommunicationGroupDetail">
+        <PropertyRef Name="MastId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DigitalResourceClass_DigitalResourceMaster">
     <End Role="DigitalResourceMaster" Type="Self.DigitalResourceMaster" Multiplicity="0..1" />
     <End Role="DigitalResourceClass" Type="Self.DigitalResourceClass" Multiplicity="*" />
@@ -1005,7 +1141,21 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
+    <End Role="StudentEmailMaster" Type="Self.StudentEmailMaster" Multiplicity="0..1" />
+    <End Role="StudentEmailDetail" Type="Self.StudentEmailDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentEmailMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentEmailDetail">
+        <PropertyRef Name="MastId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Nahda_AttendanceModelStoreContainer">
+    <EntitySet Name="CommunicationGroupDetail" EntityType="Self.CommunicationGroupDetail" Schema="Academic" store:Type="Tables" />
+    <EntitySet Name="CommunicationGroupMaster" EntityType="Self.CommunicationGroupMaster" Schema="Academic" store:Type="Tables" />
     <EntitySet Name="DigitalResourceClass" EntityType="Self.DigitalResourceClass" Schema="Academic" store:Type="Tables" />
     <EntitySet Name="DigitalResourceFiles" EntityType="Self.DigitalResourceFiles" Schema="Academic" store:Type="Tables" />
     <EntitySet Name="DigitalResourceMaster" EntityType="Self.DigitalResourceMaster" Schema="Academic" store:Type="Tables" />
@@ -1033,11 +1183,16 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <EntitySet Name="hr_designation" EntityType="Self.hr_designation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="hr_Emp" EntityType="Self.hr_Emp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HREmployeeMsts" EntityType="Self.HREmployeeMsts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reg_building" EntityType="Self.reg_building" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reg_location" EntityType="Self.reg_location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reg_room" EntityType="Self.reg_room" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Schools" EntityType="Self.Schools" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student_Class" EntityType="Self.Student_Class" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student_StudentDtl" EntityType="Self.Student_StudentDtl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student_StudentMst" EntityType="Self.Student_StudentMst" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentEmailDetail" EntityType="Self.StudentEmailDetail" Schema="Student" store:Type="Tables" />
+    <EntitySet Name="StudentEmailMaster" EntityType="Self.StudentEmailMaster" Schema="Student" store:Type="Tables" />
     <EntitySet Name="Exam_ClassTimeTable" EntityType="Self.Exam_ClassTimeTable" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Exam_ClassTimeTable].[CTTID] AS [CTTID], 
@@ -1155,6 +1310,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     [Student_TeacherClass].[ClassId] AS [ClassId]
     FROM [dbo].[Student_TeacherClass] AS [Student_TeacherClass]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_CommunicationGroupDetail_CommunicationGroupMaster" Association="Self.FK_CommunicationGroupDetail_CommunicationGroupMaster">
+      <End Role="CommunicationGroupMaster" EntitySet="CommunicationGroupMaster" />
+      <End Role="CommunicationGroupDetail" EntitySet="CommunicationGroupDetail" />
+    </AssociationSet>
     <AssociationSet Name="FK_DigitalResourceClass_DigitalResourceMaster" Association="Self.FK_DigitalResourceClass_DigitalResourceMaster">
       <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMaster" />
       <End Role="DigitalResourceClass" EntitySet="DigitalResourceClass" />
@@ -1190,6 +1349,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <AssociationSet Name="FK_LessonsPlanMaster_LessonPlanSubject" Association="Self.FK_LessonsPlanMaster_LessonPlanSubject">
       <End Role="LessonPlanSubject" EntitySet="LessonPlanSubject" />
       <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Self.FK_StudentEmailDetail_StudentEmailMaster">
+      <End Role="StudentEmailMaster" EntitySet="StudentEmailMaster" />
+      <End Role="StudentEmailDetail" EntitySet="StudentEmailDetail" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

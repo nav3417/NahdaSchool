@@ -1,0 +1,83 @@
+﻿@model Services.Model.DigitalResourceMasterModel
+    @{ 
+        IEnumerable<SelectListItem> Category = ViewBag.Category;
+    }
+<div class="panel panel-default">
+    <div class="list-group-item active">Approval Status</div>
+    <div class="row">
+        <div class="list-group-item-success">
+            <div class="col-md-3">
+                @Html.DropDownListFor(x => x.FinalCategoryId, Category, new { @class = "form-control", id = "FinalCategoryId" })
+            </div>
+           <div class="col-md-6">
+    <div class="row">
+        <div class="col-md-2"><input class="btn btn-success" id="loaddetail" style="width:80px" value="Load" /></div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="container">
+    <div id="DetailView">
+
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script type="text/javascript">
+    var FinalCategoryId = null;
+    $(document).on("change", "#FinalCategoryId", function () {
+        FinalCategoryId = $("#FinalCategoryId").val();
+    });
+    $(document).on("changeDate", "#pickdate", function (e) {
+        var date = $(this).data("datepicker").getDate();
+        //  var day = $(this).data("datepicker").format("dddd");
+        formatted = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        // $('#weekDay').val(date.format('dddd'));
+        var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var selectedday = new Date(date).getDay();
+        var selecteddate = new Date(date).getDate();
+        //  var selecteddate = new Date(date);
+        //var day = weekday[date];
+        //alert(date);
+        var mindate = null;
+        var maxdate = null;
+        var inc = 0;
+        for (var i = selectedday; i < 4; i++) {
+            inc = inc + 1;
+        }
+        maxdate = selecteddate + inc;
+        var enddate = date.setDate(date.getDate() + inc);
+        inc = 0;
+        for (var j = 0; j < selectedday; j++) {
+            inc = inc + 1;
+        }
+        mindate = selecteddate - inc;
+        var start = date.setDate(date.getDate() - inc);
+        var startdate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + mindate;
+        var lastdate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + maxdate;
+
+        $("#From").val("");
+        $("#To").val("");
+        $("#From").val(startdate);
+        $("#To").val(lastdate);
+    });
+        $(document).on("click", "#loaddetail", function () {
+            var data = {
+                FinalCategoryId: FinalCategoryId
+            }
+        $.ajax({
+            url: '@Url.Action("DetailView")',
+            data: data,
+            success: function (res) {
+                $("#DetailView").html();
+                $("#DetailView").html(res);
+            }
+        });
+         subject = $("#SubjectId").val();
+          clas = $("#ClassId").val();
+        var from = $("#From").val();
+        var to = $("#To").val();
+    });
+</script>

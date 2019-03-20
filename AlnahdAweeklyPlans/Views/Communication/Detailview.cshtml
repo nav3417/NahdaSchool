@@ -1,0 +1,29 @@
+﻿@model AlnahdAweeklyPlans.Models.CommunicationModel
+    <style>
+        .listbox {
+            height: 300px !important;
+        }
+    </style>
+<div class="row">
+    <div class="col-md-3">
+        <h5>Employees</h5> 
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        @Html.ListBox("employee",Model.HREmployeeMstslctList,new {id= "HREmployeeMstslctList", @class = "form-control listbox" })
+    </div>
+    <div class="col-md-1">
+    <input type="button" value=">>" class="btn btn-primary" id="listbox"/><br /><br /><br />
+    <input type="button" value="<<" class="btn btn-primary" id="listboxr" />
+    </div>
+    <div class="col-md-3">
+        @Html.ListBox("listbox1", new List<SelectListItem>(), new { id = "listbox1", @class = "form-control listbox" })
+    </div>
+    <div class="col-md-1">
+        <input type="button" value=">>" class="btn btn-primary" id="loademail" />
+    </div>
+        <div class="col-md-3" id="selecteddiv">
+            @Html.ListBoxFor(x=>x.listitems, new List<SelectListItem>(), new { id = "", @class = "form-control listbox" })
+        </div>
+    </div>

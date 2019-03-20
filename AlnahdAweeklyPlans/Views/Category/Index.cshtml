@@ -2,17 +2,40 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<style>
+    .box
+    {
+        height:40px;
+        margin-top:0px;
+        width:65%;
+        text-align:center;
+    }
+        /*.box:hover {
+            color: white;
+            background-color: black
+        }*/
+    a{
+        text-align:start;
+        color:black;
+    }
+    /*a:hover{
+        color:white;
+        background-color:black;
+    }*/
+</style>
 <div class="row">
     
     @if (Model.CategoryList.Count > 0)
     {
         foreach (var item in Model.CategoryList)
         {
-            <div class="col-md-3"><a href="@Url.Action("Index",@item.controller,new {Id= @item.Id})"><img class="img-responsive img-thumbnail" src="" alt="" />@item.Name</a></div>
+            <div class="col-md-3">
+                    <a href="@Url.Action("Index",@item.controller,new {Id= @item.Id})"><img class="img-responsive  img-thumbnail" style="height:100px" src="~/Images/Category/@item.URL" alt="" /><h5 class="box">@item.Name</h5></a>
+                </div> 
+
         }
     }
-
+    
 </div>
 
 

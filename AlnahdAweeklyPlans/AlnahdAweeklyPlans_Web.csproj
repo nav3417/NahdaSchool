@@ -112,11 +112,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\checkboxstyle.css" />
+    <Content Include="Content\chosen.css" />
     <Content Include="Content\dropify.css" />
     <Content Include="Content\dropify.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Gridmvc.css" />
     <Content Include="Content\imageviewer.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\Category\img1.jpg" />
@@ -131,6 +136,8 @@
     <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.proto.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
     <Content Include="Scripts\ckeditor\ckeditor.asp" />
@@ -500,6 +507,11 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\imageviewer.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -623,7 +635,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ApprovalController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CommunicationController.cs" />
+    <Compile Include="Controllers\DigitalResourcesApprovalController.cs" />
     <Compile Include="Controllers\DigitalResourcesController.cs" />
+    <Compile Include="Controllers\EmailControllerController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NoticeBoardController.cs" />
@@ -631,6 +646,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CommunicationModel.cs" />
+    <Compile Include="Models\LixtBoxModel.cs" />
+    <Compile Include="Models\sendemail.cs" />
+    <Compile Include="Models\SendEmailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebUtil.cs" />
   </ItemGroup>
@@ -668,6 +687,15 @@
     <Content Include="Views\NoticeBoard\LoadSubCategories.cshtml" />
     <Content Include="Views\DigitalResources\DetailPage.cshtml" />
     <Content Include="Views\DigitalResources\LoadSubCategories.cshtml" />
+    <Content Include="Views\DigitalResourcesApproval\Index.cshtml" />
+    <Content Include="Views\DigitalResourcesApproval\Editdetail.cshtml" />
+    <Content Include="Views\DigitalResourcesApproval\DetailView.cshtml" />
+    <Content Include="Views\Communication\Index.cshtml" />
+    <Content Include="Views\Communication\Detailview.cshtml" />
+    <Content Include="Views\Communication\emails.cshtml" />
+    <Content Include="Views\Communication\loaddpt.cshtml" />
+    <Content Include="Views\EmailController\Index.cshtml" />
+    <Content Include="Views\EmailController\loaddetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -681,7 +709,6 @@
     <Folder Include="Images\HomeWork\" />
     <Folder Include="Images\LessonPlan\" />
     <Folder Include="Images\NewFolder1\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

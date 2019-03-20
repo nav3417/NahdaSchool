@@ -161,25 +161,6 @@
     <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="Exam_subjectGroup">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TermId" Type="Int32" Nullable="false" />
-    <Property Name="ClassId" Type="Int32" />
-    <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="SubjectId" Type="Int32" />
-    <Property Name="Max" Type="Int32" />
-    <Property Name="Min" Type="Int32" />
-    <Property Name="Marktype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Ono" Type="Int32" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="Exam_subjectGroupRole">
     <Key>
       <PropertyRef Name="Id" />
@@ -341,90 +322,6 @@
     <Property Name="hr_school_arab_n_arab" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="hr_school_section" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="hr_school_dept" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="HREmployeeMst">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SchoolId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="AccountId" Type="Int32" />
-    <Property Name="hr_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_currentposition" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_currentsalary" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_nationality" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_placeofBirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_DOB" Type="DateTime" Precision="0" />
-    <Property Name="hr_PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_SalaryMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_LeavePerYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_bankAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_joinDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_ApprovedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_MinistryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_EOSDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_majorSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_minorSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_ticket" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_TotalAllowance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_ContractType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_majorSpecializationAr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_SubStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_passportno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_placeofissue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_dateofissue" Type="DateTime" Precision="0" />
-    <Property Name="hr_dateofexpire" Type="DateTime" Precision="0" />
-    <Property Name="hr_visatype" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_visano" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_dateofvisaexpire" Type="DateTime" Precision="0" />
-    <Property Name="hr_basic_salary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_visaexpire" Type="DateTime" Precision="0" />
-    <Property Name="hr_religion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_emirtId_ex_date" Type="DateTime" Precision="0" />
-    <Property Name="hr_emirtId_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="hr_spouceplaceofbirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_spoucename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_telephon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_placeorwork" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_permtaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_permttelno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_permtmobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_permtemail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_presentaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_presenttelno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_presentmobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_presentemail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_relativename1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_relativetelnomobile1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_relativename2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_relativetelnomobile2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_sect" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_sponsor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_maritalsatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_seriousillness" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_pregnancy" Type="Boolean" />
-    <Property Name="hr_deliverydate" Type="DateTime" Precision="0" />
-    <Property Name="hr_spouceoccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_spoucenationality" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_relativwork" Type="Boolean" />
-    <Property Name="hr_workbefore" Type="Boolean" />
-    <Property Name="hr_leavereason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_desireposition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_desiresalary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="hr_desiretostart" Type="DateTime" Precision="0" />
-    <Property Name="hr_desiretypeofaccmodation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_desirenofchildren" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="hr_photoRef" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="School">
     <Key>
@@ -793,7 +690,6 @@
     <EntitySet Name="Attendance_Sheet" EntityType="Self.Attendance_Sheet" />
     <EntitySet Name="Exam_MarkEntry" EntityType="Self.Exam_MarkEntry" />
     <EntitySet Name="Exam_SubComments" EntityType="Self.Exam_SubComments" />
-    <EntitySet Name="Exam_subjectGroup" EntityType="Self.Exam_subjectGroup" />
     <EntitySet Name="Exam_subjectGroupRole" EntityType="Self.Exam_subjectGroupRole" />
     <EntitySet Name="Exam_subjectGroupRole_detail" EntityType="Self.Exam_subjectGroupRole_detail" />
     <EntitySet Name="Exam_Subjects" EntityType="Self.Exam_Subjects" />
@@ -802,7 +698,6 @@
     <EntitySet Name="hr_department" EntityType="Self.hr_department" />
     <EntitySet Name="hr_designation" EntityType="Self.hr_designation" />
     <EntitySet Name="hr_Emp" EntityType="Self.hr_Emp" />
-    <EntitySet Name="HREmployeeMsts" EntityType="Self.HREmployeeMst" />
     <EntitySet Name="Schools" EntityType="Self.School" />
     <EntitySet Name="Student_Class" EntityType="Self.Student_Class" />
     <EntitySet Name="Student_StudentDtl" EntityType="Self.Student_StudentDtl" />
@@ -830,7 +725,6 @@
       <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMasters" />
     </AssociationSet>
     <EntitySet Name="DigitalResourceClasses" EntityType="Nahda_AttendanceModel.DigitalResourceClass" />
-    <EntitySet Name="DigitalResourceFiles" EntityType="Nahda_AttendanceModel.DigitalResourceFile" />
     <EntitySet Name="LessonPlanDetails" EntityType="Nahda_AttendanceModel.LessonPlanDetail" />
     <AssociationSet Name="FK_DigitalResourceClass_LessonPlanClass" Association="Nahda_AttendanceModel.FK_DigitalResourceClass_LessonPlanClass">
       <End Role="LessonPlanClass" EntitySet="LessonPlanClasses" />
@@ -845,6 +739,7 @@
       <End Role="LessonPlanCategory" EntitySet="LessonPlanCategories" />
       <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMasters" />
     </AssociationSet>
+    <EntitySet Name="DigitalResourceFiles" EntityType="Nahda_AttendanceModel.DigitalResourceFile" />
     <EntitySet Name="DigitalResourceMasters" EntityType="Nahda_AttendanceModel.DigitalResourceMaster" />
     <AssociationSet Name="FK_DigitalResourceClass_DigitalResourceMaster" Association="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster">
       <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
@@ -858,6 +753,23 @@
       <End Role="LessonPlanCategory" EntitySet="LessonPlanCategories" />
       <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMasters" />
     </AssociationSet>
+    <EntitySet Name="CommunicationGroupDetails" EntityType="Nahda_AttendanceModel.CommunicationGroupDetail" />
+    <EntitySet Name="CommunicationGroupMasters" EntityType="Nahda_AttendanceModel.CommunicationGroupMaster" />
+    <EntitySet Name="StudentEmailDetails" EntityType="Nahda_AttendanceModel.StudentEmailDetail" />
+    <EntitySet Name="StudentEmailMasters" EntityType="Nahda_AttendanceModel.StudentEmailMaster" />
+    <AssociationSet Name="FK_CommunicationGroupDetail_CommunicationGroupMaster" Association="Nahda_AttendanceModel.FK_CommunicationGroupDetail_CommunicationGroupMaster">
+      <End Role="CommunicationGroupMaster" EntitySet="CommunicationGroupMasters" />
+      <End Role="CommunicationGroupDetail" EntitySet="CommunicationGroupDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster">
+      <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
+      <End Role="StudentEmailDetail" EntitySet="StudentEmailDetails" />
+    </AssociationSet>
+    <EntitySet Name="reg_building" EntityType="Nahda_AttendanceModel.reg_building" />
+    <EntitySet Name="reg_location" EntityType="Nahda_AttendanceModel.reg_location" />
+    <EntitySet Name="reg_room" EntityType="Nahda_AttendanceModel.reg_room" />
+    <EntitySet Name="HREmployeeMsts" EntityType="Nahda_AttendanceModel.HREmployeeMst" />
+    <EntitySet Name="Exam_subjectGroup" EntityType="Nahda_AttendanceModel.Exam_subjectGroup" />
   </EntityContainer>
   <EntityType Name="LessonsPlanMaster">
     <Key>
@@ -888,6 +800,7 @@
     <NavigationProperty Name="LessonPlanSubject" Relationship="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanSubject" FromRole="LessonsPlanMaster" ToRole="LessonPlanSubject" />
     <NavigationProperty Name="LessonPlanDetails" Relationship="Nahda_AttendanceModel.FK_LessonPlanDetail_LessonsPlanMaster" FromRole="LessonsPlanMaster" ToRole="LessonPlanDetail" />
     <NavigationProperty Name="LessonPlanCategory" Relationship="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanCategory" FromRole="LessonsPlanMaster" ToRole="LessonPlanCategory" />
+    <Property Name="CategoryIdMajor" Type="Int32" />
   </EntityType>
   <Association Name="FK_LessonsPlanMaster_LessonPlanClass">
     <End Type="Nahda_AttendanceModel.LessonPlanClass" Role="LessonPlanClass" Multiplicity="0..1" />
@@ -924,21 +837,6 @@
     <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="LessonPlanClass" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_LessonPlanClass" FromRole="DigitalResourceClass" ToRole="LessonPlanClass" />
     <NavigationProperty Name="DigitalResourceMaster" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" FromRole="DigitalResourceClass" ToRole="DigitalResourceMaster" />
-  </EntityType>
-  <EntityType Name="DigitalResourceFile">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MasterId" Type="Int32" />
-    <Property Name="FileExtnsion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ShowFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="DigitalResourceMaster" Relationship="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" FromRole="DigitalResourceFile" ToRole="DigitalResourceMaster" />
   </EntityType>
   <EntityType Name="LessonPlanDetail">
     <Key>
@@ -1028,6 +926,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="DigitalResourceFile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="Int32" />
+    <Property Name="FileExtnsion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShowFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DigitalResourceMaster" Relationship="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" FromRole="DigitalResourceFile" ToRole="DigitalResourceMaster" />
+  </EntityType>
   <EntityType Name="DigitalResourceMaster">
     <Key>
       <PropertyRef Name="Id" />
@@ -1045,6 +961,12 @@
     <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
     <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AdminRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsApproved" Type="Boolean" />
+    <Property Name="ApprovalDate" Type="DateTime" Precision="7" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CategoryIdMajorParent" Type="Int32" />
     <NavigationProperty Name="DigitalResourceClasses" Relationship="Nahda_AttendanceModel.FK_DigitalResourceClass_DigitalResourceMaster" FromRole="DigitalResourceMaster" ToRole="DigitalResourceClass" />
     <NavigationProperty Name="DigitalResourceFiles" Relationship="Nahda_AttendanceModel.FK_DigitalResourceFiles_DigitalResourceMaster" FromRole="DigitalResourceMaster" ToRole="DigitalResourceFile" />
     <NavigationProperty Name="LessonPlanCategory" Relationship="Nahda_AttendanceModel.FK_DigitalResourceMaster_LessonPlanCategory" FromRole="DigitalResourceMaster" ToRole="LessonPlanCategory" />
@@ -1085,4 +1007,249 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="CommunicationGroupDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MastId" Type="Int32" />
+    <Property Name="StaffId" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CommunicationGroupMaster" Relationship="Nahda_AttendanceModel.FK_CommunicationGroupDetail_CommunicationGroupMaster" FromRole="CommunicationGroupDetail" ToRole="CommunicationGroupMaster" />
+  </EntityType>
+  <EntityType Name="CommunicationGroupMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="School" Type="Int32" />
+    <Property Name="Remarks" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="PermanentDelete" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CommunicationGroupDetails" Relationship="Nahda_AttendanceModel.FK_CommunicationGroupDetail_CommunicationGroupMaster" FromRole="CommunicationGroupMaster" ToRole="CommunicationGroupDetail" />
+  </EntityType>
+  <EntityType Name="StudentEmailDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Response" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Target" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MastId" Type="Int32" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudentEmailMaster" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailDetail" ToRole="StudentEmailMaster" />
+  </EntityType>
+  <EntityType Name="StudentEmailMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsTemplate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsFile" Type="Boolean" />
+    <Property Name="NoFiles" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudentEmailDetails" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailMaster" ToRole="StudentEmailDetail" />
+  </EntityType>
+  <Association Name="FK_CommunicationGroupDetail_CommunicationGroupMaster">
+    <End Type="Nahda_AttendanceModel.CommunicationGroupMaster" Role="CommunicationGroupMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.CommunicationGroupDetail" Role="CommunicationGroupDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CommunicationGroupMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CommunicationGroupDetail">
+        <PropertyRef Name="MastId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
+    <End Type="Nahda_AttendanceModel.StudentEmailMaster" Role="StudentEmailMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.StudentEmailDetail" Role="StudentEmailDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentEmailMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentEmailDetail">
+        <PropertyRef Name="MastId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="reg_building">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="building_des" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tot_no_room" Type="Int32" Nullable="false" />
+    <Property Name="tot_no_floor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="build_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="school_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="reg_location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="build_Id" Type="Int32" Nullable="false" />
+    <Property Name="room_Id" Type="Int32" Nullable="false" />
+    <Property Name="floor_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="school_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="reg_room">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="room_des" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="room_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="tot_no_seat" Type="Int32" />
+    <Property Name="school_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HREmployeeMst">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AccountId" Type="Int32" />
+    <Property Name="hr_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_currentposition" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_currentsalary" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_nationality" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_placeofBirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_DOB" Type="DateTime" Precision="0" />
+    <Property Name="hr_PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_SalaryMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_LeavePerYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_bankAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_joinDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_ApprovedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_MinistryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_EOSDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_majorSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_minorSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_ticket" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_TotalAllowance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_ContractType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_majorSpecializationAr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_SubStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_passportno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_placeofissue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_dateofissue" Type="DateTime" Precision="0" />
+    <Property Name="hr_dateofexpire" Type="DateTime" Precision="0" />
+    <Property Name="hr_visatype" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_visano" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_dateofvisaexpire" Type="DateTime" Precision="0" />
+    <Property Name="hr_basic_salary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_visaexpire" Type="DateTime" Precision="0" />
+    <Property Name="hr_religion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_emirtId_ex_date" Type="DateTime" Precision="0" />
+    <Property Name="hr_emirtId_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hr_spouceplaceofbirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_spoucename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_telephon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_placeorwork" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_permtaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_permttelno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_permtmobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_permtemail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_presentaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_presenttelno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_presentmobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_presentemail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_relativename1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_relativetelnomobile1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_relativename2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_relativetelnomobile2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_sect" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_sponsor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_maritalsatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_seriousillness" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_pregnancy" Type="Boolean" />
+    <Property Name="hr_deliverydate" Type="DateTime" Precision="0" />
+    <Property Name="hr_spouceoccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_spoucenationality" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_relativwork" Type="Boolean" />
+    <Property Name="hr_workbefore" Type="Boolean" />
+    <Property Name="hr_leavereason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_desireposition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_desiresalary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_desiretostart" Type="DateTime" Precision="0" />
+    <Property Name="hr_desiretypeofaccmodation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_desirenofchildren" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hr_photoRef" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="hr_DeptId" Type="Int32" />
+    <Property Name="hr_DesignId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Exam_subjectGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="TermId" Type="Int32" Nullable="false" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="Max" Type="Int32" />
+    <Property Name="Min" Type="Int32" />
+    <Property Name="Marktype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ono" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="StaffId" Type="Int32" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="PermanentDelete" Type="Boolean" />
+  </EntityType>
 </Schema>

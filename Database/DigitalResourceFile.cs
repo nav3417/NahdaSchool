@@ -23,6 +23,9 @@ namespace Database
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedOn { get; set; }
         public string LastModifiedBy { get; set; }
+        public bool IsDeleted { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public string Category { get; set; }
     
         public virtual DigitalResourceMaster DigitalResourceMaster { get; set; }
     }

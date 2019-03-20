@@ -1,0 +1,138 @@
+﻿@model AlnahdAweeklyPlans.Models.CommunicationModel
+<div class="panel panel-default">
+    <div class="list-group-item active">Communication</div>
+@using (Html.BeginForm("sendemail", "Communication", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-3">
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", id = "Title" })
+        </div>
+        <div class="col-md-3">
+            @Html.DropDownListFor(x => x.SchlsId, Model.SelectListItemSChool, new { @class = "form-control", id = "SchlsIds" })
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(x => x.Remarks, new { @class = "form-control", id = "Remarks" })
+        </div>
+    </div>
+    <br />
+   <div style="border-bottom:0.3px solid"></div>
+<br />
+    <div class="row">
+        <div class="list-group-item-success">
+            <div class="col-md-2">
+                @Html.DropDownList("Schls", Model.SelectListItemSChool, new { @class = "form-control", id = "SchlsId" })
+            </div>
+            <div class="col-md-2" id="loaddpt">
+                @Html.DropDownListFor(x => x.DpmtId, Model.SelectListItemDepartment, new { @class = "form-control", id = "DpmtId" })
+            </div>
+            <div class="col-md-2" id="loadsub">
+                @Html.DropDownListFor(x => x.SbjtId, Model.SelectListItemSubjects, new { @class = "form-control", id = "SubjectId" })
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-2"><input type="button" class="btn btn-success" id="loaddetail" style="width:80px" value="Load" /></div>
+                </div>
+            </div>
+            <div class="col-md-2">
+               @Html.TextBox("email","email@any.com", new { @class = "form-control", id = "email",placeholder="Enter Email" })
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-2"><input type="button" class="btn btn-success" id="Addemail" style="width:80px" value="Add" /></div>
+                </div>
+            </div>
+            @Html.HiddenFor(x=>x.strinfyvalues,new {id= "strinfyvalues"})
+        </div>
+    </div>
+    <div id="DetailView">
+        @Html.Action("DetailView", Model)
+    </div>
+        <br />
+        <button class="btn btn-success pull-right" id="submit" type="submit">Save</button>
+}
+ </div>
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script type="text/javascript">
+    $(document).on("click", "#loaddetail", function () {
+        var SchlsId = $("#SchlsId").val();
+        var emp = {
+            SchlsId: SchlsId
+        }
+        $.ajax({
+            url: '@Url.Action("Detailview")',
+            data: emp,
+            success: function (res) {
+                $("#DetailView").html();
+                $("#DetailView").html(res);
+            }
+        });
+    });
+    $(document).on("click", "#listbox", function (e) {
+        $("#HREmployeeMstslctList  option:selected").appendTo("#listbox1");
+        e.preventDefault();
+    })
+    $(document).on("click", "#listboxr", function (e) {
+        $("#listbox1  option:selected").appendTo("#HREmployeeMstslctList");
+        e.preventDefault();
+    })
+    $(document).on("click", "#loademail", function () {
+        var selectedVal = [];
+        $('#listbox1 :selected').each(function (i, selected) {
+            selectedVal[i] = $(selected).val();
+        });
+        var emp = {
+            intlist: JSON.stringify(selectedVal),
+        }
+        $.ajax({
+            url: '@Url.Action("emails")',
+            data: emp,
+            success: function (res) {
+                $("#selecteddiv").html();
+                $("#selecteddiv").html(res);
+            }
+        });
+    });
+    $("#Addemail").click(function () {
+        $('#emaillist :selected').each(function () {
+            var name = $(this).text();
+            var id = $(this).val();
+            var email = $("#email").val();
+            $(this).text("");
+            $(this).val("");
+            var populate = name + "(" + email + ")";
+            $(this).text(populate);
+            $(this).val(id + "/" + email);
+        });
+    });
+    $("#submit").on("click", function () {
+        $('#emaillist option').each(function () {
+            //debugger
+            //var Value = $(this).val();
+            $(this).prop('selected', true);
+            //$("#strinfyvalues").val(JSON.stringify(Value));
+
+        });
+    });
+    $(document).on("change", "#SchlsId", function () {
+        var SchlsId = $(this).val();
+        $(ajax)({
+            url:@Url.Action("loaddpt"),
+            data: SchlsId,
+            success: function (data) {
+                $("#loaddpt").text("");
+                $("#loaddpt").text(data);
+            }
+        });
+    });
+    $(document).on("change", "#DpmtId", function () {
+        var SchlsId = $(this).val();
+        $(ajax)({
+            url:@Url.Action("loadsub"),
+            data: SchlsId,
+            success: function (data) {
+                $("#loadsub").text("");
+                $("#loadsub").text(data);
+            }
+        });
+    });
+</script>

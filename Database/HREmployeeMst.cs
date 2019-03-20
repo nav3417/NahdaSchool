@@ -93,5 +93,8 @@ namespace Database
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedOn { get; set; }
         public string LastModifiedBy { get; set; }
+        public string hr_Email { get; set; }
+        public Nullable<int> hr_DeptId { get; set; }
+        public Nullable<int> hr_DesignId { get; set; }
     }
 }

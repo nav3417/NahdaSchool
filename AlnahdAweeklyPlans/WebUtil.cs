@@ -43,5 +43,33 @@ namespace AlnahdAweeklyPlans
             }
             
         }
+        public static void sentmailDigital(string rmsg, string CreatedOn, string category, string fromdate, string todate, string AdminRemards)
+        {
+            var fromAddress = new MailAddress("alnahdatesting@gmail.com", "From HOS");
+            var toAddress = new MailAddress("alnahdatesting@gmail.com", "To Teacher");
+            const string fromPassword = "alnahda@3800";
+            string teacher = "Naveed";
+            string HOS = "Naveed";
+            string body = "The Record was  on " + CreatedOn + " for the date of " + CreatedOn + " having Type of " + category +" from date " + fromdate+" To date " + todate + " BY " + teacher + " Has been " + rmsg + " By " + HOS+" having Admin Remarks: "+AdminRemards;
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                Timeout = 20000
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = rmsg,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+
+        }
     }
 }
