@@ -188,6 +188,9 @@
     <Compile Include="StudentEmailDetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="StudentEmailFile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="StudentEmailMaster.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

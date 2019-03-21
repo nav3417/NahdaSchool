@@ -1007,6 +1007,23 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="StudentEmailFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasterId" Type="int" />
+          <Property Name="FileExtnsion" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShowFileName" Type="nvarchar(max)" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModifiedOn" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="StudentEmailMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -1017,7 +1034,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="Subject" Type="nvarchar" MaxLength="500" />
           <Property Name="School" Type="varchar" MaxLength="50" />
           <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
-          <Property Name="IsTemplate" Type="varchar" MaxLength="50" />
+          <Property Name="IsTemplate" Type="bit" />
           <Property Name="Type" Type="varchar" MaxLength="50" />
           <Property Name="IsFile" Type="bit" />
           <Property Name="NoFiles" Type="int" />
@@ -1158,6 +1175,18 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StudentEmailFiles_StudentEmailMaster">
+          <End Role="StudentEmailMaster" Type="Self.StudentEmailMaster" Multiplicity="0..1" />
+          <End Role="StudentEmailFiles" Type="Self.StudentEmailFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEmailMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentEmailFiles">
+              <PropertyRef Name="MasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Nahda_AttendanceModelStoreContainer">
           <EntitySet Name="CommunicationGroupDetail" EntityType="Self.CommunicationGroupDetail" Schema="Academic" store:Type="Tables" />
           <EntitySet Name="CommunicationGroupMaster" EntityType="Self.CommunicationGroupMaster" Schema="Academic" store:Type="Tables" />
@@ -1197,6 +1226,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <EntitySet Name="Student_StudentMst" EntityType="Self.Student_StudentMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentEmailDetail" EntityType="Self.StudentEmailDetail" Schema="Student" store:Type="Tables" />
+          <EntitySet Name="StudentEmailFiles" EntityType="Self.StudentEmailFiles" Schema="Student" store:Type="Tables" />
           <EntitySet Name="StudentEmailMaster" EntityType="Self.StudentEmailMaster" Schema="Student" store:Type="Tables" />
           <EntitySet Name="Exam_ClassTimeTable" EntityType="Self.Exam_ClassTimeTable" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1358,6 +1388,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Self.FK_StudentEmailDetail_StudentEmailMaster">
             <End Role="StudentEmailMaster" EntitySet="StudentEmailMaster" />
             <End Role="StudentEmailDetail" EntitySet="StudentEmailDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEmailFiles_StudentEmailMaster" Association="Self.FK_StudentEmailFiles_StudentEmailMaster">
+            <End Role="StudentEmailMaster" EntitySet="StudentEmailMaster" />
+            <End Role="StudentEmailFiles" EntitySet="StudentEmailFiles" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -2120,20 +2154,25 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <EntitySet Name="CommunicationGroupDetails" EntityType="Nahda_AttendanceModel.CommunicationGroupDetail" />
           <EntitySet Name="CommunicationGroupMasters" EntityType="Nahda_AttendanceModel.CommunicationGroupMaster" />
           <EntitySet Name="StudentEmailDetails" EntityType="Nahda_AttendanceModel.StudentEmailDetail" />
-          <EntitySet Name="StudentEmailMasters" EntityType="Nahda_AttendanceModel.StudentEmailMaster" />
           <AssociationSet Name="FK_CommunicationGroupDetail_CommunicationGroupMaster" Association="Nahda_AttendanceModel.FK_CommunicationGroupDetail_CommunicationGroupMaster">
             <End Role="CommunicationGroupMaster" EntitySet="CommunicationGroupMasters" />
             <End Role="CommunicationGroupDetail" EntitySet="CommunicationGroupDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster">
-            <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
-            <End Role="StudentEmailDetail" EntitySet="StudentEmailDetails" />
           </AssociationSet>
           <EntitySet Name="reg_building" EntityType="Nahda_AttendanceModel.reg_building" />
           <EntitySet Name="reg_location" EntityType="Nahda_AttendanceModel.reg_location" />
           <EntitySet Name="reg_room" EntityType="Nahda_AttendanceModel.reg_room" />
           <EntitySet Name="HREmployeeMsts" EntityType="Nahda_AttendanceModel.HREmployeeMst" />
           <EntitySet Name="Exam_subjectGroup" EntityType="Nahda_AttendanceModel.Exam_subjectGroup" />
+          <EntitySet Name="StudentEmailFiles" EntityType="Nahda_AttendanceModel.StudentEmailFile" />
+          <EntitySet Name="StudentEmailMasters" EntityType="Nahda_AttendanceModel.StudentEmailMaster" />
+          <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster">
+            <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
+            <End Role="StudentEmailDetail" EntitySet="StudentEmailDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEmailFiles_StudentEmailMaster" Association="Nahda_AttendanceModel.FK_StudentEmailFiles_StudentEmailMaster">
+            <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
+            <End Role="StudentEmailFile" EntitySet="StudentEmailFiles" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="LessonsPlanMaster">
           <Key>
@@ -2418,26 +2457,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="StudentEmailMaster" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailDetail" ToRole="StudentEmailMaster" />
         </EntityType>
-        <EntityType Name="StudentEmailMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsTemplate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsFile" Type="Boolean" />
-          <Property Name="NoFiles" Type="Int32" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="StudentEmailDetails" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailMaster" ToRole="StudentEmailDetail" />
-        </EntityType>
         <Association Name="FK_CommunicationGroupDetail_CommunicationGroupMaster">
           <End Type="Nahda_AttendanceModel.CommunicationGroupMaster" Role="CommunicationGroupMaster" Multiplicity="0..1" />
           <End Type="Nahda_AttendanceModel.CommunicationGroupDetail" Role="CommunicationGroupDetail" Multiplicity="*" />
@@ -2446,18 +2465,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CommunicationGroupDetail">
-              <PropertyRef Name="MastId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
-          <End Type="Nahda_AttendanceModel.StudentEmailMaster" Role="StudentEmailMaster" Multiplicity="0..1" />
-          <End Type="Nahda_AttendanceModel.StudentEmailDetail" Role="StudentEmailDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StudentEmailMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StudentEmailDetail">
               <PropertyRef Name="MastId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2616,6 +2623,69 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="PermanentDelete" Type="Boolean" />
         </EntityType>
+        <EntityType Name="StudentEmailFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterId" Type="Int32" />
+          <Property Name="FileExtnsion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShowFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentEmailMaster" Relationship="Nahda_AttendanceModel.FK_StudentEmailFiles_StudentEmailMaster" FromRole="StudentEmailFile" ToRole="StudentEmailMaster" />
+        </EntityType>
+        <EntityType Name="StudentEmailMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsTemplate" Type="Boolean" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFile" Type="Boolean" />
+          <Property Name="NoFiles" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentEmailDetails" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailMaster" ToRole="StudentEmailDetail" />
+          <NavigationProperty Name="StudentEmailFiles" Relationship="Nahda_AttendanceModel.FK_StudentEmailFiles_StudentEmailMaster" FromRole="StudentEmailMaster" ToRole="StudentEmailFile" />
+        </EntityType>
+        <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
+          <End Type="Nahda_AttendanceModel.StudentEmailMaster" Role="StudentEmailMaster" Multiplicity="0..1" />
+          <End Type="Nahda_AttendanceModel.StudentEmailDetail" Role="StudentEmailDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEmailMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentEmailDetail">
+              <PropertyRef Name="MastId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEmailFiles_StudentEmailMaster">
+          <End Type="Nahda_AttendanceModel.StudentEmailMaster" Role="StudentEmailMaster" Multiplicity="0..1" />
+          <End Type="Nahda_AttendanceModel.StudentEmailFile" Role="StudentEmailFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentEmailMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentEmailFile">
+              <PropertyRef Name="MasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3485,26 +3555,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StudentEmailMasters">
-            <EntityTypeMapping TypeName="Nahda_AttendanceModel.StudentEmailMaster">
-              <MappingFragment StoreEntitySet="StudentEmailMaster">
-                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="NoFiles" ColumnName="NoFiles" />
-                <ScalarProperty Name="IsFile" ColumnName="IsFile" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
-                <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
-                <ScalarProperty Name="School" ColumnName="School" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="MailContent" ColumnName="MailContent" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="reg_building">
             <EntityTypeMapping TypeName="Nahda_AttendanceModel.reg_building">
               <MappingFragment StoreEntitySet="reg_building">
@@ -3660,6 +3710,44 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
                 <ScalarProperty Name="School" ColumnName="School" />
                 <ScalarProperty Name="ClassId" ColumnName="ClassId" />
                 <ScalarProperty Name="TermId" ColumnName="TermId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEmailFiles">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.StudentEmailFile">
+              <MappingFragment StoreEntitySet="StudentEmailFiles">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ShowFileName" ColumnName="ShowFileName" />
+                <ScalarProperty Name="FileExtnsion" ColumnName="FileExtnsion" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEmailMasters">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.StudentEmailMaster">
+              <MappingFragment StoreEntitySet="StudentEmailMaster">
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="NoFiles" ColumnName="NoFiles" />
+                <ScalarProperty Name="IsFile" ColumnName="IsFile" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+                <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MailContent" ColumnName="MailContent" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

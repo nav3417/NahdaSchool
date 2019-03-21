@@ -55,14 +55,16 @@
         <EntityTypeShape EntityType="Nahda_AttendanceModel.CommunicationGroupDetail" Width="1.5" PointX="3" PointY="22.125" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.CommunicationGroupMaster" Width="1.5" PointX="0.75" PointY="22" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.StudentEmailDetail" Width="1.5" PointX="23" PointY="19.25" />
-        <EntityTypeShape EntityType="Nahda_AttendanceModel.StudentEmailMaster" Width="1.5" PointX="20.75" PointY="19" />
         <AssociationConnector Association="Nahda_AttendanceModel.FK_CommunicationGroupDetail_CommunicationGroupMaster" />
-        <AssociationConnector Association="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.reg_building" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.reg_location" Width="1.5" PointX="22.75" PointY="0.75" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.reg_room" Width="1.5" PointX="22.75" PointY="4.75" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.HREmployeeMst" Width="1.5" PointX="9.375" PointY="17.75" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.Exam_subjectGroup" Width="1.5" PointX="22.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Nahda_AttendanceModel.StudentEmailFile" Width="1.5" PointX="23" PointY="24.125" />
+        <EntityTypeShape EntityType="Nahda_AttendanceModel.StudentEmailMaster" Width="1.5" PointX="20.75" PointY="18.875" />
+        <AssociationConnector Association="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" />
+        <AssociationConnector Association="Nahda_AttendanceModel.FK_StudentEmailFiles_StudentEmailMaster" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

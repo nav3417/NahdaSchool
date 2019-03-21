@@ -23,5 +23,10 @@ namespace AlnahdAweeklyPlans.Models
         public List<int> multiselectedemailmstr { get; set; }
         public List<int> multiselectedemaildetl { get; set; }
         public string ids { get; set; }
+        public List<string> Indivisuald { get; set; }
+        public List<string> CC { get; set; }
+        public string Subject { get; set; }
+        public string EmailBody { get; set; }
+
     }
 }

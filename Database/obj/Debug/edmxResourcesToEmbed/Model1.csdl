@@ -756,20 +756,25 @@
     <EntitySet Name="CommunicationGroupDetails" EntityType="Nahda_AttendanceModel.CommunicationGroupDetail" />
     <EntitySet Name="CommunicationGroupMasters" EntityType="Nahda_AttendanceModel.CommunicationGroupMaster" />
     <EntitySet Name="StudentEmailDetails" EntityType="Nahda_AttendanceModel.StudentEmailDetail" />
-    <EntitySet Name="StudentEmailMasters" EntityType="Nahda_AttendanceModel.StudentEmailMaster" />
     <AssociationSet Name="FK_CommunicationGroupDetail_CommunicationGroupMaster" Association="Nahda_AttendanceModel.FK_CommunicationGroupDetail_CommunicationGroupMaster">
       <End Role="CommunicationGroupMaster" EntitySet="CommunicationGroupMasters" />
       <End Role="CommunicationGroupDetail" EntitySet="CommunicationGroupDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster">
-      <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
-      <End Role="StudentEmailDetail" EntitySet="StudentEmailDetails" />
     </AssociationSet>
     <EntitySet Name="reg_building" EntityType="Nahda_AttendanceModel.reg_building" />
     <EntitySet Name="reg_location" EntityType="Nahda_AttendanceModel.reg_location" />
     <EntitySet Name="reg_room" EntityType="Nahda_AttendanceModel.reg_room" />
     <EntitySet Name="HREmployeeMsts" EntityType="Nahda_AttendanceModel.HREmployeeMst" />
     <EntitySet Name="Exam_subjectGroup" EntityType="Nahda_AttendanceModel.Exam_subjectGroup" />
+    <EntitySet Name="StudentEmailFiles" EntityType="Nahda_AttendanceModel.StudentEmailFile" />
+    <EntitySet Name="StudentEmailMasters" EntityType="Nahda_AttendanceModel.StudentEmailMaster" />
+    <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster">
+      <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
+      <End Role="StudentEmailDetail" EntitySet="StudentEmailDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEmailFiles_StudentEmailMaster" Association="Nahda_AttendanceModel.FK_StudentEmailFiles_StudentEmailMaster">
+      <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
+      <End Role="StudentEmailFile" EntitySet="StudentEmailFiles" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="LessonsPlanMaster">
     <Key>
@@ -1054,26 +1059,6 @@
     <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="StudentEmailMaster" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailDetail" ToRole="StudentEmailMaster" />
   </EntityType>
-  <EntityType Name="StudentEmailMaster">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-    <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="IsTemplate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="IsFile" Type="Boolean" />
-    <Property Name="NoFiles" Type="Int32" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
-    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="StudentEmailDetails" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailMaster" ToRole="StudentEmailDetail" />
-  </EntityType>
   <Association Name="FK_CommunicationGroupDetail_CommunicationGroupMaster">
     <End Type="Nahda_AttendanceModel.CommunicationGroupMaster" Role="CommunicationGroupMaster" Multiplicity="0..1" />
     <End Type="Nahda_AttendanceModel.CommunicationGroupDetail" Role="CommunicationGroupDetail" Multiplicity="*" />
@@ -1082,18 +1067,6 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="CommunicationGroupDetail">
-        <PropertyRef Name="MastId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
-    <End Type="Nahda_AttendanceModel.StudentEmailMaster" Role="StudentEmailMaster" Multiplicity="0..1" />
-    <End Type="Nahda_AttendanceModel.StudentEmailDetail" Role="StudentEmailDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StudentEmailMaster">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="StudentEmailDetail">
         <PropertyRef Name="MastId" />
       </Dependent>
     </ReferentialConstraint>
@@ -1252,4 +1225,67 @@
     <Property Name="IsDeleted" Type="Boolean" />
     <Property Name="PermanentDelete" Type="Boolean" />
   </EntityType>
+  <EntityType Name="StudentEmailFile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="Int32" />
+    <Property Name="FileExtnsion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShowFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudentEmailMaster" Relationship="Nahda_AttendanceModel.FK_StudentEmailFiles_StudentEmailMaster" FromRole="StudentEmailFile" ToRole="StudentEmailMaster" />
+  </EntityType>
+  <EntityType Name="StudentEmailMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsTemplate" Type="Boolean" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsFile" Type="Boolean" />
+    <Property Name="NoFiles" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudentEmailDetails" Relationship="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" FromRole="StudentEmailMaster" ToRole="StudentEmailDetail" />
+    <NavigationProperty Name="StudentEmailFiles" Relationship="Nahda_AttendanceModel.FK_StudentEmailFiles_StudentEmailMaster" FromRole="StudentEmailMaster" ToRole="StudentEmailFile" />
+  </EntityType>
+  <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
+    <End Type="Nahda_AttendanceModel.StudentEmailMaster" Role="StudentEmailMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.StudentEmailDetail" Role="StudentEmailDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentEmailMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentEmailDetail">
+        <PropertyRef Name="MastId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentEmailFiles_StudentEmailMaster">
+    <End Type="Nahda_AttendanceModel.StudentEmailMaster" Role="StudentEmailMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.StudentEmailFile" Role="StudentEmailFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentEmailMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentEmailFile">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

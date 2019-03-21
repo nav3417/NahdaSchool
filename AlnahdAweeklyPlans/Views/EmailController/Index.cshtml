@@ -175,6 +175,8 @@
         <div class="col-md-1"><span class="facircl fa fa-2x  fa-remove green"></span></div>
     </div>
 </div>
+@using (Html.BeginForm("Sendemails", "EmailController", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
 <div class="modal fade" id="emailmodel" role="dialog">
     <div class="modal-dialog modal-lg">
 
@@ -189,22 +191,22 @@
                     <div class="col-md-10">
                         <div class="form-group">
                          <select></select>
-                            @Html.TextBox("From", null, new { @class = "form-control", PlaceHolder = "From", @readonly=true })
+                            @Html.TextBox("From", null, new { @class = "form-control", PlaceHolder = "From", @readonly = true })
                         </div>
                     </div>
                     <div class="col-md-10">
                         <div class="form-group">
-                            @Html.DropDownListFor(x => x.multiselectedemailmstr, @Model.CommunicationMstSelectList, new { @class = "form-control selectpicker",id= "selectpicker", multiple = "multiple", PlaceHolder = "To" })
+                            @Html.DropDownListFor(x => x.multiselectedemailmstr, @Model.CommunicationMstSelectList, new { @class = "form-control selectpicker", id = "selectpicker", multiple = "multiple", PlaceHolder = "To" })
                         </div>
                     </div>
                     <div class="col-md-10">
                         <div class="form-group detail">
-                            @Html.TextBox("test", null, new { @class = "form-control",  multiple = "multiple", PlaceHolder = "To" })
+                            
                         </div>
                     </div>
                     <div class="col-md-10">
                         <div class="form-group detail">
-                            @Html.TextBox("test", null, new { @class = "form-control",  multiple = "multiple", PlaceHolder = "To" })
+                            @Html.TextBox("test", null, new { @class = "form-control", multiple = "multiple", PlaceHolder = "To" })
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -214,23 +216,25 @@
                     </div>
                     <div class="col-md-10">
                         <div class="form-group">
-                            @Html.TextBox("Subject", null, new { @class = "form-control", PlaceHolder = "Subject" })
+                            @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", PlaceHolder = "Subject" })
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.TextArea("bodey",null, new { @class = "form-control ckeditor" })
+                    @Html.TextAreaFor(x => x.EmailBody, new { @class = "form-control ckeditor" })
                 </div>
+                @Html.TextBox("file", null, new { type = "file", Multiple = "multiple" })
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+                <button type="submit" class="btn btn-success" id="submitbtn">Send</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
 
     </div>
 </div>
+}
 <script src="~/Scripts/chosen.jquery.js"></script>
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <script>
@@ -276,5 +280,20 @@
             }
         });
         
+    });
+    $("#submitbtn").on("click", function () {
+        var Value=[];
+        $('#Indivisuald').each(function () {
+             Value = $(this).val();
+            
+        });
+        debugger
+        if (Value.length == 0) {
+            $('#Indivisuald option').each(function () {
+                var valeo = $(this).val();
+                $(this).prop('selected', true);
+
+            });
+        }
     });
 </script>

@@ -864,26 +864,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="StudentEmailMasters">
-      <EntityTypeMapping TypeName="Nahda_AttendanceModel.StudentEmailMaster">
-        <MappingFragment StoreEntitySet="StudentEmailMaster">
-          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="NoFiles" ColumnName="NoFiles" />
-          <ScalarProperty Name="IsFile" ColumnName="IsFile" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
-          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
-          <ScalarProperty Name="School" ColumnName="School" />
-          <ScalarProperty Name="Subject" ColumnName="Subject" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="MailContent" ColumnName="MailContent" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="reg_building">
       <EntityTypeMapping TypeName="Nahda_AttendanceModel.reg_building">
         <MappingFragment StoreEntitySet="reg_building">
@@ -1039,6 +1019,44 @@
           <ScalarProperty Name="School" ColumnName="School" />
           <ScalarProperty Name="ClassId" ColumnName="ClassId" />
           <ScalarProperty Name="TermId" ColumnName="TermId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentEmailFiles">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.StudentEmailFile">
+        <MappingFragment StoreEntitySet="StudentEmailFiles">
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ShowFileName" ColumnName="ShowFileName" />
+          <ScalarProperty Name="FileExtnsion" ColumnName="FileExtnsion" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentEmailMasters">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.StudentEmailMaster">
+        <MappingFragment StoreEntitySet="StudentEmailMaster">
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastModifiedOn" ColumnName="LastModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="NoFiles" ColumnName="NoFiles" />
+          <ScalarProperty Name="IsFile" ColumnName="IsFile" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+          <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="MailContent" ColumnName="MailContent" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

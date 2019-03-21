@@ -28,3 +28,4 @@ D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.xml
 D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\EntityFramework.SqlServer.xml
 D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\Database.dll
 D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\Database.pdb
+D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csprojResolveAssemblyReference.cache

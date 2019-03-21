@@ -1002,6 +1002,23 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
     <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
   </EntityType>
+  <EntityType Name="StudentEmailFiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="int" />
+    <Property Name="FileExtnsion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShowFileName" Type="nvarchar(max)" />
+    <Property Name="URL" Type="nvarchar(max)" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="StudentEmailMaster">
     <Key>
       <PropertyRef Name="Id" />
@@ -1012,7 +1029,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <Property Name="Subject" Type="nvarchar" MaxLength="500" />
     <Property Name="School" Type="varchar" MaxLength="50" />
     <Property Name="AcademicYear" Type="varchar" MaxLength="50" />
-    <Property Name="IsTemplate" Type="varchar" MaxLength="50" />
+    <Property Name="IsTemplate" Type="bit" />
     <Property Name="Type" Type="varchar" MaxLength="50" />
     <Property Name="IsFile" Type="bit" />
     <Property Name="NoFiles" Type="int" />
@@ -1153,6 +1170,18 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_StudentEmailFiles_StudentEmailMaster">
+    <End Role="StudentEmailMaster" Type="Self.StudentEmailMaster" Multiplicity="0..1" />
+    <End Role="StudentEmailFiles" Type="Self.StudentEmailFiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentEmailMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentEmailFiles">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Nahda_AttendanceModelStoreContainer">
     <EntitySet Name="CommunicationGroupDetail" EntityType="Self.CommunicationGroupDetail" Schema="Academic" store:Type="Tables" />
     <EntitySet Name="CommunicationGroupMaster" EntityType="Self.CommunicationGroupMaster" Schema="Academic" store:Type="Tables" />
@@ -1192,6 +1221,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <EntitySet Name="Student_StudentMst" EntityType="Self.Student_StudentMst" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentEmailDetail" EntityType="Self.StudentEmailDetail" Schema="Student" store:Type="Tables" />
+    <EntitySet Name="StudentEmailFiles" EntityType="Self.StudentEmailFiles" Schema="Student" store:Type="Tables" />
     <EntitySet Name="StudentEmailMaster" EntityType="Self.StudentEmailMaster" Schema="Student" store:Type="Tables" />
     <EntitySet Name="Exam_ClassTimeTable" EntityType="Self.Exam_ClassTimeTable" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -1353,6 +1383,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Self.FK_StudentEmailDetail_StudentEmailMaster">
       <End Role="StudentEmailMaster" EntitySet="StudentEmailMaster" />
       <End Role="StudentEmailDetail" EntitySet="StudentEmailDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEmailFiles_StudentEmailMaster" Association="Self.FK_StudentEmailFiles_StudentEmailMaster">
+      <End Role="StudentEmailMaster" EntitySet="StudentEmailMaster" />
+      <End Role="StudentEmailFiles" EntitySet="StudentEmailFiles" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

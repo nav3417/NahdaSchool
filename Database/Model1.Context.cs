@@ -66,11 +66,12 @@ namespace Database
         public virtual DbSet<CommunicationGroupDetail> CommunicationGroupDetails { get; set; }
         public virtual DbSet<CommunicationGroupMaster> CommunicationGroupMasters { get; set; }
         public virtual DbSet<StudentEmailDetail> StudentEmailDetails { get; set; }
-        public virtual DbSet<StudentEmailMaster> StudentEmailMasters { get; set; }
         public virtual DbSet<reg_building> reg_building { get; set; }
         public virtual DbSet<reg_location> reg_location { get; set; }
         public virtual DbSet<reg_room> reg_room { get; set; }
         public virtual DbSet<HREmployeeMst> HREmployeeMsts { get; set; }
         public virtual DbSet<Exam_subjectGroup> Exam_subjectGroup { get; set; }
+        public virtual DbSet<StudentEmailFile> StudentEmailFiles { get; set; }
+        public virtual DbSet<StudentEmailMaster> StudentEmailMasters { get; set; }
     }
 }

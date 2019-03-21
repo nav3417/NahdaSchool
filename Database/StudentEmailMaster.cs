@@ -18,6 +18,7 @@ namespace Database
         public StudentEmailMaster()
         {
             this.StudentEmailDetails = new HashSet<StudentEmailDetail>();
+            this.StudentEmailFiles = new HashSet<StudentEmailFile>();
         }
     
         public int Id { get; set; }
@@ -26,7 +27,7 @@ namespace Database
         public string Subject { get; set; }
         public string School { get; set; }
         public string AcademicYear { get; set; }
-        public string IsTemplate { get; set; }
+        public Nullable<bool> IsTemplate { get; set; }
         public string Type { get; set; }
         public Nullable<bool> IsFile { get; set; }
         public Nullable<int> NoFiles { get; set; }
@@ -37,5 +38,7 @@ namespace Database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentEmailDetail> StudentEmailDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentEmailFile> StudentEmailFiles { get; set; }
     }
 }

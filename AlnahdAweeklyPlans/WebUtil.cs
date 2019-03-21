@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Net.Mail;
 using System.Net;
+using System.Net.Mime;
 
 namespace AlnahdAweeklyPlans
 {
@@ -68,6 +69,49 @@ namespace AlnahdAweeklyPlans
             })
             {
                 smtp.Send(message);
+            }
+
+        }
+        public static bool SchoolToParent(string To, string Body, string subject, List<string> File)
+        {
+            try
+            {
+
+
+                var fromAddress = new MailAddress("alnahdatesting@gmail.com", "From School");
+                var toAddress = new MailAddress(To, "To Parent");
+                const string fromPassword = "alnahda@3800";
+                string body = Body;
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                    Timeout = 20000,
+                };
+                
+                
+                using (var message = new MailMessage(fromAddress, toAddress) {
+                    Body = body,
+                    Subject = subject
+                })
+                {               
+                    foreach (var i in File)
+                    {
+                        ContentType contentType = new ContentType();
+                        contentType.MediaType = MediaTypeNames.Application.Octet;
+                        message.Attachments.Add(new Attachment(i, contentType));
+                    }
+                    //smtp.UseDefaultCredentials = true;
+                    smtp.Send(message);
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
             }
 
         }
