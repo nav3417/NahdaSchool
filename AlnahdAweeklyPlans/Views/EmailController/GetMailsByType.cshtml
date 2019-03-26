@@ -1,0 +1,12 @@
+﻿@model  AlnahdAweeklyPlans.Models.SendEmailViewModel
+@foreach (var i in Model.StudentEmailMasterList)
+{<tr>
+            <th class="col-md-1">@Html.CheckBox("nw", new { id = "id", @class = "checkit" })</th>
+            <td class="modlel">
+                <a href="#">
+                    <img src="~/Images/Category/img1.jpg" alt="@i.Subject" class="img-circle img-responsive" style="margin-top:15px; height:40px;width:40px;;float:left" />
+                    <h5>From: @i.School</h5>
+                    <p>@i.Subject</p>
+                </a>
+            </td>
+        </tr>}

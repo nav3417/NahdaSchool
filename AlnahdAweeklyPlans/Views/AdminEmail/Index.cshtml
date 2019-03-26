@@ -1,0 +1,208 @@
+﻿@*@model List<Database.StudentEmailMaster>*@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<style>
+    .details-control {
+        background-image: url('~/Images/plus.jpg');
+        cursor: pointer;
+    }
+
+   .shown td.details-control {
+        background-image: url('~/Images/minus.png');
+    }
+    .Viewdetail:hover
+    {
+     cursor:pointer;
+    }
+</style>
+<table id="applydatatable" class="table table-responsive">
+    <thead>
+        <tr>
+            <th ></th>
+            <th hidden="hidden">Id</th>
+            <th>CreatedBy</th>
+            <th>Subject</th>
+            <th>School</th>
+            <th>AcademicYear</th>
+            <th>Total Files</th>
+            <th>Draft</th>
+            <th>View</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-12">
+        <div id="myModal" class="modal fade" role="dialog">
+        </div>
+    </div>
+</div>
+<script>
+
+    function format(d)
+    {
+        var a=""; 
+        for (var i = 0; i < d.length; i++)
+        {
+            a += '<tr>';
+            a += '<td>' + d[i].Response + '</td>';
+            a += '<td>' + d[i].datestring + '</td>';
+            a += setresponce(d[i]);
+            a += '</tr>';
+        }
+        debugger;
+        return '<table class="table table-responsive table-bordered"><tr><th>Responce</th><th>CreatedOn</th><th>Email</th><th>Action</th></tr><tbody>'+a+'</tbody></table>';
+    };
+    function setresponce(data)
+    {
+       var b = "";
+        debugger
+        if (data.Response == 'Draft') {
+            b += '<td  id="' + data.Id + '">' + data.Email + '</td>';
+            b += '<td> <input type="Button" class="btn btn-success childemailresendonly" id="ch,' + data.Id + '" value="Resend"></td>';       
+            return b;
+        }
+
+        else if (data.Response == 'Sent') {
+            return '<td  id="' + data.Id + '">' + data.Email + '</td>' + '<td></td>';
+        }
+        else {
+            return '<td contenteditable="true" id="' + data.Id + '">' + data.Email + '</td>' + '<td><input data-="' + data.Email+ '" type="Button" class="btn btn-success sendandresetemail" value="Resend" id="ch,' + data.Id + '"></td>';
+
+        }
+
+    }
+    $(document).ready(function () {
+        var table = $('#applydatatable').DataTable({
+            "ajax": "/AdminEmail/loaddata",
+            "columns": [
+                {
+                    "className": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": ''
+                },
+                {
+                    visible: false,
+                    "data": "Id"
+                },
+                { "data": "CreatedBy" },
+                { "data": "Subject" },
+                { "data": "School" },
+                { "data": "AcademicYear" },
+                { "data": "NoFiles" },
+                {
+                    data: function (item)
+                    {
+                        return '<input type="button" class="btn btn-success resendmaster" value="Resend" id="'+item.Id+'" />'
+                    } 
+                },
+                {
+                    data: function (item) {
+                        return '<div><span class="Viewdetail fa fa-eye fa-2x" id="' + item.Id + '"></span></div>'
+                    }
+
+                }
+            ],
+            "order": [[1, 'asc']]
+        });
+
+        // Add event listener for opening and closing details
+        $('#applydatatable tbody').on('click', 'td.details-control', function () {
+            debugger
+            var tr = $(this).closest('tr');
+            var row = table.row(tr);
+
+            if (row.child.isShown()) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                debugger;
+                row.child(format(row.data().Details)).show();
+                tr.addClass('shown');
+            }
+        });
+    });
+    $(document).on("click", ".resendmaster", function () {
+        if (confirm('Are you sure you want to Send Email again?')) {
+            var id = $(this).attr("id");
+            $.ajax({
+                url: "/AdminEmail/ResendemailMaster/" + id,
+                success: function (data) {
+                    alert("Done");
+                }
+            })
+            alert(id);
+        } else {
+            // Do nothing!
+        }
+       
+    });
+    $(document).on("click", ".childemailresendonly", function () {
+        var id = $(this).attr("id");
+        debugger;
+        var group = id.split(',');
+        var id = group[1];
+        var resend = {
+            Id: id
+        };
+        $.ajax({
+            url: "/AdminEmail/resendemaildetail",
+            data: resend,
+            success: function (data) {
+                alert("Done");
+                window.location.href = "/AdminEmail/Index";
+            }
+        })
+    });
+    $(document).on("click", ".sendandresetemail", function () {
+        var id = $(this).attr("id");
+        debugger;
+        var group = id.split(',');
+        var id = group[1];
+        var email = $(this).parent().prev("td").text();
+        var resend = {
+            Id: id,
+            Email: email
+        }
+        $.ajax({
+            url: "/AdminEmail/resendandupdateemaildetail",
+            data: resend,
+            success: function (data) {
+                //alert("Id: "+data.Id+" and Email Updated: " + data.Email);
+                if (data == 'Sent')
+                {
+                    alert("Done");
+                    window.location.href = "/AdminEmail/Index";
+                }
+                else
+                {
+                    alert("Please check your email");
+                }
+            }
+        })
+    });
+    $(document).on("click", ".Viewdetail", function () {
+        var id = $(this).attr("id");
+        debugger;
+        $.ajax({
+            url: "/AdminEmail/EmailDetail/" + id,
+            success: function (data) {
+                $("#myModal").html("");
+                $("#myModal").html(data);
+                $("#myModal").modal("show");
+            }
+        })
+    });
+    
+</script>

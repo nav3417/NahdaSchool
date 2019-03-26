@@ -211,6 +211,8 @@ D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\VBCSCompiler.exe
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\roslyn\VBCSCompiler.exe.config
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\AlnahdAweeklyPlans_DAL.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Database.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\DataTables.AspNet.Core.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\DataTables.AspNet.Mvc5.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.SqlServer.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll

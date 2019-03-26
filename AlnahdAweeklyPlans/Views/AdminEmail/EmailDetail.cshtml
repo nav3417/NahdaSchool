@@ -1,0 +1,35 @@
+﻿@model Services.Model.StudentEmailModel
+<div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">View</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Subject:@Model.Subject</h3>
+                     <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-2">Email</th>
+                                    <th class="col-md-2">Responce</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in Model.Details)
+                                {
+                                    <tr>
+                                        <th class="col-md-2">@i.Email</th>
+                                        <th class="col-md-2">@i.Response</th>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>

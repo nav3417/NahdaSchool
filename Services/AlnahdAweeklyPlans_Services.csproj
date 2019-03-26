@@ -71,6 +71,9 @@
     <Compile Include="Model\LessonPlanDetailModel.cs" />
     <Compile Include="Model\LessonPlanModel.cs" />
     <Compile Include="Model\LessonsPlanMasterModel.cs" />
+    <Compile Include="Model\StudentEmailModel.cs" />
+    <Compile Include="Model\StudentEmailDetailModel.cs" />
+    <Compile Include="Model\StudentEmailFileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

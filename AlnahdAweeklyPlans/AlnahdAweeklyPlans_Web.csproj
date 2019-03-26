@@ -46,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataTables.AspNet.Core, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataTables.AspNet.Core.2.0.2\lib\net45\DataTables.AspNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DataTables.AspNet.Mvc5, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataTables.AspNet.Mvc5.2.0.2\lib\net45\DataTables.AspNet.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -57,6 +63,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -131,6 +138,8 @@
     <Content Include="Images\Category\weeklyplan.png" />
     <Content Include="Images\General\calendar-icon.jpg" />
     <Content Include="Images\General\date.gif" />
+    <Content Include="Images\minus.png" />
+    <Content Include="Images\plus.jpg" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap-multiselect.js" />
@@ -633,6 +642,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminEmailController.cs" />
     <Compile Include="Controllers\ApprovalController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommunicationController.cs" />
@@ -643,11 +653,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NoticeBoardController.cs" />
     <Compile Include="Controllers\WeeklyPlanController.cs" />
+    <Compile Include="EmailResponce.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CommunicationModel.cs" />
     <Compile Include="Models\LixtBoxModel.cs" />
+    <Compile Include="Models\ResponceModel.cs" />
     <Compile Include="Models\sendemail.cs" />
     <Compile Include="Models\SendEmailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -696,6 +708,10 @@
     <Content Include="Views\Communication\loaddpt.cshtml" />
     <Content Include="Views\EmailController\Index.cshtml" />
     <Content Include="Views\EmailController\loaddetail.cshtml" />
+    <Content Include="Views\EmailController\GetMailsByType.cshtml" />
+    <Content Include="Views\EmailController\emailformat.cshtml" />
+    <Content Include="Views\AdminEmail\Index.cshtml" />
+    <Content Include="Views\AdminEmail\EmailDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

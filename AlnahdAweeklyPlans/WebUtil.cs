@@ -5,6 +5,7 @@ using System.Web;
 using System.Net.Mail;
 using System.Net;
 using System.Net.Mime;
+using AlnahdAweeklyPlans.Models;
 
 namespace AlnahdAweeklyPlans
 {
@@ -72,12 +73,10 @@ namespace AlnahdAweeklyPlans
             }
 
         }
-        public static bool SchoolToParent(string To, string Body, string subject, List<string> File)
+        public static bool SchoolToParent(string To ,List<sendemail> list, string Body, string subject, List<string> File)
         {
             try
             {
-
-
                 var fromAddress = new MailAddress("alnahdatesting@gmail.com", "From School");
                 var toAddress = new MailAddress(To, "To Parent");
                 const string fromPassword = "alnahda@3800";
@@ -91,13 +90,16 @@ namespace AlnahdAweeklyPlans
                     Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
                     Timeout = 20000,
                 };
-                
-                
-                using (var message = new MailMessage(fromAddress, toAddress) {
+
+
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
                     Body = body,
-                    Subject = subject
+                    Subject = subject,
+                    IsBodyHtml=true,
+
                 })
-                {               
+                {
                     foreach (var i in File)
                     {
                         ContentType contentType = new ContentType();
@@ -105,7 +107,12 @@ namespace AlnahdAweeklyPlans
                         message.Attachments.Add(new Attachment(i, contentType));
                     }
                     //smtp.UseDefaultCredentials = true;
-                    smtp.Send(message);
+                    //message.bc
+                    foreach (var i in list)
+                    {
+                        message.Bcc.Add(i.Email);
+                    }
+                    smtp.Send(message);     
                 }
                 return true;
             }

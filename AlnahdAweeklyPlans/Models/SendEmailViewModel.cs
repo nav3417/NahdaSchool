@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,9 @@ namespace AlnahdAweeklyPlans.Models
             emailInuerable = new List<sendemail>();
             emaildetail = new List<sendemail>();
             CommunicationDtlSelectList = new List<SelectListItem>();
+            StudentEmailMasterList = new List<StudentEmailMaster>();
         }
+        public int Id { get; set; }
         public List<SelectListItem> CommunicationMstSelectList { get; set; }
         public List<SelectListItem> CommunicationDtlSelectList { get; set; }
         public List<sendemail> emailInuerable { get; set; }
@@ -27,6 +30,9 @@ namespace AlnahdAweeklyPlans.Models
         public List<string> CC { get; set; }
         public string Subject { get; set; }
         public string EmailBody { get; set; }
+        public ResponceModel responce { get; set; }
+        public List<StudentEmailMaster> StudentEmailMasterList { get; set; }
+        public string SaveType { get; set; }
 
     }
 }
