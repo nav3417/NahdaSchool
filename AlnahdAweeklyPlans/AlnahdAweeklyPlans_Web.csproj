@@ -652,6 +652,7 @@
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NoticeBoardController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\WeeklyPlanController.cs" />
     <Compile Include="EmailResponce.cs" />
     <Compile Include="Global.asax.cs">
@@ -659,6 +660,7 @@
     </Compile>
     <Compile Include="Models\CommunicationModel.cs" />
     <Compile Include="Models\LixtBoxModel.cs" />
+    <Compile Include="Models\MultiSelect.cs" />
     <Compile Include="Models\ResponceModel.cs" />
     <Compile Include="Models\sendemail.cs" />
     <Compile Include="Models\SendEmailViewModel.cs" />
@@ -712,6 +714,7 @@
     <Content Include="Views\EmailController\emailformat.cshtml" />
     <Content Include="Views\AdminEmail\Index.cshtml" />
     <Content Include="Views\AdminEmail\EmailDetail.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

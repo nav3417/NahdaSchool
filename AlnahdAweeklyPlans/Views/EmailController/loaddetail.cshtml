@@ -1,3 +1,5 @@
 ﻿@model  AlnahdAweeklyPlans.Models.SendEmailViewModel
-@Html.DropDownListFor(x => x.Indivisuald, @Model.CommunicationDtlSelectList, new { @class = "form-control selectpicker", id = "Indivisuald", multiple = "multiple", PlaceHolder = "To" })
-
+@Html.DropDownListFor(x => x.Indivisuald, @Model.CommunicationDtlSelectList, new { @class = "form-control chosen-select", id = "Indivisuald", @multiple = true, PlaceHolder = "To" })
+<script>
+    $(".chosen-select").chosen({ width: '280px' });
+</script>

@@ -3,60 +3,73 @@
     .title {
         height: 15% !important;
     }
+
     .red {
         background-color: red;
         color: white;
         margin-bottom: 10px;
     }
+
     .blue {
         background-color: blue;
         color: white;
-        margin-bottom:10px;
+        margin-bottom: 10px;
     }
+
     .green {
         background-color: green;
         color: white;
         margin-bottom: 10px;
     }
+
     .pink {
         background-color: hotpink;
         color: white;
     }
+
     .facircl {
         display: inline-block;
         border-radius: 60px;
         box-shadow: 0px 0px 2px #888;
         padding: 0.5em 0.6em;
     }
+
     .right {
         position: fixed;
         right: 0px;
         bottom: 55px;
-        margin-bottom:40px;
-        height:100px;        
+        margin-bottom: 40px;
+        height: 100px;
         z-index: 10;
     }
+
     .no {
         transition: 0.5s;
         width: 0px;
         right: 0px;
     }
+
     .yes {
         width: 20px;
         right: 75px;
         transition: 0.5s;
     }
-    a{
-        color:black;
+
+    a {
+        color: black;
     }
+
         a:hover {
             color: black;
-            text-decoration:none;
+            text-decoration: none;
         }
-    td:hover{
-        background-color:#f5f2f2;
+
+    td:hover {
+        background-color: #f5f2f2;
     }
 </style>
+<link href="~/Content/chosen.css" rel="stylesheet" />
+<script src="~/Scripts/chosen.jquery.js"></script>
 <div class="row">
     <div class="col-md-12" id="title">
         <div class="row well-lg alert-success">
@@ -73,7 +86,7 @@
     <div class="row">
         <div class="col-md-3" style="border-right:solid">
             <ul class="list-group">
-                <li class="list-group-item"><a href="#"  id="sendemailmodel">New<span class="glyphicon glyphicon-envelope"></span></a></li>
+                <li class="list-group-item"><a href="#" id="sendemailmodel">New<span class="glyphicon glyphicon-envelope"></span></a></li>
                 <li class="list-group-item"><a href="#" id="temphref">Templates<span class="glyphicon glyphicon-envelope"></span></a></li>
                 <li class="list-group-item"><a href="#" id="Inboxhref">Inbox<span class="glyphicon glyphicon-inbox"></span><span class="badge red" id="Inboxcount">@((Model.responce==null)? 0:Model.responce.Inboxcount)</span></a></li>
                 <li class="list-group-item"><a href="#" id="Senthref">Sent <span class="glyphicon glyphicon-send"></span><span class="badge blue" id="Sentcount">@((Model.responce == null) ? 0 : Model.responce.Sentcount)</span></a></li>
@@ -92,21 +105,21 @@
                 <tbody id="StudentEmailMaster">
                     @foreach (var i in Model.StudentEmailMasterList)
                     {
-                        <tr>
-                            <th class="col-md-1">@Html.CheckBox("nw", new { id = "id", @class = "checkit" })</th>
-                            <td class="modlel">
-                                <a href="#">
-                                    <img src="~/Images/Mailes/@i.StudentEmailFiles.FirstOrDefault().URL" alt="@i.Subject" class="img-circle img-responsive" style="margin-top:15px; height:40px;width:40px;;float:left" />
-                                    <h5>From: @i.School</h5>
-                                    <p>@i.Subject</p>
-                                </a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <th class="col-md-1">@Html.CheckBox("nw", new { id = "id", @class = "checkit" })</th>
+                        <td class="modlel">
+                            <a href="#">
+                                <img src="~/Images/Mailes/@i.StudentEmailFiles.FirstOrDefault().URL" alt="@i.Subject" class="img-circle img-responsive" style="margin-top:15px; height:40px;width:40px;;float:left" />
+                                <h5>From: @i.School</h5>
+                                <p>@i.Subject</p>
+                            </a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
-            
-            </div>
+
+        </div>
     </div>
 </div>
 <div class="modal fade" id="myModal" role="dialog">
@@ -141,107 +154,110 @@
 </div>
 @using (Html.BeginForm("Sendemails", "EmailController", FormMethod.Post, new { id = "template", enctype = "multipart/form-data", @class = "form-horizontal tempevent" }))
 {
-<div class="modal fade" id="emailmodel" role="dialog">
+    <div class="modal fade" id="emailmodel" role="dialog">
 
-    <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Send Email</h4>
-            </div>
-            <div class="modal-body">
-                @Html.HiddenFor(x => x.Id, new { id="hiddenid"})
-                <div class="row">
-                    
-                    <div class="col-md-10">
-                        <div class="form-group">
-                            @Html.DropDownListFor(x => x.multiselectedemailmstr, @Model.CommunicationMstSelectList, new { @class = "form-control selectpicker", id = "selectpicker", multiple = "multiple", PlaceHolder = "To" })
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <div class="form-group detail">
-                            
-                        </div>
-                    </div>
-
-                    <div class="col-md-10">
-                        <div class="form-group">
-                            @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", PlaceHolder = "Subject",id= "Subject" })
-                        </div>
-                    </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Send Email</h4>
                 </div>
+                <div class="modal-body">
+                    @Html.HiddenFor(x => x.Id, new { id = "hiddenid" })
+                    <div class="row">
 
-                <div class="form-group">
-                    @Html.TextAreaFor(x => x.EmailBody, new { @class = "form-control ckeditor",id= "EmailBody"})
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                @Html.DropDownListFor(x => x.multiselectedemailmstr, @Model.CommunicationMstSelectList, new { @class = "form-control  chosen-select", id = "selectpicker", @multiple = true, PlaceHolder = "To" })
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="form-group detail">
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", PlaceHolder = "Subject", id = "Subject" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.EmailBody, new { @class = "form-control ckeditor", id = "EmailBody" })
+                    </div>
+                    @Html.TextBox("file", null, new { type = "file", Multiple = "multiple" })
                 </div>
-                @Html.TextBox("file", null, new { type = "file", Multiple = "multiple" })
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" id="submitbtn">Send</button>
+                    <input type="button" value="Save as Template" class="btn btn-success store" id="SAT" />
+                    <input type="button" value="Send & Save as Template" class="btn btn-success store" id="SATAS" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success" id="submitbtn">Send</button>
-                <input type="button"  value="Save as Template"  class="btn btn-success store" id="SAT"/>
-                <input type="button"  value="Send & Save as Template" class="btn btn-success store" id="SATAS" />
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            </div>
+
         </div>
-
     </div>
-</div>
 }
-<script src="~/Scripts/jquery-3.0.0.js"></script>
-<script src="~/Scripts/chosen.jquery.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         //$(".selectpicker").selectpicker();
+        $(".chosen-select").chosen({ width: '280px' });
         $("#generalifhide").hide();
         var d =@Model.StudentEmailMasterList.Count();
         if (d > 0)
         {
             $("#generalifhide").show();
         }
-        window.setInterval(function () {
-            debugger;
-            var Id =$("#hiddenid").val();
-            var Subject = $("#Subject").val();
-            var Indivisuald = $("#Indivisuald").val();
-            var body = CKEDITOR.instances.EmailBody.getData();
-            debugger
-            if (body != "" || Subject != "" || Indivisuald != undefined)
-            {
-                var email = new FormData();
-                if (body != "")
-                {
-                    email.append("EmailBody", body);
-                }
-                if (Id != "")
-                {
-                    email.append("Id", Id);
-                }
-                email.append("Subject", Subject);
-                email.append("Indivisuald", Indivisuald);
-                for (var i = 0; i < file.length; i++) {
-                    email.append('file' + i, file[i]);
-                }
-                $.ajax({
-                    url: "/EmailController/draftemails",
-                    type: "post",
-                    data: email,
-                    processData: false,
-                    dataType: "JSON",
-                    contentType: false,
-                    success: function (response) {
-                        $("#hiddenid").val(response.Id);
-                        var count = $("#hiddenid").val();
-                        $("#draftcount").text(response.Draftcount);
-                    },
-                    error: function () {
-                        alert("Error! could not Saved");
-                    }
-                });
-            }
-        }, 10000);
+        //window.setInterval(function () {
+        //    debugger;
+        //    var Id =$("#hiddenid").val();
+        //    var Subject = $("#Subject").val();
+        //    var Indivisuald = $("#Indivisuald").val();
+        //    var body = CKEDITOR.instances.EmailBody.getData();
+        //    if (body != "" || Subject != "" || Indivisuald != undefined)
+        //    {
+        //        var email = new FormData();
+        //        if (body != "")
+        //        {
+        //            email.append("EmailBody", body);
+        //        }
+        //        if (Id != "")
+        //        {
+        //            email.append("Id", Id);
+        //        }
+        //        email.append("Subject", Subject);
+        //        email.append("Indivisuald", Indivisuald);
+
+        //let input_file = document.querySelector('input[type="file"]')
+
+        //Array.from(input_file.files).forEach((f) => {
+        //    email1.append('image[]', f)
+        //})
+    //})
+        //        $.ajax({
+        //            url: "/EmailController/draftemails",
+        //            type: "post",
+        //            data: email,
+        //            processData: false,
+        //            dataType: "JSON",
+        //            contentType: false,
+        //            success: function (response) {
+        //                $("#hiddenid").val(response.Id);
+        //                var count = $("#hiddenid").val();
+        //                $("#draftcount").text(response.Draftcount);
+        //            },
+        //            error: function () {
+        //                alert("Error! could not Saved");
+        //            }
+        //        });
+        //    }
+        //}, 10000);
     });
     $(document).on("click", ".store", function () {
         debugger
@@ -250,36 +266,60 @@
         var Indivisuald = $("#Indivisuald").val();
         var body = CKEDITOR.instances.EmailBody.getData();
         var SaveType = $(this).attr("id");
-        var email = new FormData();
-        if (body != "") {
-            email.append("EmailBody", body);
-        }
-        email.append("SaveType", SaveType);
-        if (Id != "") {
-            email.append("Id", Id);
-        }
-        email.append("Subject", Subject);
-        for (var i = 0; i < file.length; i++) {
-            email.append('file' + i, file[i]);
-        }
+        var email1 = new FormData();
+        var email2 = {
+            EmailBody: body,
+            SaveType: SaveType,
+            Id: Id,
+            Subject: Subject
+        };
+        email1.append("EmailBody", body);
+        email1.append("SaveType", SaveType);
+        email1.append("Id", Id);
+        email1.append("Subject", Subject);
+        debugger
+        //jQuery.each(jQuery('input[type=file]'), function (i, value) {
+        //    email1.append('image[' + i + ']', value.files[i]);
+        //});
+        let input_file = document.querySelector('input[type="file"]')
+
+        Array.from(input_file.files).forEach((f) => {
+            email1.append('image[]', f)
+        })
         $.ajax({
-            url: "/EmailController/sendemailt",
+            url: "/EmailController/sendemailttt",
+            data: email1,
             type: "post",
-            data: email,
             processData: false,
-            dataType: "JSON",
-            contentType: false,
+                   dataType: "JSON",
+                    contentType: false,
             success: function (response) {
-                alert("Hi");
+                $("#hiddenid").val(response.Id);
+                var count = $("#hiddenid").val();
+                $("#draftcount").text(response.Draftcount);
             },
             error: function () {
                 alert("Error! could not Saved");
             }
         });
 
-    });
-    $(".tempevent").keyup(function (e) {
-            alert("hi");
+
+
+        //$.ajax({
+        //    url: "/EmailController/sendemailt",
+        //    data: email1,
+        //    type: "POST",
+        //    processData: true,
+        //    dataType: "JSON",
+        //    contentType: false,
+        //    success: function (response) {
+        //        alert("Hi");
+        //    },
+        //    error: function () {
+        //        alert("Error! could not Saved");
+        //    }
+        //});
+
     });
     $(".modlel").click(function () {
         $("#myModal").modal("show");
@@ -290,7 +330,7 @@
     $("#templateemail").click(function () {
         $("#emailtemplate").modal("show");
     });
-    
+
     $(document).on("change", ".checkit", function () {
         var check = $(this).is(':checked');
         //$('input:checkbox').prop('checked', check);
@@ -402,7 +442,7 @@
         });
 
     });
-    
+
     $("#submitbtn").on("click", function () {
         var Value=[];
         $('#Indivisuald').each(function () {

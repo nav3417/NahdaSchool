@@ -65,10 +65,10 @@ namespace AlnahdAweeklyPlans.Controllers
                     filedetail.ShowFileName = file.FileName;
                     filedetail.FileExtnsion = file.ContentType;
                     filedetail.URL = DateTime.Now.Ticks.ToString();
-                    filedetail.CreatedBy = "Naveed";
+                    filedetail.CreatedBy =User.Identity.Name==""?"Naveed":User.Identity.Name;
                     filedetail.CreatedOn = DateTime.Now;
                     filedetail.IsActive = true;
-                    string path = "/Images/" + "Mailes/" + filedetail.URL;
+                    string path = "/Images/" + "Mailes/" + filedetail.URL+ file.FileName.LastIndexOf('.');
                     string createpath = "/Images/" + "Mailes/";
                     string dicrectory = Request.MapPath(createpath);
                     Directory.CreateDirectory(dicrectory);
@@ -89,7 +89,7 @@ namespace AlnahdAweeklyPlans.Controllers
                 sed.Email = email;
                 sed.Date = DateTime.Now;
                 sed.CreatedOn = DateTime.Now;
-                sed.CreatedBy = "Naveed";
+                sed.CreatedBy = User.Identity.Name == "" ? "Naveed" : User.Identity.Name;
                 sem.StudentEmailDetails.Add(sed);
             }
             db.StudentEmailMasters.Add(sem);
@@ -107,7 +107,7 @@ namespace AlnahdAweeklyPlans.Controllers
                 var skiped = detaillist.Skip(skip).Take(take).Select(x=> new sendemail() {Id=x.Id,Email=x.Email}).ToList();
                 if(skiped.Count>0)
                 {
-                    var Response = WebUtil.SchoolToParent(ToEmail, skiped, data.EmailBody, data.Subject, allfiles) ? "Success" : "Failed";
+                    var Response = WebUtil.SchoolToParent(ToEmail, skiped, data.EmailBody, data.Subject, allfiles) ? "Sent" : "Failed";
                     foreach (var j in detaillist.Skip(skip).Take(take))
                     {
                         j.Response = Response;
@@ -139,66 +139,58 @@ namespace AlnahdAweeklyPlans.Controllers
             sem.Type = "Draft";
             sem.CreatedOn = DateTime.Now;
             sem.CreatedBy = (User.Identity.Name == "") ? "Naveed" : User.Identity.Name;
-            //HttpFileCollectionBase files = Request.Files;
-            //sem.IsFile = files.Count > 0 ? true : false;
-            //sem.NoFiles = files.Count;
-            //List<string> allfiles = new List<string>();
-            //foreach (string fcName in Request.Files)
-            //{
-            //    HttpPostedFileBase file = files[fcName];
-            //    if (!string.IsNullOrEmpty(file.FileName))
-            //    {
-            //        StudentEmailFile filedetail = new StudentEmailFile();
-            //        filedetail.ShowFileName = file.FileName;
-            //        filedetail.FileExtnsion = file.ContentType;
-            //        filedetail.URL = DateTime.Now.Ticks.ToString();
-            //        filedetail.CreatedBy = "Naveed";
-            //        filedetail.CreatedOn = DateTime.Now;
-            //        filedetail.IsActive = true;
-            //        string path = "/Images/" + "Mailes/" + filedetail.URL;
-            //        string createpath = "/Images/" + "Mailes/";
-            //        string dicrectory = Request.MapPath(createpath);
-            //        Directory.CreateDirectory(dicrectory);
-            //        string dicrectory2 = Request.MapPath(path);
-            //        allfiles.Add(dicrectory2);
-            //        file.SaveAs(dicrectory2);
-            //        sem.StudentEmailFiles.Add(filedetail);
-            //    }
+            HttpFileCollectionBase files = Request.Files;
+            sem.IsFile = files.Count > 0 ? true : false;
+            sem.NoFiles = files.Count;
+            List<string> allfiles = new List<string>();
+            foreach (string fcName in Request.Files)
+            {
+                HttpPostedFileBase file = files[fcName];
+                if (!string.IsNullOrEmpty(file.FileName))
+                {
+                    if (sem.StudentEmailFiles.Count > 0)
+                    {
+                        var check = sem.StudentEmailFiles.FirstOrDefault(x => x.ShowFileName.Equals(file.FileName));
+                        if(check==null)
+                        {
+                            StudentEmailFile filedetail = new StudentEmailFile();
+                            filedetail.ShowFileName = file.FileName;
+                            filedetail.FileExtnsion = file.ContentType;
+                            filedetail.URL = DateTime.Now.Ticks.ToString();
+                            filedetail.CreatedBy = "Naveed";
+                            filedetail.CreatedOn = DateTime.Now;
+                            filedetail.IsActive = true;
+                            string path = "/Images/" + "Mailes/" + filedetail.URL + file.FileName.LastIndexOf('.');
+                            string createpath = "/Images/" + "Mailes/";
+                            string dicrectory = Request.MapPath(createpath);
+                            Directory.CreateDirectory(dicrectory);
+                            string dicrectory2 = Request.MapPath(path);
+                            allfiles.Add(dicrectory2);
+                            file.SaveAs(dicrectory2);
+                            sem.StudentEmailFiles.Add(filedetail);
+                        }
+                    }
+                    else
+                    {
+                        StudentEmailFile filedetail = new StudentEmailFile();
+                        filedetail.ShowFileName = file.FileName;
+                        filedetail.FileExtnsion = file.ContentType;
+                        filedetail.URL = DateTime.Now.Ticks.ToString();
+                        filedetail.CreatedBy = "Naveed";
+                        filedetail.CreatedOn = DateTime.Now;
+                        filedetail.IsActive = true;
+                        string path = "/Images/" + "Mailes/" + filedetail.URL + file.FileName.LastIndexOf('.');
+                        string createpath = "/Images/" + "Mailes/";
+                        string dicrectory = Request.MapPath(createpath);
+                        Directory.CreateDirectory(dicrectory);
+                        string dicrectory2 = Request.MapPath(path);
+                        allfiles.Add(dicrectory2);
+                        file.SaveAs(dicrectory2);
+                        sem.StudentEmailFiles.Add(filedetail);
+                    }
+                }
 
-            //}
-            //if (data.Indivisuald.Count > 0)
-            //{
-            //    foreach (var i in data.Indivisuald)
-            //    {
-            //        string[] a = i.Split('/');
-            //        string id = a[0];
-            //        string email = a[1];
-            //        StudentEmailDetail sed = new StudentEmailDetail();
-            //        // sed.Response = WebUtil.SchoolToParent(email, data.EmailBody, data.Subject, allfiles) ? "Sent" : "Failed";
-            //        sed.Email = email;
-            //        sed.Date = DateTime.Now;
-            //        sed.CreatedOn = DateTime.Now;
-            //        sed.CreatedBy = (User.Identity.Name == "") ? "Naveed" : User.Identity.Name;
-            //        if (sem.StudentEmailDetails.Count > 0)
-            //        {
-            //            var check = sem.StudentEmailDetails.Where(x => x.Email.Equals(email)).FirstOrDefault();
-            //            if (check == null)
-            //            {
-            //                sem.StudentEmailDetails.Add(sed);
-            //                db.StudentEmailMasters.Add(sem);
-            //                db.SaveChanges();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            sem.StudentEmailDetails.Add(sed);
-            //            db.StudentEmailMasters.Add(sem);
-            //            db.SaveChanges();
-            //        }
-
-            //    }
-
-            //}
+            }
             if (data.Id == 0)
             {
                 sem = db.StudentEmailMasters.Add(sem);
@@ -213,18 +205,10 @@ namespace AlnahdAweeklyPlans.Controllers
             rm.Id = sem.Id;
             return Json(rm, JsonRequestBehavior.AllowGet);
         }
-        //public ActionResult updateinboxcount()
-        //{
-        //    return int;
-        //}
-        //public ActionResult updateinboxcount()
-        //{
-        //    return int;
-        //}
         public ActionResult GetMailsByType(string type)
         {
             SendEmailViewModel data = new SendEmailViewModel();
-            string username = (User.Identity.Name == "") ? "Naveed" : User.Identity.Name;
+            string username =User.Identity.Name == ""? "Naveed" : User.Identity.Name;
             if (type.Equals("temp"))
             {
                 data.StudentEmailMasterList = db.StudentEmailMasters.Where(x => x.IsTemplate==true && x.CreatedBy.Equals(username)).ToList();
@@ -280,38 +264,131 @@ namespace AlnahdAweeklyPlans.Controllers
             rm.Id = sem.Id;
             return RedirectToAction("Index");
         }
-        public ActionResult sendemailt(SendEmailViewModel data)
+        [ValidateInput(false)]
+        public ActionResult sendemailttt(SendEmailViewModel data)
         {
-            //StudentEmailMaster sem;
-            //if (data.Id != 0)
-            //{
-            //    sem = db.StudentEmailMasters.Find(data.Id);
-            //}
-            //else
-            //{
-            //    sem = new StudentEmailMaster();
-            //}
-            //sem.AcademicYear = "not defined yet";//(db.AcademicYears.FirstOrDefault().Academic_Year_En==null)? "Not defined yet": db.AcademicYears.FirstOrDefault(x => x.isCurrent == true).Academic_Year_En;
-            //sem.MailContent = HttpUtility.HtmlDecode(data.EmailBody);
-            //sem.Subject = data.Subject;
-            ////  string s = Regex.Replace(data.EmailBody, "<.*?>", String.Empty);
-            //sem.IsTemplate = true;
-            //sem.Type = "Draft";
-            //sem.CreatedOn = DateTime.Now;
-            //sem.CreatedBy = (User.Identity.Name == "") ? "Naveed" : User.Identity.Name;
+            StudentEmailMaster sem;
+            if (data.Id != 0)
+            {
+                sem = db.StudentEmailMasters.Find(data.Id);
+            }
+            else
+            {
+                sem = new StudentEmailMaster();
+            }
+            sem.AcademicYear = "not defined yet";//(db.AcademicYears.FirstOrDefault().Academic_Year_En==null)? "Not defined yet": db.AcademicYears.FirstOrDefault(x => x.isCurrent == true).Academic_Year_En;
+            sem.MailContent = HttpUtility.HtmlDecode(data.EmailBody);
+            sem.Subject = data.Subject;
+            //  string s = Regex.Replace(data.EmailBody, "<.*?>", String.Empty);
+            sem.IsTemplate = true;
+            sem.Type = "Draft";
+            sem.CreatedOn = DateTime.Now;
+            sem.CreatedBy = (User.Identity.Name == "") ? "Naveed" : User.Identity.Name;
+            HttpFileCollectionBase files = Request.Files;
+            sem.IsFile = files.Count > 0 ? true : false;
+            sem.NoFiles = files.Count;
+            List<string> allfiles = new List<string>();
+            List<int> idstoremove = new List<int>();
+            foreach (var item in sem.StudentEmailFiles)
+            {
+                var file = Request.Files[item.ShowFileName];
+                if (string.IsNullOrEmpty(file.FileName))
+                {
+                    idstoremove.Add(item.Id);
+                }
+            }
 
-            //if (data.Id == 0)
-            //{
-            //    sem = db.StudentEmailMasters.Add(sem);
-            //    db.SaveChanges();
-            //}
-            //else
-            //{
-            //    db.SaveChanges();
-            //}
-            //ResponceModel rm = new ResponceModel();
-            //rm.Draftcount = db.StudentEmailMasters.Where(x => x.Type.Equals("Draft")).Count();
-            //rm.Id = sem.Id;
+            foreach (var i in idstoremove)
+            {
+                var find = db.StudentEmailDetails.Where(x => x.Id == i).FirstOrDefault();
+                if(find!=null)
+                {
+                    db.StudentEmailDetails.Remove(find);
+                    db.SaveChanges();
+                }
+            }
+            foreach (string fcName in Request.Files)
+            {
+                HttpPostedFileBase file = files[fcName];
+                if (!string.IsNullOrEmpty(file.FileName))
+                {
+                    if (sem.StudentEmailFiles.Count > 0)
+                    {
+                        var check = sem.StudentEmailFiles.FirstOrDefault(x => x.ShowFileName.Equals(file.FileName));
+                        if (check == null)
+                        {
+                            StudentEmailFile filedetail = new StudentEmailFile();
+                            filedetail.ShowFileName = file.FileName;
+                            filedetail.FileExtnsion = file.ContentType;
+                            filedetail.URL = DateTime.Now.Ticks.ToString();
+                            filedetail.CreatedBy =User.Identity.Name==""?"Naveed": User.Identity.Name;
+                            filedetail.CreatedOn = DateTime.Now;
+                            filedetail.IsActive = true;
+                            string path = "/Images/" + "Mailes/" + filedetail.URL + file.FileName.LastIndexOf('.');
+                            string createpath = "/Images/" + "Mailes/";
+                            string dicrectory = Request.MapPath(createpath);
+                            Directory.CreateDirectory(dicrectory);
+                            string dicrectory2 = Request.MapPath(path);
+                            allfiles.Add(dicrectory2);
+                            file.SaveAs(dicrectory2);
+                            sem.StudentEmailFiles.Add(filedetail);
+                        }
+                    }
+                    else
+                    {
+                        StudentEmailFile filedetail = new StudentEmailFile();
+                        filedetail.ShowFileName = file.FileName;
+                        filedetail.FileExtnsion = file.ContentType;
+                        filedetail.URL = DateTime.Now.Ticks.ToString();
+                        filedetail.CreatedBy = User.Identity.Name == "" ? "Naveed" : User.Identity.Name;
+                        filedetail.CreatedOn = DateTime.Now;
+                        filedetail.IsActive = true;
+                        string path = "/Images/" + "Mailes/" + filedetail.URL + file.FileName.LastIndexOf('.');
+                        string createpath = "/Images/" + "Mailes/";
+                        string dicrectory = Request.MapPath(createpath);
+                        Directory.CreateDirectory(dicrectory);
+                        string dicrectory2 = Request.MapPath(path);
+                        allfiles.Add(dicrectory2);
+                        file.SaveAs(dicrectory2);
+                        sem.StudentEmailFiles.Add(filedetail);
+                    }
+                }
+
+            }
+            if (data.Id == 0)
+            {
+                sem = db.StudentEmailMasters.Add(sem);
+                db.SaveChanges();
+            }
+            else
+            {
+                db.SaveChanges();
+            }
+
+          if(data.SaveType.Equals("SATAS"))
+            {
+                var detaillist = db.StudentEmailDetails.Where(x => x.MastId == sem.Id).ToList();
+                //deviding by
+                int loop = 0;
+                int skip = 0;
+                int take = 2;
+                string ToEmail = "rananaveedme@gmail.com";
+                loop = detaillist.Count / 2;
+                for (int i = 0; i < loop + 1; i++)
+                {
+                    var skiped = detaillist.Skip(skip).Take(take).Select(x => new sendemail() { Id = x.Id, Email = x.Email }).ToList();
+                    if (skiped.Count > 0)
+                    {
+                        var Response = WebUtil.SchoolToParent(ToEmail, skiped, data.EmailBody, data.Subject, allfiles) ? "Sent" : "Failed";
+                        foreach (var j in detaillist.Skip(skip).Take(take))
+                        {
+                            j.Response = Response;
+                            db.SaveChanges();
+                        }
+                    }
+                    skip = skip + 2;
+                }
+            }
             return RedirectToAction("Index");
         }
     }
