@@ -57,8 +57,10 @@
     <Compile Include="DigitalResourcesMapping.cs" />
     <Compile Include="LessonPlanMapping.cs" />
     <Compile Include="LessonPlanService.cs" />
+    <Compile Include="Mapping.cs" />
     <Compile Include="Model\CategoryGeneralModel.cs" />
     <Compile Include="Model\CategoryModel.cs" />
+    <Compile Include="Model\LeaveRequestFormModel.cs" />
     <Compile Include="Model\detailsearchmodel.cs" />
     <Compile Include="Model\DigitalResourceModel.cs" />
     <Compile Include="Model\DigitalResourceClassModel.cs" />

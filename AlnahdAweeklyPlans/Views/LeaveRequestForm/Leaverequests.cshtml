@@ -1,0 +1,46 @@
+﻿<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<table id="leaverequesttable" class="table table-responsive">
+    <thead>
+        <tr>
+            <th hidden="hidden">Id</th>
+            <th>Student Name</th>
+            <th>Class</th>
+            <th>Student Code</th>
+            <th>Cell No</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Parent Approval</th>
+            <th>Request Date</th>
+            @*<th>Term</th>*@
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        var table = $('#leaverequesttable').DataTable({
+            "ajax": { url: "/LeaveRequestForm/datatableload"},
+            "columns": [
+                { "data": "StudentName" },
+                { "data": "Class" },
+                { "data": "StudentCode" },
+                { "data": "CellNo" },
+                { "data": "From" },
+                { "data": "To" },
+                { "data": "ParentApproval" },
+                { "data": "Date" },
+                { "data": "Term" },
+                //{
+                //    data: function (item) {
+                //        return '<input type="button" class="btn btn-success detail" value="Detail" id="' + item.Id + '" />'
+                //    }
+                //}
+            ],
+            "order": [[1, 'asc']]
+        });
+    });
+</script>

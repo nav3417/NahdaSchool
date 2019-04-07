@@ -28,8 +28,19 @@ namespace Database.DataBaseCrud
         private GenericRepository<DigitalResourceMaster> _DigitalResourceMasterRepository;
         private GenericRepository<DigitalResourceFile> _DigitalResourceFileRepository;
         private GenericRepository<DigitalResourceClass> _DigitalResourceClassRepository;
-        // private GenericRepository<UserLog> _UserLogRepository;
-
+        private GenericRepository<CleaningStaffByLocation> _CleaningStaffByLocationRepository;
+        private GenericRepository<Maintenance_IssuesDetail> _IssuesDetailRepository;
+        private GenericRepository<LeaveRequestForm> _LeaveRequestFormRepository;
+        private GenericRepository<Maintenance_Approval> _MaintenanceApprovalRepository;
+        private GenericRepository<MaintenanceRequestFormMaster> _MaintenanceRequestFormMasterRepository;
+        private GenericRepository<ComplainLog> _ComplainLogRepository;
+        private GenericRepository<NewStaffJoining> _NewStaffJoiningRepository;
+        private GenericRepository<StudentFeedBackReport> _StudentFeedBackReportRepository;
+        private GenericRepository<Maintenance_TaskProcess> _TaskProcessRepository;
+        private GenericRepository<Maintenance_TechnicianRequested> _TechnicianRequestedRepository;
+        private GenericRepository<HREmployeeMst> _HREmployeeMstRepository;
+        private GenericRepository<WeeklyMeetingSchedule> _WeeklyMeetingScheduleRepository;
+        
 
         #endregion
 
@@ -144,6 +155,138 @@ namespace Database.DataBaseCrud
                     this._DigitalResourceClassRepository = new GenericRepository<DigitalResourceClass>(_context);
                 }
                 return _DigitalResourceClassRepository;
+            }
+        }
+        public GenericRepository<CleaningStaffByLocation> CleaningStaffByLocationRepository
+        {
+            get
+            {
+                if (this._CleaningStaffByLocationRepository == null)
+                {
+                    this._CleaningStaffByLocationRepository = new GenericRepository<CleaningStaffByLocation>(_context);
+                }
+                return _CleaningStaffByLocationRepository;
+            }
+        }
+        public GenericRepository<Maintenance_IssuesDetail> IssuesDetailRepository
+        {
+            get
+            {
+                if (this._IssuesDetailRepository == null)
+                {
+                    this._IssuesDetailRepository = new GenericRepository<Maintenance_IssuesDetail>(_context);
+                }
+                return _IssuesDetailRepository;
+            }
+        }
+        public GenericRepository<LeaveRequestForm> LeaveRequestFormRepository
+        {
+            get
+            {
+                if (this._LeaveRequestFormRepository == null)
+                {
+                    this._LeaveRequestFormRepository = new GenericRepository<LeaveRequestForm>(_context);
+                }
+                return _LeaveRequestFormRepository;
+            }
+        }
+        public GenericRepository<Maintenance_Approval> MaintenanceApprovalRepository
+        {
+            get
+            {
+                if (this._MaintenanceApprovalRepository == null)
+                {
+                    this._MaintenanceApprovalRepository = new GenericRepository<Maintenance_Approval>(_context);
+                }
+                return _MaintenanceApprovalRepository;
+            }
+        }
+        public GenericRepository<MaintenanceRequestFormMaster> MaintenanceRequestFormMasterRepository
+        {
+            get
+            {
+                if (this._MaintenanceRequestFormMasterRepository == null)
+                {
+            this._MaintenanceRequestFormMasterRepository = new GenericRepository<MaintenanceRequestFormMaster>(_context);
+        }
+                return _MaintenanceRequestFormMasterRepository;
+        }
+    }
+        public GenericRepository<ComplainLog> ComplainLogRepository
+        {
+            get
+            {
+                if (this._ComplainLogRepository == null)
+                {
+                    this._ComplainLogRepository = new GenericRepository<ComplainLog>(_context);
+                }
+                return _ComplainLogRepository;
+            }
+        }
+        public GenericRepository<NewStaffJoining> NewStaffJoiningRepository
+        {
+            get
+            {
+                if (this._NewStaffJoiningRepository == null)
+                {
+                    this._NewStaffJoiningRepository = new GenericRepository<NewStaffJoining>(_context);
+                }
+                return _NewStaffJoiningRepository;
+            }
+        }
+        public GenericRepository<StudentFeedBackReport> StudentFeedBackReportRepository
+        {
+            get
+            {
+                if (this._StudentFeedBackReportRepository == null)
+                {
+                    this._StudentFeedBackReportRepository = new GenericRepository<StudentFeedBackReport>(_context);
+                }
+                return _StudentFeedBackReportRepository;
+            }
+        }
+        public GenericRepository<Maintenance_TaskProcess> TaskProcessRepository
+        {
+            get
+            {
+                if (this._TaskProcessRepository == null)
+                {
+                    this._TaskProcessRepository = new GenericRepository<Maintenance_TaskProcess>(_context);
+                }
+                return _TaskProcessRepository;
+            }
+        }
+        public GenericRepository<Maintenance_TechnicianRequested> TechnicianRequestedRepository
+        {
+            get
+            {
+                if (this._TechnicianRequestedRepository == null)
+                {
+                    this._TechnicianRequestedRepository = new GenericRepository<Maintenance_TechnicianRequested>(_context);
+                }
+                return _TechnicianRequestedRepository;
+            }
+        }
+        public GenericRepository<HREmployeeMst> HREmployeeMstRepository
+        {
+            get
+            {
+                if (this._HREmployeeMstRepository == null)
+                {
+                    this._HREmployeeMstRepository = new GenericRepository<HREmployeeMst>(_context);
+                }
+                return _HREmployeeMstRepository;
+            }
+        }
+        public GenericRepository<WeeklyMeetingSchedule> WeeklyMeetingScheduleRepository
+        {
+            get
+            {
+                if (this._WeeklyMeetingScheduleRepository == null)
+                {
+                    this._WeeklyMeetingScheduleRepository = new GenericRepository<WeeklyMeetingSchedule>(_context);
+                }
+                return _WeeklyMeetingScheduleRepository;
             }
         }
         #endregion

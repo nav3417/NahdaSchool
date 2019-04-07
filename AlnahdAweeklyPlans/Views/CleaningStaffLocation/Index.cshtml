@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AlnahdAweeklyPlans.Models.CleaningStaffByLocationViewModel>
+@{
+    ViewBag.Title = "Cleaning Staff";
+}
+
+<h2>Cleaning Staff</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Staff)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Staff)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Create", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

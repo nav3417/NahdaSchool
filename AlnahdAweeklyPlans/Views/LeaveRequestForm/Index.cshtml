@@ -1,0 +1,65 @@
+﻿@model AlnahdAweeklyPlans.Models.LeaveRequestFormViewModel
+    <div class="well success">Student Leave Request</div>
+@using (Html.BeginForm("Post", "LeaveRequestForm", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Student Name")
+                    @Html.DropDownListFor(x => x.LeaveRequestForm.StudentId, Model.StudentSelectListItems, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("From")
+                    @Html.TextBoxFor(x => x.LeaveRequestForm.From, new { @class = "form-control", id = "fromdata" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Reason")
+                    @Html.TextAreaFor(x => x.LeaveRequestForm.Reason, new { @class = "form-control" })
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Class")
+                    @Html.TextBoxFor(x => x.LeaveRequestForm.Class, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("To")
+                    @Html.TextBoxFor(x => x.LeaveRequestForm.To, new { @class = "form-control", id = "todata" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Cell No")
+                    @Html.TextBoxFor(x => x.LeaveRequestForm.CellNo, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Parent Approval")
+                    @Html.DropDownListFor(x => x.Parentapproval, Model.ParentApprovalSelectListItems, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+            <div class="col-md-12">
+                <input type="submit" id="post" value="Post" class="btn btn-success" />
+                <input type="reset" value="Reset" class="btn btn-danger" />
+            </div>
+        </div>
+
+}
+<br />
+<div style="border-bottom:solid 1px"></div>
+<br /><br />
+        <div id="leaverequests">
+            @Html.Action("Leaverequests")
+        </div>
+
+        <script>
+            $("#fromdata").click(function () {
+                $(this).datepicker("show");
+            });
+            $("#todata").click(function () {
+                $(this).datepicker("show");
+            });
+        </script>

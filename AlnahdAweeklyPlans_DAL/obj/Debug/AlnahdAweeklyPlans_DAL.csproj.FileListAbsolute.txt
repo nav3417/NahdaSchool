@@ -36,6 +36,8 @@ D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.pdb
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\Database.dll.config
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.xml
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.csprojResolveAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.csprojAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.csproj.CoreCompileInputs.cache
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.csproj.CopyComplete
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans_DAL\obj\Debug\AlnahdAweeklyPlans_DAL.pdb

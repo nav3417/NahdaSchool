@@ -1,0 +1,131 @@
+﻿@model AlnahdAweeklyPlans.Models.NewStaffJoiningViewModel
+<div class="well success">Add New Staff</div>
+@using (Html.BeginForm("Post", "NewStaff", FormMethod.Post, new { id = "prodForm", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x=>x.NewStaffJoining.Id)
+    <div class="row">
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.NewStaffJoining.HRDesignation, Model.HrDesignationListItems, "Select Designation", new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.NewStaffJoining.HrDepartment, Model.HrDepartmentListItems, "Select Department", new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.NewStaffJoining.Religion, Model.ReligionListItems, "Select Religion", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.NewStaffJoining.Gender, Model.GenderListItems, "Select Gender", new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.Label("IsAirTicket")
+            @Html.RadioButtonFor(x => x.NewStaffJoining.IsAirTicket, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.NewStaffJoining.PassportCountryIssue, Model.PassportCountryList, "Select Passport Country", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("Approved On")
+                @Html.TextBoxFor(x => x.NewStaffJoining.ApprovedOn, new { @class = "form-control selectdate", id = "ApprovedOn" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("Labour card Expiry")
+                @Html.TextBoxFor(x => x.NewStaffJoining.LabourCardExpiry, new { @class = "form-control selectdate", id = "LabourCardExpiry" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("EmaratedId Issue Date")
+                @Html.TextBoxFor(x => x.NewStaffJoining.EmaratedIdIssueDate, new { @class = "form-control selectdate", id = "EmaratedIdIssueDate" })
+            </div>
+        </div>
+        @*<div class="col-md-3">
+                <div class="form-group">
+                    @Html.Label("Labour card Expiry")
+                    @Html.TextBoxFor(x => x.NewStaffJoining.LabourCardExpiry, new { @class = "form-control selectdate", id = "LabourCardExpiry" })
+                </div>
+            </div>*@
+    </div>
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("D.O.B")
+                @Html.TextBoxFor(x => x.NewStaffJoining.DOB, new { @class = "form-control selectdate", id = "DOB" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("Passport Issue Date")
+                @Html.TextBoxFor(x => x.NewStaffJoining.PassportIssueDate, new { @class = "form-control selectdate", id = "PassportIssueDate" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("Passport Expiry Date")
+                @Html.TextBoxFor(x => x.NewStaffJoining.PassportExpiryDate, new { @class = "form-control selectdate", id = "PassportExpiryDate" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.Label("Full Name")
+            @Html.TextBoxFor(x => x.NewStaffJoining.FullName, new { @class = "form-control", id = "FullName" })
+        </div>
+        <div class="col-md-4">
+            @Html.Label("Father Name")
+            @Html.TextBoxFor(x => x.NewStaffJoining.FatherName, new { @class = "form-control", id = "FatherName" })
+        </div>
+        <div class="col-md-4">
+            @Html.Label("ParmanentAddress")
+            @Html.TextBoxFor(x => x.NewStaffJoining.ParmanentAddress, new { @class = "form-control", id = "ParmanentAddress" })
+        </div>
+        <div class="col-md-4">
+            @Html.Label("UAEAddress")
+            @Html.TextAreaFor(x => x.NewStaffJoining.UAEAddress, new { @class = "form-control", id = "UAEAddress" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Label("CellNo")
+            @Html.TextBoxFor(x => x.NewStaffJoining.CellNo, new { @class = "form-control", id = "CellNo" })
+        </div>
+        <div class="col-md-3">
+            @Html.Label("BankName")
+            @Html.TextBoxFor(x => x.NewStaffJoining.BankName, new { @class = "form-control", id = "BankName" })
+        </div>
+        <div class="col-md-3">
+            @Html.Label("BankCode")
+            @Html.TextBoxFor(x => x.NewStaffJoining.BankCode, new { @class = "form-control", id = "BankCode" })
+        </div>
+        <div class="col-md-3">
+            @Html.Label("BankAccountNo")
+            @Html.TextBoxFor(x => x.NewStaffJoining.BankAccountNo, new { @class = "form-control", id = "BankAccountNo" })
+        </div>
+        <div class="col-md-3">
+            @Html.Label("EmaratedIdNo")
+            @Html.TextBoxFor(x => x.NewStaffJoining.EmaratedIdNo, new { @class = "form-control", id = "EmaratedIdNo" })
+        </div>
+        <div class="col-md-3">
+            @Html.Label("LabourCard")
+            @Html.TextBoxFor(x => x.NewStaffJoining.LabourCard, new { @class = "form-control", id = "LabourCard" })
+        </div>
+        <div class="col-md-3">
+            @Html.Label("PassportNo")
+            @Html.TextBoxFor(x => x.NewStaffJoining.PassportNo, new { @class = "form-control", id = "PassportNo" })
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+}
+<script>
+    $(".selectdate").click(function () {
+        $(this).datepicker("show");
+    });
+</script>

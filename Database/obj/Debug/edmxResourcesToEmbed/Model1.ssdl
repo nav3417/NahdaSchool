@@ -186,6 +186,43 @@
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
     <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
   </EntityType>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="AccountName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Parent" Type="int" />
+    <Property Name="ParentLevel" Type="int" />
+    <Property Name="VoucherEntry" Type="bit" />
+    <Property Name="FinalAccount" Type="bit" />
+    <Property Name="AccountGroup" Type="int" />
+    <Property Name="SubGroup" Type="int" />
+    <Property Name="AccCategory" Type="int" />
+    <Property Name="ShowChild" Type="bit" />
+    <Property Name="ISDefault" Type="bit" />
+    <Property Name="AllowEntry" Type="bit" />
+    <Property Name="InActive" Type="bit" />
+    <Property Name="Editable" Type="bit" />
+    <Property Name="UserTrackID" Type="bigint" />
+    <Property Name="Currency" Type="int" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="AOrderNo" Type="int" />
+    <Property Name="CCID" Type="int" />
+    <Property Name="InVisible" Type="bit" />
+    <Property Name="SortField" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="ShowRow" Type="bit" />
+    <Property Name="fn" Type="nvarchar" MaxLength="50" />
+    <Property Name="ln" Type="nvarchar" MaxLength="50" />
+    <Property Name="mn" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="PermanentDelete" Type="bit" />
+  </EntityType>
   <EntityType Name="Attendance_AbsentDetails">
     <Key>
       <PropertyRef Name="Id" />
@@ -787,41 +824,47 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.md_type' does not have a prim
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Class" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Division" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="StaffID" Type="int" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="Division" Type="nvarchar" MaxLength="10" />
+    <Property Name="MastId" Type="int" />
     <Property Name="Strength" Type="nvarchar" MaxLength="50" />
-    <Property Name="Block" Type="nvarchar" MaxLength="50" />
-    <Property Name="Room" Type="nvarchar" MaxLength="50" />
-    <Property Name="StaffIDA" Type="int" />
     <Property Name="Shift" Type="nvarchar" MaxLength="50" />
-    <Property Name="Building" Type="nvarchar" MaxLength="50" />
-    <Property Name="Section" Type="nvarchar" MaxLength="50" />
+    <Property Name="Program" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastModifiedOn" Type="date" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="PermanentDelete" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'Nahda_Attendance.dbo.Student_ClassMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Student_ClassMaster">
     <Key>
-      <PropertyRef Name="ID" />
-      <PropertyRef Name="Class" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PNo" Type="int" />
-    <Property Name="Class" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
     <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
-    <Property Name="school" Type="varchar" MaxLength="50" />
     <Property Name="RomanName" Type="nvarchar" MaxLength="10" />
     <Property Name="PromotedClass" Type="nvarchar" MaxLength="50" />
     <Property Name="ClassInArabic" Type="nvarchar" MaxLength="50" />
     <Property Name="PromotedClassArab" Type="nvarchar" MaxLength="50" />
     <Property Name="ClassSection" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastModifiedOn" Type="date" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="PermanentDelete" Type="bit" />
   </EntityType>
   <EntityType Name="Student_StudentDtl">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AcademicYear" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="AcademicYear" Type="nvarchar" MaxLength="10" />
     <Property Name="AccountID" Type="int" Nullable="false" />
     <Property Name="RollNo" Type="nvarchar" MaxLength="10" />
     <Property Name="Status" Type="nvarchar" MaxLength="20" />
@@ -986,6 +1029,204 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="TermMasters">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Academic_Year_Id" Type="int" Nullable="false" />
+    <Property Name="Term_Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="School_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Term_Name" Type="int" Nullable="false" />
+    <Property Name="Marks_CutOff_Date" Type="datetime" />
+    <Property Name="IsResultPublished" Type="bit" />
+    <Property Name="isCurrent" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="LastModifiedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="20" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="PermanentDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="CleaningStaffByLocation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffId" Type="int" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="StaffType" Type="int" />
+  </EntityType>
+  <EntityType Name="ComplainLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="30" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContactBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="CellNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="200" />
+    <Property Name="ActionTaken" Type="nvarchar" MaxLength="20" />
+    <Property Name="InformPerson" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsConsulted" Type="bit" Nullable="false" />
+    <Property Name="InformDate" Type="datetime2" Precision="7" />
+    <Property Name="ParentsComments" Type="nvarchar(max)" />
+    <Property Name="FollowUp" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LeaveRequestForm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="Class" Type="nvarchar" MaxLength="30" />
+    <Property Name="StudentCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CellNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="From" Type="datetime2" Precision="7" />
+    <Property Name="To" Type="datetime2" Precision="7" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="100" />
+    <Property Name="ParentApproval" Type="bit" />
+    <Property Name="AdminRemarks" Type="nvarchar" MaxLength="100" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="Term" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Maintenance_Approval">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InspectedDate" Type="datetime2" Precision="7" />
+    <Property Name="TechnicianName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nchar" MaxLength="200" />
+    <Property Name="MasterId" Type="int" />
+  </EntityType>
+  <EntityType Name="Maintenance_IssuesDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsideRoomLocation" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="Equipment" Type="nvarchar" MaxLength="50" />
+    <Property Name="MasterId" Type="int" />
+  </EntityType>
+  <EntityType Name="Maintenance_TaskProcess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="Description" Type="nchar" MaxLength="200" />
+    <Property Name="MasterId" Type="int" />
+  </EntityType>
+  <EntityType Name="Maintenance_TechnicianRequested">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Material" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemDescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="Quantity" Type="nvarchar" MaxLength="10" />
+    <Property Name="MasterId" Type="int" />
+  </EntityType>
+  <EntityType Name="MaintenanceRequestFormMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestBy" Type="int" />
+    <Property Name="RequestOn" Type="datetime2" Precision="7" />
+    <Property Name="CellNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="School" Type="nvarchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+    <Property Name="FlatNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="ApprovedBy" Type="int" />
+    <Property Name="ApprovedOn" Type="datetime2" Precision="7" />
+    <Property Name="RecievedBy" Type="int" />
+    <Property Name="RecievedOn" Type="datetime2" Precision="7" />
+    <Property Name="ComplitionDate" Type="datetime2" Precision="7" />
+    <Property Name="TechnicianName" Type="nvarchar" MaxLength="100" />
+    <Property Name="PDdate" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="IsDeletedParmanent" Type="bit" />
+  </EntityType>
+  <EntityType Name="NewStaffJoining">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CertifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="CertifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ApprovedOn" Type="datetime2" Precision="7" />
+    <Property Name="HRDesignation" Type="nvarchar" MaxLength="50" />
+    <Property Name="CellNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="40" />
+    <Property Name="BankCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="BankAccountNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="LabourCard" Type="nvarchar" MaxLength="50" />
+    <Property Name="LabourCardExpiry" Type="datetime2" Precision="7" />
+    <Property Name="EmaratedIdNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmaratedIdIssueDate" Type="datetime2" Precision="7" />
+    <Property Name="HrDepartment" Type="int" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
+    <Property Name="Religion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="DOB" Type="datetime2" Precision="7" />
+    <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="100" />
+    <Property Name="MaritalStatus" Type="nvarchar" MaxLength="20" />
+    <Property Name="NoOfChildren" Type="int" />
+    <Property Name="IsAirTicket" Type="bit" />
+    <Property Name="UAEAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="ParmanentAddress" Type="nvarchar(max)" />
+    <Property Name="PassportNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PassportCountryIssue" Type="nvarchar" MaxLength="50" />
+    <Property Name="PassportIssueDate" Type="datetime2" Precision="7" />
+    <Property Name="PassportExpiryDate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="StudentFeedBackReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="Class" Type="nvarchar" MaxLength="30" />
+    <Property Name="StudentCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="200" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="WeeklyMeetingSchedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Day" Type="nvarchar" MaxLength="50" />
+    <Property Name="Period" Type="nvarchar" MaxLength="10" />
+    <Property Name="From" Type="datetime2" Precision="7" />
+    <Property Name="To" Type="datetime2" Precision="7" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="TeacherName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClassId" Type="int" />
+  </EntityType>
   <EntityType Name="StudentEmailDetail">
     <Key>
       <PropertyRef Name="Id" />
@@ -1098,6 +1339,18 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_IssuesDetail_MaintenanceRequestFormMaster">
+    <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
+    <End Role="Maintenance_IssuesDetail" Type="Self.Maintenance_IssuesDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceRequestFormMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maintenance_IssuesDetail">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_LessonPlanDetail_LessonsPlanMaster">
     <End Role="LessonsPlanMaster" Type="Self.LessonsPlanMaster" Multiplicity="0..1" />
     <End Role="LessonPlanDetail" Type="Self.LessonPlanDetail" Multiplicity="*" />
@@ -1158,6 +1411,18 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster">
+    <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
+    <End Role="Maintenance_Approval" Type="Self.Maintenance_Approval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceRequestFormMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maintenance_Approval">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
     <End Role="StudentEmailMaster" Type="Self.StudentEmailMaster" Multiplicity="0..1" />
     <End Role="StudentEmailDetail" Type="Self.StudentEmailDetail" Multiplicity="*" />
@@ -1182,6 +1447,30 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TaskProcess_MaintenanceRequestFormMaster">
+    <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
+    <End Role="Maintenance_TaskProcess" Type="Self.Maintenance_TaskProcess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceRequestFormMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maintenance_TaskProcess">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TechnicianRequested_MaintenanceRequestFormMaster">
+    <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
+    <End Role="Maintenance_TechnicianRequested" Type="Self.Maintenance_TechnicianRequested" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceRequestFormMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maintenance_TechnicianRequested">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Nahda_AttendanceModelStoreContainer">
     <EntitySet Name="CommunicationGroupDetail" EntityType="Self.CommunicationGroupDetail" Schema="Academic" store:Type="Tables" />
     <EntitySet Name="CommunicationGroupMaster" EntityType="Self.CommunicationGroupMaster" Schema="Academic" store:Type="Tables" />
@@ -1194,6 +1483,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <EntitySet Name="LessonPlanSubject" EntityType="Self.LessonPlanSubject" Schema="Academic" store:Type="Tables" />
     <EntitySet Name="LessonsPlanMaster" EntityType="Self.LessonsPlanMaster" Schema="Academic" store:Type="Tables" />
     <EntitySet Name="AcademicYears" EntityType="Self.AcademicYears" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Attendance_AbsentDetails" EntityType="Self.Attendance_AbsentDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Attendance_AbsentMaster" EntityType="Self.Attendance_AbsentMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Attendance_Schedule_Details" EntityType="Self.Attendance_Schedule_Details" Schema="dbo" store:Type="Tables" />
@@ -1220,6 +1510,18 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <EntitySet Name="Student_StudentDtl" EntityType="Self.Student_StudentDtl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student_StudentMst" EntityType="Self.Student_StudentMst" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TermMasters" EntityType="Self.TermMasters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CleaningStaffByLocation" EntityType="Self.CleaningStaffByLocation" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="ComplainLog" EntityType="Self.ComplainLog" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="LeaveRequestForm" EntityType="Self.LeaveRequestForm" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="Maintenance_Approval" EntityType="Self.Maintenance_Approval" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="Maintenance_IssuesDetail" EntityType="Self.Maintenance_IssuesDetail" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="Maintenance_TaskProcess" EntityType="Self.Maintenance_TaskProcess" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="Maintenance_TechnicianRequested" EntityType="Self.Maintenance_TechnicianRequested" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="MaintenanceRequestFormMaster" EntityType="Self.MaintenanceRequestFormMaster" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="NewStaffJoining" EntityType="Self.NewStaffJoining" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="StudentFeedBackReport" EntityType="Self.StudentFeedBackReport" Schema="Enternal" store:Type="Tables" />
+    <EntitySet Name="WeeklyMeetingSchedule" EntityType="Self.WeeklyMeetingSchedule" Schema="Enternal" store:Type="Tables" />
     <EntitySet Name="StudentEmailDetail" EntityType="Self.StudentEmailDetail" Schema="Student" store:Type="Tables" />
     <EntitySet Name="StudentEmailFiles" EntityType="Self.StudentEmailFiles" Schema="Student" store:Type="Tables" />
     <EntitySet Name="StudentEmailMaster" EntityType="Self.StudentEmailMaster" Schema="Student" store:Type="Tables" />
@@ -1315,16 +1617,21 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     </EntitySet>
     <EntitySet Name="Student_ClassMaster" EntityType="Self.Student_ClassMaster" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [Student_ClassMaster].[ID] AS [ID], 
+    [Student_ClassMaster].[Id] AS [Id], 
     [Student_ClassMaster].[PNo] AS [PNo], 
     [Student_ClassMaster].[Class] AS [Class], 
     [Student_ClassMaster].[ClassName] AS [ClassName], 
-    [Student_ClassMaster].[school] AS [school], 
     [Student_ClassMaster].[RomanName] AS [RomanName], 
     [Student_ClassMaster].[PromotedClass] AS [PromotedClass], 
     [Student_ClassMaster].[ClassInArabic] AS [ClassInArabic], 
     [Student_ClassMaster].[PromotedClassArab] AS [PromotedClassArab], 
-    [Student_ClassMaster].[ClassSection] AS [ClassSection]
+    [Student_ClassMaster].[ClassSection] AS [ClassSection], 
+    [Student_ClassMaster].[CreatedOn] AS [CreatedOn], 
+    [Student_ClassMaster].[CreatedBy] AS [CreatedBy], 
+    [Student_ClassMaster].[LastModifiedOn] AS [LastModifiedOn], 
+    [Student_ClassMaster].[LastModifiedBy] AS [LastModifiedBy], 
+    [Student_ClassMaster].[IsDeleted] AS [IsDeleted], 
+    [Student_ClassMaster].[PermanentDelete] AS [PermanentDelete]
     FROM [dbo].[Student_ClassMaster] AS [Student_ClassMaster]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Student_TeacherClass" EntityType="Self.Student_TeacherClass" store:Type="Tables" store:Schema="dbo">
@@ -1360,6 +1667,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
       <End Role="LessonPlanCategory" EntitySet="LessonPlanCategory" />
       <End Role="DigitalResourceMaster" EntitySet="DigitalResourceMaster" />
     </AssociationSet>
+    <AssociationSet Name="FK_IssuesDetail_MaintenanceRequestFormMaster" Association="Self.FK_IssuesDetail_MaintenanceRequestFormMaster">
+      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMaster" />
+      <End Role="Maintenance_IssuesDetail" EntitySet="Maintenance_IssuesDetail" />
+    </AssociationSet>
     <AssociationSet Name="FK_LessonPlanDetail_LessonsPlanMaster" Association="Self.FK_LessonPlanDetail_LessonsPlanMaster">
       <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMaster" />
       <End Role="LessonPlanDetail" EntitySet="LessonPlanDetail" />
@@ -1380,6 +1691,10 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
       <End Role="LessonPlanSubject" EntitySet="LessonPlanSubject" />
       <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMaster" />
     </AssociationSet>
+    <AssociationSet Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster" Association="Self.FK_MaintenanceApproval_MaintenanceRequestFormMaster">
+      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMaster" />
+      <End Role="Maintenance_Approval" EntitySet="Maintenance_Approval" />
+    </AssociationSet>
     <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Self.FK_StudentEmailDetail_StudentEmailMaster">
       <End Role="StudentEmailMaster" EntitySet="StudentEmailMaster" />
       <End Role="StudentEmailDetail" EntitySet="StudentEmailDetail" />
@@ -1387,6 +1702,14 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <AssociationSet Name="FK_StudentEmailFiles_StudentEmailMaster" Association="Self.FK_StudentEmailFiles_StudentEmailMaster">
       <End Role="StudentEmailMaster" EntitySet="StudentEmailMaster" />
       <End Role="StudentEmailFiles" EntitySet="StudentEmailFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskProcess_MaintenanceRequestFormMaster" Association="Self.FK_TaskProcess_MaintenanceRequestFormMaster">
+      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMaster" />
+      <End Role="Maintenance_TaskProcess" EntitySet="Maintenance_TaskProcess" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TechnicianRequested_MaintenanceRequestFormMaster" Association="Self.FK_TechnicianRequested_MaintenanceRequestFormMaster">
+      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMaster" />
+      <End Role="Maintenance_TechnicianRequested" EntitySet="Maintenance_TechnicianRequested" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -219,7 +219,12 @@ D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.CodeDom.Providers.
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.Web.Infrastructure.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Newtonsoft.Json.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Services.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Net.Http.Formatting.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Cors.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Helpers.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Http.Cors.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Http.dll
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Http.WebHost.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Mvc.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Razor.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Deployment.dll
@@ -235,6 +240,10 @@ D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.xml
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\EntityFramework.SqlServer.xml
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Newtonsoft.Json.pdb
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Newtonsoft.Json.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Net.Http.Formatting.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Http.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Http.Cors.xml
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Http.WebHost.xml
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Razor.xml
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.xml
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Deployment.xml
@@ -242,6 +251,8 @@ D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Webpages.Razor.xm
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Helpers.xml
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\System.Web.Mvc.xml
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans_Web.csprojResolveAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans_Web.csprojAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans_Web.csproj.CoreCompileInputs.cache
+D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans_Web.csproj.CopyComplete
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans.dll
 D:\Naveed\AlnahdAweeklyPlans\AlnahdAweeklyPlans\obj\Debug\AlnahdAweeklyPlans.pdb

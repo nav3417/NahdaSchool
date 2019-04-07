@@ -17,19 +17,19 @@ namespace Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LessonPlanClass()
         {
+            this.DigitalResourceClasses = new HashSet<DigitalResourceClass>();
             this.LessonPlanSubjects = new HashSet<LessonPlanSubject>();
             this.LessonsPlanMasters = new HashSet<LessonsPlanMaster>();
-            this.DigitalResourceClasses = new HashSet<DigitalResourceClass>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DigitalResourceClass> DigitalResourceClasses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LessonPlanSubject> LessonPlanSubjects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LessonsPlanMaster> LessonsPlanMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DigitalResourceClass> DigitalResourceClasses { get; set; }
     }
 }

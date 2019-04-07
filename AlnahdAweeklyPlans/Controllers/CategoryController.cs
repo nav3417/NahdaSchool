@@ -86,7 +86,7 @@ namespace AlnahdAweeklyPlans.Controllers
             cat.CreatedBy = "Naveed";
             cat.CreatedOn = DateTime.Now;
             cat.IsActive = true;
-            unitOfWork.LessonPlanCategoryRepository.Insert(cat);
+            unitOfWork.LessonPlanCategoryRepository.Insert(cat); 
             unitOfWork.Save();
             return RedirectToAction("Index",model.controller,new {Id=model.ParentId});
         }

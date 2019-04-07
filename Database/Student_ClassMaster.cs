@@ -14,15 +14,20 @@ namespace Database
     
     public partial class Student_ClassMaster
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public Nullable<int> PNo { get; set; }
         public string Class { get; set; }
         public string ClassName { get; set; }
-        public string school { get; set; }
         public string RomanName { get; set; }
         public string PromotedClass { get; set; }
         public string ClassInArabic { get; set; }
         public string PromotedClassArab { get; set; }
         public string ClassSection { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedOn { get; set; }
+        public string LastModifiedBy { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<bool> PermanentDelete { get; set; }
     }
 }

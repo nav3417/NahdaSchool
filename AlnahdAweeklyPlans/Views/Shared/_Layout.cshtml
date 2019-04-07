@@ -8,6 +8,9 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/clockpicker.css" rel="stylesheet" />
+    <link href="~/Clickpicker/bootstrap-clockpicker.css" rel="stylesheet" />
+    <link href="~/Clickpicker/jquery-clockpicker.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet"/>
     <link href="~/Content/chosen.css" rel="stylesheet" />
@@ -25,9 +28,18 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Application name", "Index", "WeeklyPlan", new { area = "" }, new { @class = "navbar-brand" })
+
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="/AdminEmail/Index">AdminEmail</a></li>
+                    <li><a href="/Approval/Index">Approval</a></li>
+                    <li><a href="/Category/Index">Category</a></li>
+                    <li><a href="/Communication/Index">Communication</a></li>
+                    <!-- <li><a href="/DigitalResources/Index">DigitalResources</a></li> -->
+                    <li><a href="/DigitalResourcesApproval/Index">DigitalResourcesApproval</a></li>
+                    <li><a href="/EmailController/Index">EmailController</a></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -40,6 +52,9 @@
     <script src="~/Scripts/chosen.jquery.js"></script>
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
     <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Clickpicker/jquery-clockpicker.js"></script>
+    <script src="~/Scripts/clockpicker.js"></script>
+    <script src="~/Clickpicker/bootstrap-clockpicker.js"></script>
     <script type="text/javascript">
         $("#pickdate").click(function () {
             $("#pickdate").datepicker("show");

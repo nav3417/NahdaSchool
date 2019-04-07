@@ -43,6 +43,7 @@ D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\System.Web.Razor.xml
 D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\System.Web.WebPages.xml
 D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\Naveed\AlnahdAweeklyPlans\Database\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csprojResolveAssemblyReference.cache
+D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csproj.CoreCompileInputs.cache
+D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csproj.CopyComplete
 D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\Database.dll
 D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\Database.pdb

@@ -25,9 +25,18 @@ namespace Database
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CommunicationGroupDetail> CommunicationGroupDetails { get; set; }
+        public virtual DbSet<CommunicationGroupMaster> CommunicationGroupMasters { get; set; }
+        public virtual DbSet<DigitalResourceClass> DigitalResourceClasses { get; set; }
+        public virtual DbSet<DigitalResourceFile> DigitalResourceFiles { get; set; }
+        public virtual DbSet<DigitalResourceMaster> DigitalResourceMasters { get; set; }
+        public virtual DbSet<LessonPlanCategory> LessonPlanCategories { get; set; }
         public virtual DbSet<LessonPlanClass> LessonPlanClasses { get; set; }
+        public virtual DbSet<LessonPlanDetail> LessonPlanDetails { get; set; }
         public virtual DbSet<LessonPlanSubject> LessonPlanSubjects { get; set; }
+        public virtual DbSet<LessonsPlanMaster> LessonsPlanMasters { get; set; }
         public virtual DbSet<AcademicYear> AcademicYears { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Attendance_AbsentDetails> Attendance_AbsentDetails { get; set; }
         public virtual DbSet<Attendance_AbsentMaster> Attendance_AbsentMaster { get; set; }
         public virtual DbSet<Attendance_Schedule_Details> Attendance_Schedule_Details { get; set; }
@@ -36,6 +45,7 @@ namespace Database
         public virtual DbSet<Attendance_Sheet> Attendance_Sheet { get; set; }
         public virtual DbSet<Exam_MarkEntry> Exam_MarkEntry { get; set; }
         public virtual DbSet<Exam_SubComments> Exam_SubComments { get; set; }
+        public virtual DbSet<Exam_subjectGroup> Exam_subjectGroup { get; set; }
         public virtual DbSet<Exam_subjectGroupRole> Exam_subjectGroupRole { get; set; }
         public virtual DbSet<Exam_subjectGroupRole_detail> Exam_subjectGroupRole_detail { get; set; }
         public virtual DbSet<Exam_Subjects> Exam_Subjects { get; set; }
@@ -44,11 +54,25 @@ namespace Database
         public virtual DbSet<hr_department> hr_department { get; set; }
         public virtual DbSet<hr_designation> hr_designation { get; set; }
         public virtual DbSet<hr_Emp> hr_Emp { get; set; }
+        public virtual DbSet<HREmployeeMst> HREmployeeMsts { get; set; }
+        public virtual DbSet<reg_building> reg_building { get; set; }
+        public virtual DbSet<reg_location> reg_location { get; set; }
+        public virtual DbSet<reg_room> reg_room { get; set; }
         public virtual DbSet<School> Schools { get; set; }
         public virtual DbSet<Student_Class> Student_Class { get; set; }
         public virtual DbSet<Student_StudentDtl> Student_StudentDtl { get; set; }
         public virtual DbSet<Student_StudentMst> Student_StudentMst { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TermMaster> TermMasters { get; set; }
+        public virtual DbSet<LeaveRequestForm> LeaveRequestForms { get; set; }
+        public virtual DbSet<Maintenance_Approval> Maintenance_Approval { get; set; }
+        public virtual DbSet<Maintenance_IssuesDetail> Maintenance_IssuesDetail { get; set; }
+        public virtual DbSet<Maintenance_TechnicianRequested> Maintenance_TechnicianRequested { get; set; }
+        public virtual DbSet<MaintenanceRequestFormMaster> MaintenanceRequestFormMasters { get; set; }
+        public virtual DbSet<NewStaffJoining> NewStaffJoinings { get; set; }
+        public virtual DbSet<StudentEmailDetail> StudentEmailDetails { get; set; }
+        public virtual DbSet<StudentEmailFile> StudentEmailFiles { get; set; }
+        public virtual DbSet<StudentEmailMaster> StudentEmailMasters { get; set; }
         public virtual DbSet<Exam_ClassTimeTable> Exam_ClassTimeTable { get; set; }
         public virtual DbSet<Exam_Grading> Exam_Grading { get; set; }
         public virtual DbSet<Exam_SubTeacherMapping> Exam_SubTeacherMapping { get; set; }
@@ -57,21 +81,10 @@ namespace Database
         public virtual DbSet<md_type> md_type { get; set; }
         public virtual DbSet<Student_ClassMaster> Student_ClassMaster { get; set; }
         public virtual DbSet<Student_TeacherClass> Student_TeacherClass { get; set; }
-        public virtual DbSet<LessonsPlanMaster> LessonsPlanMasters { get; set; }
-        public virtual DbSet<DigitalResourceClass> DigitalResourceClasses { get; set; }
-        public virtual DbSet<LessonPlanDetail> LessonPlanDetails { get; set; }
-        public virtual DbSet<LessonPlanCategory> LessonPlanCategories { get; set; }
-        public virtual DbSet<DigitalResourceFile> DigitalResourceFiles { get; set; }
-        public virtual DbSet<DigitalResourceMaster> DigitalResourceMasters { get; set; }
-        public virtual DbSet<CommunicationGroupDetail> CommunicationGroupDetails { get; set; }
-        public virtual DbSet<CommunicationGroupMaster> CommunicationGroupMasters { get; set; }
-        public virtual DbSet<StudentEmailDetail> StudentEmailDetails { get; set; }
-        public virtual DbSet<reg_building> reg_building { get; set; }
-        public virtual DbSet<reg_location> reg_location { get; set; }
-        public virtual DbSet<reg_room> reg_room { get; set; }
-        public virtual DbSet<HREmployeeMst> HREmployeeMsts { get; set; }
-        public virtual DbSet<Exam_subjectGroup> Exam_subjectGroup { get; set; }
-        public virtual DbSet<StudentEmailFile> StudentEmailFiles { get; set; }
-        public virtual DbSet<StudentEmailMaster> StudentEmailMasters { get; set; }
+        public virtual DbSet<StudentFeedBackReport> StudentFeedBackReports { get; set; }
+        public virtual DbSet<CleaningStaffByLocation> CleaningStaffByLocations { get; set; }
+        public virtual DbSet<ComplainLog> ComplainLogs { get; set; }
+        public virtual DbSet<Maintenance_TaskProcess> Maintenance_TaskProcess { get; set; }
+        public virtual DbSet<WeeklyMeetingSchedule> WeeklyMeetingSchedules { get; set; }
     }
 }

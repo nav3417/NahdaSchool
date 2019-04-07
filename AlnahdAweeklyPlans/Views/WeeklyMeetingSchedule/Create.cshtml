@@ -1,0 +1,91 @@
+﻿@model AlnahdAweeklyPlans.Models.WeeklyMeetingScheduleViewModel
+
+@{
+    ViewBag.Title = "Weekly Meeting Schedule";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>WeeklyMeetingSchedule</h4>
+    <hr />
+    @Html.HiddenFor(x => x.WeeklyMeetingSchedule.Id)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("Subject", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.WeeklyMeetingSchedule.SubjectId, Model.SubjectsSelectList, "Select Subject", new { @class = "form-control" })
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.WeeklyMeetingSchedule.From, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.WeeklyMeetingSchedule.From, new { htmlAttributes = new { @class = "form-control time clockpicker" } })
+            @Html.ValidationMessageFor(model => model.WeeklyMeetingSchedule.From, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.WeeklyMeetingSchedule.To, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.WeeklyMeetingSchedule.To, new { htmlAttributes = new { @class = "form-control clockpicker" } })
+            @Html.ValidationMessageFor(model => model.WeeklyMeetingSchedule.To, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Day", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.WeeklyMeetingSchedule.Day, Model.DaysSelectList, "Select Day", new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Class", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.WeeklyMeetingSchedule.ClassId, Model.ClassSelectList, "Select Class", new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.WeeklyMeetingSchedule.Period, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.WeeklyMeetingSchedule.Period, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.WeeklyMeetingSchedule.Period, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.WeeklyMeetingSchedule.TeacherName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.WeeklyMeetingSchedule.TeacherName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.WeeklyMeetingSchedule.TeacherName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+    $(".clockpicker").click(function () {
+        $(this).clockpicker({
+            donetext: 'Done'});
+    });
+    //$('#input_starttime').pickatime({
+    //    // Light or Dark theme
+    //    darktheme: true
+    //});
+</script>

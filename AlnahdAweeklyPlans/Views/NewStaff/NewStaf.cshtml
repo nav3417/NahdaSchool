@@ -1,0 +1,43 @@
+﻿<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<table id="newstafftable" class="table table-responsive">
+    <thead>
+        <tr>
+            <th hidden="hidden">Id</th>
+            <th>Full Name</th>
+            <th>PassportCountryIssue</th>
+            <th>Gender</th>
+            <th>HRDesignation No</th>
+            <th>HrDepartment</th>
+            <th>CellNo</th>
+            <th>EmaratedIdNo</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<div></div>
+<script>
+    $(document).ready(function () {
+        var table = $('#newstafftable').DataTable({
+            "ajax": { url: "/NewStaff/loadnewstaff" },
+            "columns": [
+                { "data": "FullName" },
+                { "data": "PassportCountryIssue" },
+                { "data": "Gender" },
+                { "data": "HRDesignation" },
+                { "data": "HrDepartment" },
+                { "data": "CellNo" },
+                { "data": "EmaratedIdNo" },
+                {
+                    data: function (item) {
+                        return '<a href="/NewStaff/AddEdit/' + item.Id + '"><input type="button" class="btn btn-success detail" value="Edit" id="' + item.Id + '" /></a>'
+                    }
+                }
+            ],
+            "order": [[1, 'asc']]
+        });
+    });
+</script>

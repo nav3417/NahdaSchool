@@ -43,10 +43,10 @@ namespace Database
         public Nullable<System.DateTime> CreatedFor { get; set; }
         public Nullable<int> CategoryIdMajor { get; set; }
     
+        public virtual LessonPlanCategory LessonPlanCategory { get; set; }
         public virtual LessonPlanClass LessonPlanClass { get; set; }
-        public virtual LessonPlanSubject LessonPlanSubject { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LessonPlanDetail> LessonPlanDetails { get; set; }
-        public virtual LessonPlanCategory LessonPlanCategory { get; set; }
+        public virtual LessonPlanSubject LessonPlanSubject { get; set; }
     }
 }

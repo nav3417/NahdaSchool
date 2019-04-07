@@ -19,6 +19,18 @@ namespace Database.DataBaseCrud
         GenericRepository<DigitalResourceMaster> DigitalResourceMasterRepository { get; }
         GenericRepository<DigitalResourceFile> DigitalResourceFileRepository { get; }
         GenericRepository<DigitalResourceClass> DigitalResourceClassRepository { get; }
+        GenericRepository<CleaningStaffByLocation> CleaningStaffByLocationRepository { get; }
+        GenericRepository<ComplainLog> ComplainLogRepository { get; }
+        GenericRepository<Maintenance_IssuesDetail> IssuesDetailRepository { get; }
+        GenericRepository<LeaveRequestForm> LeaveRequestFormRepository { get; }
+        GenericRepository<Maintenance_Approval> MaintenanceApprovalRepository { get; }
+        GenericRepository<MaintenanceRequestFormMaster> MaintenanceRequestFormMasterRepository { get; }
+        GenericRepository<NewStaffJoining> NewStaffJoiningRepository { get; }
+        GenericRepository<StudentFeedBackReport> StudentFeedBackReportRepository { get; }
+        GenericRepository<Maintenance_TaskProcess> TaskProcessRepository { get; }
+        GenericRepository<HREmployeeMst> HREmployeeMstRepository { get; }
+        GenericRepository<Maintenance_TechnicianRequested> TechnicianRequestedRepository { get; }
+        GenericRepository<WeeklyMeetingSchedule> WeeklyMeetingScheduleRepository { get; }
         void Save();
     }
 }

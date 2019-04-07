@@ -20,7 +20,7 @@ namespace Database
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string CreatedBy { get; set; }
     
-        public virtual LessonPlanClass LessonPlanClass { get; set; }
         public virtual DigitalResourceMaster DigitalResourceMaster { get; set; }
+        public virtual LessonPlanClass LessonPlanClass { get; set; }
     }
 }

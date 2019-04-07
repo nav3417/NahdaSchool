@@ -17,13 +17,15 @@ namespace Database
         public int Id { get; set; }
         public string Class { get; set; }
         public string Division { get; set; }
-        public Nullable<int> StaffID { get; set; }
+        public Nullable<int> MastId { get; set; }
         public string Strength { get; set; }
-        public string Block { get; set; }
-        public string Room { get; set; }
-        public Nullable<int> StaffIDA { get; set; }
         public string Shift { get; set; }
-        public string Building { get; set; }
-        public string Section { get; set; }
+        public string Program { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedOn { get; set; }
+        public string LastModifiedBy { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<bool> PermanentDelete { get; set; }
     }
 }
