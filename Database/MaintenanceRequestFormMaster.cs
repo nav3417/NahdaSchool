@@ -18,9 +18,9 @@ namespace Database
         public MaintenanceRequestFormMaster()
         {
             this.Maintenance_Approval = new HashSet<Maintenance_Approval>();
-            this.Maintenance_IssuesDetail = new HashSet<Maintenance_IssuesDetail>();
-            this.Maintenance_TechnicianRequested = new HashSet<Maintenance_TechnicianRequested>();
             this.Maintenance_TaskProcess = new HashSet<Maintenance_TaskProcess>();
+            this.Maintenance_TechnicianRequested = new HashSet<Maintenance_TechnicianRequested>();
+            this.Maintenance_IssuesDetail = new HashSet<Maintenance_IssuesDetail>();
         }
     
         public int Id { get; set; }
@@ -28,19 +28,19 @@ namespace Database
         public Nullable<System.DateTime> RequestOn { get; set; }
         public string CellNo { get; set; }
         public string School { get; set; }
-        public string Location { get; set; }
+        public Nullable<int> Location { get; set; }
         public string FlatNo { get; set; }
-        public Nullable<int> ApprovedBy { get; set; }
+        public string ApprovedBy { get; set; }
         public Nullable<System.DateTime> ApprovedOn { get; set; }
         public Nullable<int> RecievedBy { get; set; }
-        public Nullable<System.DateTime> RecievedOn { get; set; }
+        public string RecievedOn { get; set; }
         public Nullable<System.DateTime> ComplitionDate { get; set; }
         public string TechnicianName { get; set; }
         public Nullable<System.DateTime> PDdate { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<int> ModifiedBy { get; set; }
+        public System.DateTime ModifiedOn { get; set; }
+        public string ModifiedBy { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public Nullable<bool> IsDeletedParmanent { get; set; }
@@ -48,10 +48,10 @@ namespace Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Maintenance_Approval> Maintenance_Approval { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Maintenance_IssuesDetail> Maintenance_IssuesDetail { get; set; }
+        public virtual ICollection<Maintenance_TaskProcess> Maintenance_TaskProcess { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Maintenance_TechnicianRequested> Maintenance_TechnicianRequested { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Maintenance_TaskProcess> Maintenance_TaskProcess { get; set; }
+        public virtual ICollection<Maintenance_IssuesDetail> Maintenance_IssuesDetail { get; set; }
     }
 }

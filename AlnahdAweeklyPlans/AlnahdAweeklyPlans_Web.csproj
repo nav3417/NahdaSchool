@@ -680,6 +680,7 @@
     <Compile Include="Controllers\EnternalResources\CleaningStaffLocationController.cs" />
     <Compile Include="Controllers\EnternalResources\ComplaintLogController.cs" />
     <Compile Include="Controllers\EnternalResources\LeaveRequestFormController.cs" />
+    <Compile Include="Controllers\EnternalResources\MaintenanceRequestFormController.cs" />
     <Compile Include="Controllers\EnternalResources\NewStaffController.cs" />
     <Compile Include="Controllers\EnternalResources\StudentFeedBackReportController.cs" />
     <Compile Include="Controllers\EnternalResources\WeeklyMeetingScheduleController.cs" />
@@ -698,6 +699,8 @@
     <Compile Include="Models\LeaveRequestFormModel.cs" />
     <Compile Include="Models\LeaveRequestFormViewModel.cs" />
     <Compile Include="Models\LixtBoxModel.cs" />
+    <Compile Include="Models\MaintenanceRequestFormMasterModel.cs" />
+    <Compile Include="Models\Maintenance_IssuesDetailModel.cs" />
     <Compile Include="Models\MultiSelect.cs" />
     <Compile Include="Models\NewStaffJoiningModel.cs" />
     <Compile Include="Models\NewStaffJoiningViewModel.cs" />
@@ -770,6 +773,8 @@
     <Content Include="Views\ComplaintLog\Create.cshtml" />
     <Content Include="Views\WeeklyMeetingSchedule\Index.cshtml" />
     <Content Include="Views\WeeklyMeetingSchedule\Create.cshtml" />
+    <Content Include="Views\MaintenanceRequestForm\Index.cshtml" />
+    <Content Include="Views\MaintenanceRequestForm\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

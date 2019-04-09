@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AlnahdAweeklyPlans.Models.MaintenanceRequestFormMasterModel>
+@{
+    ViewBag.Title = "Weekly Meeting Schedule";
+}
+
+<h2>Weekly Meeting Schedule</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CellNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlatNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestOn)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CellNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlatNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestOn)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Create", new { id = item.Id })
+                @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            </td>
+        </tr>
+    }
+
+</table>

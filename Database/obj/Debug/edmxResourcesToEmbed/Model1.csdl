@@ -941,18 +941,7 @@
     <Property Name="TechnicianName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
     <Property Name="MasterId" Type="Int32" />
-    <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Self.FK_MaintenanceApproval_MaintenanceRequestFormMaster" FromRole="Maintenance_Approval" ToRole="MaintenanceRequestFormMaster" />
-  </EntityType>
-  <EntityType Name="Maintenance_IssuesDetail">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="InsideRoomLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Equipment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MasterId" Type="Int32" />
-    <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Self.FK_IssuesDetail_MaintenanceRequestFormMaster" FromRole="Maintenance_IssuesDetail" ToRole="MaintenanceRequestFormMaster" />
+    <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Nahda_AttendanceModel.FK_MaintenanceApproval_MaintenanceRequestFormMaster" FromRole="Maintenance_Approval" ToRole="MaintenanceRequestFormMaster" />
   </EntityType>
   <EntityType Name="Maintenance_TechnicianRequested">
     <Key>
@@ -963,37 +952,7 @@
     <Property Name="ItemDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Quantity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="MasterId" Type="Int32" />
-    <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Self.FK_TechnicianRequested_MaintenanceRequestFormMaster" FromRole="Maintenance_TechnicianRequested" ToRole="MaintenanceRequestFormMaster" />
-  </EntityType>
-  <EntityType Name="MaintenanceRequestFormMaster">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RequestBy" Type="Int32" />
-    <Property Name="RequestOn" Type="DateTime" Precision="7" />
-    <Property Name="CellNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="FlatNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="ApprovedBy" Type="Int32" />
-    <Property Name="ApprovedOn" Type="DateTime" Precision="7" />
-    <Property Name="RecievedBy" Type="Int32" />
-    <Property Name="RecievedOn" Type="DateTime" Precision="7" />
-    <Property Name="ComplitionDate" Type="DateTime" Precision="7" />
-    <Property Name="TechnicianName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="PDdate" Type="DateTime" Precision="7" />
-    <Property Name="CreatedBy" Type="Int32" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
-    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
-    <Property Name="ModifiedBy" Type="Int32" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="IsDeleted" Type="Boolean" />
-    <Property Name="IsDeletedParmanent" Type="Boolean" />
-    <NavigationProperty Name="Maintenance_Approval" Relationship="Self.FK_MaintenanceApproval_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_Approval" />
-    <NavigationProperty Name="Maintenance_IssuesDetail" Relationship="Self.FK_IssuesDetail_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_IssuesDetail" />
-    <NavigationProperty Name="Maintenance_TechnicianRequested" Relationship="Self.FK_TechnicianRequested_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_TechnicianRequested" />
-    <NavigationProperty Name="Maintenance_TaskProcess" Relationship="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_TaskProcess" />
+    <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Nahda_AttendanceModel.FK_TechnicianRequested_MaintenanceRequestFormMaster" FromRole="Maintenance_TechnicianRequested" ToRole="MaintenanceRequestFormMaster" />
   </EntityType>
   <EntityType Name="NewStaffJoining">
     <Key>
@@ -1344,42 +1303,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster">
-    <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
-    <End Role="Maintenance_Approval" Type="Self.Maintenance_Approval" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MaintenanceRequestFormMaster">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Maintenance_Approval">
-        <PropertyRef Name="MasterId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_IssuesDetail_MaintenanceRequestFormMaster">
-    <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
-    <End Role="Maintenance_IssuesDetail" Type="Self.Maintenance_IssuesDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MaintenanceRequestFormMaster">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Maintenance_IssuesDetail">
-        <PropertyRef Name="MasterId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TechnicianRequested_MaintenanceRequestFormMaster">
-    <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
-    <End Role="Maintenance_TechnicianRequested" Type="Self.Maintenance_TechnicianRequested" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MaintenanceRequestFormMaster">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Maintenance_TechnicianRequested">
-        <PropertyRef Name="MasterId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
     <End Role="StudentEmailMaster" Type="Self.StudentEmailMaster" Multiplicity="0..1" />
     <End Role="StudentEmailDetail" Type="Self.StudentEmailDetail" Multiplicity="*" />
@@ -1446,9 +1369,7 @@
     <EntitySet Name="TermMasters" EntityType="Self.TermMaster" />
     <EntitySet Name="LeaveRequestForms" EntityType="Self.LeaveRequestForm" />
     <EntitySet Name="Maintenance_Approval" EntityType="Self.Maintenance_Approval" />
-    <EntitySet Name="Maintenance_IssuesDetail" EntityType="Self.Maintenance_IssuesDetail" />
     <EntitySet Name="Maintenance_TechnicianRequested" EntityType="Self.Maintenance_TechnicianRequested" />
-    <EntitySet Name="MaintenanceRequestFormMasters" EntityType="Self.MaintenanceRequestFormMaster" />
     <EntitySet Name="NewStaffJoinings" EntityType="Self.NewStaffJoining" />
     <EntitySet Name="StudentEmailDetails" EntityType="Self.StudentEmailDetail" />
     <EntitySet Name="StudentEmailFiles" EntityType="Self.StudentEmailFile" />
@@ -1501,18 +1422,6 @@
       <End Role="LessonPlanSubject" EntitySet="LessonPlanSubjects" />
       <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMasters" />
     </AssociationSet>
-    <AssociationSet Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster" Association="Self.FK_MaintenanceApproval_MaintenanceRequestFormMaster">
-      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
-      <End Role="Maintenance_Approval" EntitySet="Maintenance_Approval" />
-    </AssociationSet>
-    <AssociationSet Name="FK_IssuesDetail_MaintenanceRequestFormMaster" Association="Self.FK_IssuesDetail_MaintenanceRequestFormMaster">
-      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
-      <End Role="Maintenance_IssuesDetail" EntitySet="Maintenance_IssuesDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TechnicianRequested_MaintenanceRequestFormMaster" Association="Self.FK_TechnicianRequested_MaintenanceRequestFormMaster">
-      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
-      <End Role="Maintenance_TechnicianRequested" EntitySet="Maintenance_TechnicianRequested" />
-    </AssociationSet>
     <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Self.FK_StudentEmailDetail_StudentEmailMaster">
       <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
       <End Role="StudentEmailDetail" EntitySet="StudentEmailDetails" />
@@ -1525,11 +1434,25 @@
     <EntitySet Name="CleaningStaffByLocations" EntityType="Nahda_AttendanceModel.CleaningStaffByLocation" />
     <EntitySet Name="ComplainLogs" EntityType="Nahda_AttendanceModel.ComplainLog" />
     <EntitySet Name="Maintenance_TaskProcess" EntityType="Nahda_AttendanceModel.Maintenance_TaskProcess" />
+    <EntitySet Name="WeeklyMeetingSchedules" EntityType="Nahda_AttendanceModel.WeeklyMeetingSchedule" />
+    <EntitySet Name="MaintenanceRequestFormMasters" EntityType="Nahda_AttendanceModel.MaintenanceRequestFormMaster" />
+    <AssociationSet Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster" Association="Nahda_AttendanceModel.FK_MaintenanceApproval_MaintenanceRequestFormMaster">
+      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
+      <End Role="Maintenance_Approval" EntitySet="Maintenance_Approval" />
+    </AssociationSet>
     <AssociationSet Name="FK_TaskProcess_MaintenanceRequestFormMaster" Association="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster">
       <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
       <End Role="Maintenance_TaskProcess" EntitySet="Maintenance_TaskProcess" />
     </AssociationSet>
-    <EntitySet Name="WeeklyMeetingSchedules" EntityType="Nahda_AttendanceModel.WeeklyMeetingSchedule" />
+    <AssociationSet Name="FK_TechnicianRequested_MaintenanceRequestFormMaster" Association="Nahda_AttendanceModel.FK_TechnicianRequested_MaintenanceRequestFormMaster">
+      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
+      <End Role="Maintenance_TechnicianRequested" EntitySet="Maintenance_TechnicianRequested" />
+    </AssociationSet>
+    <EntitySet Name="Maintenance_IssuesDetail" EntityType="Nahda_AttendanceModel.Maintenance_IssuesDetail" />
+    <AssociationSet Name="FK_IssuesDetail_MaintenanceRequestFormMaster" Association="Nahda_AttendanceModel.FK_IssuesDetail_MaintenanceRequestFormMaster">
+      <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
+      <End Role="Maintenance_IssuesDetail" EntitySet="Maintenance_IssuesDetail" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="StudentFeedBackReport">
     <Key>
@@ -1589,18 +1512,6 @@
     <Property Name="MasterId" Type="Int32" />
     <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster" FromRole="Maintenance_TaskProcess" ToRole="MaintenanceRequestFormMaster" />
   </EntityType>
-  <Association Name="FK_TaskProcess_MaintenanceRequestFormMaster">
-    <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
-    <End Type="Nahda_AttendanceModel.Maintenance_TaskProcess" Role="Maintenance_TaskProcess" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MaintenanceRequestFormMaster">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Maintenance_TaskProcess">
-        <PropertyRef Name="MasterId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="WeeklyMeetingSchedule">
     <Key>
       <PropertyRef Name="Id" />
@@ -1614,4 +1525,93 @@
     <Property Name="TeacherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="ClassId" Type="Int32" />
   </EntityType>
+  <EntityType Name="MaintenanceRequestFormMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestBy" Type="Int32" />
+    <Property Name="RequestOn" Type="DateTime" Precision="7" />
+    <Property Name="CellNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="Int32" />
+    <Property Name="FlatNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovedOn" Type="DateTime" Precision="7" />
+    <Property Name="RecievedBy" Type="Int32" />
+    <Property Name="RecievedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ComplitionDate" Type="DateTime" Precision="7" />
+    <Property Name="TechnicianName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PDdate" Type="DateTime" Precision="7" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="IsDeletedParmanent" Type="Boolean" />
+    <NavigationProperty Name="Maintenance_Approval" Relationship="Nahda_AttendanceModel.FK_MaintenanceApproval_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_Approval" />
+    <NavigationProperty Name="Maintenance_TaskProcess" Relationship="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_TaskProcess" />
+    <NavigationProperty Name="Maintenance_TechnicianRequested" Relationship="Nahda_AttendanceModel.FK_TechnicianRequested_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_TechnicianRequested" />
+    <NavigationProperty Name="Maintenance_IssuesDetail" Relationship="Nahda_AttendanceModel.FK_IssuesDetail_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_IssuesDetail" />
+  </EntityType>
+  <Association Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster">
+    <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.Maintenance_Approval" Role="Maintenance_Approval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceRequestFormMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maintenance_Approval">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskProcess_MaintenanceRequestFormMaster">
+    <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.Maintenance_TaskProcess" Role="Maintenance_TaskProcess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceRequestFormMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maintenance_TaskProcess">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TechnicianRequested_MaintenanceRequestFormMaster">
+    <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.Maintenance_TechnicianRequested" Role="Maintenance_TechnicianRequested" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceRequestFormMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maintenance_TechnicianRequested">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Maintenance_IssuesDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsideRoomLocation" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Equipment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MasterId" Type="Int32" />
+    <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Nahda_AttendanceModel.FK_IssuesDetail_MaintenanceRequestFormMaster" FromRole="Maintenance_IssuesDetail" ToRole="MaintenanceRequestFormMaster" />
+  </EntityType>
+  <Association Name="FK_IssuesDetail_MaintenanceRequestFormMaster">
+    <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
+    <End Type="Nahda_AttendanceModel.Maintenance_IssuesDetail" Role="Maintenance_IssuesDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaintenanceRequestFormMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maintenance_IssuesDetail">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

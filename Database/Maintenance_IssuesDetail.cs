@@ -15,7 +15,7 @@ namespace Database
     public partial class Maintenance_IssuesDetail
     {
         public int Id { get; set; }
-        public string InsideRoomLocation { get; set; }
+        public Nullable<int> InsideRoomLocation { get; set; }
         public string Description { get; set; }
         public string Equipment { get; set; }
         public Nullable<int> MasterId { get; set; }

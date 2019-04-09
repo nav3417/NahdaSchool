@@ -1110,7 +1110,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="InsideRoomLocation" Type="nvarchar" MaxLength="50" />
+    <Property Name="InsideRoomLocation" Type="int" />
     <Property Name="Description" Type="nvarchar" MaxLength="200" />
     <Property Name="Equipment" Type="nvarchar" MaxLength="50" />
     <Property Name="MasterId" Type="int" />
@@ -1144,19 +1144,19 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
     <Property Name="RequestOn" Type="datetime2" Precision="7" />
     <Property Name="CellNo" Type="nvarchar" MaxLength="20" />
     <Property Name="School" Type="nvarchar" MaxLength="50" />
-    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+    <Property Name="Location" Type="int" />
     <Property Name="FlatNo" Type="nvarchar" MaxLength="20" />
-    <Property Name="ApprovedBy" Type="int" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="ApprovedOn" Type="datetime2" Precision="7" />
     <Property Name="RecievedBy" Type="int" />
-    <Property Name="RecievedOn" Type="datetime2" Precision="7" />
+    <Property Name="RecievedOn" Type="nvarchar" MaxLength="50" />
     <Property Name="ComplitionDate" Type="datetime2" Precision="7" />
     <Property Name="TechnicianName" Type="nvarchar" MaxLength="100" />
     <Property Name="PDdate" Type="datetime2" Precision="7" />
-    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="CreatedOn" Type="datetime2" Precision="7" />
-    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
-    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="IsDeleted" Type="bit" />
     <Property Name="IsDeletedParmanent" Type="bit" />

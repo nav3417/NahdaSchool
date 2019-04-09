@@ -1,0 +1,363 @@
+﻿@model AlnahdAweeklyPlans.Models.MaintenanceRequestFormMasterModel
+
+@{
+    ViewBag.Title = "Create";
+    int detailloop = Model.Maintenance_IssuesDetails.Count();
+    int aprovalloop = Model.Maintenance_Approvals.Count();
+    int TechnicianRequestedsloop = Model.Maintenance_TechnicianRequesteds.Count();
+    int taskprocessloop = Model.Maintenance_TaskProcesss.Count();
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "prodForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Student FeedBack Report</h4>
+        <hr />
+        @Html.HiddenFor(x => x.MaintenanceRequestFormMaster.Id,new {id="masterhiddenid" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Request By", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.MaintenanceRequestFormMaster.RequestBy, Model.RequestByListItems, "Select Applicant", new { @class = "form-control", id = "RequestBy" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("School", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.MaintenanceRequestFormMaster.School, Model.SchoolListItems, "Select School", new { @class = "form-control", id = "School" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Location", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.MaintenanceRequestFormMaster.Location, Model.LocationListItems, "Select Gender", new { @class = "form-control", id = "Location" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaintenanceRequestFormMaster.CellNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaintenanceRequestFormMaster.CellNo, new { htmlAttributes = new { @class = "form-control", id = "CellNo" } })
+                @Html.ValidationMessageFor(model => model.MaintenanceRequestFormMaster.CellNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaintenanceRequestFormMaster.FlatNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaintenanceRequestFormMaster.FlatNo, new { htmlAttributes = new { @class = "form-control", id = "FlatNo" } })
+                @Html.ValidationMessageFor(model => model.MaintenanceRequestFormMaster.FlatNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaintenanceRequestFormMaster.ComplitionDate, htmlAttributes: new { @class = "control-label col-md-2 date" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaintenanceRequestFormMaster.ComplitionDate, new { htmlAttributes = new { @class = "form-control date", id = "ComplitionDate" } })
+                @Html.ValidationMessageFor(model => model.MaintenanceRequestFormMaster.ComplitionDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaintenanceRequestFormMaster.PDdate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaintenanceRequestFormMaster.PDdate, new { htmlAttributes = new { @class = "form-control date", id = "PDdate" } })
+                @Html.ValidationMessageFor(model => model.MaintenanceRequestFormMaster.PDdate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaintenanceRequestFormMaster.TechnicianName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaintenanceRequestFormMaster.TechnicianName, new { htmlAttributes = new { @class = "form-control", id = "TechnicianName" } })
+                @Html.ValidationMessageFor(model => model.MaintenanceRequestFormMaster.TechnicianName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+
+    <h5 style="text-align:center">Maintenance Issues</h5>
+    <div class="row">
+        <table class="table" id="parenttable">
+            <thead>
+                <tr class="row">
+
+                    <th class="col-md-2">Equipment</th>
+                    <th class="col-md-2">InsideRoomLocation</th>
+                    <th class="col-md-2">Description</th>
+                    <td class="col-md-1"></td>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1"></th>
+                </tr>
+            </thead>
+            <tbody id="parentbody">
+                @for (int i = 0; i < detailloop; i++)
+                {
+                <tr class="row">
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_IssuesDetails[i].Equipment, new { @class = "form-control" })</td>
+                    <td class="col-md-2">@Html.DropDownListFor(x => Model.Maintenance_IssuesDetails[i].InsideRoomLocation, Model.InsideRoomLocationSelectList, new { @class = "form-control" })</td>
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_IssuesDetails[i].Description, new { @class = "form-control" })</td>
+                    <td class="hide">@Html.TextBoxFor(x => Model.Maintenance_IssuesDetails[i].Id)</td>
+                    <td><a href="#" id="clone"><span class="glyphicon glyphicon-plus clone"></span></a></td>
+                    <td><a href="#" id="clone2"><span class="glyphicon glyphicon-minus removeclone"></span></a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <h5 style="text-align:center">Maintenance Technician Reqested</h5>
+    <div class="row">
+        <table class="table" id="Techtable">
+            <thead>
+                <tr class="row">
+                    <th class="col-md-2">Material</th>
+                    <th class="col-md-2">Quantity</th>
+                    <th class="col-md-2">ItemDescription</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1"></th>
+                </tr>
+            </thead>
+            <tbody id="Techbody">
+                @for (int i = 0; i < TechnicianRequestedsloop; i++)
+                {
+                <tr class="row">
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_TechnicianRequesteds[i].Material, new { @class = "form-control" })</td>
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_TechnicianRequesteds[i].Quantity, new { @class = "form-control" })</td>
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_TechnicianRequesteds[i].ItemDescription, new { @class = "form-control" })</td>
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_TechnicianRequesteds[i].Id, new { @class = "form-control" })</td>
+                    <td><a href="#" id="clone"><span class="glyphicon glyphicon-plus Techclone"></span></a></td>
+                    <td><a href="#" id="clone2"><span class="glyphicon glyphicon-minus removeclone"></span></a></td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <h5 style="text-align:center">Maintenance Approval</h5>
+    <div class="row">
+        <table class="table" id="approvaltable">
+            <thead>
+                <tr class="row">
+                    <th class="col-md-2">Technician Name</th>
+                    <th class="col-md-2">Inspected Date</th>
+                    <th class="col-md-2">Description</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1"></th>
+                </tr>
+            </thead>
+            <tbody id="approval">
+                @for (int i = 0; i < aprovalloop; i++)
+                {
+                <tr class="row">
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_Approvals[i].TechnicianName, new { @class = "form-control" })</td>
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_Approvals[i].InspectedDate, new { @class = "form-control date" })</td>
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_Approvals[i].Description, new { @class = "form-control" })</td>
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_Approvals[i].Id, new { @class = "form-control" })</td>
+                    <td><a href="#" id="clone"><span class="glyphicon glyphicon-plus approvalclone"></span></a></td>
+                    <td><a href="#" id="clone2"><span class="glyphicon glyphicon-minus removeclone"></span></a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <h5 style="text-align:center">Task Process</h5>
+    <div class="row">
+        <table class="table" id="TaskProcesstable">
+            <thead>
+                <tr class="row">
+                    <th class="col-md-2">Date</th>
+                    <th class="col-md-2">Employee</th>
+                    <th class="col-md-2">Description</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1"></th>
+                </tr>
+            </thead>
+            <tbody id="approval">
+                @for (int i = 0; i < taskprocessloop;i++)
+                {
+                <tr class="row">
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_TaskProcesss[i].Date, new { @class = "form-control date" })</td>
+                    <td class="col-md-2">@Html.DropDownListFor(x => Model.Maintenance_TaskProcesss[i].Employee, Model.InsideRoomLocationSelectList, new { @class = "form-control" })</td>
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_TaskProcesss[i].Description, new { @class = "form-control" })</td>
+                    <td class="col-md-2">@Html.TextBoxFor(x => Model.Maintenance_TaskProcesss[i].Id, new { @class = "form-control" })</td>
+                    <td><a href="#" id="clone"><span class="glyphicon glyphicon-plus taskprocessclone"></span></a></td>
+                    <td><a href="#" id="clone2"><span class="glyphicon glyphicon-minus removeclone"></span></a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+    var details = new Array();
+    var approval = new Array();
+    var technicians = new Array();
+    var TaskProcesss = new Array();
+    $(document).on("click", ".date", function () {
+        $(this).datepicker("show");
+    });
+    $(document).on("click", ".clone", function () {
+        var new_row = $(this).closest("tr").clone();
+        $("#parentbody").append(new_row);
+    });
+    $(document).on("click", ".approvalclone", function () {
+        var new_row = $(this).closest("tr").clone();
+        $("#approval").append(new_row);
+    });
+    $(document).on("click", ".taskprocessclone", function () {
+        var new_row = $(this).closest("tr").clone();
+        $("#TaskProcesstable").append(new_row);
+    });
+    $(document).on("click", ".Techclone", function () {
+        var new_row = $(this).closest("tr").clone();
+        $("#Techbody").append(new_row);
+    });
+    $(document).on("click", ".removeclone", function () {
+        $(this).closest("tr").remove();
+    });
+    function IssuesTableData() {
+        $("#parenttable tbody tr").each(function () {
+            Equipment = $(this).find("td:eq(0)").find("input").val();
+            InsideRoomLocation = $(this).find("td:eq(1)").find("select").val();
+            Description = $(this).find("td:eq(2)").find("input").val();
+            Id = $(this).find("td:eq(3)").find("input").val();
+            //alert("id:" + Id);
+            var detail = {
+                Equipment: "",
+                InsideRoomLocation: "",
+                Description: "",
+                Id:"0"
+            };
+            //var isfind = false;
+            //for (var i = 0; i < details.length; i++) {
+            //    if (details[0].Id == Id) {
+            //        isfind = true;
+            //    }
+            //}
+            //debugger
+            //if (isfind != true) { detail.Id=Id}
+            detail.Equipment = Equipment;
+            detail.Id = Id;
+            detail.InsideRoomLocation = InsideRoomLocation;
+            detail.Description = Description;
+            details.push(detail);
+            debugger
+        });
+    }
+    function approvaltable() {
+        debugger
+        $("#approvaltable tbody tr").each(function () {
+            TechnicianName = $(this).find("td:eq(0)").find("input").val();
+            InspectedDate = $(this).find("td:eq(1)").find("input").val();
+            Description = $(this).find("td:eq(2)").find("input").val();
+            Id = $(this).find("td:eq(3)").find("input").val();
+            var app = {
+                TechnicianName: "",
+                InspectedDate: "",
+                Description: "",
+                Id:"0"
+            };
+            app.TechnicianName = TechnicianName;
+            app.InspectedDate = InspectedDate;
+            app.Description = Description;
+            app.Id = Id;
+            approval.push(app);
+            debugger
+        });
+    }
+    function techtable() {
+        debugger
+        $("#Techtable tbody tr").each(function () {
+            Material = $(this).find("td:eq(0)").find("input").val();
+            Quantity = $(this).find("td:eq(1)").find("input").val();
+            ItemDescription = $(this).find("td:eq(2)").find("input").val();
+            Id = $(this).find("td:eq(3)").find("input").val();
+            var tech = {
+                Material: "",
+                Quantity: "",
+                ItemDescription: "",
+                Id: "0"
+            };
+            tech.Material = Material;
+            tech.Id = Id;
+            tech.Quantity = Quantity;
+            tech.ItemDescription = ItemDescription;
+            technicians.push(tech);
+            debugger
+        });
+    }
+    function taskprocesstable() {
+        debugger
+        $("#TaskProcesstable tbody tr").each(function () {
+            Date = $(this).find("td:eq(0)").find("input").val();
+            Employee = $(this).find("td:eq(1)").find("select").val();
+            Description = $(this).find("td:eq(2)").find("input").val();
+            Id = $(this).find("td:eq(3)").find("input").val();
+            var task = {
+                Date: "",
+                Employee: "",
+                Description: "",
+                Id:"0"
+            };
+            task.Id = Id;
+            task.Date = Date;
+            task.Employee = Employee;
+            task.Description = Description;
+            TaskProcesss.push(task);
+            debugger
+        });
+    }
+    $("#prodForm").submit(function (e) {
+        IssuesTableData();
+        approvaltable();
+        techtable();
+        taskprocesstable();
+        var MaintenanceRequestForm = {
+            
+            Id: $("#masterhiddenid").val(),
+            RequestBy: $("#RequestBy").val(),
+            School: $("#School").val(),
+            Location: $("#Location").val(),
+            School: $("#RequestBy").val(),
+            CellNo: $("#CellNo").val(),
+            School: $("#RequestBy").val(),
+            FlatNo: $("#FlatNo").val(),
+            ComplitionDate: $("#ComplitionDate").val(),
+            PDdate: $("#PDdate").val(),
+            TechnicianName: $("#TechnicianName").val(),
+        }
+        debugger
+        var Parent = {
+            detailist: JSON.stringify(details),
+            MaintenanceRequestFormMaster: MaintenanceRequestForm,
+            approvallist: JSON.stringify(approval),
+            technicianlist: JSON.stringify(technicians),
+            taskslist: JSON.stringify(TaskProcesss),
+        }
+        debugger
+        $.ajax({
+            url: "/MaintenanceRequestForm/Create",
+            type: "POST",
+            data: Parent,
+            success: function (data) {
+                alert("done");
+            },
+        });
+    });
+</script>

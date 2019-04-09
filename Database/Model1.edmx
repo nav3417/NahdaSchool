@@ -1115,7 +1115,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="InsideRoomLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsideRoomLocation" Type="int" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" />
           <Property Name="Equipment" Type="nvarchar" MaxLength="50" />
           <Property Name="MasterId" Type="int" />
@@ -1149,19 +1149,19 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="RequestOn" Type="datetime2" Precision="7" />
           <Property Name="CellNo" Type="nvarchar" MaxLength="20" />
           <Property Name="School" Type="nvarchar" MaxLength="50" />
-          <Property Name="Location" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="int" />
           <Property Name="FlatNo" Type="nvarchar" MaxLength="20" />
-          <Property Name="ApprovedBy" Type="int" />
+          <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="ApprovedOn" Type="datetime2" Precision="7" />
           <Property Name="RecievedBy" Type="int" />
-          <Property Name="RecievedOn" Type="datetime2" Precision="7" />
+          <Property Name="RecievedOn" Type="nvarchar" MaxLength="50" />
           <Property Name="ComplitionDate" Type="datetime2" Precision="7" />
           <Property Name="TechnicianName" Type="nvarchar" MaxLength="100" />
           <Property Name="PDdate" Type="datetime2" Precision="7" />
-          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="CreatedOn" Type="datetime2" Precision="7" />
-          <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
-          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="IsDeletedParmanent" Type="bit" />
@@ -2662,18 +2662,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="TechnicianName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
           <Property Name="MasterId" Type="Int32" />
-          <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Self.FK_MaintenanceApproval_MaintenanceRequestFormMaster" FromRole="Maintenance_Approval" ToRole="MaintenanceRequestFormMaster" />
-        </EntityType>
-        <EntityType Name="Maintenance_IssuesDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="InsideRoomLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Equipment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MasterId" Type="Int32" />
-          <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Self.FK_IssuesDetail_MaintenanceRequestFormMaster" FromRole="Maintenance_IssuesDetail" ToRole="MaintenanceRequestFormMaster" />
+          <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Nahda_AttendanceModel.FK_MaintenanceApproval_MaintenanceRequestFormMaster" FromRole="Maintenance_Approval" ToRole="MaintenanceRequestFormMaster" />
         </EntityType>
         <EntityType Name="Maintenance_TechnicianRequested">
           <Key>
@@ -2684,37 +2673,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="ItemDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="MasterId" Type="Int32" />
-          <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Self.FK_TechnicianRequested_MaintenanceRequestFormMaster" FromRole="Maintenance_TechnicianRequested" ToRole="MaintenanceRequestFormMaster" />
-        </EntityType>
-        <EntityType Name="MaintenanceRequestFormMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RequestBy" Type="Int32" />
-          <Property Name="RequestOn" Type="DateTime" Precision="7" />
-          <Property Name="CellNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FlatNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ApprovedBy" Type="Int32" />
-          <Property Name="ApprovedOn" Type="DateTime" Precision="7" />
-          <Property Name="RecievedBy" Type="Int32" />
-          <Property Name="RecievedOn" Type="DateTime" Precision="7" />
-          <Property Name="ComplitionDate" Type="DateTime" Precision="7" />
-          <Property Name="TechnicianName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PDdate" Type="DateTime" Precision="7" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="7" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="IsDeletedParmanent" Type="Boolean" />
-          <NavigationProperty Name="Maintenance_Approval" Relationship="Self.FK_MaintenanceApproval_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_Approval" />
-          <NavigationProperty Name="Maintenance_IssuesDetail" Relationship="Self.FK_IssuesDetail_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_IssuesDetail" />
-          <NavigationProperty Name="Maintenance_TechnicianRequested" Relationship="Self.FK_TechnicianRequested_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_TechnicianRequested" />
-          <NavigationProperty Name="Maintenance_TaskProcess" Relationship="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_TaskProcess" />
+          <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Nahda_AttendanceModel.FK_TechnicianRequested_MaintenanceRequestFormMaster" FromRole="Maintenance_TechnicianRequested" ToRole="MaintenanceRequestFormMaster" />
         </EntityType>
         <EntityType Name="NewStaffJoining">
           <Key>
@@ -3065,42 +3024,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster">
-          <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
-          <End Role="Maintenance_Approval" Type="Self.Maintenance_Approval" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MaintenanceRequestFormMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Maintenance_Approval">
-              <PropertyRef Name="MasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IssuesDetail_MaintenanceRequestFormMaster">
-          <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
-          <End Role="Maintenance_IssuesDetail" Type="Self.Maintenance_IssuesDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MaintenanceRequestFormMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Maintenance_IssuesDetail">
-              <PropertyRef Name="MasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TechnicianRequested_MaintenanceRequestFormMaster">
-          <End Role="MaintenanceRequestFormMaster" Type="Self.MaintenanceRequestFormMaster" Multiplicity="0..1" />
-          <End Role="Maintenance_TechnicianRequested" Type="Self.Maintenance_TechnicianRequested" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MaintenanceRequestFormMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Maintenance_TechnicianRequested">
-              <PropertyRef Name="MasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_StudentEmailDetail_StudentEmailMaster">
           <End Role="StudentEmailMaster" Type="Self.StudentEmailMaster" Multiplicity="0..1" />
           <End Role="StudentEmailDetail" Type="Self.StudentEmailDetail" Multiplicity="*" />
@@ -3167,9 +3090,7 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <EntitySet Name="TermMasters" EntityType="Self.TermMaster" />
           <EntitySet Name="LeaveRequestForms" EntityType="Self.LeaveRequestForm" />
           <EntitySet Name="Maintenance_Approval" EntityType="Self.Maintenance_Approval" />
-          <EntitySet Name="Maintenance_IssuesDetail" EntityType="Self.Maintenance_IssuesDetail" />
           <EntitySet Name="Maintenance_TechnicianRequested" EntityType="Self.Maintenance_TechnicianRequested" />
-          <EntitySet Name="MaintenanceRequestFormMasters" EntityType="Self.MaintenanceRequestFormMaster" />
           <EntitySet Name="NewStaffJoinings" EntityType="Self.NewStaffJoining" />
           <EntitySet Name="StudentEmailDetails" EntityType="Self.StudentEmailDetail" />
           <EntitySet Name="StudentEmailFiles" EntityType="Self.StudentEmailFile" />
@@ -3222,18 +3143,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
             <End Role="LessonPlanSubject" EntitySet="LessonPlanSubjects" />
             <End Role="LessonsPlanMaster" EntitySet="LessonsPlanMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster" Association="Self.FK_MaintenanceApproval_MaintenanceRequestFormMaster">
-            <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
-            <End Role="Maintenance_Approval" EntitySet="Maintenance_Approval" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IssuesDetail_MaintenanceRequestFormMaster" Association="Self.FK_IssuesDetail_MaintenanceRequestFormMaster">
-            <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
-            <End Role="Maintenance_IssuesDetail" EntitySet="Maintenance_IssuesDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TechnicianRequested_MaintenanceRequestFormMaster" Association="Self.FK_TechnicianRequested_MaintenanceRequestFormMaster">
-            <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
-            <End Role="Maintenance_TechnicianRequested" EntitySet="Maintenance_TechnicianRequested" />
-          </AssociationSet>
           <AssociationSet Name="FK_StudentEmailDetail_StudentEmailMaster" Association="Self.FK_StudentEmailDetail_StudentEmailMaster">
             <End Role="StudentEmailMaster" EntitySet="StudentEmailMasters" />
             <End Role="StudentEmailDetail" EntitySet="StudentEmailDetails" />
@@ -3246,12 +3155,26 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <EntitySet Name="CleaningStaffByLocations" EntityType="Nahda_AttendanceModel.CleaningStaffByLocation" />
           <EntitySet Name="ComplainLogs" EntityType="Nahda_AttendanceModel.ComplainLog" />
           <EntitySet Name="Maintenance_TaskProcess" EntityType="Nahda_AttendanceModel.Maintenance_TaskProcess" />
+          <EntitySet Name="WeeklyMeetingSchedules" EntityType="Nahda_AttendanceModel.WeeklyMeetingSchedule" />
+          <EntitySet Name="MaintenanceRequestFormMasters" EntityType="Nahda_AttendanceModel.MaintenanceRequestFormMaster" />
+          <AssociationSet Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster" Association="Nahda_AttendanceModel.FK_MaintenanceApproval_MaintenanceRequestFormMaster">
+            <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
+            <End Role="Maintenance_Approval" EntitySet="Maintenance_Approval" />
+          </AssociationSet>
           <AssociationSet Name="FK_TaskProcess_MaintenanceRequestFormMaster" Association="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster">
             <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
             <End Role="Maintenance_TaskProcess" EntitySet="Maintenance_TaskProcess" />
           </AssociationSet>
-          <EntitySet Name="WeeklyMeetingSchedules" EntityType="Nahda_AttendanceModel.WeeklyMeetingSchedule" />
-        </EntityContainer>
+          <AssociationSet Name="FK_TechnicianRequested_MaintenanceRequestFormMaster" Association="Nahda_AttendanceModel.FK_TechnicianRequested_MaintenanceRequestFormMaster">
+            <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
+            <End Role="Maintenance_TechnicianRequested" EntitySet="Maintenance_TechnicianRequested" />
+          </AssociationSet>
+          <EntitySet Name="Maintenance_IssuesDetail" EntityType="Nahda_AttendanceModel.Maintenance_IssuesDetail" />
+          <AssociationSet Name="FK_IssuesDetail_MaintenanceRequestFormMaster" Association="Nahda_AttendanceModel.FK_IssuesDetail_MaintenanceRequestFormMaster">
+            <End Role="MaintenanceRequestFormMaster" EntitySet="MaintenanceRequestFormMasters" />
+            <End Role="Maintenance_IssuesDetail" EntitySet="Maintenance_IssuesDetail" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="StudentFeedBackReport">
           <Key>
             <PropertyRef Name="Id" />
@@ -3310,18 +3233,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="MasterId" Type="Int32" />
           <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster" FromRole="Maintenance_TaskProcess" ToRole="MaintenanceRequestFormMaster" />
         </EntityType>
-        <Association Name="FK_TaskProcess_MaintenanceRequestFormMaster">
-          <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
-          <End Type="Nahda_AttendanceModel.Maintenance_TaskProcess" Role="Maintenance_TaskProcess" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MaintenanceRequestFormMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Maintenance_TaskProcess">
-              <PropertyRef Name="MasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="WeeklyMeetingSchedule">
           <Key>
             <PropertyRef Name="Id" />
@@ -3335,7 +3246,96 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
           <Property Name="TeacherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ClassId" Type="Int32" />
         </EntityType>
-      </Schema>
+        <EntityType Name="MaintenanceRequestFormMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestBy" Type="Int32" />
+          <Property Name="RequestOn" Type="DateTime" Precision="7" />
+          <Property Name="CellNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="Int32" />
+          <Property Name="FlatNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApprovedOn" Type="DateTime" Precision="7" />
+          <Property Name="RecievedBy" Type="Int32" />
+          <Property Name="RecievedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ComplitionDate" Type="DateTime" Precision="7" />
+          <Property Name="TechnicianName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PDdate" Type="DateTime" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedParmanent" Type="Boolean" />
+          <NavigationProperty Name="Maintenance_Approval" Relationship="Nahda_AttendanceModel.FK_MaintenanceApproval_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_Approval" />
+          <NavigationProperty Name="Maintenance_TaskProcess" Relationship="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_TaskProcess" />
+          <NavigationProperty Name="Maintenance_TechnicianRequested" Relationship="Nahda_AttendanceModel.FK_TechnicianRequested_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_TechnicianRequested" />
+          <NavigationProperty Name="Maintenance_IssuesDetail" Relationship="Nahda_AttendanceModel.FK_IssuesDetail_MaintenanceRequestFormMaster" FromRole="MaintenanceRequestFormMaster" ToRole="Maintenance_IssuesDetail" />
+        </EntityType>
+        <Association Name="FK_MaintenanceApproval_MaintenanceRequestFormMaster">
+          <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
+          <End Type="Nahda_AttendanceModel.Maintenance_Approval" Role="Maintenance_Approval" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaintenanceRequestFormMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Maintenance_Approval">
+              <PropertyRef Name="MasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskProcess_MaintenanceRequestFormMaster">
+          <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
+          <End Type="Nahda_AttendanceModel.Maintenance_TaskProcess" Role="Maintenance_TaskProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaintenanceRequestFormMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Maintenance_TaskProcess">
+              <PropertyRef Name="MasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicianRequested_MaintenanceRequestFormMaster">
+          <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
+          <End Type="Nahda_AttendanceModel.Maintenance_TechnicianRequested" Role="Maintenance_TechnicianRequested" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaintenanceRequestFormMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Maintenance_TechnicianRequested">
+              <PropertyRef Name="MasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Maintenance_IssuesDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InsideRoomLocation" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Equipment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MasterId" Type="Int32" />
+          <NavigationProperty Name="MaintenanceRequestFormMaster" Relationship="Nahda_AttendanceModel.FK_IssuesDetail_MaintenanceRequestFormMaster" FromRole="Maintenance_IssuesDetail" ToRole="MaintenanceRequestFormMaster" />
+        </EntityType>
+        <Association Name="FK_IssuesDetail_MaintenanceRequestFormMaster">
+          <End Type="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Role="MaintenanceRequestFormMaster" Multiplicity="0..1" />
+          <End Type="Nahda_AttendanceModel.Maintenance_IssuesDetail" Role="Maintenance_IssuesDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaintenanceRequestFormMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Maintenance_IssuesDetail">
+              <PropertyRef Name="MasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -4302,17 +4302,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Maintenance_IssuesDetail">
-            <EntityTypeMapping TypeName="Nahda_AttendanceModel.Maintenance_IssuesDetail">
-              <MappingFragment StoreEntitySet="Maintenance_IssuesDetail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="InsideRoomLocation" ColumnName="InsideRoomLocation" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Equipment" ColumnName="Equipment" />
-                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Maintenance_TechnicianRequested">
             <EntityTypeMapping TypeName="Nahda_AttendanceModel.Maintenance_TechnicianRequested">
               <MappingFragment StoreEntitySet="Maintenance_TechnicianRequested">
@@ -4321,33 +4310,6 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
                 <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="MasterId" ColumnName="MasterId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MaintenanceRequestFormMasters">
-            <EntityTypeMapping TypeName="Nahda_AttendanceModel.MaintenanceRequestFormMaster">
-              <MappingFragment StoreEntitySet="MaintenanceRequestFormMaster">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RequestBy" ColumnName="RequestBy" />
-                <ScalarProperty Name="RequestOn" ColumnName="RequestOn" />
-                <ScalarProperty Name="CellNo" ColumnName="CellNo" />
-                <ScalarProperty Name="School" ColumnName="School" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="FlatNo" ColumnName="FlatNo" />
-                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
-                <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
-                <ScalarProperty Name="RecievedBy" ColumnName="RecievedBy" />
-                <ScalarProperty Name="RecievedOn" ColumnName="RecievedOn" />
-                <ScalarProperty Name="ComplitionDate" ColumnName="ComplitionDate" />
-                <ScalarProperty Name="TechnicianName" ColumnName="TechnicianName" />
-                <ScalarProperty Name="PDdate" ColumnName="PDdate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsDeletedParmanent" ColumnName="IsDeletedParmanent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4652,6 +4614,44 @@ warning 6002: The table/view 'Nahda_Attendance.dbo.Student_TeacherClass' does no
                 <ScalarProperty Name="From" ColumnName="From" />
                 <ScalarProperty Name="Period" ColumnName="Period" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceRequestFormMasters">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.MaintenanceRequestFormMaster">
+              <MappingFragment StoreEntitySet="MaintenanceRequestFormMaster">
+                <ScalarProperty Name="IsDeletedParmanent" ColumnName="IsDeletedParmanent" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="PDdate" ColumnName="PDdate" />
+                <ScalarProperty Name="TechnicianName" ColumnName="TechnicianName" />
+                <ScalarProperty Name="ComplitionDate" ColumnName="ComplitionDate" />
+                <ScalarProperty Name="RecievedOn" ColumnName="RecievedOn" />
+                <ScalarProperty Name="RecievedBy" ColumnName="RecievedBy" />
+                <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="FlatNo" ColumnName="FlatNo" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="CellNo" ColumnName="CellNo" />
+                <ScalarProperty Name="RequestOn" ColumnName="RequestOn" />
+                <ScalarProperty Name="RequestBy" ColumnName="RequestBy" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maintenance_IssuesDetail">
+            <EntityTypeMapping TypeName="Nahda_AttendanceModel.Maintenance_IssuesDetail">
+              <MappingFragment StoreEntitySet="Maintenance_IssuesDetail">
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="InsideRoomLocation" ColumnName="InsideRoomLocation" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

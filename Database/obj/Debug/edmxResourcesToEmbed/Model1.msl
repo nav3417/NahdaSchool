@@ -962,17 +962,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Maintenance_IssuesDetail">
-      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Maintenance_IssuesDetail">
-        <MappingFragment StoreEntitySet="Maintenance_IssuesDetail">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="InsideRoomLocation" ColumnName="InsideRoomLocation" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Equipment" ColumnName="Equipment" />
-          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Maintenance_TechnicianRequested">
       <EntityTypeMapping TypeName="Nahda_AttendanceModel.Maintenance_TechnicianRequested">
         <MappingFragment StoreEntitySet="Maintenance_TechnicianRequested">
@@ -981,33 +970,6 @@
           <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="MasterId" ColumnName="MasterId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MaintenanceRequestFormMasters">
-      <EntityTypeMapping TypeName="Nahda_AttendanceModel.MaintenanceRequestFormMaster">
-        <MappingFragment StoreEntitySet="MaintenanceRequestFormMaster">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="RequestBy" ColumnName="RequestBy" />
-          <ScalarProperty Name="RequestOn" ColumnName="RequestOn" />
-          <ScalarProperty Name="CellNo" ColumnName="CellNo" />
-          <ScalarProperty Name="School" ColumnName="School" />
-          <ScalarProperty Name="Location" ColumnName="Location" />
-          <ScalarProperty Name="FlatNo" ColumnName="FlatNo" />
-          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
-          <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
-          <ScalarProperty Name="RecievedBy" ColumnName="RecievedBy" />
-          <ScalarProperty Name="RecievedOn" ColumnName="RecievedOn" />
-          <ScalarProperty Name="ComplitionDate" ColumnName="ComplitionDate" />
-          <ScalarProperty Name="TechnicianName" ColumnName="TechnicianName" />
-          <ScalarProperty Name="PDdate" ColumnName="PDdate" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="IsDeletedParmanent" ColumnName="IsDeletedParmanent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1312,6 +1274,44 @@
           <ScalarProperty Name="From" ColumnName="From" />
           <ScalarProperty Name="Period" ColumnName="Period" />
           <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaintenanceRequestFormMasters">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.MaintenanceRequestFormMaster">
+        <MappingFragment StoreEntitySet="MaintenanceRequestFormMaster">
+          <ScalarProperty Name="IsDeletedParmanent" ColumnName="IsDeletedParmanent" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="PDdate" ColumnName="PDdate" />
+          <ScalarProperty Name="TechnicianName" ColumnName="TechnicianName" />
+          <ScalarProperty Name="ComplitionDate" ColumnName="ComplitionDate" />
+          <ScalarProperty Name="RecievedOn" ColumnName="RecievedOn" />
+          <ScalarProperty Name="RecievedBy" ColumnName="RecievedBy" />
+          <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="FlatNo" ColumnName="FlatNo" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="CellNo" ColumnName="CellNo" />
+          <ScalarProperty Name="RequestOn" ColumnName="RequestOn" />
+          <ScalarProperty Name="RequestBy" ColumnName="RequestBy" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maintenance_IssuesDetail">
+      <EntityTypeMapping TypeName="Nahda_AttendanceModel.Maintenance_IssuesDetail">
+        <MappingFragment StoreEntitySet="Maintenance_IssuesDetail">
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="InsideRoomLocation" ColumnName="InsideRoomLocation" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

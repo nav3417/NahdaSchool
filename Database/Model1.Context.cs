@@ -66,9 +66,7 @@ namespace Database
         public virtual DbSet<TermMaster> TermMasters { get; set; }
         public virtual DbSet<LeaveRequestForm> LeaveRequestForms { get; set; }
         public virtual DbSet<Maintenance_Approval> Maintenance_Approval { get; set; }
-        public virtual DbSet<Maintenance_IssuesDetail> Maintenance_IssuesDetail { get; set; }
         public virtual DbSet<Maintenance_TechnicianRequested> Maintenance_TechnicianRequested { get; set; }
-        public virtual DbSet<MaintenanceRequestFormMaster> MaintenanceRequestFormMasters { get; set; }
         public virtual DbSet<NewStaffJoining> NewStaffJoinings { get; set; }
         public virtual DbSet<StudentEmailDetail> StudentEmailDetails { get; set; }
         public virtual DbSet<StudentEmailFile> StudentEmailFiles { get; set; }
@@ -86,5 +84,7 @@ namespace Database
         public virtual DbSet<ComplainLog> ComplainLogs { get; set; }
         public virtual DbSet<Maintenance_TaskProcess> Maintenance_TaskProcess { get; set; }
         public virtual DbSet<WeeklyMeetingSchedule> WeeklyMeetingSchedules { get; set; }
+        public virtual DbSet<MaintenanceRequestFormMaster> MaintenanceRequestFormMasters { get; set; }
+        public virtual DbSet<Maintenance_IssuesDetail> Maintenance_IssuesDetail { get; set; }
     }
 }

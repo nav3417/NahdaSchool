@@ -47,3 +47,4 @@ D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.cspr
 D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csproj.CopyComplete
 D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\Database.dll
 D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\Database.pdb
+D:\Naveed\AlnahdAweeklyPlans\Database\obj\Debug\AlnahdAweeklyPlans_DataBase.csprojAssemblyReference.cache

@@ -46,9 +46,7 @@
         <EntityTypeShape EntityType="Nahda_AttendanceModel.TermMaster" Width="1.5" PointX="22.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.LeaveRequestForm" Width="1.5" PointX="4.75" PointY="23.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.Maintenance_Approval" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Nahda_AttendanceModel.Maintenance_IssuesDetail" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.Maintenance_TechnicianRequested" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.NewStaffJoining" Width="1.5" PointX="22.75" PointY="23.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.StudentEmailDetail" Width="1.5" PointX="10" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.StudentEmailFile" Width="1.5" PointX="10" PointY="16.25" IsExpanded="true" />
@@ -71,18 +69,20 @@
         <AssociationConnector Association="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanClass" ManuallyRouted="false" />
         <AssociationConnector Association="Nahda_AttendanceModel.FK_LessonPlanDetail_LessonsPlanMaster" ManuallyRouted="false" />
         <AssociationConnector Association="Nahda_AttendanceModel.FK_LessonsPlanMaster_LessonPlanSubject" ManuallyRouted="false" />
-        <AssociationConnector Association="Nahda_AttendanceModel.FK_MaintenanceApproval_MaintenanceRequestFormMaster" ManuallyRouted="false" />
-        <AssociationConnector Association="Nahda_AttendanceModel.FK_IssuesDetail_MaintenanceRequestFormMaster" ManuallyRouted="false" />
-        <AssociationConnector Association="Nahda_AttendanceModel.FK_TechnicianRequested_MaintenanceRequestFormMaster" ManuallyRouted="false" />
         <AssociationConnector Association="Nahda_AttendanceModel.FK_StudentEmailDetail_StudentEmailMaster" ManuallyRouted="false" />
         <AssociationConnector Association="Nahda_AttendanceModel.FK_StudentEmailFiles_StudentEmailMaster" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.StudentFeedBackReport" Width="1.5" PointX="15.375" PointY="26.75" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.CleaningStaffByLocation" Width="1.5" PointX="25.375" PointY="26.75" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.ComplainLog" Width="1.5" PointX="27.375" PointY="9.75" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.Maintenance_TaskProcess" Width="1.5" PointX="3" PointY="10.75" />
-        <AssociationConnector Association="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster" />
         <EntityTypeShape EntityType="Nahda_AttendanceModel.WeeklyMeetingSchedule" Width="1.5" PointX="27.375" PointY="14.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="Nahda_AttendanceModel.MaintenanceRequestFormMaster" Width="1.5" PointX="0.75" PointY="4.25" />
+        <AssociationConnector Association="Nahda_AttendanceModel.FK_MaintenanceApproval_MaintenanceRequestFormMaster" />
+        <AssociationConnector Association="Nahda_AttendanceModel.FK_TaskProcess_MaintenanceRequestFormMaster" />
+        <AssociationConnector Association="Nahda_AttendanceModel.FK_TechnicianRequested_MaintenanceRequestFormMaster" />
+        <EntityTypeShape EntityType="Nahda_AttendanceModel.Maintenance_IssuesDetail" Width="1.5" PointX="3" PointY="28.125" />
+        <AssociationConnector Association="Nahda_AttendanceModel.FK_IssuesDetail_MaintenanceRequestFormMaster" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
